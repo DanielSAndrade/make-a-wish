@@ -1,0 +1,38 @@
+package com.ciandt.hackathon.api;
+
+import java.util.List;
+
+import javax.annotation.concurrent.ThreadSafe;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.entity.Greeting;
+import com.google.inject.Inject;
+
+@Path("/api/")
+@ThreadSafe
+public class CommonResource {
+
+	private final GreetingDAO greetingDAO;
+
+	@Inject
+	public CommonResource(GreetingDAO greetingDAO) {
+		super();
+		this.greetingDAO = greetingDAO;
+	}
+
+	@GET
+	@Path("/listGreetings")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listGreetings(@Context HttpServletRequest request) {
+		List<Greeting> listGreetings = greetingDAO.findGreetings();
+		return Response.ok(listGreetings).build();
+	}
+
+}

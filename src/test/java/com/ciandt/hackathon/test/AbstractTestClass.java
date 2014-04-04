@@ -3,10 +3,12 @@ package com.ciandt.hackathon.test;
 import org.junit.After;
 import org.junit.Before;
 
+import com.ciandt.hackathon.config.CommonModule;
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalMemcacheServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
-import com.google.appengine.tools.development.testing.LocalTaskQueueTestConfig;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 /**
  * Abstract Test
@@ -16,9 +18,16 @@ import com.google.appengine.tools.development.testing.LocalTaskQueueTestConfig;
  */
 public abstract class AbstractTestClass {
 	
+	private Injector injector; 
+	
 	final LocalServiceTestHelper helper = new LocalServiceTestHelper(
 			new LocalDatastoreServiceTestConfig(),
 			new LocalMemcacheServiceTestConfig());
+	
+	public AbstractTestClass() {
+		this.injector = Guice.createInjector(new CommonModule());
+	}
+	
 	@Before
 	public void helperSetup() {
 		helper.setUp();
@@ -31,6 +40,10 @@ public abstract class AbstractTestClass {
 	
 	@Before
 	public abstract void setup();
+	
+	protected <T> T getInstance(Class<T> type) {
+        return this.injector.getInstance(type);
+    }
 		
 
 }
