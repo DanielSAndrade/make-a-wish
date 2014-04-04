@@ -1,6 +1,32 @@
 @CHARSET "UTF-8";
 
 body {
-	background: #00000;
-	font-family: sans-serif, monospace;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+	line-height: 1.6;
+}
+
+.container {
+	margin: 0 auto;
+	width: 960px;
+	display: flex;
+}
+
+.place {
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	border-color: #CCC #999 #999 #CCC;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+.place h2 {
+	border-bottom: 1px dashed #7E9F19;
+	margin: 0;
+}
+
+.place img {
+	border: 1px solid #7E9F19;
+	float: left;
+	margin: 10px 10px 0 0;
+	padding: 2px;
 }

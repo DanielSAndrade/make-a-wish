@@ -13,6 +13,7 @@ import com.ciandt.hackathon.domain.model.Foo;
 import com.ciandt.hackathon.domain.model.FooRepository;
 import com.google.inject.Inject;
 import com.googlecode.objectify.Key;
+import com.sun.jersey.api.view.Viewable;
 
 @Path("/")
 @ThreadSafe
@@ -21,17 +22,24 @@ public class CommonResource {
 	private final FooRepository fooRepository;
 
 	@Inject
-	public CommonResource(FooRepository fooRepository) {
+	public CommonResource(final FooRepository fooRepository) {
 		super();
 		this.fooRepository = fooRepository;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response sayHello(@Context HttpServletRequest request) {
+	public Response sayHello(@Context final HttpServletRequest request) {
 		final String key = createNewFoo();
 		final Foo foo = fooRepository.get(key);
 		return Response.ok(foo).build();
+	}
+
+	@GET
+	@Path("/view")
+	@Produces(MediaType.TEXT_HTML)
+	public Response getview(@Context final HttpServletRequest request) {
+		return Response.ok(new Viewable("/index")).build();
 	}
 
 	private String createNewFoo() {
