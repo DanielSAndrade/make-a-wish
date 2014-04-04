@@ -1,5 +1,6 @@
 package com.ciandt.hackathon.infrastructure.web;
 
+import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,7 +11,6 @@ import javax.ws.rs.core.Response;
 
 import com.ciandt.hackathon.domain.model.Foo;
 import com.ciandt.hackathon.domain.model.FooRepository;
-import com.google.appengine.repackaged.org.apache.http.annotation.ThreadSafe;
 import com.google.inject.Inject;
 import com.googlecode.objectify.Key;
 
