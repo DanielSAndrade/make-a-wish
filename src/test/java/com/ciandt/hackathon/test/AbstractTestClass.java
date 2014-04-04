@@ -1,4 +1,4 @@
-package com.ciandt.hackathon.configuration;
+package com.ciandt.hackathon.test;
 
 import org.junit.After;
 import org.junit.Before;

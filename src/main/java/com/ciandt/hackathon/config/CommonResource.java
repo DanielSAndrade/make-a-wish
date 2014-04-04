@@ -1,4 +1,4 @@
-package com.ciandt.hackathon.infrastructure.web;
+package com.ciandt.hackathon.config;
 
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
@@ -9,8 +9,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.ciandt.hackathon.domain.model.Foo;
-import com.ciandt.hackathon.domain.model.FooRepository;
+import com.ciandt.hackathon.dao.FooDAO;
+import com.ciandt.hackathon.entity.Foo;
 import com.google.inject.Inject;
 import com.googlecode.objectify.Key;
 
@@ -18,10 +18,10 @@ import com.googlecode.objectify.Key;
 @ThreadSafe
 public class CommonResource {
 
-	private final FooRepository fooRepository;
+	private final FooDAO fooRepository;
 
 	@Inject
-	public CommonResource(FooRepository fooRepository) {
+	public CommonResource(FooDAO fooRepository) {
 		super();
 		this.fooRepository = fooRepository;
 	}

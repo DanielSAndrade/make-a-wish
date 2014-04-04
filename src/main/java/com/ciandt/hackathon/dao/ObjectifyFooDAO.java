@@ -1,20 +1,18 @@
-package com.ciandt.hackathon.infrastructure.persistence;
+package com.ciandt.hackathon.dao;
 
-import static com.ciandt.hackathon.infrastructure.persistence.OfyService.ofy;
+import static com.ciandt.hackathon.dao.OfyService.ofy;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.ciandt.hackathon.domain.model.Foo;
-import com.ciandt.hackathon.domain.model.FooRepository;
+import com.ciandt.hackathon.entity.Foo;
 import com.googlecode.objectify.Key;
 
-public class ObjectifyFooRepository implements FooRepository {
+public class ObjectifyFooDAO implements FooDAO {
 
 	private static final Logger LOGGER = Logger
-			.getLogger(ObjectifyFooRepository.class.getName());
+			.getLogger(ObjectifyFooDAO.class.getName());
 
 	@Override
 	public Key<Foo> put(Foo foo) {

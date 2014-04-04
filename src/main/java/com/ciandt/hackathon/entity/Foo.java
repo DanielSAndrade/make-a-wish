@@ -1,4 +1,4 @@
-package com.ciandt.hackathon.domain.model;
+package com.ciandt.hackathon.entity;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;

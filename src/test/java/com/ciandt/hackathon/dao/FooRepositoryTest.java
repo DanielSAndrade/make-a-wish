@@ -1,4 +1,4 @@
-package com.ciandt.hackathon.domain.model;
+package com.ciandt.hackathon.dao;
 
 import static org.junit.Assert.fail;
 
@@ -11,13 +11,15 @@ import org.junit.Test;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 
-import com.ciandt.hackathon.configuration.AbstractTestClass;
-import com.ciandt.hackathon.infrastructure.persistence.ObjectifyFooRepository;
+import com.ciandt.hackathon.dao.FooDAO;
+import com.ciandt.hackathon.dao.ObjectifyFooDAO;
+import com.ciandt.hackathon.entity.Foo;
+import com.ciandt.hackathon.test.AbstractTestClass;
 import com.googlecode.objectify.Key;
 
 public class FooRepositoryTest extends AbstractTestClass {
 
-	private FooRepository repository;
+	private FooDAO repository;
 
 	@Test
 	public void testPut() {
@@ -64,7 +66,7 @@ public class FooRepositoryTest extends AbstractTestClass {
 
 	@Override
 	public void setup() {
-		repository = new ObjectifyFooRepository();
+		repository = new ObjectifyFooDAO();
 	}
 
 	private Foo gimmeFoo() {

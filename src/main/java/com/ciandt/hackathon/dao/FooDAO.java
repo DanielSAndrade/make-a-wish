@@ -1,10 +1,11 @@
-package com.ciandt.hackathon.domain.model;
+package com.ciandt.hackathon.dao;
 
 import java.util.List;
 
+import com.ciandt.hackathon.entity.Foo;
 import com.googlecode.objectify.Key;
 
-public interface FooRepository {
+public interface FooDAO {
 
 	Key<Foo> put(final Foo foo);
 	
