@@ -9,14 +9,16 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.entity.Greeting;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
-@Path("/api/")
+@Path("/api")
 @ThreadSafe
+@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+@Singleton
 public class CommonResource {
 
 	private final GreetingDAO greetingDAO;
@@ -29,10 +31,9 @@ public class CommonResource {
 
 	@GET
 	@Path("/listGreetings")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response listGreetings(@Context HttpServletRequest request) {
+	public List<Greeting> listGreetings(@Context HttpServletRequest request) {
 		List<Greeting> listGreetings = greetingDAO.findGreetings();
-		return Response.ok(listGreetings).build();
+		return listGreetings;
 	}
 
 }
