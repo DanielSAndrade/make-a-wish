@@ -1,9 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.ciandt.hackathon.entity.Greeting" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 
 <html>
 
@@ -13,47 +9,31 @@
 
   <body>
 
-<%
-    UserService userService = UserServiceFactory.getUserService();
-    User user = userService.getCurrentUser();
-    if (user != null) {
-%>
-<p>Hello, <%= user.getNickname() %>! (You can
-<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-<%
-    } else {
-%>
-<p>Hello!
-<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-to include your name with greetings you post.</p>
-<%
-    }
-%>
 
+<c:if test="${userAuthenticated == 'true'}">
+<p>Hello, ${nickname}! (You can <a href="${logoutURL}">sign out</a>.)</p>
+</c:if>
 
-<%
-    List<Greeting> greetings = (List<Greeting>) request.getAttribute( "greetings" );
-    if ( (greetings == null) || (greetings.isEmpty()) ) {
-%>
+<c:if test="${userAuthenticated == 'false'}">
+<p>Hello! <a href="${loginURL}">Sign in</a> to include your name with greetings you post.</p>
+</c:if>
+
+<c:if test="${greetingsSize == 0}">
 <p>The guestbook has no messages.</p>
-<%
-    } else {
-        for (Greeting g : greetings) {
-            if (g.getAuthor() == null) {
-%>
-<p>An anonymous person wrote:</p>
-<%
-            } else {
-%>
-<p><b><%= g.getAuthor().getNickname() %></b> wrote:</p>
-<%
-            }
-%>
-<blockquote><%= g.getContent() %></blockquote>
-<%
-        }
-    }
-%>
+</c:if>
+
+<c:if test="${greetingsSize > 0}">
+	<c:forEach var="greeting" items="${greetings}">
+		<c:if test="${greeting.author == null}">
+			<p>An anonymous person wrote:</p>
+		</c:if>
+		<c:if test="${greeting.author != null}">
+			<p><b>${greeting.author.nickname}</b> wrote:</p>
+		</c:if>
+		<blockquote>${greeting.content}</blockquote>
+	</c:forEach>
+</c:if>
+
 
   <form action="/sign" method="post">
     <div><textarea name="content" rows="3" cols="60"></textarea></div>

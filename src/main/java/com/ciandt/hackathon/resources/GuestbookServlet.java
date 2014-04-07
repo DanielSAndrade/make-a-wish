@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.entity.Greeting;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -29,10 +32,23 @@ public class GuestbookServlet extends HttpServlet {
 		
 		logger.info( "Executing GuestbookServlet" );
 		
+		//read greetings
 	    List<Greeting> greetings = greetingDao.findGreetings();
 		req.setAttribute( "greetings", greetings );
-		
+		req.setAttribute( "greetingsSize", greetings.size() );
 		logger.info( "Putting " + greetings.size() + " greetings in memory" );
+		
+		//read user context
+		UserService userService = UserServiceFactory.getUserService();
+	    User user = userService.getCurrentUser();
+	    if (user != null) {
+	    	req.setAttribute("userAuthenticated", "true");
+	    	req.setAttribute("nickname", user.getNickname());
+	    	req.setAttribute("logoutURL", userService.createLogoutURL(req.getRequestURI()));	    	
+	    } else {
+	    	req.setAttribute("userAuthenticated", "false");
+	    	req.setAttribute("loginURL", userService.createLoginURL(req.getRequestURI()));
+	    }
 		
 		req.getRequestDispatcher("/guestbook.jsp").forward(req, resp);
 	}
