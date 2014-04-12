@@ -3,27 +3,32 @@ package com.ciandt.hackathon.service;
 import java.math.BigDecimal;
 import java.util.Collection;
 
+import com.ciandt.hackathon.entity.Badge;
 import com.ciandt.hackathon.entity.Product;
+import com.ciandt.hackathon.entity.PurchaseProduct;
 import com.ciandt.hackathon.entity.Table;
 import com.ciandt.hackathon.entity.User;
 
 public class GamificationService {
+	
+	private Table table;
 
-	public int getTotalPoints(Table table){
+	public void analyze(Table table){
+		this.table = table;
 		
-		int points = 0;
 		
+		BigDecimal totalAmount = new BigDecimal(0);
 		Collection<User> users = table.getUsers();
 		for (User user : users) {
 			
-			Collection<Product> products = user.getProducts();
+			Collection<PurchaseProduct> products = user.getProducts();
 			BigDecimal totalAmount = new BigDecimal(0);
-			for (Product product : products) {
+			for (PurchaseProduct product : products) {
 				
 				
 				//Converte o valor total gasto em pontos
-				if(product.getPrice() != null){
-					BigDecimal price = new BigDecimal( product.getPrice() );
+				if(product.getProduct().getPrice() != null){
+					BigDecimal price = new BigDecimal( product.getProduct().getPrice() );
 					totalAmount = totalAmount.add( price );
 				}
 				
@@ -37,7 +42,17 @@ public class GamificationService {
 			
 		}
 		
-		return points;
+	}
+	
+	
+	
+	
+	public int getPoints(){		
+		return table.getPoints();
+	}
+	
+	public Collection<Badge> getBadge(){		
+		return table.getBadge();
 	}
 	
 	

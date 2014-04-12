@@ -33,7 +33,7 @@ public class Table {
 	public void setPoints(int points) {
 		this.points = points;
 	}
-	public Collection<Badge> getBadges() {
+	public Collection<Badge> getBadge() {
 		return badges;
 	}
 	public void setBadges(Collection<Badge> badges) {
