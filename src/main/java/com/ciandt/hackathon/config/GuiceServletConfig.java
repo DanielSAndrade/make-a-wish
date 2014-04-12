@@ -14,6 +14,7 @@ import com.ciandt.hackathon.dao.SonhoDAO;
 import com.ciandt.hackathon.resources.GuestbookServlet;
 import com.ciandt.hackathon.resources.MesaServlet;
 import com.ciandt.hackathon.resources.NovaDoacaoServlet;
+import com.ciandt.hackathon.resources.RecompensaServlet;
 import com.ciandt.hackathon.resources.SignGuestbookServlet;
 import com.ciandt.hackathon.resources.VoluntarioServlet;
 import com.google.inject.Guice;
