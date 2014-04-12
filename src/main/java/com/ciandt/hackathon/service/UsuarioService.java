@@ -35,7 +35,7 @@ public class UsuarioService {
 	}
 	
 	public Usuario buscarUsuarioPorId(Long id) {
-		return buscarUsuarioPorId(id);
+		return usuarioDAO.buscarUsuarioPorId(id);
 	}
 	
 	public Long insert(Usuario usuario) {
