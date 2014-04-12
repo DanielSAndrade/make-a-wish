@@ -11,6 +11,7 @@ public class OfyService {
 
 	static {
 		factory().register(Greeting.class);
+		factory().register(Compra.class);
 		factory().register(Produto.class); 
 		factory().register(Usuario.class);  
 	}
