@@ -1,10 +1,8 @@
 package com.ciandt.hackathon.api;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -252,7 +250,7 @@ public class CommonResource {
 			Long disconto = diff / 15;
 			participante.setRank(participante.getRank().intValue()
 					- disconto.intValue());
-			participante.setRank(2);
+			participante.setDelta(2);
 			participanteDAO.update(participante);
 		} catch (Exception e) {
 
