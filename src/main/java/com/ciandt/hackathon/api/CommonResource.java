@@ -2,6 +2,7 @@ package com.ciandt.hackathon.api;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -80,7 +81,16 @@ public class CommonResource {
 	public List<Participante> rankingParticipante(@Context HttpServletRequest request) {
 		List<Participante> listParticipantes = participanteDAO.findParticipantes();
 		
-		//Collections.unmodifiableCollection(c)
+		Comparator<Participante> comparator = new Comparator<Participante>() {
+		    public int compare(Participante c1, Participante c2) {
+		    	if (c2.getRank() != null && c1.getRank() != null){
+		    		return c2.getRank().compareTo(c1.getRank()); // use your logic
+		    	}
+		    	return 0;
+		    }
+		};
+		
+		Collections.sort(listParticipantes, comparator);
 		
 		return listParticipantes;
 	}
