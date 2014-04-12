@@ -68,7 +68,7 @@ public class CommonResource {
 			wishList = wishDAO.findWishes(tableName, status);
 		}
 		else {
-			wishList = wishDAO.findWishes();
+			wishList = wishDAO.findWishes(status);
 		}
 			
 		wishDAO.unmarkAsIntended(tableName);
@@ -87,8 +87,19 @@ public class CommonResource {
 		// retornar a lista de wishes realizados
 		// recebe como parametro a mesa (para poder ciclar os desejos)  
 		
-		List<Wish> wishList = null; 
-		return wishList; 
+		Wish.Status status = Wish.Status.REALIZED;
+		String tableName = request.getParameter(TABLE);
+		
+		List<Wish> wishList = null;
+		
+		if (tableName != null) {
+			wishList = wishDAO.findWishes(tableName, status);
+		}
+		else {
+			wishList = wishDAO.findWishes(status);
+		}
+		
+		return wishList;  
 	}
 
 	@GET 
@@ -97,7 +108,19 @@ public class CommonResource {
 		// retornar a lista de wishes que tem a intencao de ser realizados (status=intencao)
 		// se receber como parametro a mesa, retorna os wishes com esse estado para uma data mesa
 		// senao retorna a lista de todos os wishes que sofreram algum estado de realizacao
-		List<Wish> wishList = null; 
+
+		Wish.Status status = Wish.Status.INTENDED;
+		String tableName = request.getParameter(TABLE);
+		
+		List<Wish> wishList = null;
+		
+		if (tableName != null) {
+			wishList = wishDAO.findWishes(tableName, status);
+		}
+		else {
+			wishList = wishDAO.findWishes(status);
+		}
+		
 		return wishList; 
 	}
 

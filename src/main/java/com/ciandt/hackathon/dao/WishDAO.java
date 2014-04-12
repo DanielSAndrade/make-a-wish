@@ -8,6 +8,7 @@ public interface WishDAO {
 	
 	public List<Wish>findWishes(); 
 	public List<Wish>findWishes( String table, Wish.Status status ); 
+	public List<Wish>findWishes( Wish.Status status );
 	public List<Wish>findWishes( String table );
 	public Long insert( Wish wish );
 	public void delete( Wish wish ); 
