@@ -22,9 +22,17 @@
                 var result = value.join(";");
                 $.post("purchase").done(function() {
                     alert("Obrigado pela sua compra e por nos ajudar a realizar sonhos pelo mundo!");
+                    $("#purchase").slideUp();
+                    $("#login").slideDown();
                     $(".product-qtd").val("0");
                 });
             }
         });
+        
+        $("#bt-logar").click(function() {
+            $("#login").slideUp();
+            $("#purchase").slideDown();
+        });
+            
     });
 })(jQuery);

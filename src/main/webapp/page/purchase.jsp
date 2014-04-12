@@ -21,7 +21,27 @@
   </head>
   <body>
 
-    <div class="container">
+    <div class="container" id="login">
+        <h1 class="page-header page-top">
+            <img src="/page/images/MAW.jpg"></img>
+            <span>Gala - Leilão</span>
+        </h1>
+        <div class="jumbotron">
+            <form role="form">
+                <div class="form-group">
+                    <label>Mesa: </label><input class="form-control" />
+                    <label>Identificador: </label><input class="form-control" />
+                </div>
+                <div class="form-group">
+                    <div>
+                    <button type="button" class="btn btn-primary btn-lg" id="bt-logar">Avançar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+      
+    <div class="container" id="purchase">
         <h1 class="page-header page-top">
             <img src="/page/images/MAW.jpg"></img>
             <span>Gala - Leilão</span>
