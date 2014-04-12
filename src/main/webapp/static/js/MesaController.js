@@ -68,6 +68,7 @@ function MesaController() {
 			self.produtos().push(jsonResponse[i]);
 		}
 	}
+	
 
 	self.obterRankingItem = function(numero) {
 		var item1 = {
