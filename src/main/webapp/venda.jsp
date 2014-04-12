@@ -18,7 +18,7 @@
 </head>
 
 <body>
-	<form action="/venda" method="post">
+	<form action="/api/insertVenda" method="post">
 	    <div>
 		<p>Codigo do produto: <input type="text" name="codProd"/>
 		<p>Preço do produto: <input type="text" name="precoProd"/>
