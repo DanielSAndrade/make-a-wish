@@ -34,33 +34,36 @@
 			<div class="row-fluid">
 				<form class="form-horizontal" action="/usuario" method="post">
 
-					<input type="hidden" name="action" value="criar">
+					<input type="hidden" name="action" value="salvar"> <input
+						type="hidden" name="id" value="${usuario.id}">
 
 					<div class="control-group">
 						<label class="control-label" for="userId">ID:</label>
 						<div class="controls">
 							<input type="text" name="userId" id="userId"
-								placeholder="Identificador">
+								placeholder="Identificador" value="${usuario.userId}">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="nome">Nome:</label>
 						<div class="controls">
 							<input type="text" name="nome" id="nome"
-								placeholder="Identificador">
+								placeholder="Identificador" value="${usuario.nome}">
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="password">Password</label>
 						<div class="controls">
 							<input type="password" name="password" id="password"
-								placeholder="Password">
+								placeholder="Password" value="${usuario.password}">
 						</div>
 					</div>
 					<div class="control-group">
 						<div class="controls">
-							<button type="submit" class="btn">Criar</button>
-							<a href="/usuario" class="btn btn-default">Cancelar</a>
+							<button type="submit" class="btn">Salvar</button>
+							<a href="/usuario" class="btn btn-default">Cancelar</a> <a
+								href="/usuario?action=remover&id=${usuario.id}"
+								class="btn btn-default">Remover</a>
 						</div>
 					</div>
 				</form>
