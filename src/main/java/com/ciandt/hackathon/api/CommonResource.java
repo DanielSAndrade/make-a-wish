@@ -12,6 +12,12 @@ import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.entity.Greeting;
+
+import com.ciandt.hackathon.entity.Wish;
+import com.ciandt.hackathon.entity.Table;
+import com.ciandt.hackathon.entity.Badge;
+import com.ciandt.hackathon.entity.Donator;
+
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
