@@ -31,7 +31,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				serve("/guestbook").with(GuestbookServlet.class);
 				serve("/sign").with(SignGuestbookServlet.class);
 				serve("/populateWishes").with(PopulateWishesServlet.class);
-				serve("/populateTables").with(PopulateTablesServlet.class);
+//				serve("/populateTables").with(PopulateTablesServlet.class);
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 				bind(WishDAO.class).to(ObjectifyWishDAO.class);
