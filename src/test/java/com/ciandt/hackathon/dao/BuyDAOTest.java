@@ -5,7 +5,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.ciandt.hackathon.entity.Product;
-import com.ciandt.hackathon.entity.Table;
+import com.ciandt.hackathon.entity.User;
 import com.ciandt.hackathon.test.AbstractTestClass;
 
 public class BuyDAOTest extends AbstractTestClass {
@@ -19,7 +19,7 @@ public class BuyDAOTest extends AbstractTestClass {
 
 	@Test
 	public void shouldBeAbleToInsertTable() {
-		final Table table = new Table("teste", "Teste", 100L, null);
+		final User table = new User("teste", "Teste", 100L, null);
 		Long id = dao.inserTable(table);
 		Assert.assertNotNull(id);
 	}
@@ -28,11 +28,11 @@ public class BuyDAOTest extends AbstractTestClass {
 	public void shouldBeAbleToInsertProduct() {
 
 		final String nameTable = "Teste";
-		final Table table = new Table(nameTable, "Teste", 100L, null);
+		final User table = new User(nameTable, "Teste", 100L, null);
 		Long idInsertTable = dao.inserTable(table);
 		Assert.assertNotNull(idInsertTable);
 		
-		Table table2 = dao.findTable(nameTable);
+		User table2 = dao.findTable(nameTable);
 		Assert.assertNotNull(table2);
 		
 		

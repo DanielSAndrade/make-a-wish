@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 import com.ciandt.hackathon.entity.Greeting;
 import com.ciandt.hackathon.entity.Product;
-import com.ciandt.hackathon.entity.Table;
+import com.ciandt.hackathon.entity.User;
 import com.google.appengine.api.memcache.ErrorHandlers;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
@@ -28,7 +28,7 @@ public class ObjectfyBuyDAO implements BuyDAO {
 		log.info("Inserting a new greeting");
 
 		// find table
-		Table table = this.findTable(tableName);
+		User table = this.findTable(tableName);
 		if(table == null){
 			this.inserTable(table);
 		}
@@ -39,13 +39,13 @@ public class ObjectfyBuyDAO implements BuyDAO {
 				.getConsistentLogAndContinue(Level.INFO));
 		syncCache.delete("TABLES");
 
-		Key<Table> key = ofy().save().entity(table).now();
+		Key<User> key = ofy().save().entity(table).now();
 		return key.getId();
 
 	}
 
 	@Override
-	public Table findTable(String tableName) {
+	public User findTable(String tableName) {
 		log.info("Finding all greetings");
 
 		// checks if the gretings are in the cache
@@ -54,12 +54,12 @@ public class ObjectfyBuyDAO implements BuyDAO {
 //				.getConsistentLogAndContinue(Level.INFO));
 //		@SuppressWarnings("unchecked")
 //		Table table = (Table) syncCache.get("TABLES");
-		Table table = null;
+		User table = null;
 
 		if (table == null) {
 			log.info("Not found in cache");
 			
-			List<Table>  tables = ofy().load().type(Table.class).filter("name", tableName).list();
+			List<User>  tables = ofy().load().type(User.class).filter("name", tableName).list();
 			if(tables != null  && tables.size() >0 ){
 				table = tables.get(0);
 			}
@@ -72,7 +72,7 @@ public class ObjectfyBuyDAO implements BuyDAO {
 	}
 
 	@Override
-	public Long inserTable(Table table) {
+	public Long inserTable(User table) {
 		log.info("Inserting a table");		
 
 		// invalidates the cache
@@ -81,7 +81,7 @@ public class ObjectfyBuyDAO implements BuyDAO {
 				.getConsistentLogAndContinue(Level.INFO));
 		syncCache.delete("TABLES");
 		
-		Key<Table> key = ofy().save().entity(table).now();
+		Key<User> key = ofy().save().entity(table).now();
 		return key.getId();
 	}
 

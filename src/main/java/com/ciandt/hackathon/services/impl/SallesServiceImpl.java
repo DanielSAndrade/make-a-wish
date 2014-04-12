@@ -6,7 +6,7 @@ import com.ciandt.hackathon.dao.BuyDAO;
 import com.ciandt.hackathon.dao.ProductDAO;
 import com.ciandt.hackathon.dao.TweetyDAO;
 import com.ciandt.hackathon.entity.Product;
-import com.ciandt.hackathon.entity.Table;
+import com.ciandt.hackathon.entity.User;
 import com.ciandt.hackathon.entity.Tweety;
 import com.ciandt.hackathon.services.SallesService;
 import com.google.inject.Inject;
@@ -26,7 +26,7 @@ public class SallesServiceImpl implements SallesService {
 	public void save(String name, Product product) {
 		
 		//Refresh the user points
-		Table t = buyDao.findTable(name);
+		User t = buyDao.findTable(name);
 		t.setScore(product.getWeight());
 		
 		buyDao.inserTable(t);
