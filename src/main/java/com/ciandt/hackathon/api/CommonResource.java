@@ -252,6 +252,7 @@ public class CommonResource {
 			Long disconto = diff / 15;
 			participante.setRank(participante.getRank().intValue()
 					- disconto.intValue());
+			participante.setRank(2);
 			participanteDAO.update(participante);
 		} catch (Exception e) {
 
