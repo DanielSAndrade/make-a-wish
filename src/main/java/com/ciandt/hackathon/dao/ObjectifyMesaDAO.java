@@ -16,44 +16,58 @@ import com.googlecode.objectify.Key;
 
 @Singleton
 public class ObjectifyMesaDAO implements MesaDAO {
-	
+
 	@Inject
 	private Logger log;
-	
+
 	@Override
 	public List<Mesa> findMesas() {
 		log.info("Finding all Mesa");
-		
+
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
-		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		syncCache.setErrorHandler(ErrorHandlers
+				.getConsistentLogAndContinue(Level.INFO));
 		@SuppressWarnings("unchecked")
-		List<Mesa> doacoes = (List<Mesa>) syncCache.get( "MESA" );
-		
-		if (doacoes == null) {
+		List<Mesa> mesa = (List<Mesa>) syncCache.get("MESA");
+
+		if (mesa == null) {
 			log.info("Not found in cache");
-			doacoes = ofy().load().type(Mesa.class).list();
+			mesa = ofy().load().type(Mesa.class).list();
 		} else {
 			log.info("Using cache!");
 		}
-		
-	    if (doacoes != null) {
-	    	log.info("Returning " + doacoes.size() + " mesa");
-	    }
-	    return doacoes;
+
+		if (mesa != null) {
+			log.info("Returning " + mesa.size() + " mesa");
+		}
+		return mesa;
 	}
-	
+
 	@Override
-	public Long insert( Mesa mesa ) {
+	public Mesa find(Long id) {
+		log.info("Finding Mesa");
+
+		Mesa mesa = ofy().load().type(Mesa.class).id(id).now();
+
+		if (mesa != null) {
+			log.info("Returning mesa [" + mesa.getNome() + "]");
+		}
+		return mesa;
+	}
+
+	@Override
+	public Long insert(Mesa mesa) {
 		log.info("Inserting a new Mesa");
-		
-		//invalidates the cache
+
+		// invalidates the cache
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
-		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-		syncCache.delete( "MESA" );
-		
+		syncCache.setErrorHandler(ErrorHandlers
+				.getConsistentLogAndContinue(Level.INFO));
+		syncCache.delete("MESA");
+
 		Key<Mesa> key = ofy().save().entity(mesa).now();
 		return key.getId();
-		
+
 	}
-	
+
 }
