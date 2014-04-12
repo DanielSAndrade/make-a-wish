@@ -57,7 +57,31 @@
 				</td>
 
 				<td>
-					<img src="">
+				    <c:choose>
+                          <c:when test="${table.level=='0'}">
+                          <img src="http://zeldawiki.org/images/0/0e/Heart0-4.gif">
+                          </c:when>
+                          <c:when test="${table.level=='1'}">
+                          <img src="http://zeldawiki.org/images/c/c1/Heart1-4.gif">
+                          </c:when>
+                          <c:when test="${table.level=='2'}">
+                            <img src="http://zeldawiki.org/images/b/b2/Heart2-4.gif">
+                            </c:when>
+                            <c:when test="${table.level=='3'}">
+                            <img src="http://zeldawiki.org/images/e/ef/Heart3-4.gif">
+                            </c:when>
+                            <c:when test="${table.level=='4'}">
+                        <img src="http://zeldawiki.org/images/c/cc/HeartContainer%28FS%29.gif">
+                        </c:when>
+                          <c:otherwise>
+                          <img src="http://zeldawiki.org/images/thumb/0/0e/SSB_Heart_Container.png/120px-SSB_Heart_Container.png">
+                          </c:otherwise>
+                    </c:choose>
+
+				</td>
+
+				<td>
+				    Score: ${table.score}
 				</td>
 
 				<td align="right" style="padding-right:30px">
