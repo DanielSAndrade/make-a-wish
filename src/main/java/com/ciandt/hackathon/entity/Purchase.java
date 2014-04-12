@@ -2,10 +2,12 @@ package com.ciandt.hackathon.entity;
 
 import com.google.appengine.repackaged.org.joda.time.DateTime;
 
+import java.io.Serializable;
+
 /**
  * Created by rjfonseca on 12/04/14.
  */
-public class Purchase {
+public class Purchase implements Serializable {
 
     private Table table;
     private Product product;
@@ -18,7 +20,6 @@ public class Purchase {
         this.dateTime = dateTime;
         this.points = points;
 
-        this.table.registerPurchase(this, points);
     }
 
     public Purchase (Table table, Product product) {
@@ -28,6 +29,8 @@ public class Purchase {
     public Purchase(Table table, Product product, Long points){
         this(table, product, DateTime.now(), points);
     }
+
+    public Purchase(){};
 
     public Table getTable() {
         return table;
