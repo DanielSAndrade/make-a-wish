@@ -6,14 +6,14 @@ import com.googlecode.objectify.annotation.Id;
 @Entity
 public class Badge {
 	@Id
-	private int id;
+	private Long id;
 	private String nome;
-	private int pontuacao;
+	private Long pontuacao;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNome() {
@@ -22,10 +22,10 @@ public class Badge {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getPontuacao() {
+	public Long getPontuacao() {
 		return pontuacao;
 	}
-	public void setPontuacao(int pontuacao) {
+	public void setPontuacao(Long pontuacao) {
 		this.pontuacao = pontuacao;
 	}
 	

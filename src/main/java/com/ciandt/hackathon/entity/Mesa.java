@@ -8,16 +8,16 @@ import com.googlecode.objectify.annotation.Id;
 @Entity
 public class Mesa {
 	@Id
-	private Integer id;
+	private Long id;
 	
 	private Integer numeroMesa;
 	private List<Badge> badges;
 	private Integer pontuacao;
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public Integer getNumeroMesa() {
