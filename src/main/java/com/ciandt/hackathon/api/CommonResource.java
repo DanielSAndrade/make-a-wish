@@ -11,7 +11,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.ParticipanteDAO;
 import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.Participante;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -22,11 +24,15 @@ import com.google.inject.Singleton;
 public class CommonResource {
 
 	private final GreetingDAO greetingDAO;
+	
+	private final ParticipanteDAO participanteDAO;
+	
 
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO) {
+	public CommonResource(GreetingDAO greetingDAO, ParticipanteDAO participanteDAO) {
 		super();
 		this.greetingDAO = greetingDAO;
+		this.participanteDAO = participanteDAO;
 	}
 
 	@GET
@@ -44,10 +50,10 @@ public class CommonResource {
 	}
 	
 	@GET
-	@Path("/rankingPessoa")
-	public List<Greeting> rankingPessoa(@Context HttpServletRequest request) {
-		List<Greeting> listGreetings = greetingDAO.findGreetings();
-		return listGreetings;
+	@Path("/rankingParticipante")
+	public List<Participante> rankingParticipante(@Context HttpServletRequest request) {
+		List<Participante> listParticipantes = participanteDAO.findParticipantes();
+		return listParticipantes;
 	}
 	
 	@GET
