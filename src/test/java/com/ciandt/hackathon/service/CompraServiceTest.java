@@ -25,7 +25,7 @@ public class CompraServiceTest {
 
         produto.setDisponivel(true);
 
-        String nomeProduto = "Um mundo distante";
+        String nomeProduto = "Um-mundo-distante";
         service.comprarProduto("mesa", nomeProduto);
 
         Assert.assertTrue("Produto não deveria estar disponivel", !produtoDAO.findById(nomeProduto).getDisponivel());
