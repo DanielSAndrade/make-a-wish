@@ -42,6 +42,20 @@ public class ObjectifyTipoDoacaoDAO implements TipoDoacaoDAO {
 	    return doacoes;
 	}
 	
+
+	@Override
+	public TipoDoacao find(Long id) {
+		log.info("Finding TipoDoacao");
+
+		TipoDoacao tipoDoacao = ofy().load().type(TipoDoacao.class).id(id).now();
+
+		if (tipoDoacao != null) {
+			log.info("Returning tipo doacao [" + tipoDoacao.getNome() + "]");
+		}
+		return tipoDoacao;
+	}
+
+
 	@Override
 	public Long insert( TipoDoacao doacao ) {
 		log.info("Inserting a new TipoDoacao");
