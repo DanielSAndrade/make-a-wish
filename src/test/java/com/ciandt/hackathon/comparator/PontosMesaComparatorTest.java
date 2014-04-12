@@ -23,8 +23,8 @@ public class PontosMesaComparatorTest {
 		Mesa mesa1 = mockMesa1();
 		Mesa mesa2 = mockMesa2();
 		
-		new PontosMesaComparator().compare(mesa1, mesa2);
-		Assert.assertEquals(mesa1.getPontos(), mesa2.getPontos());
+		int compare = new PontosMesaComparator().compare(mesa1, mesa2);
+		Assert.assertEquals(-1, compare);
 		
 	}
 	
@@ -70,6 +70,7 @@ public class PontosMesaComparatorTest {
 		List<Produto> produtosComprados = new ArrayList<Produto>();
 		
 		Mesa mesa = new Mesa();
+		produtosComprados.add(todosProdutos.get(0));
 		
 		Compra compra1 = new Compra();
 		Pessoa daniel = new Pessoa();
@@ -82,7 +83,7 @@ public class PontosMesaComparatorTest {
 		
 		compra1.setProdutos(produtosComprados);
 		compra1.setPessoa(daniel);
-		
+		compra1.setBonus(500);
 		mesa.adicionarCompraEfetuada(compra1);
 		
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
