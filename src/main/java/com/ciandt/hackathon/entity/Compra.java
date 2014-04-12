@@ -7,6 +7,8 @@ public class Compra {
 
 	private List<Produto> produtos = new ArrayList<Produto>();
 
+	private long bonus;
+	
 	private Pessoa pessoa;
 	
 	public List<Produto> getProdutos() {
@@ -23,6 +25,14 @@ public class Compra {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
+	}
+
+	public long getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(long bonus) {
+		this.bonus = bonus;
 	}
 
 }

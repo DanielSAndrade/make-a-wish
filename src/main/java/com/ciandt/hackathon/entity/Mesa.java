@@ -30,18 +30,15 @@ public class Mesa {
 		return comprasEfetuadas;
 	}
 
-	public void setComprasEfetuadas(List<Compra> comprasEfetuadas) {
-		this.comprasEfetuadas = comprasEfetuadas;
+	public void adicionarCompraEfetuada(Compra compraEfetuada) {
+		this.comprasEfetuadas.add(compraEfetuada);
 	}
-
+	
 	public List<Pessoa> getPessoas() {
 		return pessoas;
 	}
 
 	public void adicionarPessoa(Pessoa pessoa) {
-		if (pessoas == null) {
-			pessoas = new ArrayList<Pessoa>();
-		}
 		pessoas.add(pessoa);
 	}
 	
@@ -49,10 +46,10 @@ public class Mesa {
 		return medalhas;
 	}
 
-	public void setMedalhas(List<Medalha> medalhas) {
-		this.medalhas = medalhas;
+	public void adicionarMedalhas(Medalha medalha) {
+		medalhas.add(medalha);
 	}
-
+	
 	/**
 	 * Retorna os pontos que uma mesa fez
 	 * @return
@@ -65,6 +62,8 @@ public class Mesa {
 		for (Compra compra : comprasEfetuadas) {
 			List<Produto> produtosComprados = compra.getProdutos();
 
+			pontos += compra.getBonus();
+			
 			for (Produto produto : produtosComprados) {
 				pontos += produto.getPontos();
 			}

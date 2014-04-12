@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ciandt.hackathon.dao.MesaDAO;
-import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.service.MesaService;
 import com.ciandt.hackathon.vo.Ranking;
 import com.google.inject.Inject;

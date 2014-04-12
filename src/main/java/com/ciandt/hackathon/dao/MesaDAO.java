@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ciandt.hackathon.entity.Compra;
-import com.ciandt.hackathon.entity.Medalha;
 import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Pessoa;
 import com.ciandt.hackathon.entity.Produto;
@@ -47,12 +46,8 @@ public class MesaDAO {
 		compra1.setPessoa(daniel);
 		comprasEfetuadas.add(compra1);
 		
-		mesa.setComprasEfetuadas(comprasEfetuadas);
+		mesa.adicionarCompraEfetuada(compra1);
 		
-		List<Medalha> medalhas = new ArrayList<Medalha>();
-		
-		mesa.setMedalhas(medalhas);
-
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		
 		pessoas.add(carlos);
@@ -69,8 +64,6 @@ public class MesaDAO {
 		
 		Mesa mesa = new Mesa();
 		
-		List<Compra> comprasEfetuadas = new ArrayList<Compra>();
-
 		Compra compra1 = new Compra();
 		Pessoa daniel = new Pessoa();
 		daniel.setNome("Daniel da Silva");
@@ -79,17 +72,12 @@ public class MesaDAO {
 		carlos.setNome("Carlos Pereira");
 		
 		compra1.setPessoa(daniel);
-		
+		compra1.setBonus(2000);
 		compra1.setProdutos(produtos);
 		compra1.setPessoa(daniel);
-		comprasEfetuadas.add(compra1);
 		
-		mesa.setComprasEfetuadas(comprasEfetuadas);
+		mesa.adicionarCompraEfetuada(compra1);
 		
-		List<Medalha> medalhas = new ArrayList<Medalha>();
-		
-		mesa.setMedalhas(medalhas);
-
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		
 		pessoas.add(carlos);
