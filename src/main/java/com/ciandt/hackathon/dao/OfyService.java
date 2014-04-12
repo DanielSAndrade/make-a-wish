@@ -1,6 +1,7 @@
 package com.ciandt.hackathon.dao;
 
 import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.MesaRank;
 import com.ciandt.hackathon.entity.RequisicaoDeCompra;
 import com.googlecode.objectify.Objectify;
 import com.googlecode.objectify.ObjectifyFactory;
@@ -11,6 +12,7 @@ public class OfyService {
 	static {
 		factory().register(Greeting.class);
 		factory().register(RequisicaoDeCompra.class);
+		factory().register(MesaRank.class);
 	}
 
 	/**

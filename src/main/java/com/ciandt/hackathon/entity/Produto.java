@@ -7,6 +7,14 @@ public class Produto {
 	private String descricao;
 	private double valor;
 
+	public Produto(int codigo, String nome, String descricao, double valor) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.valor = valor;
+	}
+
 	public int getCodigo() {
 		return codigo;
 	}

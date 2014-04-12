@@ -11,6 +11,15 @@ public class ObjectifyRequisicaoDeCompraDAO implements RequisicaoDeCompraDAO {
 	public Long insert(RequisicaoDeCompra requisicao) {
 		Key<RequisicaoDeCompra> key = ofy().save().entity(requisicao).now();
 		return key.getId();
-		
+	}
+	
+	@Override
+	public RequisicaoDeCompra get(Long id) {
+		return (RequisicaoDeCompra) ofy().load().type(RequisicaoDeCompra.class).id(id).now();
+	}
+	
+	@Override
+	public void delete(Long id) {
+		ofy().delete().type(RequisicaoDeCompra.class).id(id).now();
 	}
 }

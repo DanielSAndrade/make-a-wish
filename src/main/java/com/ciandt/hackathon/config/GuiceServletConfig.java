@@ -2,6 +2,8 @@ package com.ciandt.hackathon.config;
 
 import java.util.logging.Logger;
 
+import com.ciandt.hackathon.dao.MesaRankDAO;
+import com.ciandt.hackathon.dao.ObjectifyMesaRankDAO;
 import com.ciandt.hackathon.dao.ObjectifyRequisicaoDeCompraDAO;
 import com.ciandt.hackathon.dao.RequisicaoDeCompraDAO;
 import com.ciandt.hackathon.resources.ComprarResource;
@@ -24,8 +26,9 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 		    protected void configureServlets() {
 				serve("/guestbook").with(GuestbookServlet.class);
 				serve("/sign").with(SignGuestbookServlet.class);
-				serve("/comprar").with(ComprarResource.class);
+				serve("/services/*").with(ComprarResource.class);
 				bind(RequisicaoDeCompraDAO.class).to(ObjectifyRequisicaoDeCompraDAO.class);
+				bind(MesaRankDAO.class).to(ObjectifyMesaRankDAO.class);
 		    }
 			
 		});
