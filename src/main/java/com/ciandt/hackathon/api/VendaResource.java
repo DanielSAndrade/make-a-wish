@@ -54,18 +54,19 @@ public class VendaResource {
 
 		Venda venda = new Venda(produto, numMesa, new Date(), codComp);
 		vendaDAO.insert(venda);
-		
-		
+
 		int posicaoDepois = this.getPosicao(numMesa);
 		posicaoDepois = new Random().nextInt(5);
 
 		if (posicaoAnterior == posicaoDepois)
-			return "Posicoes iguais !! Voce continua na posicao "+posicaoAnterior;
+			return "Posicoes iguais !! Voce continua na posicao "
+					+ posicaoAnterior;
 		if (posicaoAnterior < posicaoDepois)
-			return "Voce caiu de "+posicaoAnterior+" para "+posicaoDepois;
+			return "Voce caiu de " + posicaoAnterior + " para " + posicaoDepois;
 		if (posicaoAnterior > posicaoDepois)
-			return "Uhu voce esta bombando, subiu da posicao "+posicaoAnterior+" para a posição "+posicaoDepois;
-		
+			return "Uhu voce esta bombando, subiu da posicao "
+					+ posicaoAnterior + " para a posição " + posicaoDepois;
+
 		return "-1";
 	}
 

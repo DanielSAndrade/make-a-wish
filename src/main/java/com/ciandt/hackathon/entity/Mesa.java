@@ -5,22 +5,22 @@ import com.googlecode.objectify.annotation.Serialize;
 @Serialize
 public class Mesa {
 
-	private Integer id;
+	private Long id;
 	private Double totalCompra;
 
 	public Mesa() {
 	}
 
-	public Mesa(Integer id, Double totalCompra) {
+	public Mesa(Long id, Double totalCompra) {
 		this.id = id;
 		this.totalCompra = totalCompra;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

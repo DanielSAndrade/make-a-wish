@@ -42,11 +42,11 @@ public class ObjectifyVendaDAO implements VendaDAO {
 	@Override
 	public List<Mesa> getTop5VendasByMesa() {
 		List<Mesa> topMesa = new ArrayList<Mesa>();
-		topMesa.add(new Mesa(15, 150.0));
-		topMesa.add(new Mesa(22, 202.0));
-		topMesa.add(new Mesa(55, 350.0));
-		topMesa.add(new Mesa(33, 500.0));
-		topMesa.add(new Mesa(86, 1590.0));
+		topMesa.add(new Mesa(15L, 150.0));
+		topMesa.add(new Mesa(22L, 202.0));
+		topMesa.add(new Mesa(55L, 350.0));
+		topMesa.add(new Mesa(33L, 500.0));
+		topMesa.add(new Mesa(86L, 1590.0));
 		return topMesa;
 	}
 
