@@ -1,3 +1,7 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,46 +92,12 @@
 						<!-- Slides Container -->
 						<div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 600px; height: 300px;
 							overflow: hidden;">
-							<div>
-								<img u="image" src="static/img/aviao1.jpg" />
-								<img u="thumb" src="static/img/aviao1.jpg" />
-							</div>
-							<div>
-								<img u="image" src="static/img/aviao2.jpg" />
-								<img u="thumb" src="static/img/aviao2.jpg" />
-							</div>
-							<div>
-								<img u="image" src="static/img/aviao2.jpg" />
-								<img u="thumb" src="static/img/aviao2.jpg" />
-							</div>
-							<div>
-								<img u="image" src="static/img/aviao2.jpg" />
-								<img u="thumb" src="static/img/aviao2.jpg" />
-							</div>
-							<div>
-								<img u="image" src="static/img/aviao2.jpg" />
-								<img u="thumb" src="static/img/aviao2.jpg" />
-							</div>
-							<div>
-								<img u="image" src="static/img/aviao2.jpg" />
-								<img u="thumb" src="static/img/aviao2.jpg" />
-							</div>
-							<div>
-								<img u="image" src="static/img/aviao2.jpg" />
-								<img u="thumb" src="static/img/aviao2.jpg" />
-							</div>
-							<div>
-								<img u="image" src="static/img/aviao2.jpg" />
-								<img u="thumb" src="static/img/aviao2.jpg" />
-							</div>
-							<div>
-								<img u="image" src="static/img/aviao2.jpg" />
-								<img u="thumb" src="static/img/aviao2.jpg" />
-							</div>
-							<div>
-								<img u="image" src="static/img/aviao2.jpg" />
-								<img u="thumb" src="static/img/aviao2.jpg" />
-							</div>
+							 <c:forEach items="${products}" var="product">
+							    <div>
+                                    <img u="image" src="${product.pictureUrl}" />
+                                    <img u="thumb" src="${product.thumbUrl}" />
+                                </div>
+							 </c:forEach>
 						</div>
 
 						<!-- Thumbnail Navigator Skin Begin -->

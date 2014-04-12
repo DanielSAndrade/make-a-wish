@@ -1,5 +1,6 @@
 package com.ciandt.hackathon.resources;
 
+import com.ciandt.hackathon.MyStorage;
 import com.ciandt.hackathon.entity.Table;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -36,6 +37,8 @@ public class TableServlet extends HttpServlet {
         if (table != null) {
             req.setAttribute("userAuthenticated", "true");
             req.setAttribute("nickname", table.getNumber().toString());
+            req.setAttribute("products", MyStorage.getInstance().productMap.values());
+
             req.getRequestDispatcher("/table.jsp").forward(req, resp);
 
         } else {
