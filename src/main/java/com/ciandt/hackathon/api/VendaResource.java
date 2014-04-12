@@ -2,7 +2,6 @@ package com.ciandt.hackathon.api;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
@@ -21,7 +20,8 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @Path("/vendas")
-//@ThreadSafe
+// @ThreadSafe
+// @ThreadSafe
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 @Singleton
 public class VendaResource {
@@ -31,7 +31,7 @@ public class VendaResource {
 	private ProdutoDAO produtoDAO;
 
 	@Inject
-	public VendaResource(VendaDAO vendaDAO,ProdutoDAO produtoDAO) {
+	public VendaResource(VendaDAO vendaDAO, ProdutoDAO produtoDAO) {
 		super();
 		this.vendaDAO = vendaDAO;
 		this.produtoDAO = produtoDAO;
@@ -46,37 +46,43 @@ public class VendaResource {
 			@FormParam("numMesa") Long numMesa,
 			@FormParam("codComp") Long codComp) {
 
-		Produto produto = produtoDAO.findById(idProd);
+		// Produto produto = produtoDAO.findById(idProd);
+		Produto produto = createProdutoMock("Balao", 2.90);
 
 		Venda venda = new Venda(produto, numMesa, new Date(), codComp);
 		vendaDAO.insert(venda);
 		return venda;
 	}
-	
+
 	@GET
 	@Path("/listVendas")
 	public List<Venda> listVendas(@Context HttpServletRequest request) {
-		List<Venda> listVendas= vendaDAO.findVendas();
-		listVendas.add(createVendaMock("Livro 1",1.10));
-		listVendas.add(createVendaMock("Livro 2",2.20));
-		listVendas.add(createVendaMock("Livro 3",3.30));
+		List<Venda> listVendas = vendaDAO.findVendas();
+		listVendas.add(createVendaMock("Livro 1", 1.10));
+		listVendas.add(createVendaMock("Livro 2", 2.20));
+		listVendas.add(createVendaMock("Livro 3", 3.30));
 		return listVendas;
 	}
-	
-	private Venda createVendaMock(String descProduto, Double preco){
-		final Produto produto  = new Produto(descProduto,preco,"Livro");
+
+	private Venda createVendaMock(String descProduto, Double preco) {
+		final Produto produto = new Produto(descProduto, preco, "Livro");
 		final Long numeroMesa = 1l;
 		final Date dataRegistro = new Date();
 		final Long idComprador = 1l;
-		final Venda venda = new Venda(produto,numeroMesa, dataRegistro, idComprador);
+		final Venda venda = new Venda(produto, numeroMesa, dataRegistro,
+				idComprador);
 		return venda;
 	}
-	
-	
+
+	private Produto createProdutoMock(String descProduto, Double preco) {
+		return new Produto(descProduto, preco, "Livro");
+
+	}
+
 	@GET
 	@Path("/test")
-	public String test(){
+	public String test() {
 		return "ff";
 	}
-	
+
 }
