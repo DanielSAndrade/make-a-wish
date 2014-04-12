@@ -185,7 +185,7 @@ public class CommonResource {
 		List<Compra> comprasPorParticipante = new ArrayList<>();
 		
 		for (Compra compra : findCompras) {
-			if (compra.getIdParticipante() != null && compra.getIdParticipante().equals(Long.valueOf(id))){
+			if (compra.getIdParticipante() != null && StringUtils.isNotEmpty(id) && compra.getIdParticipante().equals(Long.valueOf(id))){
 				comprasPorParticipante.add(compra);
 			}
 		}
