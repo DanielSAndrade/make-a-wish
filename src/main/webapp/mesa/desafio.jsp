@@ -60,21 +60,13 @@ body {
 		<div class="row">
 			<div class="col-sm-8">
 
-				<c:forEach var="sonho" items="${sonhos}">
-
-					<div class="col-sm-6 col-md-6">
-						<div class="thumbnail">
-							<div class="caption" style="text-align: center">
-								<img src="../static/images/${sonho.foto}" style="width: 200px; height: 150px"  />
-								<br/>
-								<br/>
-								<h3>${sonho.descricao}</h3>
-								<p>${sonho.crianca.nome}</p>
-							</div>
+					<div class="thumbnail">
+						<div class="caption">
+							<h1>Desafio</h3>
+							<p>Faça mais 10 doacões para passar para o nivel platino.</p>
 						</div>
 					</div>
 
-				</c:forEach>
 
 			</div>
 			<div class="col-sm-4">
@@ -87,29 +79,27 @@ body {
 
 
 						<ul class="sidebar-stats">
-							<li><img src="../static/images/balao.png" style="width: 26px; height: 26px;"> <strong>Balões</strong></li>
+							<li><span class="icon icon-lingot-small"></span> <strong>Doações</strong></li>
 							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">10</span></strong> Pontos</li>
 						</ul>
 						<ul class="sidebar-stats">
-							<li><img src="../static/images/coracao.png" style="width: 26px; height: 26px;"> <strong>Sonhos</strong></li>
-							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">21</span></strong> Pontos</li>
+							<li><span class="icon icon-heart-medium"></span> <strong>Baloes</strong></li>
+							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">93</span></strong> Pontos</li>
 						</ul>
 						<ul class="sidebar-stats">
-							<li><img src="../static/images/martelo.png" style="width: 26px; height: 26px;"> <strong>Leilões</strong></li>
-							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">10</span></strong> Pontos</li>
+							<li><span class="icon icon-streak-small"></span> <strong>Livros</strong></li>
+							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">1</span></strong> Pontos</li>
 						</ul>
 					</div>
 					
 					
-					
 					<div class="strenghten-skills-container">
-						<a href="/desafio" class="btn btn-primary btn-block btn-strengthen-skills">
+						<a href="/mesa" class="btn btn-primary btn-block btn-strengthen-skills">
 						<span
 							class="strength">
 							<span
 								class="icon icon-practice-small-white"></span></span><span
-							class="skill-icon-strength skill-icon-strength-micro strength-5"></span>
-							Desafios</a>
+							class="skill-icon-strength skill-icon-strength-micro strength-5"></span>Voltar para a Mesa</a>
 					</div>
 				</div>
 

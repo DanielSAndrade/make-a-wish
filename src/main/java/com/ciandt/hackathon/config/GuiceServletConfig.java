@@ -13,6 +13,7 @@ import com.ciandt.hackathon.dao.ObjectifySonhoDAO;
 import com.ciandt.hackathon.dao.ParticipanteDAO;
 import com.ciandt.hackathon.dao.ParticipanteDoacaoDAO;
 import com.ciandt.hackathon.dao.SonhoDAO;
+import com.ciandt.hackathon.resources.DesafioServlet;
 import com.ciandt.hackathon.resources.GuestbookServlet;
 import com.ciandt.hackathon.resources.MesaServlet;
 import com.ciandt.hackathon.resources.NovaDoacaoServlet;
@@ -36,6 +37,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 		    protected void configureServlets() {
 				serve("/guestbook").with(GuestbookServlet.class);
 				serve("/mesa").with(MesaServlet.class);
+				serve("/desafio").with(DesafioServlet.class);
 				serve("/recompensa").with(RecompensaServlet.class);
 				serve("/voluntario").with(VoluntarioServlet.class);
 				serve("/comprarSonho").with(NovaDoacaoServlet.class);
