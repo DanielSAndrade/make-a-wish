@@ -69,17 +69,20 @@ public class CommonResource {
 	public List<Participante> rankingMesaParticipante(@Context HttpServletRequest request) {
 		List<Participante> listaParticipantes = new ArrayList<>();
 		Long idMesa = Long.parseLong(request.getParameter("idMesa"));
+		
+		System.out.println("################idMesa " +idMesa);
+
 		Mesa mesa = mesaDAO.find(idMesa);
-		for(Long idParticipante:mesa.getListaIdParticipantes()){
-			Participante participante = participanteDAO.find(idParticipante);
-			atualizaRank(participante);
-			listaParticipantes.add(participante);
+		
+		if (mesa != null){
+			
+			for(Long idParticipante:mesa.getListaIdParticipantes()){
+				Participante participante = participanteDAO.find(idParticipante);
+				atualizaRank(participante);
+				listaParticipantes.add(participante);
+			}
+		
 		}
-		
-		
-			
-			
-		
 		return listaParticipantes;
 	}
 	
