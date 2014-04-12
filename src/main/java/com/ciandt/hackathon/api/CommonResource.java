@@ -35,5 +35,35 @@ public class CommonResource {
 		List<Greeting> listGreetings = greetingDAO.findGreetings();
 		return listGreetings;
 	}
+	
+	@GET
+	@Path("/rankingMesa")
+	public List<Greeting> rankingMesa(@Context HttpServletRequest request) {
+		List<Greeting> listGreetings = greetingDAO.findGreetings();
+		return listGreetings;
+	}
+	
+	@GET
+	@Path("/rankingPessoa")
+	public List<Greeting> rankingPessoa(@Context HttpServletRequest request) {
+		List<Greeting> listGreetings = greetingDAO.findGreetings();
+		return listGreetings;
+	}
+	
+	@GET
+	@Path("/rankingMesaGeral")
+	public List<Greeting> rankingMesaGeral(@Context HttpServletRequest request) {
+		List<Greeting> listGreetings = greetingDAO.findGreetings();
+		return listGreetings;
+	}
+
+	@GET
+	@Path("/rankingPessoaGeral")
+	public List<Greeting> rankingPessoaGeral(@Context HttpServletRequest request) {
+		List<Greeting> listGreetings = greetingDAO.findGreetings();
+		return listGreetings;
+	}
+
+
 
 }
