@@ -112,6 +112,13 @@ public class CommonResource {
 		List<Mesa> listMesa = mesaDAO.findMesas();
 		return listMesa;
 	}
+	@GET
+	@Path("/get-idmesa")
+	public Long getIdMesa(@Context HttpServletRequest request) {
+		List<Mesa> listMesa = mesaDAO.findMesas();
+		
+		return listMesa.get(0).getId();
+	}
 
 	@GET
 	@Path("/rankingPessoaGeral")
