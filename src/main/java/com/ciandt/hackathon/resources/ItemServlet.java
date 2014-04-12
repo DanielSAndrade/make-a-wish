@@ -30,7 +30,7 @@ public class ItemServlet extends HttpServlet {
 
 		logger.info("Executing ItemServlet");
 
-		final Item item = new Item("Meus baloes", new Double(50), 5, ItemType.BALLOON);
+		final Item item = new Item("Item do Leilão", new Double(50), 5, ItemType.BALLOON);
 		ItemDao.insert(item);
 		
 		logger.info("Item salvo: " + item.getId() );
@@ -55,6 +55,6 @@ public class ItemServlet extends HttpServlet {
 		// userService.createLoginURL(req.getRequestURI()));
 		// }
 
-		req.getRequestDispatcher("/items.jsp").forward(req, resp);
+		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 	}
 }

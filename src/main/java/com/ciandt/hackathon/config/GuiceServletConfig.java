@@ -9,6 +9,7 @@ import com.ciandt.hackathon.dao.ObjectfyItemDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
 import com.ciandt.hackathon.resources.GuestbookServlet;
 import com.ciandt.hackathon.resources.ItemServlet;
+import com.ciandt.hackathon.resources.MesaServlet;
 import com.ciandt.hackathon.resources.SignGuestbookServlet;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -25,9 +26,10 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 		return Guice.createInjector(new CommonModule(), new ServletModule() {
 			@Override
 		    protected void configureServlets() {
+				serve("/").with(ItemServlet.class);
 				serve("/guestbook").with(GuestbookServlet.class);
-				serve("/sign").with(SignGuestbookServlet.class);
-				serve("/items").with(ItemServlet.class);
+				serve("/sign").with(SignGuestbookServlet.class);				
+				serve("/mesas").with(MesaServlet.class);
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 				bind(ItemDAO.class).to(ObjectfyItemDAO.class);

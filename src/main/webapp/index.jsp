@@ -21,20 +21,16 @@
   </head>
   <body>
     
-	  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <a class="navbar-brand" href="#">
-	          	<img alt="Make A Wish" src="static/img/make-a-wish-logo.jpg" style="width: 200px;">
-	          </a>
-	        </div>	        
-	      </div>
-	    </div>
+	  <div class="col-md-12 col-xs-12">	    	
+    	<div class="pull-right">
+    		<img alt="Make A Wish" src="static/img/make-a-wish-logo.jpg" style="width: 200px;">
+    	</div>    	
+   	  </div>
 	
-	    <div class="container">
-	    
+	    <div class="container">	    
 	    	<div class="col-md-12 col-xs-12 text-center">
-	    		<h1>Avatar</h1>
+	    		<img alt="" src="static/img/avatars/spidertocat.png" style="width: 300px;">
+	    		<h2>Total de Pontos: 128</h2>
 	    	</div>
 	    
 	    	<div class="col-md-12 col-xs-12">	    			
@@ -45,8 +41,9 @@
 				<c:if test="${itemsSize > 0}">				
 					<div class="col-md-12 col-xs-12">						
 			        <c:forEach var="item" items="${items}">
-						<div class="col-md-3 col-xs-3">
-					      	${item.name} - ${item.value}
+						<div class="col-md-4 col-xs-4">
+					      	<h3>${item.name}</h3> 
+					      	R$ ${item.value}
 					    </div>										
 					</c:forEach>					      					
 					</div>				
