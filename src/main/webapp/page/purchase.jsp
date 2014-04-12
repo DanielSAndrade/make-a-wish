@@ -21,9 +21,9 @@
   <body>
 
     <div class="container">
-        <h1 class="page-header page-top">
+        <h1 class="page-header">
             <img src="images/MAW.jpg"></img>
-            <span>Gala - Leilão</span>
+            Jantar de gala
         </h1>
         <div class="col-md-10">
             <ul class="list-group">
@@ -33,7 +33,7 @@
                         <div class="col-md-2">
                             <img src="mock_images/baloon.jpg"></img>
                         </div>
-                        <div class="col-md-10 product-info">
+                        <div class="col-md-10">
                             <h3>Balão surpresa</h3>
                             Quantidade: 
                             <span class="glyphicon glyphicon-plus qtd-control"></span>
@@ -50,7 +50,7 @@
                         <div class="col-md-2">
                             <img src="mock_images/book.jpg"></img>
                         </div>
-                        <div class="col-md-10 product-info">
+                        <div class="col-md-10">
                             <h3>Livro</h3>
                             Quantidade: 
                             <span class="glyphicon glyphicon-plus qtd-control"></span>
@@ -67,7 +67,7 @@
                         <div class="col-md-2">
                             <img src="mock_images/sonho.jpg"></img>
                         </div>
-                        <div class="col-md-10 product-info">
+                        <div class="col-md-10">
                             <h3>Realize um sonho - Voar em um jato</h3>
                             Quantidade: 
                             <span class="glyphicon glyphicon-plus qtd-control"></span>
@@ -84,7 +84,7 @@
                         <div class="col-md-2">
                             <img src="mock_images/sonho.jpg"></img>
                         </div>
-                        <div class="col-md-10 product-info">
+                        <div class="col-md-10">
                             <h3>Realize um sonho - Conhecer o Ozzy</h3>
                             Quantidade: 
                             <span class="glyphicon glyphicon-plus qtd-control"></span>
@@ -102,85 +102,7 @@
             <button type="button" class="btn btn-primary btn-lg">Comprar!</button>
         </div>
         <div class="col-md-2">
-            <div class="row">
-                <h3>Rank</h3>
-                <table class="table table-hover">
-                    <tr>
-                        <th>#</th>
-                        <th>Mesa</th>
-                        <th>Pontos</th>
-                    </tr>
-                    <tr>
-                        <td>
-                           <span class="label label-info"> 1 </span>
-                        </td>
-                        <td>
-                            Mesa 53
-                        </td>
-                        <td>
-                            35
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                           <span class="label label-info"> 2 </span>
-                        </td>
-                        <td>
-                            Mesa 20
-                        </td>
-                        <td>
-                            20
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                           <span class="label label-info"> 3 </span>
-                        </td>
-                        <td>
-                            Mesa 59
-                        </td>
-                        <td>
-                            19
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                           <span class="label label-info"> 4 </span>
-                        </td>
-                        <td>
-                            Mesa 10
-                        </td>
-                        <td>
-                            10
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                           <span class="label label-info"> 5 </span>
-                        </td>
-                        <td>
-                            Mesa 11
-                        </td>
-                        <td>
-                            3
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="row">
-                <h3>Últimas compras</h3>
-                <ul class="list-group">
-                    <li class="list-group-item product-item">
-                        <span class="label label-default">53</span> comprou um Balão surpresa
-                    </li>
-                    <li class="list-group-item product-item">
-                        <span class="label label-default">53</span> irá realizar um sonho
-                    </li>
-                    <li class="list-group-item product-item">
-                        <span class="label label-default">53</span> comprou um livro
-                    </li>
-                </ul>
-            </div>
+            Rank
         </div>
     </div>
 
