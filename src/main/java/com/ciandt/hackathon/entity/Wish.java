@@ -5,7 +5,7 @@ import com.googlecode.objectify.annotation.Id;
  
 @Entity
 public class Wish {
-	
+
 	@Id
 	private int id;
 	private String childName;
@@ -14,7 +14,7 @@ public class Wish {
 	private String wish;
 	private int status;
 	private int donator; 
-	
+
 	public Wish() {
 
 	}
