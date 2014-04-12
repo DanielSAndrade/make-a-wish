@@ -14,6 +14,12 @@ public class TipoDoacao {
 		return id;
 	}
 
+	public TipoDoacao() {}
+	
+	public TipoDoacao(Long id, String nome) {
+		setId(id);
+		setNome(nome);
+	}
 
 	public void setId(Long id) {
 		this.id = id;

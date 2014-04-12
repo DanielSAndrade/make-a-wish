@@ -4,10 +4,11 @@ import java.util.Hashtable;
 import java.util.List;
 
 import com.ciandt.hackathon.entity.Mesa;
+import com.ciandt.hackathon.entity.TipoDoacao;
 
 public interface MesaDAO {
 
-	public Hashtable<Long, Integer> getDoacoes(Mesa mesa);
+	public Hashtable<TipoDoacao, Integer> getDoacoes(Mesa mesa);
 	
 	public List<Mesa> findMesas();
 

@@ -25,7 +25,7 @@ public class ObjectifyMesaDAO implements MesaDAO {
 	//private Logger log;
 
 	@Override
-	public Hashtable<Long, Integer> getDoacoes(Mesa mesa) {
+	public Hashtable<TipoDoacao, Integer> getDoacoes(Mesa mesa) {
 		
 		ParticipanteDAO participanteDAO = new ObjectifyParticipanteDAO();
 		List<Participante> participantes = participanteDAO.findParticipantesMesa(mesa);
@@ -36,25 +36,35 @@ public class ObjectifyMesaDAO implements MesaDAO {
 		TipoDoacaoDAO tipoDoacaoDAO = new ObjectifyTipoDoacaoDAO();
 		List<TipoDoacao> tipoDoacoes = tipoDoacaoDAO.findTipoDoacoes();
 		
-		Hashtable<Long, Integer> ret = new Hashtable<Long, Integer>();
+		Hashtable<TipoDoacao, Integer> ret2 = new Hashtable<TipoDoacao, Integer>();
 		
 		for(TipoDoacao tipoDoacao: tipoDoacoes) {
-			ret.put(tipoDoacao.getId(), 0);
+			ret2.put(tipoDoacao, 0);
 		}
 		
 		for(ParticipanteDoacao doacao: doacoes) {
 			for(Participante participante: participantes) {
 				if(doacao.getIdParticipante().longValue() == participante.getId().longValue()) {
+				
+					for(TipoDoacao tipoDoacao: tipoDoacoes) {
+						if(tipoDoacao.getId().longValue() == doacao.getIdDoacao().longValue()) {
+							Integer totalIdDoacao = ret2.get(tipoDoacao);
+							totalIdDoacao += 1;
+							ret2.put(tipoDoacao, totalIdDoacao);
+						}
+					}
 					
-					Integer totalIdDoacao = ret.get(doacao.getIdDoacao());
-					totalIdDoacao += 1;
+					
 					
 					break;
 				}
 			}
 		}
 		
-		return ret;
+		
+		
+		
+		return ret2;
 	}
 	
 	@Override
