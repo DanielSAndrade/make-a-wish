@@ -10,7 +10,7 @@ public class Item {
 
 	private String nome;
 
-	private double preco;
+	private Double preco;
 
 	@Id
 	public Long getId() {
@@ -29,7 +29,7 @@ public class Item {
 		this.nome = nome;
 	}
 
-	public double getPreco() {
+	public Double getPreco() {
 		return preco;
 	}
 
