@@ -39,10 +39,17 @@ public class GuestbookServlet extends HttpServlet {
 
 		// read compras
 		List<Compras> compras = comprasDao.findCompras();
+		Double totalPreco = 0d;
+		for(Compras c : compras){
+			totalPreco = totalPreco + c.getValor();
+		}
+		req.setAttribute("totalCompras", totalPreco);
 		req.setAttribute("compras", compras);
-		req.setAttribute("topMesas", getTopMesas(compras));
-		req.setAttribute("topCompradores", getTopCompradores(compras));
 		
+		List<TopTop> topMesas = getTopMesas(compras);
+		
+		req.setAttribute("topMesas", topMesas);
+		req.setAttribute("topCompradores", getTopCompradores(compras));
 		req.setAttribute("comprasSize", compras.size());
 		logger.info("Putting " + compras.size() + " compras in memory");
 
@@ -54,6 +61,14 @@ public class GuestbookServlet extends HttpServlet {
 			req.setAttribute("nickname", user.getNickname());
 			req.setAttribute("logoutURL",
 					userService.createLogoutURL(req.getRequestURI()));
+			
+			
+			for(TopTop tt : topMesas){
+				if(tt.getName().equalsIgnoreCase(user.getNickname())){
+					req.setAttribute("mesaPontos", tt.getPontos());
+					break;
+				}
+			}
 		} else {
 			req.setAttribute("userAuthenticated", "false");
 			req.setAttribute("loginURL",
