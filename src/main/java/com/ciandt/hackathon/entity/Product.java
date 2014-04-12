@@ -14,6 +14,10 @@ public class Product {
 	private String type;
 	private Integer points;
 	
+    public Long getId() {
+        return id;
+    }
+    
 	public String getImageURL() {
 		return imageURL;
 	}

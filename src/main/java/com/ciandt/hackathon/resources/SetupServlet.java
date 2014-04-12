@@ -34,8 +34,8 @@ public class SetupServlet extends HttpServlet {
 	private void mockProducts() {
 		Product product = new Product();
 
-		product.setDescription("Balao 1");
-		product.setImageURL("http://uol.com.br/image/gif");
+		product.setDescription("Balao 1"); 
+		product.setImageURL("/page/mock_images/baloon.jpg");
 		product.setPrice(10.0);
 		product.setPoints(0);
 		product.setType("A");
