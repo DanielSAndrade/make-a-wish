@@ -36,8 +36,14 @@
 
 
   <form action="/sign" method="post">
-    <div><textarea name="content" rows="3" cols="60"></textarea></div>
+    Produto: <input type="text" name="idProduto" /> <br>
+    Produto: <input type="text" name="idProduto" /> <br>
+    Produto: <input type="text" name="idProduto" /> <br>
+    
     <div><input type="submit" value="Post Greeting" /></div>
+    
+    
+    
   </form>
 
   </body>

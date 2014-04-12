@@ -22,6 +22,6 @@ public class CommonModule extends ServletModule {
 		bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 		bind(ParticipanteDAO.class).to(ObjectifyParticipanteDAO.class);
 		
-		filter("/api/*").through(GuiceContainer.class, initParams);
+		filter("/api/*").through(GuiceContainer.class, initParams);  
 	}
 }
