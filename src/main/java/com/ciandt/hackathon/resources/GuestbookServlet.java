@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.ItemCompraDAO;
 import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.ItemCompra;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -23,6 +25,8 @@ public class GuestbookServlet extends HttpServlet {
 	
 	@Inject
 	private GreetingDAO greetingDao;
+	
+	@Inject ItemCompraDAO itemCompraDao;
 	
 	@Inject
 	private Logger logger;
@@ -51,5 +55,15 @@ public class GuestbookServlet extends HttpServlet {
 	    }
 		
 		req.getRequestDispatcher("/guestbook.jsp").forward(req, resp);
+		
+		System.out.println("Listing itens....");
+		List<ItemCompra> itens = itemCompraDao.findItemCompra();
+		
+		System.out.println("Adding itens....");
+		ItemCompra itemCompra = new ItemCompra();
+		itemCompra.setProduto("Balão");
+		itemCompra.setQuantidade(10);
+		itemCompraDao.insert(itemCompra);
+		
 	}
 }
