@@ -1,3 +1,4 @@
+<%@page import="java.util.Hashtable"%>
 <%@page import="com.ciandt.hackathon.entity.Mesa"%>
 <%@page import="java.util.List"%>
 <%@page import="com.ciandt.hackathon.dao.MesaDAO"%>
@@ -74,8 +75,12 @@ body {
 		<%
 		MesaDAO mesaDAO = new ObjectifyMesaDAO();
 		List<Mesa> mesas = mesaDAO.findMesas();
+		
+	
 			
 		for(Mesa mesa: mesas){
+	
+			Hashtable<Long, Integer> pontuacao = mesaDAO.getDoacoes(mesa);
 			%>
 			<div class="row well rank">
 				<div class="col-lg-4 col-md-4 col-sm-4"><%= mesa.getNome() %></div>
