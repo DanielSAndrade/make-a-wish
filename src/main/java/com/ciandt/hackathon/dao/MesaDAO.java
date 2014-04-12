@@ -38,6 +38,10 @@ public class MesaDAO {
         return mesas;
     }
 
+    public void adicionarMesa(Mesa mesa) {
+    	mesas.add(mesa);
+    }
+    
     public void addPontos(String mesa, long pontos) {
         
     }
