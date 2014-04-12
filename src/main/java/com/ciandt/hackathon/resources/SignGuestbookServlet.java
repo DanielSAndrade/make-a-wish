@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ciandt.hackathon.dao.GreetingDAO;
-import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.dao.ComprasDAO;
+import com.ciandt.hackathon.entity.Compras;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -25,27 +25,30 @@ public class SignGuestbookServlet extends HttpServlet {
 	private Logger log;
 	
 	@Inject
-	private GreetingDAO dao;
+	private ComprasDAO dao;
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
                 throws IOException {
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
 
-        String content = req.getParameter("content");
-        if (content == null) {
-            content = "(No greeting)";
+        String produto = req.getParameter("produto");
+        String valor = req.getParameter("valor");
+        if (produto == null) {
+        	produto = "Viagem";
         }
-        if (user != null) {
-            log.info("Greeting posted by user " + user.getNickname() + ": " + content);
-        } else {
-            log.info("Greeting posted anonymously: " + content);
+        if (valor == null) {
+        	valor = "20.000";
+        }
+        if (user == null) {
+        	resp.sendRedirect("/_ah/login?continue=%2Fcompras");
         }
         
         Date date = new Date();
-        Greeting greeting = new Greeting(user, content, date);
-        dao.insert(greeting);
+        Double valorDouble = new Double(valor);
+        Compras compras = new Compras(user, produto, date, valorDouble);
+        dao.insert(compras);
         
-        resp.sendRedirect("/guestbook");
+        resp.sendRedirect("/compras");
     }
 }

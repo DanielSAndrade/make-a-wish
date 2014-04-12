@@ -3,8 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-
-
 	<filter>
 		<filter-name>guiceFilter</filter-name>
 		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
@@ -18,4 +16,8 @@
 	<listener>
 		<listener-class>com.ciandt.hackathon.config.GuiceServletConfig</listener-class>
 	</listener>
+	
+	<session-config>
+	    <session-timeout>-1</session-timeout>
+	</session-config>
 </web-app>

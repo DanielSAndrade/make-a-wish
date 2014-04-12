@@ -2,27 +2,27 @@ package com.ciandt.hackathon.dao;
 
 import java.util.List;
 
-import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.Compras;
 
-public interface GreetingDAO {
+public interface ComprasDAO {
 	
 	/**
 	 * List all greetings
-	 * @return All greetings
+	 * @return All compras
 	 */
-	public List<Greeting> findGreetings();
+	public List<Compras> findCompras();
 	
 	/**
 	 * Insert a new greeting into datastore
 	 * @param greeting Greeting to be inserted
 	 * @return the generated id
 	 */
-	public Long insert( Greeting greeting );
+	public Long insert( Compras compra );
 	
 	/**
 	 * Remove a specific greeting from the datastore
-	 * @param Greeting to be removed
+	 * @param compra to be removed
 	 */
-	public void delete( Greeting greeting );
+	public void delete( Compras compra );
 
 }

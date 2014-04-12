@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.ciandt.hackathon.api.CommonResource;
-import com.ciandt.hackathon.dao.GreetingDAO;
-import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
+import com.ciandt.hackathon.dao.ComprasDAO;
+import com.ciandt.hackathon.dao.ObjectifyComprasDAO;
 import com.google.inject.servlet.ServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
@@ -17,7 +17,7 @@ public class CommonModule extends ServletModule {
 		Map<String, String> initParams = new HashMap<String, String>();
 		
 		bind(CommonResource.class);
-		bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
+		bind(ComprasDAO.class).to(ObjectifyComprasDAO.class);
 		
 		filter("/api/*").through(GuiceContainer.class, initParams);
 	}
