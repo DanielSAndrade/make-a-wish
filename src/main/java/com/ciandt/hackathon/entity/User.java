@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.ciandt.hackathon.entity;
 
 import java.util.List;
