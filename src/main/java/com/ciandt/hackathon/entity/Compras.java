@@ -22,15 +22,18 @@ public class Compras {
     
     private Double valor;
     
+    private String comprador;
+    
     public Compras() {
     	
     }
 
-    public Compras(User mesa, String produto, Date date, Double valor) {
+    public Compras(User mesa, String produto, Date date, Double valor, String comprador) {
         this.date = date;
         this.mesa = mesa;
         this.produto = produto;
         this.valor = valor;
+        this.comprador = comprador;
     }
 
 	/**
@@ -101,6 +104,20 @@ public class Compras {
 	 */
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+	/**
+	 * @return the comprador
+	 */
+	public String getComprador() {
+		return comprador;
+	}
+
+	/**
+	 * @param comprador the comprador to set
+	 */
+	public void setComprador(String comprador) {
+		this.comprador = comprador;
 	}
 
 
