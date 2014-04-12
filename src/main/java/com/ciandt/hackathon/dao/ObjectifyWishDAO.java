@@ -158,7 +158,7 @@ public class ObjectifyWishDAO implements WishDAO {
 		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 		syncCache.delete( "WISHES" );
 		
-		wish.setStatus(Wish.Status.INTENDED);
+		wish.setStatus(Wish.Status.PRESENTED);
 		ofy().save().entity(wish).now();
 		
 	}
