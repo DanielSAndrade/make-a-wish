@@ -12,7 +12,7 @@ import com.ciandt.hackathon.enums.CategoriaEnum;
 
 public class MesaDAO {
 
-	public List<Mesa> getMesas() {
+	public List<Mesa> listarRanking() {
 		
 		Mesa mesa = new Mesa();
 		

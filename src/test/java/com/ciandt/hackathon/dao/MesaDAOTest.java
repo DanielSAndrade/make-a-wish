@@ -10,7 +10,7 @@ public class MesaDAOTest {
 	public void getMesasTest() {
 		
 		MesaDAO mesaDAO = new MesaDAO();
-		Assert.assertNotNull(mesaDAO.getMesas());
+		Assert.assertNotNull(mesaDAO.listarRanking());
 		
 	}
 	
