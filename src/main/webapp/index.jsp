@@ -81,14 +81,11 @@
 <script type="text/javascript"> 
     $(document).ready(function () {
 		console.log("test");
-        $("div#makeMeScrollable").smoothDivScroll({ 
-            mousewheelScrolling: true, 
-            manualContinuousScrolling: true, 
+        $("div#makeMeScrollable").smoothDivScroll({  
+        	mousewheelScrolling: true, manualContinuousScrolling: true,            
             visibleHotSpotBackgrounds: "always", 
-            autoScrollingMode: "always",
-			autoScrollingDirection: "endlessLoopLeft",
-			autoScrollingStep: 10})
-		;
+            autoScrollingMode: "onStart"
+   		});
 	});    
 </script> 
 </body>
