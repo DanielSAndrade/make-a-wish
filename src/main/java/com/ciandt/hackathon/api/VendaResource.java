@@ -8,7 +8,9 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.ProdutoDAO;
 import com.ciandt.hackathon.dao.VendaDAO;
@@ -19,7 +21,7 @@ import com.google.inject.Singleton;
 
 @Path("/vendas")
 //@ThreadSafe
-//@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
+@Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 @Singleton
 public class VendaResource {
 
