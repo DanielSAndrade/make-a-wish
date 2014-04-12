@@ -1,7 +1,9 @@
 package com.ciandt.hackathon.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.googlecode.objectify.annotation.Embed;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
@@ -15,7 +17,8 @@ public class Participante {
 	private Integer rank;
 	private Integer delta;
 	private String urlImagem;
-	private List<Badge> badge;
+	
+	private List<Badge> badge = new ArrayList<>();
 	
 	public Long getId() {
 		return id;

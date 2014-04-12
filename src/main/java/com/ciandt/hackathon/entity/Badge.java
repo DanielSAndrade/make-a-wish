@@ -1,7 +1,9 @@
 package com.ciandt.hackathon.entity;
 
+import com.googlecode.objectify.annotation.Embed;
 import com.googlecode.objectify.annotation.Id;
 
+@Embed
 public class Badge {
 	@Id
 	private Long id;

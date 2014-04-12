@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ParticipanteDAO;
+import com.ciandt.hackathon.entity.Badge;
 import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Greeting;
 import com.ciandt.hackathon.entity.Participante;
@@ -104,10 +105,33 @@ public class CommonResource {
 		List<Participante> participantes = participanteDAO.findParticipantes();
 		if(participantes.isEmpty()){
 			List<Participante> listaParticipante = new ArrayList<Participante>();
+			Random randomRanking = new Random();
+
+			List<Badge> listaBadge = new ArrayList<>();
+			for(int j=1;j<6;j++){
+				Badge badge = new Badge();
+				badge.setNome("badge-"+j);
+				badge.setUrlImagem("/static/img/badges/badge-"+j+".png");
+				listaBadge.add(badge);
+			}
+			
+			
 			for(int i=0; i<50;i++){
+							
 				Participante participante = new Participante();
 				participante.setNome("Participante-"+i);
-				//participante.setRank(Random);
+				participante.setRank(randomRanking.nextInt(50));
+				participante.setUrlImagem("/static/img/participantes/billgates.png");
+				
+				Random randomDelta = new Random();
+				participante.setDelta(randomDelta.nextInt(3));
+				
+				Random randomBadge = new Random();
+				for(int j=0 ;j<4;j++){
+					participante.getBadge().add(listaBadge.get(randomBadge.nextInt(4)));
+				}
+				
+				participanteDAO.insert(participante);
 			}
 			return Response.ok("Banco carregado!").build();
 		}else{
