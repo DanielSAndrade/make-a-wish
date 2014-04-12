@@ -10,7 +10,7 @@ public interface ProductDAO {
 	 * List all product
 	 * @return All product
 	 */
-	public List<Object> findProduct();
+	public List<Product> findProduct();
 	
 	
 	public Long insert( Product product );
