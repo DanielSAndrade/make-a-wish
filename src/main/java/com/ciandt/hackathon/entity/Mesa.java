@@ -1,5 +1,6 @@
 package com.ciandt.hackathon.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.googlecode.objectify.annotation.Entity;
@@ -11,8 +12,14 @@ public class Mesa {
 	private Long id;
 	
 	private Integer numeroMesa;
-	private List<Badge> badges;
+	private List<Badge> badges = new ArrayList<>();
 	private Integer pontuacao;
+	
+	public Mesa(Integer numeroMesa, Integer pontuacao) {
+		super();
+		this.numeroMesa = numeroMesa;
+		this.pontuacao = pontuacao;
+	}
 	
 	public Long getId() {
 		return id;
