@@ -16,6 +16,16 @@ public class Item {
 
 	private String path;
 
+	private String precoStr;
+
+	public String getPrecoStr() {
+		return precoStr;
+	}
+
+	public void setPrecoStr(String precoStr) {
+		this.precoStr = precoStr;
+	}
+
 	@Id
 	public Long getId() {
 		return id;
