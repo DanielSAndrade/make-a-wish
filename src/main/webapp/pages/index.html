@@ -6,28 +6,17 @@
 
   <script>
 
-    //var grid = [];
+    
 	function getJsonObject(url){
-            
-            $.getJSON(url,function(json){
-                var grid = json;
-                
-                //console.log(grid);
-            });
-            //console.log(grid);
-            //alert(grid[0].name);
-            alert("Tamanho: " + grid.length);
-            return grid;
+		
+			var json;
+		    $.ajax({async: false,type: "GET",url: url,dataType: "json",
+		        success: function(data){ json = data; }
+		    });
+		    
+            return json;
         }
 	
-     var products = getJsonObject('http://localhost:8080/productsApi/products');
-     
-     alert("Tamanhoooooooooooo: " + products.length);
-     
-     for (var i = 0; i < products.length; i++) { 
-    	    alert(products[i].name);
-    	}
-
   </script>
 
   <head>
@@ -93,36 +82,26 @@
             <p>Transforme sonhos em realidade!</p>
           </div>
           <div class="row">
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Produto 1</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">Comprar &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Produto 2</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">Comprar &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Produto 3</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">Comprar &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Produto 4</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">Comprar &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Produto 5</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">Comprar &raquo;</a></p>
-            </div><!--/span-->
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Produto 6</h2>
-              <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-              <p><a class="btn btn-default" href="#" role="button">Comprar &raquo;</a></p>
-            </div><!--/span-->
+          	<script>
+          	function populaProdutos() {
+        		
+        		var products = getJsonObject('http://parque-harrypotter.appspot.com/productsApi/products');
+        		
+        		for (var i = 0; i < products.length; i++) { 
+        	    	   
+        			var content = "<div class=\"col-6 col-sm-6 col-lg-4\">" +
+        			"<h2>" + products[i].name + "</h2>" +
+                    "<p>" + products[i].description + "</p>" +
+                    "<p><a class=\"btn btn-default\" href=\"http://http://parque-harrypotter.appspot.com/productsApi/products?productId="+ products[i].id +"&table="+ products[i].name +"\" role=\"button\">Comprar &raquo;</a></p>" +
+                    "</div>";
+        			document.write(content);
+        			
+        		}
+        		
+        	}
+        	
+        	populaProdutos();
+          	</script>
           </div><!--/row-->
         </div><!--/span-->
 

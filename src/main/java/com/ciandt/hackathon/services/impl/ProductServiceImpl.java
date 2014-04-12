@@ -11,7 +11,7 @@ import com.google.inject.Inject;
 public class ProductServiceImpl implements ProductService {
 
 	private String[] productName = { "Conhecer Parque Harry Porter",
-			"Guitarra", "PS3", "PS4","Guitarra", "SmartPhone", "NoteBook pelo Dentinho", "Disney", "Comer um peixe beira mar", "Trabalhar na Ci&T" };
+			"Guitarra", "PS3", "PS4","Guitarra", "SmartPhone", "NoteBook pelo Dentinho", "Disney", "Comer um peixe beira mar", "Trabalhar na CIT" };
 
 	@Inject
 	private ProductDAO productDAO;
@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
 		List<Product> listProducts = new ArrayList<Product>();
 		for (int i = 0; i < 10; i++) {
 			Product product = new Product();
-			product.setDescription("Este produto faz uma criança feliz " + productName[i]);
+			product.setDescription("Este produto faz uma crianca feliz " + productName[i]);
 			product.setId((long) i);
 			product.setName(productName[i]);
 			product.setValue((long) (Math.random() * 1000));

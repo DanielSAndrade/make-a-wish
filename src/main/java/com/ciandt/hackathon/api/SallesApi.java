@@ -31,7 +31,7 @@ public class SallesApi {
 
 	@GET
 	@Path("/salle")
-	public String listGreetings(@Context HttpServletRequest request) {
+	public String salle(@Context HttpServletRequest request) {
 		
 		String table = request.getParameter("table");
 		
