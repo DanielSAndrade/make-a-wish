@@ -1,6 +1,7 @@
 package com.ciandt.hackathon.resources;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -17,6 +18,7 @@ import com.ciandt.hackathon.dao.SonhoDAO;
 import com.ciandt.hackathon.entity.Badge;
 import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Sonho;
+import com.google.apphosting.api.search.AclPb.Entry;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -43,14 +45,28 @@ public class LoadServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {
 
+		// limpa a base primeiro
+		clearDatastore();
+		
 		// carregando os dados da aplicacao
 		loadBadges();
 		loadMesas();
 		loadSonhos();
 		
 		resp.setContentType("text/plain");
-		resp.getWriter().println("Hello, this is a testing servlet. \n\n");
+		resp.getWriter().println("database loaded. \n\n");
 
+	}
+
+	private void clearDatastore() {
+		List<Badge> badges = badgeDao.findAll();
+		for (Badge b : badges) badgeDao.delete(b);
+		
+		List<Mesa> mesas = mesaDao.findAll();
+		for (Mesa mesa : mesas) mesaDao.delete(mesa);
+		
+		List<Sonho> sonhos = sonhoDao.findAll();
+		for (Sonho sonho : sonhos) sonhoDao.delete(sonho);
 	}
 
 	private void loadSonhos() {

@@ -10,6 +10,10 @@ public class Badge {
 	private String nome;
 	private Long pontuacao;
 	
+	public Badge() {
+		super();
+	}
+
 	public Badge(String nome, Long pontuacao) {
 		super();
 		this.nome = nome;

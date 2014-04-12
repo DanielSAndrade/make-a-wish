@@ -24,6 +24,11 @@ public class Sonho {
 
 	private Boolean comprado;
 		
+	
+	public Sonho() {
+		super();
+	}
+
 	public Sonho(String nome, String descricao, String crianca, Boolean comprado) {
 		super();
 		this.nome = nome;

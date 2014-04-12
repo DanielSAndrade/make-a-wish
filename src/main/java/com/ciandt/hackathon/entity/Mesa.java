@@ -15,6 +15,11 @@ public class Mesa {
 	private List<Badge> badges = new ArrayList<>();
 	private Integer pontuacao;
 	
+	
+	public Mesa() {
+		super();
+	}
+
 	public Mesa(Integer numeroMesa, Integer pontuacao) {
 		super();
 		this.numeroMesa = numeroMesa;
