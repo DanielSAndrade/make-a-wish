@@ -3,6 +3,7 @@
  */
 package com.ciandt.hackathon.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.googlecode.objectify.annotation.Embed;
@@ -26,9 +27,9 @@ public class Doador {
 
 	private Mesa mesa;
 
-	private List<Sonho> sonhos;
+	private List<Sonho> sonhos = new ArrayList<>();
 
-	private List<Badge> bagdes;
+	private List<Badge> bagdes = new ArrayList<>();
 
 	private String email;
 
