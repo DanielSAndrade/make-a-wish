@@ -34,7 +34,7 @@ public class RankMesaServlet extends HttpServlet {
 
         req.setAttribute("rankSize", listaRank == null ? 0 : listaRank.size());
 
-        req.getRequestDispatcher("/rankMesa.jsp").forward(req, resp);
+        req.getRequestDispatcher("/rankmesa.jsp").forward(req, resp);
     }
 
 }
