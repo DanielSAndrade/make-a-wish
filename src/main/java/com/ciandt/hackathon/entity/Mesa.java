@@ -80,4 +80,10 @@ public class Mesa {
 		return pontos;
 	}
 
+	@Override
+	public String toString() {
+		return "Mesa [nome=" + nome + ", comprasEfetuadas=" + comprasEfetuadas
+				+ ", medalhas=" + medalhas + ", pessoas=" + pessoas + "]";
+	}
+
 }

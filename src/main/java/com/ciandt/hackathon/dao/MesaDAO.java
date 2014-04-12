@@ -8,9 +8,20 @@ import com.ciandt.hackathon.utils.MesasMocker;
 
 public class MesaDAO {
 
-	public List<Mesa> getMesas() {
+	private static List<Mesa> mesas;
 
-		MesasMocker mocker = new MesasMocker();
+    public List<Mesa> getMesas() {
+
+        if (mesas == null || mesas.isEmpty()) {
+            mesas = iniciarMesas();
+        }
+		
+		return mesas;
+		
+	}
+
+    private List<Mesa> iniciarMesas() {
+        MesasMocker mocker = new MesasMocker();
 		
 		Mesa mesa1 = mocker.mockMesa1();
 		Mesa mesa2 = mocker.mockMesa2();
@@ -24,13 +35,10 @@ public class MesaDAO {
 		mesas.add(mesa3);
 		mesas.add(mesa4);
 		mesas.add(mesa5);
-		
-		return mesas;
-		
-	}
+        return mesas;
+    }
 
     public void addPontos(String mesa, long pontos) {
-        // TODO Auto-generated method stub
         
     }
 	
