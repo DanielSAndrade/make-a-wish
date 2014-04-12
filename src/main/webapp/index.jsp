@@ -62,10 +62,10 @@
 <div id="menu">
 	<img id=logo src="static/assets/logo.png">
 	<div style="background: #FFF" >
-		<c:if test="${mesa == Null}">
+		<c:if test="${mesa == null}">
 			<p class="text" style="font-size: 30px;">Informe uma mesa</p>
 		</c:if>
-		<c:if test="${mesa != Null}">
+		<c:if test="${mesa != null}">
 			<p class="text" style="font-size: 30px;">Mesa: ${mesa.nome}<br>Pontuação: ${mesa.pontos}</p>
 		</c:if>
 	</div>
