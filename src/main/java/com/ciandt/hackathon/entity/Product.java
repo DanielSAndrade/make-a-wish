@@ -11,7 +11,7 @@ public class Product {
 	private String imageURL;
 	private String description;
 	private Double price;
-	private String type;
+	private ProductType productType;
 	private Integer points;
 	
 	public String getImageURL() {
@@ -32,11 +32,11 @@ public class Product {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public String getType() {
-		return type;
+	public ProductType getProductType() {
+		return this.productType;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
 	}
 	public Integer getPoints() {
 		return points;
