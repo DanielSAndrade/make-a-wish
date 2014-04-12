@@ -1,9 +1,27 @@
 package com.ciandt.hackathon.entity;
 
+import java.net.URL;
+
 /**
  * Created by rjfonseca on 12/04/14.
  */
 public class Product {
+
+    public URL getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(URL pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
+
+    public URL getThumbUrl() {
+        return thumbUrl;
+    }
+
+    public void setThumbUrl(URL thumbUrl) {
+        this.thumbUrl = thumbUrl;
+    }
 
     public enum Category {WISH, BALLOON, OTHER};
 
@@ -11,6 +29,8 @@ public class Product {
     private Long points;
     private String description;
     private Category category;
+    private URL pictureUrl;
+    private URL thumbUrl;
 
     public Float getPrice() {
         return price;
