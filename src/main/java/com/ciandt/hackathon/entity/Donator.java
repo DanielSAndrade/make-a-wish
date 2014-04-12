@@ -11,13 +11,13 @@ public class Donator {
 	private String name;
 	private int points;
 	private int badges;
-	private int table;
+	private Long table;
 
 	public Donator() {
 		
 	}
 
-	public Donator(String login, String name, int points, int badges, int table) {
+	public Donator(String login, String name, int points, int badges, Long table) {
 		super();
 		this.login = login;
 		this.name = name;
@@ -60,11 +60,11 @@ public class Donator {
 		this.badges = badges;
 	}
 
-	public int getTable() {
+	public Long getTable() {
 		return table;
 	}
 
-	public void setTable(int table) {
+	public void setTable(Long table) {
 		this.table = table;
 	}
 
