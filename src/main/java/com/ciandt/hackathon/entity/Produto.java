@@ -22,7 +22,7 @@ public class Produto {
 	}
 
 	public void setNome(String name) {
-		this.nome = name; 
+		this.nome = name;  
 	}
 
 	public double getPreco() {
