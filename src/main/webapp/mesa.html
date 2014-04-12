@@ -27,51 +27,79 @@
 </head>
 
 <body>
-
-	<!-- Produto balao -->
-
-	<div class="navbar navbar-inverse navbar-fixed-top"
-		data-role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Make a wish</a>
-			</div>
-			<div class="navbar-collapse collapse">
-				<form class="navbar-form navbar-right" data-role="form"></form>
-			</div>
-			<!--/.navbar-collapse -->
+    
+    <!-- Produto balao -->
+   
+    <div class="navbar navbar-inverse navbar-fixed-top" data-role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Make a wish</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" data-role="form">
+            <a href="/" class="btn btn-default">Voltar</a>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+   <div data-bind="foreach: produtos">
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+      	<div class="row">
+	        <div class="col-md-6">
+		        <div id="primeiro" class="container ribbon">
+		        	<h3 class="ranking-position">1</h3>
+		        	<h3 class="ranking-table">Mesa <span data-bind="text: posicao1"></span></h3>
+		        </div>
+		        
+		        <div id="segundo" class="container ribbon">
+		        	<h3 class="ranking-position">2</h3>
+		        	<h3 class="ranking-table">Mesa <span data-bind="text: posicao2"></span></h3>
+		        </div>
+		        
+			   <div id="terceiro" class="container ribbon">
+		        	<h3 class="ranking-position">3</h3>
+		        	<h3 class="ranking-table">Mesa <span data-bind="text: posicao3"></span></h3>
+		        </div>
+		        
+		        <div id="primeiro" class="container ribbon-you">
+		        	<h3 class="ranking-position">5</h3>
+		        	<h3 class="ranking-table"></h3>
+		        </div>
+	        </div>
+	        <div class="col-md-6">
+	        <h2 data-bind="text: nome"></h2>
+	        	<img class="product-img border-rouded" src="/teste.jpg" data-bind="attr: { src: urlImagem, title: nome }" />
+	        </div>
+	 	 </div>      
 		</div>
 	</div>
 	
+	<!-- Produto balao -->
 
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-	<div class="jumbotron" data-bind="foreach: produtos">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<h2 data-bind="text: nome"></h2>
-					<h3>Ranking</h3>
-					<div class="container ribbon" data-bind="foreach ranking">
-						<p></p>
-						<br />
-						<h3>2 mesa <span data-bind="text mesa"></span></h3>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<h2>
-						<img class="product-img img-rounded" alt="baloes"
-							src="/static/img/baloes-personalizados.jpg"
-							data-bind="attr: {src: urlImagem}">
-					</h2>
-				</div>
+	<div class="container action-bar">
+		<div class="row">
+			<div class="col-md-4" >
+				<h3>R$ <span data-bind="text: valor"></span></h3>
 			</div>
+			<div class="col-md-4 text-center" >
+				<h3> PONTOS <span data-bind="text: peso"></span> </h3>
+			</div>
+			
+			<div class="col-md-4 text-right">
+				<div class="form-group" style="margin-top:6px">
+		   		<button type="submit" class="btn btn-lg btn-success">COMPRAR</button>
+		   		</div>
+		    </div>
 		</div>
+	</div>
 	</div>
 
 
@@ -81,8 +109,7 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
 	<!-- Latest compiled and minified JavaScript -->
-	<script
-		src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js"></script>
 	<script src="static/js/MasterController.js"></script>
 	<script src="static/js/MesaController.js"></script>

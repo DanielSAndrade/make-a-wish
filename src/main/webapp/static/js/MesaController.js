@@ -68,16 +68,19 @@ function MesaController() {
 	},
 
 	self.loadProdutosCallback = function(jsonResponse) {
-		for (var i = 0; i < jsonResponse.length; i++) {
+		/*for (var i = 0; i < jsonResponse.length; i++) {
 			jsonResponse[i].ranking = new ko.observableArray([]);
 			var r = self.obterRankingItem(jsonResponse[i].id);
 			
 			for(var j = 0; j < r.length; r++){
 				jsonResponse[i].ranking().push(r[j]);
 			}
-		}
+		}*/
+		for(var i = 0; i < jsonResponse.length; i++)
+			{
+			self.produtos().push(jsonResponse[i]);
+			}
 		
-		self.produtos().pushRange(jsonResponse);
 	}
 
 	self.obterRankingItem = function(numero) {

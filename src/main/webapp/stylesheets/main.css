@@ -2,7 +2,7 @@ body {
 	font-family: 'Ubuntu', sans-serif;
 }
 
-h1,h2,h3,h4 {
+h1,h2,h3,h4,h5,h6 {
 	font-family: 'Ubuntu', sans-serif;
 }
 
@@ -11,7 +11,28 @@ h1,h2,h3,h4 {
 }
 
 .ribbon {
+	margin-top: 20px;
 	background-image: url("/static/img/ribbon.png");
 	background-repeat: no-repeat;
-	height: 130px;
+	height: 80px;
+	vertical-align: middle;
+}
+
+.ribbon-you {
+	margin-top: 20px;
+	background-image: url("/static/img/ribbon-you.png");
+	background-repeat: no-repeat;
+	height: 80px;
+	vertical-align: middle;
+}
+
+.ranking-position {
+	margin-top:25px;
+	margin-left: 18px;
+	float: left;	
+}
+
+.ranking-table {
+	margin-top:25px;
+	margin-left: 70px;
 }
