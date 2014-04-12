@@ -12,14 +12,17 @@ public class ProdutoDAO {
 
 	public List<Produto> listarProdutos() {
 		
-		if (produtos == null || produtos.isEmpty()){
-			
-			produtos = criarListaInicial();
-		}
+		checkcInicializado();
 		
 		return produtos;
 		
 	}
+
+    private void checkcInicializado() {
+        if (produtos == null || produtos.isEmpty()){
+			produtos = criarListaInicial();
+		}
+    }
 
 	private ArrayList<Produto> criarListaInicial() {
 		ArrayList<Produto> produtos = new ArrayList<Produto>();
@@ -27,15 +30,17 @@ public class ProdutoDAO {
 		Produto produto1 = new Produto();
 		produto1.setDescricao("Balao comemorativo do evento mais esperado do ano!");
 		produto1.setCategoria(CategoriaEnum.BALOES);
-		produto1.setNome("Balao Comemorativo");
-		produto1.setPontos(1000);
-		produto1.setPreco(2000);
+		produto1.setFoto("/static/assets/balaomagico");
+		produto1.setNome("Historia");
+		produto1.setPontos(10);
+		produto1.setPreco(45);
 		
 		produtos.add(produto1);
 
 		Produto produto2 = new Produto();
-		produto1.setDescricao("Livro sobre a historia do Google");
+		produto2.setDescricao("Livro sobre a historia do Google");
 		produto2.setCategoria(CategoriaEnum.LIVRO);
+		produto2.setFoto("/static/assets/googlebook");
 		produto2.setNome("Livro do Google");
 		produto2.setPontos(5);
 		produto2.setPreco(20);
@@ -43,17 +48,19 @@ public class ProdutoDAO {
 		produtos.add(produto2);
 		
 		Produto produto3 = new Produto();
-		produto1.setDescricao("Livro Um sonho para recomeçar");
+		produto3.setDescricao("Livro Poder dos sonhos");
 		produto3.setCategoria(CategoriaEnum.LIVRO);
-		produto3.setNome("Livro dos sonhos");
+		produto3.setFoto("/static/assets/podersonhos");
+		produto3.setNome("Livro sonhos");
 		produto3.setPontos(5);
 		produto3.setPreco(20);
 		
 		produtos.add(produto3);
 		
 		Produto produto4 = new Produto();
-		produto1.setDescricao("Livro A vida por Daniel Andrade");
+		produto4.setDescricao("Livro A vida por Daniel Andrade");
 		produto4.setCategoria(CategoriaEnum.LIVRO);
+		produto4.setFoto("/static/assets/daniel");
 		produto4.setNome("Livro Pensamentos");
 		produto4.setPontos(5);
 		produto4.setPreco(20);
@@ -83,26 +90,34 @@ public class ProdutoDAO {
 		Produto sonho = new Produto();
 		sonho.setDescricao("Sonho conhecer minha amigas virtuais");
 		sonho.setCategoria(CategoriaEnum.ADOTE_UM_SONHO);
-		sonho.setFoto("/static/assets/sonho2.jpg");
+		sonho.setFoto("/static/assets/dreambook.jpg");
 		sonho.setNome("Um mundo distante");
 		sonho.setPontos(10);
 		sonho.setPreco(25);
 		
-		produtos.add(produto2);
+		produtos.add(sonho);
 		return produtos;
 	}
 
     public Produto findById(String produto) {
         
-        
-        // TODO Auto-generated method stub
-        Produto produto2 = new Produto();
-        produto2.setPontos(10);
-        return produto2;
+        checkcInicializado();
+
+        for (Produto produtoAtual : produtos) {
+            if (produtoAtual.getNome().equals(produto)) {
+                return produtoAtual;
+            }
+        }
+        return null;
     }
 
     public void darBaixa(String produto) {
         
+        for (Produto produtoAtual : produtos) {
+            if (produtoAtual.getNome().equals(produto)) {
+                 produtoAtual.setDisponivel(Boolean.FALSE);
+            }
+        }
     }
 	
 }

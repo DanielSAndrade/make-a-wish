@@ -38,8 +38,8 @@ public class CompraService {
         
         produtoDAO.darBaixa(produto);
         
-        mesaDAO.addPontos(mesa, pontos);
-
+        mesaDAO.addCompra(mesa, comprado);
+        
     }
 
 }

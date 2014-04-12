@@ -3,7 +3,9 @@ package com.ciandt.hackathon.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Mesa;
+import com.ciandt.hackathon.entity.Produto;
 import com.ciandt.hackathon.utils.MesasMocker;
 
 public class MesaDAO {
@@ -38,11 +40,16 @@ public class MesaDAO {
         return mesas;
     }
 
-    public void adicionarMesa(Mesa mesa) {
-    	mesas.add(mesa);
-    }
-    
-    public void addPontos(String mesa, long pontos) {
+    public void addCompra(String mesa, Produto produto) {
+        
+        for (Mesa mesaAtual : mesas) {
+            if(mesaAtual.equals(mesa)) {
+                Compra compraEfetuada = new Compra();
+                compraEfetuada.getProdutos().add(produto);
+                mesaAtual.adicionarCompraEfetuada(compraEfetuada);;
+            }
+            
+        }
         
     }
 	
