@@ -12,6 +12,12 @@ public class Badge {
 	private String nome;
 	private Long pontuacao;
 	
+	public Badge(String nome, Long pontuacao) {
+		super();
+		this.nome = nome;
+		this.pontuacao = pontuacao;
+	}
+	
 	public Long getId() {
 		return id;
 	}

@@ -25,6 +25,14 @@ public class Sonho {
 	private String crianca;
 
 	private Boolean comprado;
+		
+	public Sonho(String nome, String descricao, String crianca, Boolean comprado) {
+		super();
+		this.nome = nome;
+		this.descricao = descricao;
+		this.crianca = crianca;
+		this.comprado = comprado;
+	}
 
 	public Long getId() {
 		return id;
