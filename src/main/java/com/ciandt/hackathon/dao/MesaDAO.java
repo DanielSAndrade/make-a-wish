@@ -8,10 +8,11 @@ import com.ciandt.hackathon.entity.Medalha;
 import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Pessoa;
 import com.ciandt.hackathon.entity.Produto;
-import com.ciandt.hackathon.enums.CategoriaEnum;
 
 public class MesaDAO {
 
+	private Mesa mesa;
+	
 	public List<Mesa> listarRanking() {
 		
 		List<Produto> produtos = new ProdutoDAO().listarProdutos();
@@ -44,7 +45,8 @@ public class MesaDAO {
 		pessoas.add(carlos);
 		pessoas.add(daniel);
 		
-		mesa.setPessoas(pessoas);
+		mesa.adicionarPessoa(carlos);
+		mesa.adicionarPessoa(daniel);
 		
 		List<Mesa> mesas = new ArrayList<Mesa>();
 		mesas.add(mesa);
@@ -54,6 +56,7 @@ public class MesaDAO {
 	}
 	
 	public void adicionaPessoa(Pessoa pessoa) {
+		mesa.adicionarPessoa(pessoa);
 	}
 	
 }
