@@ -11,7 +11,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.MesaDAO;
 import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.Mesa;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -22,11 +24,13 @@ import com.google.inject.Singleton;
 public class CommonResource {
 
 	private final GreetingDAO greetingDAO;
-
+	private final MesaDAO mesaDAO;
+	
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO) {
+	public CommonResource(GreetingDAO greetingDAO, MesaDAO mesaDAO) {
 		super();
 		this.greetingDAO = greetingDAO;
+		this.mesaDAO = mesaDAO;
 	}
 
 	@GET
@@ -36,4 +40,9 @@ public class CommonResource {
 		return listGreetings;
 	}
 
+	@GET
+	@Path("/listmesas")
+	public List<Mesa> listMesas(@Context HttpServletRequest request) {
+		return mesaDAO.findAll();
+	}
 }
