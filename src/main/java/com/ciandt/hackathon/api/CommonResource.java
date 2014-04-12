@@ -14,12 +14,13 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.TableDAO;
 import com.ciandt.hackathon.dao.WishDAO;
-import com.ciandt.hackathon.entity.Greeting;
-import com.ciandt.hackathon.entity.Wish;
-import com.ciandt.hackathon.entity.Table;
 import com.ciandt.hackathon.entity.Badge;
 import com.ciandt.hackathon.entity.Donator;
+import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.Table;
+import com.ciandt.hackathon.entity.Wish;
 import com.ciandt.hackathon.entity.Wish.Status;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -36,15 +37,17 @@ public class CommonResource {
 
 	private final GreetingDAO greetingDAO;
 	private final WishDAO wishDAO;
+	private final TableDAO tableDAO;
 	
 	@Inject
 	private Logger log;
 
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO, WishDAO wishDAO) {
+	public CommonResource(GreetingDAO greetingDAO, WishDAO wishDAO, TableDAO tableDao) {
 		super();
 		this.greetingDAO = greetingDAO;
 		this.wishDAO = wishDAO; 
+		this.tableDAO = tableDao;
 	}
 
 	@GET
@@ -248,6 +251,15 @@ public class CommonResource {
 		Table t = null; 
 		return t; 
 	}
+	
+	@GET
+	@Path("/listTables")
+	public List<Table> listTables(@Context HttpServletRequest request) {
+		List<Table> listTables = tableDAO.findTables();
+		return listTables;
+	}
+
+	
 //
 //	@GET 
 //	@Path("/tableBadges")
