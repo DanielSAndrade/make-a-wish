@@ -8,16 +8,24 @@ public class Sonho {
 
 	@Id
 	private Long id;
-	
+
 	private String foto;
-	
+
 	private String descricao;
-	
-	private Long idCrianca;
-	
+
+	private Crianca crianca;
+
 	private Float valor;
-	
+
 	private Long idTipoDoacao;
+
+	
+	public Sonho(){}
+	
+	public Sonho(Crianca crianca, String descricao) {
+		this.crianca = crianca;
+		this.descricao = descricao;
+	}
 
 	public Long getId() {
 		return id;
@@ -43,14 +51,6 @@ public class Sonho {
 		this.descricao = descricao;
 	}
 
-	public Long getIdCrianca() {
-		return idCrianca;
-	}
-
-	public void setIdCrianca(Long idCrianca) {
-		this.idCrianca = idCrianca;
-	}
-
 	public Float getValor() {
 		return valor;
 	}
@@ -66,6 +66,13 @@ public class Sonho {
 	public void setIdTipoDoacao(Long idTipoDoacao) {
 		this.idTipoDoacao = idTipoDoacao;
 	}
-	
-	
+
+	public Crianca getCrianca() {
+		return crianca;
+	}
+
+	public void setCrianca(Crianca crianca) {
+		this.crianca = crianca;
+	}
+
 }
