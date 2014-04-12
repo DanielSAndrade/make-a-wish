@@ -19,7 +19,6 @@ function MesaController() {
 	},
 
 	self.loadMesasCallback = function(jsonResponse) {
-		alert('retorno');
 		for (var i = 0; i < jsonResponse.length; i++) {
 			self.mesas().push(jsonResponse[i]);
 		}
@@ -33,7 +32,10 @@ function MesaController() {
 			peso : 50,
 			valor : 50,
 			nome : "Balão",
-			urlImagem : "/static/img/baloes-personalizados.jpg"
+			urlImagem : "/static/img/baloes-personalizados.jpg",
+			posicao1: "10",
+			posicao2: "8",
+			posicao3: "2"
 		};
 
 		var produto2 = {
@@ -41,7 +43,10 @@ function MesaController() {
 			peso : 200,
 			valor : 50,
 			nome : "Sonho",
-			urlImagem : "/static/img/sonho.jpg"
+			urlImagem : "/static/img/sonho.jpg",
+			posicao1: "10",
+			posicao2: "8",
+			posicao3: "2"
 		};
 
 		var produto3 = {
@@ -49,7 +54,10 @@ function MesaController() {
 			peso : 100,
 			valor : 50,
 			nome : "Livro",
-			urlImagem : "/static/img/livros.jpg"
+			urlImagem : "/static/img/livros.jpg",
+			posicao1: "10",
+			posicao2: "8",
+			posicao3: "2"
 		};
 		var produtos = [];
 		produtos.push(produto1);
@@ -61,14 +69,16 @@ function MesaController() {
 
 	self.loadProdutosCallback = function(jsonResponse) {
 		for (var i = 0; i < jsonResponse.length; i++) {
-			jsonResponse.ranking = ko.observableArray([]);
-			var rankingItem = self.obterRankingItem(jsonResponse[i].id);
-
-			jsonResponse.ranking().pushRange(rankingItem);
-			self.produtos().push(jsonResponse[i]);
+			jsonResponse[i].ranking = new ko.observableArray([]);
+			var r = self.obterRankingItem(jsonResponse[i].id);
+			
+			for(var j = 0; j < r.length; r++){
+				jsonResponse[i].ranking().push(r[j]);
+			}
 		}
+		
+		self.produtos().pushRange(jsonResponse);
 	}
-	
 
 	self.obterRankingItem = function(numero) {
 		var item1 = {
