@@ -15,10 +15,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.MesaDAO;
 import com.ciandt.hackathon.dao.ParticipanteDAO;
 import com.ciandt.hackathon.entity.Badge;
 import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Participante;
 import com.ciandt.hackathon.entity.Produto;
 import com.google.inject.Inject;
@@ -34,12 +36,15 @@ public class CommonResource {
 	
 	private final ParticipanteDAO participanteDAO;
 	
+	private final MesaDAO mesaDAO;
+	
 
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO, ParticipanteDAO participanteDAO) {
+	public CommonResource(GreetingDAO greetingDAO, ParticipanteDAO participanteDAO, MesaDAO mesaDAO) {
 		super();
 		this.greetingDAO = greetingDAO;
 		this.participanteDAO = participanteDAO;
+		this.mesaDAO = mesaDAO;
 	}
 
 	@GET
@@ -65,9 +70,9 @@ public class CommonResource {
 	
 	@GET
 	@Path("/rankingMesaGeral")
-	public List<Greeting> rankingMesaGeral(@Context HttpServletRequest request) {
-		List<Greeting> listGreetings = greetingDAO.findGreetings();
-		return listGreetings;
+	public List<Mesa> rankingMesaGeral(@Context HttpServletRequest request) {
+		List<Mesa> listMesa = mesaDAO.findMesas();
+		return listMesa;
 	}
 
 	@GET
@@ -100,8 +105,8 @@ public class CommonResource {
 	}
 	
 	@GET
-	@Path("/carga-inical-participante")
-	public Response test(@Context HttpServletRequest request) {
+	@Path("/carga-inicial-participante")
+	public Response cargaInicialParticipante(@Context HttpServletRequest request) {
 		List<Participante> participantes = participanteDAO.findParticipantes();
 		if(participantes.isEmpty()){
 			List<Participante> listaParticipante = new ArrayList<Participante>();
@@ -137,10 +142,43 @@ public class CommonResource {
 		}else{
 			return Response.ok("Carga já realizada").build();
 		}
+	}
+
+	@GET
+	@Path("/carga-inicial-mesa")
+	public Response cargaInicialMesa(@Context HttpServletRequest request) {
+		List<Participante> participantes = participanteDAO.findParticipantes();
+		List<Mesa> mesas = mesaDAO.findMesas();
+		if(mesas.isEmpty()){
+			if(participantes.isEmpty()){
+				cargaInicialParticipante(null);
+			}
+			mesas = new ArrayList<>();
+			Random randomRankMesa = new Random();
+			for (int i=0; i<participantes.size();i++) {
+				Random randomMesa = new Random();
+				Mesa mesa = new Mesa();
+				mesa.setDelta(randomMesa.nextInt(3));
+				mesa.setNome("Mesa");
+				mesa.setRank(randomRankMesa.nextInt(10));
+				mesa.setUrlImagem("/static/img/mesas/mesa.jpg");
+				for(int j=0;j<5;j++){
+					mesa.getListaIdParticipantes().add(participantes.get(i).getId());
+					i++;
+				}
+				mesaDAO.insert(mesa);
+				mesas.add(mesa);
+			}
+			
+			return Response.ok("Carga realizada com sucesso").build();
+		}else{
+			return Response.ok("Carga já realizada").build();
+		}
 		
 		
 		
 	}
+	
 
 
 }
