@@ -8,7 +8,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 @Entity
-public class Participante {
+public class Mesa {
 
 	@Id
 	private Long id;
@@ -18,7 +18,8 @@ public class Participante {
 	private Integer delta;
 	private String urlImagem;
 	
-	private List<Badge> badge = new ArrayList<>();
+	
+	private List<Long> listaIdParticipantes = new ArrayList<>();
 	
 	public Long getId() {
 		return id;
@@ -44,17 +45,19 @@ public class Participante {
 	public void setUrlImagem(String urlImagem) {
 		this.urlImagem = urlImagem;
 	}
-	public List<Badge> getBadge() {
-		return badge;
-	}
-	public void setBadge(List<Badge> badge) {
-		this.badge = badge;
-	}
+	
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	public List<Long> getListaIdParticipantes() {
+		return listaIdParticipantes;
+	}
+	public void setListaIdParticipantes(List<Long> listaIdParticipantes) {
+		this.listaIdParticipantes = listaIdParticipantes;
+	}
+	
 
 }
