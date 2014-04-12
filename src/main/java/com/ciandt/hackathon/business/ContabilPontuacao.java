@@ -1,6 +1,7 @@
-package com.ciandt.hackathon.business.pontuacao;
+package com.ciandt.hackathon.business;
 
 import com.ciandt.hackathon.dao.CompraDAO;
+import com.ciandt.hackathon.dao.PontuacaoDAO;
 import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Pontuacao;
 import com.google.inject.Inject;
@@ -11,6 +12,10 @@ public class ContabilPontuacao {
 
 	@Inject
 	CompraDAO compraDAO;
+	@Inject
+	PontuacaoDAO pontuacaoDAO;
+	@Inject
+	ContabilBadge contabilBadge;
 
 	public void efetuaCompra(Compra compra) {
 		if (compra.getItem() != null) {
@@ -36,14 +41,14 @@ public class ContabilPontuacao {
 		if (compra.getAprovada()) {
 			if (!(compra.getPessoa() != null)) {
 				//Pega a pontuacao da mesa
-				Pontuacao pontuacao = new Pontuacao();
+				Pontuacao pontuacao = (Pontuacao) pontuacaoDAO.findPontuacaoPorMesa(compra.getPessoa().getMesa());
 				if(pontuacao == null){
 					pontuacao = new Pontuacao();
 					pontuacao.setMesa(compra.getPessoa().getMesa());
 					pontuacao.setNumeroPontos(0l);
 				}
 				pontuacao.setNumeroPontos(compra.getNumeroPontos());
-				
+				contabilBadge.calcularBadge(pontuacao);
 			}else{
 				throw new IllegalArgumentException("Compra sem pessoa! Nao pode ser efetivada");
 			}
