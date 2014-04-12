@@ -40,6 +40,9 @@ public class GuestbookServlet extends HttpServlet {
 		// read compras
 		List<Compras> compras = comprasDao.findCompras();
 		req.setAttribute("compras", compras);
+		req.setAttribute("topMesas", getTopMesas(compras));
+		req.setAttribute("topCompradores", getTopCompradores(compras));
+		
 		req.setAttribute("comprasSize", compras.size());
 		logger.info("Putting " + compras.size() + " compras in memory");
 
