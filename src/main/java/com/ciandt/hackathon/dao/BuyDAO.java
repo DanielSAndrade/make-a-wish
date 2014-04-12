@@ -7,11 +7,11 @@ import com.ciandt.hackathon.entity.Table;
 
 public interface BuyDAO {
 	
-	void insertBuy(Product product, Table table);
+	Long insertBuy(Product product, Table table);
 	
-	List<Object> findBuy();
+	Table findTable(String table);
 	
-	List<Object> findByTable(String table);
+	
 	
 	
 

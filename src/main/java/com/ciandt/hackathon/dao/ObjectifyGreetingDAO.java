@@ -18,7 +18,8 @@ import com.googlecode.objectify.Key;
 public class ObjectifyGreetingDAO implements GreetingDAO {
 	
 	@Inject
-	private Logger log;
+	private Logger log;	
+
 	
 	@Override
 	public List<Greeting> findGreetings() {
