@@ -34,11 +34,16 @@ public class SignGuestbookServlet extends HttpServlet {
 
         String produto = req.getParameter("produto");
         String valor = req.getParameter("valor");
+        String comprador = req.getParameter("comprador");
+        
         if (produto == null) {
         	produto = "Viagem";
         }
         if (valor == null) {
         	valor = "20.000";
+        }
+        if(comprador == null){
+        	comprador = "Pedro";
         }
         if (user == null) {
         	resp.sendRedirect("/_ah/login?continue=%2Fcompras");
@@ -46,7 +51,7 @@ public class SignGuestbookServlet extends HttpServlet {
         
         Date date = new Date();
         Double valorDouble = new Double(valor);
-        Compras compras = new Compras(user, produto, date, valorDouble);
+        Compras compras = new Compras(user, produto, date, valorDouble, comprador);
         dao.insert(compras);
         
         resp.sendRedirect("/compras");
