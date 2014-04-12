@@ -10,9 +10,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ParticipanteDAO;
+import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Greeting;
 import com.ciandt.hackathon.entity.Participante;
 import com.google.inject.Inject;
@@ -73,9 +75,24 @@ public class CommonResource {
 
 	@POST
 	@Path("/compra")
-	public List<Greeting> compra(@Context HttpServletRequest request) {
-		List<Greeting> listGreetings = greetingDAO.findGreetings();
-		return listGreetings;
+	public Response compra(@Context HttpServletRequest request) {
+		
+		String idProduto = (String)request.getAttribute("idProduto");
+		String valorCompra = (String)request.getAttribute("valor");
+		String idParticipante = (String)request.getAttribute("idParticipante");
+		
+		
+		if (idProduto != null && valorCompra != null && idParticipante != null){
+			System.out.println("Criando nova compra");
+			
+			Compra compra = new Compra();
+			
+			
+		}else{
+			System.err.println("##############Parametros nulos");
+		}
+		
+		return Response.ok("OK").build();
 	}
 
 
