@@ -30,6 +30,8 @@ public class MesaDAO {
 		
 		Mesa mesa = new Mesa();
 		
+		mesa.setNome("SmartPhone");
+		
 		List<Compra> comprasEfetuadas = new ArrayList<Compra>();
 
 		Compra compra1 = new Compra();

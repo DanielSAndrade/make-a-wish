@@ -9,8 +9,18 @@ import java.util.List;
  *
  */
 public class Mesa {
-
+    
+    private String nome;
+    
 	private List<Compra> comprasEfetuadas = new ArrayList<Compra>();
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
 	private List<Medalha> medalhas = new ArrayList<Medalha>();
 

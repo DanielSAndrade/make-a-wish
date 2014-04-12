@@ -24,7 +24,7 @@ public class MesaService {
 	/**
 	 * @return
 	 */
-	public List<Ranking> getListagemRanking() {
+	public List<Ranking> listaRanking() {
 		
 		List<Mesa> mesas = mesaDAO.getMesas();
 		
@@ -41,6 +41,7 @@ public class MesaService {
 			ranking.setPosicao(i);
 			ranking.setMesa(mesa);
 			rankingList.add(ranking);
+			System.out.println(mesa.getPontos());
 		}
 		
 		return rankingList;
