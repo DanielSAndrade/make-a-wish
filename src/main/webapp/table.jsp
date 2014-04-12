@@ -23,6 +23,14 @@
 </head>
   <body>
 
+    <c:if test="${userAuthenticated == 'true'}">
+    <p>Table ${nickname} (<a href="${logoutURL}">sign out</a>)</p>
+    </c:if>
+
+    <c:if test="${userAuthenticated == 'false'}">
+    <p><a href="${loginURL}">Sign in</a></p>
+    </c:if>
+
     <h1>Table</h1>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
