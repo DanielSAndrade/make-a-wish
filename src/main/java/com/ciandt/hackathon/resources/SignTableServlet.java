@@ -1,5 +1,6 @@
 package com.ciandt.hackathon.resources;
 
+import com.ciandt.hackathon.MyStorage;
 import com.ciandt.hackathon.entity.Table;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -29,8 +30,14 @@ public class SignTableServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String tableNumber = req.getParameter("table");
+        Integer tableId = Integer.valueOf(tableNumber);
         logger.info(tableNumber);
-        Table table = new Table(Integer.valueOf(tableNumber));
+
+        Table table = MyStorage.getInstance().tableMap.get(tableId);
+        if (table == null) {
+            table = new Table(tableId);
+            MyStorage.getInstance().addTable(table);
+        }
         String password = req.getParameter("password");
         if ("123".equals(password)) {
             req.getSession().setAttribute("table", table);

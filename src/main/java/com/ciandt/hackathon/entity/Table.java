@@ -12,21 +12,19 @@ public class Table implements Serializable {
     private Integer number;
     private Long score;
     private Integer level;
-    private Collection<Purchase> purchases;
 
-    public Table(Integer number, Long score, Integer level, Collection<Purchase> purchases) {
+    public Table(Integer number, Long score, Integer level) {
         this.number = number;
         this.score = score;
         this.level = level;
 
-        if (purchases == null) {
-            this.purchases = new ArrayList<>();
-        }
     }
 
     public Table (Integer number){
-        this(number, 0L, 0, null);
+        this(number, 0L, 0);
     }
+
+    public Table(){};
 
     public Integer getNumber() {
         return number;
@@ -52,26 +50,9 @@ public class Table implements Serializable {
         this.level = level;
     }
 
-    public Collection<Purchase> getPurchases() {
-        return purchases;
-    }
-
-    public void setPurchases(Collection<Purchase> purchases) {
-        this.purchases = purchases;
-    }
-
     public Long incrementScore(Long points){
         this.score += points;
         this.level /= 100; // Update level as score goes up by X
         return score;
-    }
-
-    public Long registerPurchase(Purchase purchase, Long points) {
-        purchases.add(purchase);
-        return incrementScore(points);
-    }
-
-    public Long registerPurchase(Purchase purchase) {
-        return registerPurchase(purchase, purchase.getPoints());
     }
 }
