@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="make-a-wish-quarto-tematico">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,12 +10,6 @@
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
     <title>Blog Template for Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="blog.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -33,11 +27,9 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
   </head>
 
-  <body>
-
+  <body ng-controller="RankingController">
 
     <div class="container">
-
 
       <div class="blog-header">
         <h1 class="blog-title">Gala</h1>
@@ -46,168 +38,13 @@
 
       <div class="row">
 
-
-
-
-        <div class="col-sm-3 blog-sidebar">
-          <div class="sidebar-module sidebar-module-inset">
-
-          
-          <!-- Nav tabs -->
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#tables-global" data-toggle="tab">Mesas</a></li>
-  <li><a href="#users-global" data-toggle="tab">Pessoas</a></li>
-  <li><a href="#users-table" data-toggle="tab">Nesta mesa</a></li>
-</ul>
-
-
-<!-- Tab panes -->
-<div class="tab-content">
-  <div class="tab-pane active" id="tables-global">
-    <div class="list-group">
-      <a href="#" class="list-group-item active">
-        <h4 class="list-group-item-heading">Mesa 1</h4>
-        <p class="list-group-item-text">123 pontos</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Mesa 2</h4>
-        <p class="list-group-item-text">123 pontos</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Mesa 3</h4>
-        <p class="list-group-item-text">123 pontos</p>
-      </a>
-    </div>
-  </div>
-
-
-    <div class="tab-pane active" id="users-global">
-    <div class="list-group">
-      <a href="#" class="list-group-item active">
-        <h4 class="list-group-item-heading">Mesa 1</h4>
-        <p class="list-group-item-text">123 pontos</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Mesa 2</h4>
-        <p class="list-group-item-text">123 pontos</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Mesa 3</h4>
-        <p class="list-group-item-text">123 pontos</p>
-      </a>
-    </div>
-    </div>
-
-    <div class="tab-pane active" id="users-table">
-    <div class="list-group">
-      <a href="#" class="list-group-item active">
-        <h4 class="list-group-item-heading">Mesa 1</h4>
-        <p class="list-group-item-text">123 pontos</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Mesa 2</h4>
-        <p class="list-group-item-text">123 pontos</p>
-      </a>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">Mesa 3</h4>
-        <p class="list-group-item-text">123 pontos</p>
-      </a>
-    </div>
-    </div>
-    
-          </div>
+        <div class="col-sm-3">
+					<div ng-include="'sidebar.html'"></div>
         </div><!-- /.blog-sidebar -->
 
-        <div class="col-sm-8 col-sm-offset-1 blog-main">
-
-<h2>Produtos</h2>
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-
-</div>
-
-
-
-<h2>Leilão</h2>
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-
-</div>
-
-
-<h2>Sonhos</h2>
-<div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="http://placehold.it/200x200" alt="...">
-    </a>
-  </div>
-
-</div>
-
-
-          
-
-          <ul class="pager">
-            <li><a href="#">Previous</a></li>
-            <li><a href="#">Next</a></li>
-          </ul>
-
-        </div><!-- /.blog-main -->
-
+        <div class="col-sm-8 col-sm-offset-1 produtos-main">
+					<div ng-include="'products.html'"></div>
+				</div>
 
       </div><!-- /.row -->
 
