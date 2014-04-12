@@ -44,6 +44,29 @@ public class ObjectifyWishDAO implements WishDAO {
 	}
 	
 	@Override
+	public List<Wish> findWishes(String table, Wish.Status status) {
+		log.info("Finding all wishes");
+		
+		//checks if the greetings are in the cache
+		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		@SuppressWarnings("unchecked")
+		List<Wish> wishes = (List<Wish>) syncCache.get( "WISHES" );
+		
+		if (wishes == null) {
+			log.info("Not found in cache");
+			wishes = ofy().load().type(Wish.class).filter("tableName !=", table).filter("status = ", status).list();
+		} else {
+			log.info("Using cache!");
+		}
+		
+	    if (wishes != null) {
+	    	log.info("Returning " + wishes.size() + " wishes");
+	    }
+	    return wishes;
+	}
+	
+	@Override
 	public List<Wish> findWishes(String table) {
 		log.info("Finding all wishes");
 		
@@ -77,6 +100,36 @@ public class ObjectifyWishDAO implements WishDAO {
 		
 		Key<Wish> key = ofy().save().entity(wish).now();
 		return key.getId();
+		
+	}
+	
+	public void markAsIntended( Wish wish ) {
+		log.info("Mark as intended a wish");
+		
+		//invalidates the cache
+		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		syncCache.delete( "WISHES" );
+		
+		wish.setStatus(Wish.Status.INTENDED);
+		ofy().save().entity(wish).now();
+		
+	}
+	
+	public void unmarkAsIntended( String table ) {
+		log.info("Mark as intended a wish");
+		
+		//invalidates the cache
+		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		syncCache.delete( "WISHES" );
+		
+		List<Wish> wishList = findWishes(table);
+		
+		for (Wish wish : wishList) {
+			wish.setStatus(Wish.Status.AVAILABLE);
+			ofy().save().entity(wish).now();
+		}
 		
 	}
 	
