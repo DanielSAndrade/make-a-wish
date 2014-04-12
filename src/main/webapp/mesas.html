@@ -71,8 +71,7 @@
 	<footer id="popAquisicao" class="row"
 		style="
     background-color: rgba(19, 187, 5, 0.4);
-    height: 75px; 
-">
+    height: 75px;">
 	<div class="large-12 columns" style="">
 		
 	</div>
@@ -80,4 +79,17 @@
 	<div class="large-12 columns"></div>
 	</footer>
 </body>
+
+<script>
+$(function() {
+	$.ajax({
+		  type: "GET",
+		  url: "/api/mesas",
+		  success: function(data) {
+			  console.log(data);
+		  }
+		});	
+});
+
+</script>
 </html>
