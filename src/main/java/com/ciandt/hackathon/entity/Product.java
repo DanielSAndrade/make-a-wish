@@ -1,3 +1,4 @@
+
 package com.ciandt.hackathon.entity;
 
 import com.googlecode.objectify.annotation.Entity;
@@ -45,12 +46,8 @@ public class Product {
 	public Integer getPoints() {
 		return points;
 	}
-	public void setPoints(Integer prize) {
-		this.points = prize;
+	public void setPoints(Integer points) {
+		this.points = points;
 	}
-	
-	
-	
-	
 
 }

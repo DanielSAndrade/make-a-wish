@@ -6,7 +6,9 @@ import com.ciandt.hackathon.api.CommonResource;
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyProductDAO;
+import com.ciandt.hackathon.dao.ObjectifyUserDAO;
 import com.ciandt.hackathon.dao.ProductDAO;
+import com.ciandt.hackathon.dao.UserDAO;
 import com.ciandt.hackathon.resources.GuestbookServlet;
 import com.ciandt.hackathon.resources.PurchaseServlet;
 import com.ciandt.hackathon.resources.SetupServlet;
@@ -33,6 +35,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 				bind(ProductDAO.class).to(ObjectifyProductDAO.class);
+				bind(UserDAO.class).to(ObjectifyUserDAO.class);
 		    }
 			
 		});
