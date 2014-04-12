@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Collection;
 
 import com.ciandt.hackathon.entity.Badge;
-import com.ciandt.hackathon.entity.Product;
 import com.ciandt.hackathon.entity.PurchaseProduct;
 import com.ciandt.hackathon.entity.Table;
 import com.ciandt.hackathon.entity.User;
@@ -22,7 +21,6 @@ public class GamificationService {
 		for (User user : users) {
 			
 			Collection<PurchaseProduct> products = user.getProducts();
-			BigDecimal totalAmount = new BigDecimal(0);
 			for (PurchaseProduct product : products) {
 				
 				
