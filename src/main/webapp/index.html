@@ -199,8 +199,25 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <script src="static/js/docs.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    </body>
-    </html>
+    <script>
+        $(function() {
+        	$("#comprar").click(function() {
+        		$.ajax({
+        			url: "/comprar",
+        			type: "POST",
+        			data: $("#formComprar").serialize()
+        		});
+        	});
+        });
+    </script>
+  <form action="/comprar" method="post" id="formComprar">
+    <input type="text" id="codProduto" name="codProduto"/>
+    <input type="text" id="numeroDaMesa" name="numeroDaMesa"/>
+
+    <span id="comprar">dasda</span>
+  </form>
+</body>
+</html>
