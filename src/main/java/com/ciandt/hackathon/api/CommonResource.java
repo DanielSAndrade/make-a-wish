@@ -12,6 +12,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.WishDAO;
+
 import com.ciandt.hackathon.entity.Greeting;
 
 import com.ciandt.hackathon.entity.Wish;
@@ -36,11 +38,13 @@ public class CommonResource {
 	
 
 	private final GreetingDAO greetingDAO;
+	private final WishDAO wishDAO; 
 
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO) {
+	public CommonResource(GreetingDAO greetingDAO, WishDAO wishDAO) {
 		super();
 		this.greetingDAO = greetingDAO;
+		this.wishDAO = wishDAO; 
 	}
 
 	@GET
@@ -129,23 +133,13 @@ public class CommonResource {
 	}
 
 	@GET 
-	@Path("/topTables")
-	public List<Table> topTables(@Context HttpServletRequest request) {
-		// retornar a lista de mesas que estao com a maior pontuacao, recebendo como parametro a quantidade 
-		// de mesas que deve retornar ... se nao receber nenhum parametro retorna a lista inteira ordenada
-		// por quem mais tem pontuacao
-		List<Table> tableList = null; 
-		return tableList; 
-	}
-
-	@GET 
 	@Path("/topBadges")
 	public List<Badge> topBadges(@Context HttpServletRequest request) {
 		// retornar a lista de badges que mais tem pontuacao / mais foram ganhos ate o momento 
 		// a lista de retorno deve ser ordenada para trazer os top badges primeiro
 		// se receber um parametro ele indica a quantidade de TOP Badges que deve ser retornado
 		List<Badge> badgeList = null; 
-		return tbadgeList; 
+		return badgeList; 
 	}
 
 	@GET 
@@ -165,23 +159,21 @@ public class CommonResource {
 		return t; 
 	}
 
-	@GET 
-	@Path("/tableBadges")
-	public List<Badge> tableBadges(@Context HttpServletRequest request) {
-		// retornar a lista de badges de uma mesa especifica
-		// recebe como parametro a mesa para retornar o badge
-		List<Badge> badgeList = null; 
-		return tbadgeList; 
-	}
+//	@GET
+//	@Path("/tableBadges")
+//	public List<Badge> tableBadges(@Context HttpServletRequest request) {
+//		// retornar a lista de badges de uma mesa especifica
+//		// recebe como parametro a mesa para retornar o badge
+//		List<Badge> badgeList = null; 
+//		return badgeList; 
+//	}
 	
-	@GET 
-	@Path("")
-	public Wish getRealizedWish((@Context HttpServletRequest request) {
-		// retorna um wish que ja foi realizado
-		Wish w = null; 
-		return w; 
-	}
-	
-	
+//	@GET 
+//	@Path("/realizedWish")
+//	public Wish getRealizedWish((@Context HttpServletRequest request) {
+//		// retorna um wish que ja foi realizado
+//		Wish w = null; 
+//		return w; 
+//	}
 	
 }
