@@ -11,3 +11,15 @@
 .product-item .qtd-control {
     font-size: 17px;
 }
+
+.product-item .product-info {
+    padding-left: 30px;
+    height: 150px;
+}
+
+.page-top span {
+    float: right;
+    margin-top: 70px;
+    color: #a1a1a1;
+    text-shadow: 3px 1px 2px rgba(150, 150, 150, 1);
+}
