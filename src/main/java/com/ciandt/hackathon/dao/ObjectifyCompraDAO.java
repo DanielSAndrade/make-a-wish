@@ -28,7 +28,7 @@ public class ObjectifyCompraDAO implements CompraDAO {
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
 		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 		@SuppressWarnings("unchecked")
-		List<Compra> Compras = (List<Compra>) syncCache.get( "Compras" );
+		List<Compra> Compras = (List<Compra>) syncCache.get( "COMPRAS" );
 		
 		if (Compras == null) {
 			log.info("Not found in cache");
@@ -50,7 +50,7 @@ public class ObjectifyCompraDAO implements CompraDAO {
 		//invalidates the cache
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
 		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-		syncCache.delete( "CompraS" );
+		syncCache.delete( "COMPRAS" );
 		
 		Key<Compra> key = ofy().save().entity(Compra).now();
 		return key.getId();
