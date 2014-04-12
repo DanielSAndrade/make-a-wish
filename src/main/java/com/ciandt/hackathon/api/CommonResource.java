@@ -37,6 +37,7 @@ public class CommonResource {
 	
 
 	private final GreetingDAO greetingDAO;
+	private final WishDAO wishDAO;
 
 	@Inject
 	public CommonResource(GreetingDAO greetingDAO, WishDAO wishDAO) {
@@ -60,7 +61,6 @@ public class CommonResource {
 		
 		Wish.Status status = Wish.Status.AVAILABLE;
 		String tableName = request.getParameter(TABLE);
-		String category = request.getParameter(CATEGORY);
 		
 		if (tableName != null) {
 				//busca por mesa
