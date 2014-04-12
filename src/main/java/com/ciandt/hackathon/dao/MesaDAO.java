@@ -28,5 +28,10 @@ public class MesaDAO {
 		return mesas;
 		
 	}
+
+    public void addPontos(String mesa, long pontos) {
+        // TODO Auto-generated method stub
+        
+    }
 	
 }

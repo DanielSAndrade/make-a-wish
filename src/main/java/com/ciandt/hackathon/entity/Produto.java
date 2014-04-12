@@ -15,6 +15,8 @@ public class Produto {
 	private double preco;
 
 	private long pontos;
+	
+	private Boolean disponivel;
 
 	public String getNome() {
 		return nome;
@@ -63,5 +65,13 @@ public class Produto {
 	public void setPontos(long pontos) {
 		this.pontos = pontos;
 	}
+
+    public Boolean getDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
+    }
 
 }
