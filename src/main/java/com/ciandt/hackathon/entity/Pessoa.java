@@ -1,6 +1,5 @@
 package com.ciandt.hackathon.entity;
 
-import javax.swing.Spring;
 
 public class Pessoa {
 
@@ -11,7 +10,7 @@ public class Pessoa {
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		Pessoa.nome = nome;
 	}
 
 	public static class adicionapessoa<registrapessoa> {
