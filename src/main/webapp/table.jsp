@@ -46,16 +46,20 @@
     <!-- You can move inline styles (except 'top', 'left', 'width' and 'height') to css file or css block. -->
 		
 	<div>
-		<table>
+		<table width="100%">
 			<tr>
 				<td>
 					<img src="static/img/MAW_logo.png" width="200pn">
 				</td>
+
 				<td>
 					<img src="">
 				</td>
-				<td>
-					Mesa 10
+
+				<td align="right" style="padding-right:30px">
+					<b>
+						Mesa 10
+					</b>
 				</td>
 			</tr>
 		</table>
