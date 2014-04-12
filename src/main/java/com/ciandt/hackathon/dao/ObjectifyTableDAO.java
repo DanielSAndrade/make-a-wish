@@ -24,21 +24,7 @@ public class ObjectifyTableDAO implements TableDAO {
 	public List<Table> findTables() {
 		log.info("Finding all tables");
 		
-		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
-		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-		@SuppressWarnings("unchecked")
-		List<Table> tables = (List<Table>) syncCache.get( "table" );
-		
-		if (tables == null) {
-			log.info("Not found in cache");
-			tables = ofy().load().type(Table.class).list();
-		} else {
-			log.info("Using cache!");
-		}
-		
-	    if (tables != null) {
-	    	log.info("Returning " + tables.size() + " tables");
-	    }
+		List<Table> tables = (List<Table>) ofy().load().type(Table.class).list();
 	    return tables;
 	}
 	

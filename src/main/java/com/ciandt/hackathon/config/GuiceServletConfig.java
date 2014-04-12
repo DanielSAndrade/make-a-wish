@@ -3,11 +3,15 @@ package com.ciandt.hackathon.config;
 import java.util.logging.Logger;
 
 import com.ciandt.hackathon.api.CommonResource;
+import com.ciandt.hackathon.dao.BadgeDAO;
 import com.ciandt.hackathon.dao.DonatorDAO;
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.ObjectifyBadgeDAO;
 import com.ciandt.hackathon.dao.ObjectifyDonatorDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
+import com.ciandt.hackathon.dao.ObjectifyTableDAO;
 import com.ciandt.hackathon.dao.ObjectifyWishDAO;
+import com.ciandt.hackathon.dao.TableDAO;
 import com.ciandt.hackathon.dao.WishDAO;
 import com.ciandt.hackathon.resources.GuestbookServlet;
 import com.ciandt.hackathon.resources.PopulateTablesServlet;
@@ -31,11 +35,13 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				serve("/guestbook").with(GuestbookServlet.class);
 				serve("/sign").with(SignGuestbookServlet.class);
 				serve("/populateWishes").with(PopulateWishesServlet.class);
-//				serve("/populateTables").with(PopulateTablesServlet.class);
+				serve("/populateTables").with(PopulateTablesServlet.class);
 				bind(CommonResource.class);
-				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
-				bind(WishDAO.class).to(ObjectifyWishDAO.class);
+				bind(BadgeDAO.class).to(ObjectifyBadgeDAO.class);
 				bind(DonatorDAO.class).to(ObjectifyDonatorDAO.class);
+				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
+				bind(TableDAO.class).to(ObjectifyTableDAO.class);
+				bind(WishDAO.class).to(ObjectifyWishDAO.class);
 		    }
 			
 		});
