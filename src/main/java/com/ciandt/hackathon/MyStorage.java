@@ -34,10 +34,10 @@ public class MyStorage {
 
         try {
             addProduct(new Product(1L,10.0, 10L, "Produto 1", Product.Category.OTHER, new URL("http://goo.gl/C6jQes"), new URL("http://goo.gl/C6jQes")));
-            addProduct(new Product(2L,20.0, 20L, "Produto 2", Product.Category.OTHER, new URL("http://goo.gl/C6jQes"), new URL("http://goo.gl/C6jQes")));
-            addProduct(new Product(3L,30.0, 30L, "Produto 3", Product.Category.OTHER, new URL("http://goo.gl/C6jQes"), new URL("http://goo.gl/C6jQes")));
-            addProduct(new Product(4L,15.0, 14L, "Produto 4", Product.Category.OTHER, new URL("http://goo.gl/C6jQes"), new URL("http://goo.gl/C6jQes")));
-            addProduct(new Product(5L,1.99, 1L, "Produto 5", Product.Category.OTHER, new URL("http://goo.gl/C6jQes"), new URL("http://goo.gl/C6jQes")));
+            addProduct(new Product(2L,20.0, 20L, "Produto 2", Product.Category.OTHER, new URL("http://goo.gl/jht2Fo"), new URL("http://goo.gl/jht2Fo")));
+            addProduct(new Product(3L,30.0, 30L, "Produto 3", Product.Category.OTHER, new URL("http://goo.gl/ljqpLh"), new URL("http://goo.gl/ljqpLh")));
+            addProduct(new Product(4L,15.0, 14L, "Produto 4", Product.Category.OTHER, new URL("http://goo.gl/e75c6B"), new URL("http://goo.gl/e75c6B")));
+            addProduct(new Product(5L,1.99, 1L, "Produto 5", Product.Category.OTHER, new URL("http://goo.gl/Yg3fJf"), new URL("http://goo.gl/Yg3fJf")));
         } catch (MalformedURLException e) {
             throw new RuntimeException("ops");
         }
