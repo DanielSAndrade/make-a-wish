@@ -12,4 +12,8 @@ public interface ParticipanteDAO {
 
 	void delete(Participante participante);
 
+	Participante find(Long id);
+
+	void update(Participante participante);
+
 }

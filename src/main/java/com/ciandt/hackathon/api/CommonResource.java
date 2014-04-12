@@ -73,6 +73,11 @@ public class CommonResource {
 	@Path("/rankingParticipante")
 	public List<Participante> rankingParticipante(@Context HttpServletRequest request) {
 		List<Participante> listParticipantes = participanteDAO.findParticipantes();
+		for (Participante participante : listParticipantes) {
+			//compraDAO.
+			
+			
+		}
 		return listParticipantes;
 	}
 	
@@ -106,10 +111,14 @@ public class CommonResource {
 			compra.setUrlImagem("");
 			compra.setIdProduto(Long.valueOf(idProduto));
 			compra.setIdMesa(Long.valueOf(idMesa));
-
+			
 			compraDAO.insert(compra);
-
 			System.out.println("COMPRA inserida !!");
+			
+			Participante participante = participanteDAO.find(Long.valueOf(idParticipante));
+			participante.setRank(participante.getRank() + 10);
+			
+			participanteDAO.update(participante);
 
 		} else {
 			System.err.println("##############Parametros nulos");
