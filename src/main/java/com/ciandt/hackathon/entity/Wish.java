@@ -7,7 +7,7 @@ import com.googlecode.objectify.annotation.Id;
 public class Wish {
 	
 	@Id
-	private int id;
+	private Long id;
 	private String childName;
 	private int childAge;
 	private String disease;
@@ -26,12 +26,19 @@ public class Wish {
 	public Wish() {
 
 	}
+	
+	public Wish(String childName, int childAge, String disease, String wish) {
+		setChildName(childName);
+		setChildAge(childAge); 
+		setDisease(disease);
+		setWish(wish); 
+	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
