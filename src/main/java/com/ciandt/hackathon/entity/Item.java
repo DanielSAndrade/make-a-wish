@@ -12,6 +12,10 @@ public class Item {
 
 	private Double preco;
 
+	private String descricao;
+
+	private String path;
+
 	@Id
 	public Long getId() {
 		return id;
@@ -34,6 +38,26 @@ public class Item {
 	}
 
 	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
 

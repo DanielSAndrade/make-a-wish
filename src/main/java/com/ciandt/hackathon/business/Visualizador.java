@@ -23,14 +23,14 @@ public class Visualizador {
 	private Map<Class<?>, List<?>> cacheList = new HashMap<Class<?>, List<?>>();
 
 	public List<Item> findItens() {
-		if (this.cacheList.containsKey(Item.class)) {
+		if (!this.cacheList.containsKey(Item.class)) {
 			this.cacheList.put(Item.class, this.itemDAO.findItens());
 		}
 		return (List<Item>) this.cacheList.get(Item.class);
 	}
 
 	public List<Pontuacao> findPontuacoes() {
-		if (this.cacheList.containsKey(Pontuacao.class)) {
+		if (!this.cacheList.containsKey(Pontuacao.class)) {
 			this.cacheList.put(Pontuacao.class, this.pontuacaoDAO.findPontuacoes());
 		}
 		return (List<Pontuacao>) this.cacheList.get(Pontuacao.class);
