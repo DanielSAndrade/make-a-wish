@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -18,63 +19,75 @@ body {
 }
 </style>
 <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://d7mj4aqfscim2.cloudfront.net/proxy/css2/1432716e7692f2d96877ff8f486cdfe7_mv_1432716e7692f2d96877ff8f486cdfe7.min.css">
 <link rel="stylesheet" href="../static/css/main.css">
+
 
 <script src="../static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 <body>
 
-	<form action="/comprarSonho" method="post">
 
-		<!-- Single button -->
-		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown">
-				Mesas: <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<c:forEach var="mesa" items="${mesas}">
-					<li><input type="hidden" id="idMesa" value="${mesa.id}"/><a href="#">${mesa.nome}</a></li>
-				</c:forEach>
-			</ul>
-		</div><br/>
+	<div id="topbar">
+		<header class="topbar  topbar-blue">
+			<div class="container">
+				<div class="topbar-nav">
+					<ul class="topbar-nav-main">
+						<li id="home-nav" ><a style="font-size: 45px;" href="/">Evento Gala</a></li>
+					</ul>
+				</div>
+			
+			</div>
+		</header>
+	</div>
 
-		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" onselect="/carregaParticipantes">
-				Participantes: <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<c:forEach var="part" items="${mesa.participantes}">
-					<li><input type="hidden" id="idParticipante" value="${part.id}"/><a href="#">${part.nome}</a></li>
-				</c:forEach>
-			</ul>
-		</div><br/>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="container">
 
-		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle"
-				data-toggle="dropdown" onselect="/carregaParticipantes">
-				Catálogo: <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<c:forEach var="sonho" items="${sonhos}">
-					<li><input type="hidden" id="idSonho" value="${sonho.id}"/><a href="#">${sonho.descricao}</a></li>
-				</c:forEach>
-			</ul>
-		</div><br/><br/>
+		<form role="form">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Mesa</label> 
+				<select class="form-control">
+					<option value="">Selecione</option>
+				    <option value="1">1 - Mesa Amor</option>
+				    <option value="2">2 - Mesa Esperanca</option>
+				    <option value="3">3 - Mesa Saude</option>
+				    <option value="4">4 - Mesa Fe</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="exampleInputEmail1">Participantes</label> 
+				<select class="form-control">
+					<option value="">Selecione</option>
+				    <option value="1">Jose</option>
+				    <option value="2">Maria</option>
+				    <option value="3">Joao</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="exampleInputEmail1">Produto</label> 
+				<select class="form-control">
+					<option value="">Selecione</option>
+				    <option value="1">Balao</option>
+				    <option value="2">Sonho</option>
+				    <option value="3">Leilao</option>
+				</select>
+			</div>
+			
+			<button type="submit" class="btn btn-default">Comprar</button>
+		</form>
 
-		<div>
-			<button type="button" class="btn btn-default btn-lg">
-				Gravar
-			</button>
-		</div>
+		<hr>
 
-	</form>
-	<hr>
-
-	<footer>
-		<p>&copy; Make a Wish 2014</p>
-	</footer>
+		<footer>
+			<p>&copy; Company 2014</p>
+		</footer>
+	</div>
 	<!-- /container -->
 
 	<script
@@ -90,3 +103,4 @@ body {
 	<script src="../static/js/main.js"></script>
 </body>
 </html>
+
