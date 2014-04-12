@@ -14,17 +14,21 @@ public class ProdutoDAO {
 		return produtos;
 	}
 
-	public Produto findByName(String name) {
+	public Produto buscarPorNome(String name) {
 		return ofy().load().type(Produto.class).filter("nome", name).first().now();
 	}
 
-	public Long insert(Produto produto) {
+	public Long inserir(Produto produto) {
 		Key<Produto> key = ofy().save().entity(produto).now();
 		return key.getId();
 	}
 
-	public void delete(Produto produto) {
+	public void remover(Produto produto) {
 		ofy().delete().entity(produto).now();
+	}
+	
+	public void removerPorKey(Long produtoId) {
+		ofy().delete().key(Key.create(Produto.class, produtoId));
 	}
 
 }
