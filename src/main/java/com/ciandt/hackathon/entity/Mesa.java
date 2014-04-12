@@ -1,5 +1,6 @@
 package com.ciandt.hackathon.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -47,10 +48,13 @@ public class Mesa {
 		return pessoas;
 	}
 
-	public void setPessoas(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
+	public void adicionarPessoa(Pessoa pessoa) {
+		if (pessoas == null) {
+			pessoas = new ArrayList<Pessoa>();
+		}
+		pessoas.add(pessoa);
 	}
-
+	
 	public List<Medalha> getMedalhas() {
 		return medalhas;
 	}
