@@ -34,6 +34,19 @@
 	</c:forEach>
 </c:if>
 
+<c:if test="${topMesasSize > 0}">
+	<c:forEach var="mesa" items="${topMesas}">
+	<ul>
+	
+		<li>${mesa.name}</li>
+		<li>${mesa.valor}</li>
+		<li>${mesa.poder}</li>
+		<li>${mesa.pontos}</li>
+	</ul>
+	</c:forEach>
+</c:if>
+
+
 
   <form action="/sign" method="post">
     <div><textarea name="produto" rows="3" cols="60"></textarea></div>

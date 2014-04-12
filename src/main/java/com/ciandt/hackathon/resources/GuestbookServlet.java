@@ -85,6 +85,9 @@ public class GuestbookServlet extends HttpServlet {
 	}
 
 	private List<TopTop> getTopMesas(List<Compras> compras) {
+		
+		if(compras.isEmpty())
+			return new ArrayList<>();
 
 		Map<String, TopTop> mapMesas = new HashMap<String, TopTop>();
 
@@ -101,7 +104,7 @@ public class GuestbookServlet extends HttpServlet {
 				tt.setValor(compra.getValor());
 				tt.setPontos(compra.getValor().intValue());
 
-				mapMesas.put(compra.getComprador(), tt);
+				mapMesas.put(compra.getMesa().getNickname(), tt);
 			} else {
 				int pontos = compra.getValor().intValue();
 				tt.setPontos(tt.getPontos() + pontos);
@@ -116,7 +119,7 @@ public class GuestbookServlet extends HttpServlet {
 				tt.setPoder(Poder.nivel3);
 			} else if (tt.getPontos() > 500) {
 				tt.setPoder(Poder.nivel2);
-			} else if (tt.getPontos() > 100) {
+			} else {
 				tt.setPoder(Poder.nivel1);
 			}
 
@@ -128,7 +131,13 @@ public class GuestbookServlet extends HttpServlet {
 		Collections.reverse(list);
 		LinkedList<TopTop> listReturn = new LinkedList<TopTop>();
 
-		for (int i = 0; i < 5; i++) {
+		int size = list.size();
+		
+		if(size > 5){
+			size = 5;
+		}
+		
+		for (int i = 0; i < size; i++) {
 			int valor = list.get(i);
 
 			for (TopTop tt : mapMesas.values()) {
@@ -145,6 +154,9 @@ public class GuestbookServlet extends HttpServlet {
 
 	private List<TopTop> getTopCompradores(List<Compras> compras) {
 
+		if(compras.isEmpty())
+			return new ArrayList<>();
+		
 		Map<String, TopTop> mapCompradores = new HashMap<String, TopTop>();
 
 		List<Integer> list = new ArrayList<Integer>();
@@ -175,7 +187,7 @@ public class GuestbookServlet extends HttpServlet {
 				tt.setPoder(Poder.nivel3);
 			} else if (tt.getPontos() > 500) {
 				tt.setPoder(Poder.nivel2);
-			} else if (tt.getPontos() > 100) {
+			}else {
 				tt.setPoder(Poder.nivel1);
 			}
 
@@ -185,9 +197,13 @@ public class GuestbookServlet extends HttpServlet {
 		Collections.sort(list);
 		Collections.reverse(list);
 		LinkedList<TopTop> listReturn = new LinkedList<TopTop>();
-
-		for (int i = 0; i < 5; i++) {
-			int valor = list.get(i);
+		
+		int size = list.size();
+		if(size > 5){
+			size = 5;
+		}
+		
+		for (int i = 0; i < size; i++) {			int valor = list.get(i);
 
 			for (TopTop tt : mapCompradores.values()) {
 				if (valor == tt.getPontos()) {
