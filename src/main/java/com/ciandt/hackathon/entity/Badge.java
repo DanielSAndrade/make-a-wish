@@ -2,6 +2,10 @@ package com.ciandt.hackathon.entity;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Badge {
 
 	private Long id;
@@ -9,6 +13,7 @@ public class Badge {
 	private Long pontuacaoMinima;
 	private List<Mesa> mesas;
 
+	@Id
 	public Long getId() {
 		return id;
 	}

@@ -12,6 +12,7 @@ import com.ciandt.hackathon.entity.Greeting;
 import com.google.appengine.api.utils.SystemProperty;
 import com.google.inject.Singleton;
 
+
 @Singleton
 public class ConfigureDatabase {
 	

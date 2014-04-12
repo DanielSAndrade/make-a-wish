@@ -1,5 +1,9 @@
 package com.ciandt.hackathon.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Pontuacao {
 
 	private Long id;
@@ -8,6 +12,7 @@ public class Pontuacao {
 
 	private Long numeroPontos;
 
+	@Id
 	public Long getId() {
 		return id;
 	}
