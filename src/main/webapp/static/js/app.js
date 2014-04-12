@@ -17,3 +17,13 @@ function GlobalUsersController($http, $scope) {
         function(response) { console.log(response.status); }
     );
 }
+
+function CompraController( $http, $scope ) {
+
+    $scope.page = 'comprador';
+
+    $scope.selecionaComprador = function() {
+        $scope.page = 'valores';
+    }
+
+}
