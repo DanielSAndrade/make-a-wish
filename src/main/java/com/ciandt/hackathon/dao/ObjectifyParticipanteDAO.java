@@ -62,5 +62,19 @@ public class ObjectifyParticipanteDAO implements ParticipanteDAO {
 		log.info("Deleting a new greeting");
 		ofy().delete().entity(participante).now();
 	}
+	
+	@Override
+	public Participante find(Long id) {
+		return ofy().load().type(Participante.class).id(id).now();
+	}
+	
+	@Override
+	public void update(Participante participante) {
+		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		syncCache.delete( "Participante" );
+		
+		Key<Participante> key = ofy().save().entity(participante).now();
+	}
 
 }
