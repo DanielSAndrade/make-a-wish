@@ -9,7 +9,11 @@ public interface BuyDAO {
 	
 	Long insertBuy(Product product, String tableName);
 	
+	Long inserTable(Table table);
+	
 	Table findTable(String table);
+	
+	
 	
 	
 	

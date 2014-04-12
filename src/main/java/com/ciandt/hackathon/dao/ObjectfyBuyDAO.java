@@ -26,6 +26,9 @@ public class ObjectfyBuyDAO implements BuyDAO {
 
 		// find table
 		Table table = this.findTable(tableName);
+		if(table == null){
+			this.inserTable(table);
+		}
 
 		// invalidates the cache
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
@@ -62,6 +65,18 @@ public class ObjectfyBuyDAO implements BuyDAO {
 		return table;
 	}
 
-	
+	@Override
+	public Long inserTable(Table table) {
+		log.info("Inserting a table");		
+
+		// invalidates the cache
+		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+		syncCache.setErrorHandler(ErrorHandlers
+				.getConsistentLogAndContinue(Level.INFO));
+		syncCache.delete("TABLES");
+		
+		Key<Table> key = ofy().save().entity(table).now();
+		return key.getId();
+	}
 
 }
