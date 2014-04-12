@@ -2,6 +2,7 @@ package com.ciandt.hackathon.api;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
@@ -56,8 +57,21 @@ public class VendaResource {
 	@Path("/listVendas")
 	public List<Venda> listVendas(@Context HttpServletRequest request) {
 		List<Venda> listVendas= vendaDAO.findVendas();
+		listVendas.add(createVendaMock("Livro 1",1.10));
+		listVendas.add(createVendaMock("Livro 2",2.20));
+		listVendas.add(createVendaMock("Livro 3",3.30));
 		return listVendas;
 	}
+	
+	private Venda createVendaMock(String descProduto, Double preco){
+		final Produto produto  = new Produto(descProduto,preco,"Livro");
+		final Long numeroMesa = 1l;
+		final Date dataRegistro = new Date();
+		final Long idComprador = 1l;
+		final Venda venda = new Venda(produto,numeroMesa, dataRegistro, idComprador);
+		return venda;
+	}
+	
 	
 	@GET
 	@Path("/test")
