@@ -278,6 +278,12 @@ public class CommonResource {
 //		return w; 
 //	}
 	
+	@POST
+	@Path("/buyABalloon")
+	public String buyABallon(@Context HttpServletRequest request) {
+	   return "Compra efetivada com sucesso";
+	}
+	
 	
 	
 }
