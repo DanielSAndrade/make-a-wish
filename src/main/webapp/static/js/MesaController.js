@@ -7,6 +7,10 @@ function MesaController() {
 
 	self.mesa = ko.observable('0'),
 
+	self.comprar = function(id){
+		
+	},
+	
 	self.init = function() {
 		self.mesa(GetQueryString('numero'));
 		self.loadMesas();
@@ -33,7 +37,7 @@ function MesaController() {
 			valor : 50,
 			nome : "Balão",
 			urlImagem : "/static/img/baloes-personalizados.jpg",
-			posicao1: "10",
+			posicao1: "1",
 			posicao2: "8",
 			posicao3: "2"
 		};
@@ -43,10 +47,10 @@ function MesaController() {
 			peso : 200,
 			valor : 50,
 			nome : "Sonho",
-			urlImagem : "/static/img/sonho.jpg",
-			posicao1: "10",
-			posicao2: "8",
-			posicao3: "2"
+			urlImagem : "/static/img/sonhos.jpg",
+			posicao1: "2",
+			posicao2: "3",
+			posicao3: "7"
 		};
 
 		var produto3 = {
@@ -55,9 +59,9 @@ function MesaController() {
 			valor : 50,
 			nome : "Livro",
 			urlImagem : "/static/img/livros.jpg",
-			posicao1: "10",
-			posicao2: "8",
-			posicao3: "2"
+			posicao1: "8",
+			posicao2: "4",
+			posicao3: "1"
 		};
 		var produtos = [];
 		produtos.push(produto1);
