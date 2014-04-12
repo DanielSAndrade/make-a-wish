@@ -31,7 +31,7 @@ public class GamificationService {
 		return table;
 	}
 
-	private void analizeBuyAllTypeOfProducts(Table table) {
+	public void analizeBuyAllTypeOfProducts(Table table) {
 		
 		boolean buyAllTypeOfProducts = false;
 		
@@ -58,10 +58,7 @@ public class GamificationService {
 		}
 	}
 
-
-
-
-	private void analizeAllBuyTheSameProducts(Table table) {
+	public void analizeAllBuyTheSameProducts(Table table) {
 		
 		Collection<User> users = table.getUsers();
 		for (ProductType productType : ProductType.values()) {
@@ -89,7 +86,7 @@ public class GamificationService {
 		
 	}
 
-	private Collection<ProductType> getTypeOfProductsPurchased(User user) {
+	public Collection<ProductType> getTypeOfProductsPurchased(User user) {
 		Collection<ProductType> userProductsType = new HashSet<ProductType>();
 		Collection<PurchaseProduct> products = user.getProducts();
 		for (PurchaseProduct purchaseProduct : products) {
@@ -100,7 +97,7 @@ public class GamificationService {
 		return userProductsType;
 	}
 
-	private void convertMoneyToPoints(Table table) {
+	public void convertMoneyToPoints(Table table) {
 		BigDecimal totalPoints = new BigDecimal(0);
 		final Collection<User> users = table.getUsers();
 		for (final User user : users) {
@@ -113,11 +110,30 @@ public class GamificationService {
 				//Converte o valor total gasto em pontos
 				if(product.getPrice() != null){
 					final BigDecimal price = new BigDecimal( product.getPrice() );
-					totalPoints = totalPoints.add( price );
+					final BigDecimal quantity = new BigDecimal( purchaseProduct.getQuantity() );
+					BigDecimal subTotal = new BigDecimal(0);
+					subTotal = price.multiply(quantity);
+					
+					totalPoints = totalPoints.add( subTotal );
 				}
 			}
 		}
 		
-		table.addPoints( totalPoints.intValue() );
+		int points = totalPoints.intValue();
+		table.addPoints( points );
+		
+		//Da badge conforme a pontuação
+		switch (points) {
+		case 300:
+			table.addBadge(Badge.GOLD);
+		case 200:
+			table.addBadge(Badge.SILVER);
+		case 100:
+			table.addBadge(Badge.BRONZE);
+		default:
+			//No-op
+			break;
+		}
+		
 	}
 }

@@ -21,7 +21,6 @@ public class ProductDAOTest extends AbstractTestClass {
 		product.setDescription("Balao 1");
 		product.setImageURL("http://uol.com.br/image/gif");
 		product.setPrice(10.0);
-		product.setPoints(0);
 		product.setProductType(ProductType.BALLONS);
 		
 		dao.insert(product);
