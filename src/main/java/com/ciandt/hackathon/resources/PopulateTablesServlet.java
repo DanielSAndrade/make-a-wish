@@ -25,10 +25,7 @@ public class PopulateTablesServlet extends HttpServlet {
 	private DonatorDAO donatorDao;
 
 
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) {
-    	ObjectifyService.register(Table.class); 
-    	ObjectifyService.register(Donator.class); 
-    	
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) {    	
 		insertTable(new Long(1), "Mesa 1", 12, 1);
 		insertTable(new Long(2), "Mesa 2", 20, 5);
 		insertTable(new Long(3), "Mesa 3", 17, 2);
