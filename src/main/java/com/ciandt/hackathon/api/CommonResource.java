@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -12,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.Wish;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -20,6 +22,13 @@ import com.google.inject.Singleton;
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 @Singleton
 public class CommonResource {
+	
+	//parameters
+	private final static String TABLE = "table";
+	private final static String CATEGORY = "category";
+	private final static String WISH_ID = "wish_id";
+	private final static String WISH_STATUS = "wish_status";
+	
 
 	private final GreetingDAO greetingDAO;
 
@@ -41,7 +50,33 @@ public class CommonResource {
 	public List<Wish> wishList(@Context HttpServletRequest request) {
 		// retornar a lista de wishes nao atendidos ate o momento
 		// recebe opcionalmente a mesa e o tipo do wish que se deseja realizar
-		List<Wish> wishList = null; 
+		
+		Wish.Status status = Wish.Status.AVAILABLE;
+		String tableName = request.getParameter(TABLE);
+		String category = request.getParameter(CATEGORY);
+		
+		if (tableName != null) {
+			if (category != null) {
+				//busca por mesa e categoria
+			}
+			else {
+				//busca por mesa
+			}
+		}
+		else {
+			if (category != null) {
+				//busca somente por categoria
+			}
+		}
+		
+		List<Wish> wishList = null;
+		
+		for (Wish wish : wishList) {
+			wish.setStatus(Wish.Status.INTENDED);
+			wish.setIntendedTable(tableName);
+			//persistir objeto wish
+		}
+		
 		return wishList; 
 	}
 
@@ -50,6 +85,7 @@ public class CommonResource {
 	public List<Wish> wishListRealized(@Context HttpServletRequest request) {
 		// retornar a lista de wishes realizados
 		// recebe como parametro a mesa (para poder ciclar os desejos)  
+		
 		List<Wish> wishList = null; 
 		return wishList; 
 	}
@@ -87,59 +123,59 @@ public class CommonResource {
 		
 	}
 
-	@GET 
-	@Path("/topTables")
-	public List<Table> topTables(@Context HttpServletRequest request) {
-		// retornar a lista de mesas que estao com a maior pontuacao, recebendo como parametro a quantidade 
-		// de mesas que deve retornar ... se nao receber nenhum parametro retorna a lista inteira ordenada
-		// por quem mais tem pontuacao
-		List<Table> tableList = null; 
-		return tableList; 
-	}
-
-	@GET 
-	@Path("/topBadges")
-	public List<Badge> topBadges(@Context HttpServletRequest request) {
-		// retornar a lista de badges que mais tem pontuacao / mais foram ganhos ate o momento 
-		// a lista de retorno deve ser ordenada para trazer os top badges primeiro
-		// se receber um parametro ele indica a quantidade de TOP Badges que deve ser retornado
-		List<Badge> badgeList = null; 
-		return tbadgeList; 
-	}
-
-	@GET 
-	@Path("/lastDonator")
-	public List<Donator> topTables(@Context HttpServletRequest request) {
-		// retornar o ultimo doador / wish doado para ser apresentado no telao 
-		List<Donator> list = null; 
-		return list; 
-	}
-
-	@GET 
-	@Path("/table")
-	public Table tableInfo(@Context HttpServletRequest request) {
-		// retorna a informacao detalhada sobre uma mesa
-		// recebe como parametro a mesa
-		Table t = null; 
-		return t; 
-	}
-
-	@GET 
-	@Path("/tableBadges")
-	public List<Badge> tableBadges(@Context HttpServletRequest request) {
-		// retornar a lista de badges de uma mesa especifica
-		// recebe como parametro a mesa para retornar o badge
-		List<Badge> badgeList = null; 
-		return tbadgeList; 
-	}
-	
-	@GET 
-	@Path("")
-	public Wish getRealizedWish((@Context HttpServletRequest request) {
-		// retorna um wish que ja foi realizado
-		Wish w = null; 
-		return w; 
-	}
+//	@GET 
+//	@Path("/topTables")
+//	public List<Table> topTables(@Context HttpServletRequest request) {
+//		// retornar a lista de mesas que estao com a maior pontuacao, recebendo como parametro a quantidade 
+//		// de mesas que deve retornar ... se nao receber nenhum parametro retorna a lista inteira ordenada
+//		// por quem mais tem pontuacao
+//		List<Table> tableList = null; 
+//		return tableList; 
+//	}
+//
+//	@GET 
+//	@Path("/topBadges")
+//	public List<Badge> topBadges(@Context HttpServletRequest request) {
+//		// retornar a lista de badges que mais tem pontuacao / mais foram ganhos ate o momento 
+//		// a lista de retorno deve ser ordenada para trazer os top badges primeiro
+//		// se receber um parametro ele indica a quantidade de TOP Badges que deve ser retornado
+//		List<Badge> badgeList = null; 
+//		return tbadgeList; 
+//	}
+//
+//	@GET 
+//	@Path("/lastDonator")
+//	public List<Donator> topTables(@Context HttpServletRequest request) {
+//		// retornar o ultimo doador / wish doado para ser apresentado no telao 
+//		List<Donator> list = null; 
+//		return list; 
+//	}
+//
+//	@GET 
+//	@Path("/table")
+//	public Table tableInfo(@Context HttpServletRequest request) {
+//		// retorna a informacao detalhada sobre uma mesa
+//		// recebe como parametro a mesa
+//		Table t = null; 
+//		return t; 
+//	}
+//
+//	@GET 
+//	@Path("/tableBadges")
+//	public List<Badge> tableBadges(@Context HttpServletRequest request) {
+//		// retornar a lista de badges de uma mesa especifica
+//		// recebe como parametro a mesa para retornar o badge
+//		List<Badge> badgeList = null; 
+//		return tbadgeList; 
+//	}
+//	
+//	@GET 
+//	@Path("")
+//	public Wish getRealizedWish((@Context HttpServletRequest request) {
+//		// retorna um wish que ja foi realizado
+//		Wish w = null; 
+//		return w; 
+//	}
 	
 	
 	

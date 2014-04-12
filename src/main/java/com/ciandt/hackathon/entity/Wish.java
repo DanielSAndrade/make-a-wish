@@ -12,8 +12,16 @@ public class Wish {
 	private int childAge;
 	private String disease;
 	private String wish;
-	private int status;
+	private Status status;
+	private String intendedTable;
 	private int donator; 
+	
+	public enum Status {
+		REALIZED,
+		AVAILABLE,
+		PRESENTED,
+		INTENDED
+	}
 	
 	public Wish() {
 
@@ -58,15 +66,30 @@ public class Wish {
 	public void setWish(String wish) {
 		this.wish = wish;
 	}
-
-	public int getStatus() {
+	
+	public String getStatusString() {
+		return status.name();
+	}
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
+		this.status = Status.valueOf(status);
+	}
+
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
+	public String getIntendedTable() {
+		return intendedTable;
+	}
+	
+	public void setIntendedTable(String intendedTable) {
+		this.intendedTable = intendedTable;
+	}
+	
 	public int getDonator() {
 		return donator;
 	}
