@@ -2,6 +2,7 @@ package com.ciandt.hackathon.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
@@ -15,7 +16,9 @@ public class Table {
 	private int points;
 	
 	private Collection<Long> userIds;
+	private Collection<User> users;
 	private Collection<Badge> badges;
+	
 	
 	public Long getId() {
 		return id;
@@ -32,18 +35,14 @@ public class Table {
 	public int getPoints() {
 		return points;
 	}
-	public void setPoints(int points) {
-		this.points = points;
-	}
-	public Collection<Badge> getBadge() {
+	public Collection<Badge> getBadges() {
 		return badges;
 	}
-	public void setBadges(Collection<Badge> badges) {
-		this.badges = badges;
-	}
-	
 	public Collection<User> getUsers() {
-		return new ArrayList<User>(); //FIXME
+		return users;
+	}
+	public void setUsers(Collection<User> users) {
+		this.users = users;
 	}
 	
 	public Collection<Long> getUserIds() {
@@ -53,4 +52,19 @@ public class Table {
 	public void setUserIds(Collection<Long> userIds) {
 		this.userIds = userIds;
 	}
+	
+	public void addPoints(int points){
+		this.points += points;
+	}
+	
+	public void addBadge(Badge badge){
+		if(badge != null){
+			if(this.badges == null){
+				this.badges = new HashSet<Badge>();
+			}
+			
+			this.badges.add(badge);
+		}
+	}
+	
 }

@@ -3,7 +3,6 @@ package com.ciandt.hackathon.resources;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +14,7 @@ import com.ciandt.hackathon.dao.UserDAO;
 import com.ciandt.hackathon.entity.Product;
 import com.ciandt.hackathon.entity.Table;
 import com.ciandt.hackathon.entity.User;
+import com.ciandt.hackathon.entity.ProductType;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 

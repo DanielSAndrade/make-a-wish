@@ -10,12 +10,20 @@ public class User {
 
 	@Id
 	private Long id;
-	
+	private Table table;
 	private Long tableId;
-	
 	private Collection<PurchaseProduct> products;
-	
 	private Collection<Long> purchaseProductIds;
+	
+	public User(){
+		//No-op
+	}
+	
+	public User(Long id, Table table, Collection<PurchaseProduct> products){
+		this.id = id;
+		this.table = table;
+		this.products = products;
+	}
 	
 	public Long getId() {
 		return id;
@@ -23,7 +31,12 @@ public class User {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	public Table getTable() {
+		return table;
+	}
+	public void setTable(Table table) {
+		this.table = table;
+	}
 	public Collection<PurchaseProduct> getProducts() {
 		return products;
 	}
@@ -44,7 +57,4 @@ public class User {
 	public void setTableId(Long tableId) {
 		this.tableId = tableId;
 	}
-	
-	
-	
 }

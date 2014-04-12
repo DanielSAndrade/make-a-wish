@@ -2,8 +2,10 @@ package com.ciandt.hackathon.entity;
 
 public enum Badge {
 
-	CORACAO_OURO,
-	CORACAO_PRATA,
-	CORACAO_BRONZE;
+	GOLD,
+	SILVER,
+	BRONZE,
+	ALL_BUY_THE_SEME_PRODUCT,
+	BUY_ALL_TYPE_OF_PRODUCTS;
 	
 }
