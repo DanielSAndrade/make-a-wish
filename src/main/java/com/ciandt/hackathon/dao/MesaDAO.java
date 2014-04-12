@@ -12,5 +12,7 @@ public interface MesaDAO {
 	Long insert(Mesa mesa);
 
 	void delete(Mesa mesa);
+	
+	Mesa find(Long idMesa);
 
 }

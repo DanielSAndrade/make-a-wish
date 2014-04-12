@@ -62,10 +62,11 @@ public class CommonResource {
 	}
 	
 	@GET
-	@Path("/rankingMesa")
-	public List<Greeting> rankingMesa(@Context HttpServletRequest request) {
-		List<Greeting> listGreetings = greetingDAO.findGreetings();
-		return listGreetings;
+	@Path("/rankingMesaParticipante")
+	public List<Participante> rankingMesaParticipante(@Context HttpServletRequest request) {
+		List<Participante> listaParticipantes = participanteDAO.findParticipantes();
+		Long idMesa = Long.parseLong(request.getParameter("idMesa"));
+		return listaParticipantes;
 	}
 	
 	@GET
@@ -95,7 +96,7 @@ public class CommonResource {
 			@FormParam(value = "idParticipante") String idParticipante,
 			@FormParam(value = "idProduto") String idProduto,
 			@FormParam(value = "valor") String valor,
-			@FormParam(value = "idParticipante") String idMesa) {
+			@FormParam(value = "idMesa") String idMesa) {
 
 		if (StringUtils.isNotEmpty(idProduto) && StringUtils.isNotEmpty(valor)
 				&& StringUtils.isNotEmpty(idParticipante)) {

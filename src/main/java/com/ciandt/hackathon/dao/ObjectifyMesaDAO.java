@@ -64,4 +64,9 @@ public class ObjectifyMesaDAO implements MesaDAO {
 		ofy().delete().entity(mesa).now();
 	}
 
+	@Override
+	public Mesa find(Long idMesa) {		
+		return  ofy().load().type(Mesa.class).id(idMesa).now();
+	}
+
 }
