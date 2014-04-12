@@ -9,9 +9,9 @@
     
     <script language="JavaScript">
     	function detalhar(idProduto) {
-        	documento.getElementById("idProduto").value=idProduto;
-        	form.action="/produto/detalhe";
-        	form.submit();
+        	document.getElementById("idProduto").value=idProduto;
+        	document.produtos.action="/produto/detalhe";
+        	document.produtos.submit();
         }
     </script>
     
@@ -32,7 +32,7 @@
 	</div>
 	<div style="height:50px; overflow-y: scroll;">
 	<form name="produtos" id="produtos">
-		<input name="idProduto" id="idProduto" />
+		<input type="hidden" name="idProduto" id="idProduto" />
 		<table id="catalogo" cols="3">
 			<input type="text"  />
 			<tr>
@@ -43,10 +43,12 @@
 			<tr>
 				<c:forEach var="produto" items="${produtos}">
 					<td>
+						<a href="javascript:detalhar('${produto.nome}');">
 						<div class="produto">
-							<p><a href="javascript:detalhar('${produto.nome}');">${produto.nome}</a></p>
+							<p>${produto.nome}</p>
 							<img class="produto" src="static/assets/livro.jpg">
 						</div>
+						</a>
 					</td>
 				</c:forEach>
 			</tr>

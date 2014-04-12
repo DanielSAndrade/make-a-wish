@@ -16,7 +16,7 @@
 				<b>${produto.nome}</b>
 			</p>
 			<p>
-				<img alt="${produto.nome}" src="${produto.imagem}">
+				<img alt="${produto.nome}" src="${produto.foto}">
 			</p>
 			Mesa: ${produto.descricao} - Pontos ${produto.pontos} - Pre&ccedil;o <fmt:formatNumber value="${produto.preco}" type="currency" />
 			</b>
