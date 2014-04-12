@@ -5,48 +5,48 @@ var Compras = (function($){
         listarProdutos: function($form) {
             var produtos = [{
                 "nome": "produto 1",
-                "preco": "1",
+                "preco": "R$ 1,00",
                 "imagem" : "https://lh3.ggpht.com/-t9-Xcbo1iuc/TeVHx46GOTI/AAAAAAAAB7o/_2rHHpPZB2c/s1600/baloes-personalizados.jpg"
             },
             {
                 "nome": "produto 2",
-                "preco": "2",
+                "preco": "R$ 2,00",
                 "imagem" : "https://lh3.ggpht.com/-t9-Xcbo1iuc/TeVHx46GOTI/AAAAAAAAB7o/_2rHHpPZB2c/s1600/baloes-personalizados.jpg"
             },
             {
                 "nome": "produto 3",
-                "preco": "3",
+                "preco": "R$ 3,00",
                 "imagem" : "https://lh3.ggpht.com/-t9-Xcbo1iuc/TeVHx46GOTI/AAAAAAAAB7o/_2rHHpPZB2c/s1600/baloes-personalizados.jpg"
             },
             {
                 "nome": "produto 4",
-                "preco": "4",
+                "preco": "R$ 4,00",
                 "imagem" : "https://lh3.ggpht.com/-t9-Xcbo1iuc/TeVHx46GOTI/AAAAAAAAB7o/_2rHHpPZB2c/s1600/baloes-personalizados.jpg"
             },
             {
                 "nome": "produto 5",
-                "preco": "5",
+                "preco": "R$ 5,00",
                 "imagem" : "https://lh3.ggpht.com/-t9-Xcbo1iuc/TeVHx46GOTI/AAAAAAAAB7o/_2rHHpPZB2c/s1600/baloes-personalizados.jpg"
             },
             {
                 "nome": "produto 6",
-                "preco": "6",
+                "preco": "R$ 6,00",
                 "imagem" : "https://lh3.ggpht.com/-t9-Xcbo1iuc/TeVHx46GOTI/AAAAAAAAB7o/_2rHHpPZB2c/s1600/baloes-personalizados.jpg"
             },
             {
                 "nome": "produto 7",
-                "preco": "7",
+                "preco": "R$ 7,00",
                 "imagem" : "https://lh3.ggpht.com/-t9-Xcbo1iuc/TeVHx46GOTI/AAAAAAAAB7o/_2rHHpPZB2c/s1600/baloes-personalizados.jpg"
             },
             {
                 "nome": "produto 8",
-                "preco": "8",
+                "preco": "R$ 8,00",
                 "imagem" : "https://lh3.ggpht.com/-t9-Xcbo1iuc/TeVHx46GOTI/AAAAAAAAB7o/_2rHHpPZB2c/s1600/baloes-personalizados.jpg"
             }];
            
             var $carrossel = $("#carouselInner");
             console.log("Antes do for");
-            var limiteCarrossel = 3;
+            var limiteCarrossel = 1;
             for(var i = 0; i < limiteCarrossel && i < produtos.length; i++) {
                 var $itemCarrossel = $("<div />", {'class':'item'});
                 var $imagemProduto = $("<img />", {
@@ -97,11 +97,12 @@ var Compras = (function($){
                     "role": "button",
                     "data-mesa": "",
                     "data-produto": "",
+                    "text" : "Comprar"
                 });
 
                 $divProdutoMenor.append($imgProdutoMenor);
-                $divProdutoMenor.append("<h2>Heading</h2>");
-                $divProdutoMenor.append("<p>bla bla bla </p>");
+                $divProdutoMenor.append("<h2>"+produtos[i].nome+"</h2>");
+                $divProdutoMenor.append("<p>"+produtos[i].preco+"</p>");
                 $divProdutoMenor.append($btnProdutoMenor);
                 $divRowProdutoMenor.append($divProdutoMenor);
             }
