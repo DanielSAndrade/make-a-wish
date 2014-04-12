@@ -58,7 +58,7 @@
 
 				<td align="right" style="padding-right:30px">
 					<b>
-						Mesa 10
+						Mesa ${nickname}
 					</b>
 				</td>
 			</tr>
