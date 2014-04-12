@@ -14,6 +14,21 @@ public class Product {
 	private Long weight;
 	private Long value;
 	
+	
+	
+	
+	public Product() {
+		super();		
+	}
+	public Product(Long id, String description, String name, Long weight,
+			Long value) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.name = name;
+		this.weight = weight;
+		this.value = value;
+	}
 	public Long getId() {
 		return id;
 	}

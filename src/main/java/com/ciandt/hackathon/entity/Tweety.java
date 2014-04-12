@@ -6,6 +6,23 @@ public class Tweety {
 	private String message;
 	private String table;
 	
+	public Tweety(){
+		super();
+	}
+	
+	
+	
+	
+	public Tweety(Long id, String message, String table) {
+		super();
+		this.id = id;
+		this.message = message;
+		this.table = table;
+	}
+
+
+
+
 	public Long getId() {
 		return id;
 	}

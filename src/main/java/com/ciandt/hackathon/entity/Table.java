@@ -11,8 +11,20 @@ public class Table {
 	@Id
 	private String name;
 	private String description;
+	private Long score;
 	private List<Product> salesList;
 	
+	public Table(){
+		super();
+	}
+	
+	public Table(String name, String description, Long score, List<Product> salesList) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.salesList = salesList;
+		this.score = score;
+	}
 	public String getName() {
 		return name;
 	}
@@ -32,6 +44,15 @@ public class Table {
 	public void setSalesList(List<Product> salesList) {
 		this.salesList = salesList;
 	}
+
+	public Long getScore() {
+		return score;
+	}
+
+	public void setScore(Long score) {
+		this.score = score;
+	}
+	
 	
 	
 	
