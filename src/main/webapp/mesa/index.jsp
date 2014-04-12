@@ -19,56 +19,124 @@ body {
 }
 </style>
 <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="https://d7mj4aqfscim2.cloudfront.net/proxy/css2/1432716e7692f2d96877ff8f486cdfe7_mv_1432716e7692f2d96877ff8f486cdfe7.min.css">
 <link rel="stylesheet" href="../static/css/main.css">
+
 
 <script src="../static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+
+
+	<div id="topbar">
+		<header class="topbar  topbar-blue">
+			<div class="container">
+
+
+
+				<div class="topbar-nav">
+					<ul class="topbar-nav-main">
+						<li id="home-nav" ><a style="font-size: 45px;" href="/">Evento Gala</a></li>
+					</ul>
+				</div>
+				
+				<div class="topbar-right">
+					<ul class="topbar-nav-main">
+						<li id="home-nav"><a href="/">Mesas</a></li>
+						<li id="stream-nav"><a href="/activity_stream">Ranking</a></li>
+					</ul>
+				</div>
 			</div>
-		</div>
+		</header>
 	</div>
 
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-	<div class="jumbotron">
-
-		http://www.makeawish.org.br/imgs/mediabox/doe.jpg</div>
-
+	<br>
+	<br>
+	<br>
+	<br>
 	<div class="container">
 
-		<div class="row">
-		
-			<c:forEach var="sonho" items="${sonhos}">
 
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img data-src="holder.js/300x200" alt="...">
-						<div class="caption">
-							<h3>Thumbnail label</h3>
-							<p>...</p>
-							<p>
-								<a href="#" class="btn btn-primary" role="button">Button</a> <a
-									href="#" class="btn btn-default" role="button">Button</a>
-							</p>
+		<div class="row">
+			<div class="col-sm-8">
+
+				<c:forEach var="sonho" items="${sonhos}">
+
+					<div class="col-sm-6 col-md-6">
+						<div class="thumbnail">
+							<div class="caption">
+								<h3>${sonho.descricao}</h3>
+								<p>${sonho.crianca.nome}</p>
+							</div>
 						</div>
+					</div>
+
+				</c:forEach>
+
+			</div>
+			<div class="col-sm-4">
+
+				<div class="box-colored white">
+					<h2>
+						Ranking da Mesa
+					</h2>
+					<div class="sidebar-progress" style="">
+
+						<ul class="sidebar-stats">
+							<li><span class="icon icon-xp-small"></span> <strong>Baloes</strong></li>
+							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">93</span></strong> Pontos</li>
+						</ul>
+						<ul class="sidebar-stats">
+							<li><span class="icon icon-xp-small"></span> <strong>Livros</strong></li>
+							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">93</span></strong> Pontos</li>
+						</ul>
+					</div>
+					
+					
+					
+					<div class="strenghten-skills-container">
+						<a href="/practice" class="btn btn-primary btn-block btn-strengthen-skills">
+						<span
+							class="strength">
+							<span
+								class="icon icon-practice-small-white"></span></span><span
+							class="skill-icon-strength skill-icon-strength-micro strength-5"></span>
+							Desafios</a>
 					</div>
 				</div>
 
-			</c:forEach>
-		
+				<div class="box-gray">
+					<div id="ranking" class="stream-leaderboard">
+						<h2>Parcipantes</h2>
+						<div id="points-ranking" class="board" style="position: relative;">
+							<ul class="list-leaderboard list-leaderboard-empty">
+								<li class="list-leaderboard-item">
+										<a href="/caio.olive6" class="avatar avatar-small " title="caio.olive6">
+										<img
+										class="lazy"
+										src="https://s3.amazonaws.com/duolingo-images/avatar/default_2/large"
+										data-original="https://duolingo-images.s3.amazonaws.com/avatars/21476613/eH5bTgNub8/large"
+										width="50" height="50"><span class="ring"></span></a>
+									<h5 style="margin-bottom: 5px;">caio.olive6, você está só!</h5>
+								</li>
+							<li class="list-leaderboard-item">
+										<a href="/caio.olive6" class="avatar avatar-small " title="caio.olive6">
+										<img
+										class="lazy"
+										src="https://s3.amazonaws.com/duolingo-images/avatar/default_2/large"
+										data-original="https://duolingo-images.s3.amazonaws.com/avatars/21476613/eH5bTgNub8/large"
+										width="50" height="50"><span class="ring"></span></a>
+									<h5 style="margin-bottom: 5px;">caio.olive6, você está só!</h5>
+								</li>
+							</ul>
+						</div>
+						
+						
+					</div>
+				</div>
+			</div>
 		</div>
-		
-		
-		
+
 		<hr>
 
 		<footer>
@@ -90,3 +158,4 @@ body {
 	<script src="../static/js/main.js"></script>
 </body>
 </html>
+
