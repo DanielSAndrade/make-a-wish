@@ -30,7 +30,7 @@ public class MesaService {
 		
 		List<Ranking> rankingList = new ArrayList<Ranking>();
 
-		Collections.sort((List<Mesa>) mesa, new PontosMesaComparator());
+		Collections.sort((List<Mesa>) mesas, new PontosMesaComparator());
 		
 		int i=0;
 		
