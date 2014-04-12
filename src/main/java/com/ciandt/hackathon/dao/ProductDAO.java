@@ -13,5 +13,7 @@ public interface ProductDAO {
 	public List<Product> findAllProducts();
 	
 	public void insert(Product product);
+	
+	public Product findById(Long id);
 
 }

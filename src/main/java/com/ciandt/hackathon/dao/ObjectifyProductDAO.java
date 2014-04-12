@@ -20,4 +20,8 @@ public class ObjectifyProductDAO implements ProductDAO {
 		ofy().save().entities(product);
 	}
 
+	@Override
+	public Product findById(Long id) {
+		return (Product) ofy().load().filterKey(id);
+	}
 }
