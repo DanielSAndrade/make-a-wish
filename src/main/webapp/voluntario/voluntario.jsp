@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 
 <!DOCTYPE html>
@@ -24,43 +24,52 @@ body {
 </head>
 <body>
 
-	<!-- Single button -->
-	<div class="btn-group">
-		<button type="button" class="btn btn-default dropdown-toggle"
-			data-toggle="dropdown">
-			Mesas: <span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" role="menu">
-			<c:foreach var="${mesa}" items="${mesas}">
-				<li><a href="#">${mesa.nome}</a></li>	
-			</c:foreach>
-		</ul>
-	</div>
-	
-	<div class="btn-group">
-		<button type="button" class="btn btn-default dropdown-toggle"
-			data-toggle="dropdown" onselect="/carregaParticipantes">
-			Participantes: <span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" role="menu">
-			<c:foreach var="${part}" items="${mesa.participantes}">
-				<li><a href="#">${part.nome}</a></li>	
-			</c:foreach>
-		</ul>
-	</div>
-	
-	<div class="btn-group">
-		<button type="button" class="btn btn-default dropdown-toggle"
-			data-toggle="dropdown" onselect="/carregaParticipantes">
-			Catálogo: <span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" role="menu">
-			<c:foreach var="${sonho}" items="${sonhos}">
-				<li><a href="#">${sonho.descricao}</a></li>
-			</c:foreach>
-		</ul>
-	</div>
+	<form action="/comprarSonho" method="post">
 
+		<!-- Single button -->
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown">
+				Mesas: <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<c:foreach var="${mesa}" items="${mesas}">
+					<li><a href="#">${mesa.nome}</a></li>
+				</c:foreach>
+			</ul>
+		</div>
+
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown" onselect="/carregaParticipantes">
+				Participantes: <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<c:foreach var="${part}" items="${mesa.participantes}">
+					<li><a href="#">${part.nome}</a></li>
+				</c:foreach>
+			</ul>
+		</div>
+
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle"
+				data-toggle="dropdown" onselect="/carregaParticipantes">
+				Catálogo: <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<c:foreach var="${sonho}" items="${sonhos}">
+					<li><a href="#">${sonho.descricao}</a></li>
+				</c:foreach>
+			</ul>
+		</div>
+
+		<div>
+			<button type="button" class="btn btn-default btn-lg">
+				Gravar
+			</button>
+		</div>
+
+	</form>
 	<hr>
 
 	<footer>
