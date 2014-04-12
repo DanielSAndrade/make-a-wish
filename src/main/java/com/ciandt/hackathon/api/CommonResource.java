@@ -247,12 +247,12 @@ public class CommonResource {
 					- participante.getDataUltimaCompra();
 			Long diff = ((novaData / 1000) / 60);
 
-			Long disconto = diff / 15;
+			Long desconto = diff / 15;
 			
-			if (disconto > 0){
+			if (desconto > 0){
 				
 				participante.setRank(participante.getRank().intValue()
-						- disconto.intValue());
+						- desconto.intValue());
 				participante.setDelta(2);
 				participanteDAO.update(participante);
 			}
