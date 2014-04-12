@@ -6,12 +6,16 @@ import java.util.Random;
 
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.apache.commons.lang.StringUtils;
 
 import com.ciandt.hackathon.dao.CompraDAO;
 import com.ciandt.hackathon.dao.GreetingDAO;
@@ -79,6 +83,35 @@ public class CommonResource {
 		return listGreetings;
 	}
 
+	@POST
+	@Path("/compra")
+	public Response compra(
+			@FormParam(value = "idParticipante") String idParticipante,
+			@FormParam(value = "idProduto") String idProduto,
+			@FormParam(value = "valor") String valor,
+			@FormParam(value = "idParticipante") String idMesa) {
+
+		if (StringUtils.isNotEmpty(idProduto) && StringUtils.isNotEmpty(valor)
+				&& StringUtils.isNotEmpty(idParticipante)) {
+			System.out.println("Criando nova compra");
+			Compra compra = new Compra();
+			compra.setIdParticipante(Long.valueOf(idParticipante));
+			compra.setUrlImagem("");
+			compra.setIdProduto(Long.valueOf(idProduto));
+			compra.setIdMesa(Long.valueOf(idMesa));
+
+			compraDAO.insert(compra);
+
+			System.out.println("COMPRA inserida !!");
+
+		} else {
+			System.err.println("##############Parametros nulos");
+		}
+
+		return Response.ok("OK").build();
+	}
+
+	
 	@GET
 	@Path("/compras")
 	public List<Compra> compras(@Context HttpServletRequest request) {
@@ -124,9 +157,6 @@ public class CommonResource {
 		}else{
 			return Response.ok("Carga já realizada").build();
 		}
-		
-		
-		
 	}
 
 }

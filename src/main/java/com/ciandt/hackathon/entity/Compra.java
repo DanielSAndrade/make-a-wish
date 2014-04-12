@@ -8,10 +8,12 @@ public class Compra {
 	@Id
 	private Long id;
 
-	private Integer idParticipante;
-	
-	private Integer idProduto;
-	
+	private Long idParticipante;
+
+	private Long idProduto;
+
+	private Long idMesa;
+
 	private String urlImagem;
 
 	public Long getId() {
@@ -30,20 +32,28 @@ public class Compra {
 		this.urlImagem = urlImagem;
 	}
 
-	public Integer getIdParticipante() {
+	public Long getIdParticipante() {
 		return idParticipante;
 	}
 
-	public void setIdParticipante(Integer idParticipante) {
+	public void setIdParticipante(Long idParticipante) {
 		this.idParticipante = idParticipante;
 	}
 
-	public Integer getIdProduto() {
+	public Long getIdProduto() {
 		return idProduto;
 	}
 
-	public void setIdProduto(Integer idProduto) {
+	public void setIdProduto(Long idProduto) {
 		this.idProduto = idProduto;
 	}
-	
+
+	public Long getIdMesa() {
+		return idMesa;
+	}
+
+	public void setIdMesa(Long idMesa) {
+		this.idMesa = idMesa;
+	}
+
 }

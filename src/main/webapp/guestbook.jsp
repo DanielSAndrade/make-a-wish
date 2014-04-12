@@ -35,7 +35,7 @@
 </c:if>
 
 
-  <form action="/efetuarCompra" method="post">
+  <form action="/api/compra" method="post">
     Produto: <input type="text" name="idProduto" /> <br>
     valor: <input type="text" name="valor" /> <br>
     idParticipante: <input type="text" name="idParticipante" /> <br>
