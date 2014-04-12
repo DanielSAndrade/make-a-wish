@@ -34,22 +34,25 @@
 	<form name="produtos" id="produtos">
 		<input type="hidden" name="idProduto" id="idProduto" />
 		<table id="catalogo" cols="3">
-			<input type="text"  />
 			<tr>
 			<th width=33%/>
 			<th width=33%/>
 			<th />
 			</tr>
 			<tr>
-				<c:forEach var="produto" items="${produtos}">
-					<td>
-						<a href="javascript:detalhar('${produto.nome}');">
-						<div class="produto">
-							<p>${produto.nome}</p>
-							<img class="produto" src="static/assets/livro.jpg">
-						</div>
-						</a>
-					</td>
+				<c:forEach var="produto" items="${produtos}" varStatus="posicao">
+						<td>
+							<a href="javascript:detalhar('${produto.nome}');">
+							<div class="produto">
+								<p>${produto.nome}</p>
+								<img class="produto" src="static/assets/livro.jpg">
+							</div>
+							</a>
+						</td>
+					<c:if test="${posicao.index%3 == 2}">
+						</tr>
+						<tr>
+					</c:if>
 				</c:forEach>
 			</tr>
 		</table>
