@@ -1,7 +1,5 @@
 package com.ciandt.hackathon.entity;
 
-import java.util.List;
-
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
@@ -13,7 +11,13 @@ public class Mesa {
 	
 	private String nome;
 	
-	private List<Participante> participantes;
+	public Mesa(){}
+
+	public Mesa(Long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
 
 	public Long getId() {
 		return id;
@@ -31,13 +35,4 @@ public class Mesa {
 		this.nome = nome;
 	}
 
-	public List<Participante> getParticipantes() {
-		return participantes;
-	}
-
-	public void setParticipantes(List<Participante> participantes) {
-		this.participantes = participantes;
-	}
-	
-	
 }

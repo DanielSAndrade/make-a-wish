@@ -12,6 +12,15 @@ public class Participante {
 	private String nome;
 	
 	private Long idMesa;
+	
+	public Participante(){}
+
+	public Participante(Long id, String nome, Long idMesa) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.idMesa = idMesa;
+	}
 
 	public Long getId() {
 		return id;

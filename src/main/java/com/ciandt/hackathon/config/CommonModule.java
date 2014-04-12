@@ -5,9 +5,13 @@ import java.util.Map;
 
 import com.ciandt.hackathon.api.CommonResource;
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.MesaDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
+import com.ciandt.hackathon.dao.ObjectifyMesaDAO;
+import com.ciandt.hackathon.dao.ObjectifyParticipanteDAO;
 import com.ciandt.hackathon.dao.ObjectifyParticipanteDoacaoDAO;
 import com.ciandt.hackathon.dao.ObjectifySonhoDAO;
+import com.ciandt.hackathon.dao.ParticipanteDAO;
 import com.ciandt.hackathon.dao.ParticipanteDoacaoDAO;
 import com.ciandt.hackathon.dao.SonhoDAO;
 import com.google.inject.servlet.ServletModule;
@@ -23,6 +27,8 @@ public class CommonModule extends ServletModule {
 		bind(CommonResource.class);
 		bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 		bind(SonhoDAO.class).to(ObjectifySonhoDAO.class);
+		bind(MesaDAO.class).to(ObjectifyMesaDAO.class);
+		bind(ParticipanteDAO.class).to(ObjectifyParticipanteDAO.class);
 		bind(ParticipanteDoacaoDAO.class).to(ObjectifyParticipanteDoacaoDAO.class);
 		
 		

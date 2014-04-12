@@ -20,7 +20,7 @@ body {
 <link rel="stylesheet" href="../static/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="../static/css/main.css">
 
-<script src="Ã§js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="../static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 <body>
 
@@ -33,11 +33,11 @@ body {
 				Mesas: <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<c:foreach var="${mesa}" items="${mesas}">
+				<c:forEach var="mesa" items="${mesas}">
 					<li><input type="hidden" id="idMesa" value="${mesa.id}"/><a href="#">${mesa.nome}</a></li>
-				</c:foreach>
+				</c:forEach>
 			</ul>
-		</div>
+		</div><br/>
 
 		<div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle"
@@ -45,11 +45,11 @@ body {
 				Participantes: <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<c:foreach var="${part}" items="${mesa.participantes}">
+				<c:forEach var="part" items="${mesa.participantes}">
 					<li><input type="hidden" id="idParticipante" value="${part.id}"/><a href="#">${part.nome}</a></li>
-				</c:foreach>
+				</c:forEach>
 			</ul>
-		</div>
+		</div><br/>
 
 		<div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle"
@@ -57,11 +57,11 @@ body {
 				Catálogo: <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<c:foreach var="${sonho}" items="${sonhos}">
+				<c:forEach var="sonho" items="${sonhos}">
 					<li><input type="hidden" id="idSonho" value="${sonho.id}"/><a href="#">${sonho.descricao}</a></li>
-				</c:foreach>
+				</c:forEach>
 			</ul>
-		</div>
+		</div><br/><br/>
 
 		<div>
 			<button type="button" class="btn btn-default btn-lg">
@@ -75,7 +75,6 @@ body {
 	<footer>
 		<p>&copy; Make a Wish 2014</p>
 	</footer>
-	</div>
 	<!-- /container -->
 
 	<script
