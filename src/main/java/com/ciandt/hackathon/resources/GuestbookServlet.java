@@ -27,8 +27,7 @@ public class GuestbookServlet extends HttpServlet {
 	@Inject
 	private Logger logger;
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException, ServletException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
 		logger.info( "Executing GuestbookServlet" );
 		
