@@ -1,11 +1,11 @@
 package com.ciandt.hackathon.dao;
 
+import static com.ciandt.hackathon.dao.OfyService.ofy;
+
 import java.util.List;
 
 import com.ciandt.hackathon.entity.Sonho;
 import com.googlecode.objectify.Key;
-
-import static com.ciandt.hackathon.dao.OfyService.ofy;
 
 public class ObjectifySonhoDAO implements SonhoDAO {
 
@@ -23,6 +23,11 @@ public class ObjectifySonhoDAO implements SonhoDAO {
 	@Override
 	public void delete(Sonho sonho) {
 		ofy().delete().entity(sonho).now();
+	}
+
+	@Override
+	public Sonho findById(Long id) {
+		 return ofy().load().type(Sonho.class).id(id).now();
 	}
 
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -15,6 +17,7 @@ import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.MesaDAO;
 import com.ciandt.hackathon.dao.ProdutoDao;
 import com.ciandt.hackathon.dao.SonhoDAO;
+import com.ciandt.hackathon.entity.Doador;
 import com.ciandt.hackathon.entity.Greeting;
 import com.ciandt.hackathon.entity.ListaSonhos;
 import com.ciandt.hackathon.entity.Mesa;
@@ -78,4 +81,27 @@ public class CommonResource {
 		
 		return result;
 	}
+	
+	@POST
+	@Path("/adotarsonho/{id}")
+	public ListaSonhos adotarSonho(@Context HttpServletRequest request, @PathParam("id") Long id) {
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser();
+		if (user != null) {
+			Sonho sonho = sonhoDao.findById(id);
+			sonho.setComprado(true);
+			Doador doador = doadorDao.findByEmail(user.getEmail());
+			doador.getSonhos().add(sonho);
+			doadorDao.insert(doador); // atualizando o doador
+			
+			ListaSonhos result = new ListaSonhos();
+			result.setSonhos(sonhoDao.findAll());
+			result.setDoador(doador);
+			
+			return result;
+		}
+		
+		return null;
+	}
+	
 }
