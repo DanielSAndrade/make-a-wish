@@ -9,7 +9,7 @@ public class User {
 	@Id
 	private Long id;
 	private Table table;
-	private Collection<Product> products;
+	private Collection<PurchaseProduct> products;
 	
 	public Long getId() {
 		return id;
@@ -23,10 +23,10 @@ public class User {
 	public void setTable(Table table) {
 		this.table = table;
 	}
-	public Collection<Product> getProducts() {
+	public Collection<PurchaseProduct> getProducts() {
 		return products;
 	}
-	public void setProducts(Collection<Product> products) {
+	public void setProducts(Collection<PurchaseProduct> products) {
 		this.products = products;
 	}
 	

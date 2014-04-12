@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Collection;
 
 import com.ciandt.hackathon.entity.Product;
+import com.ciandt.hackathon.entity.PurchaseProduct;
 import com.ciandt.hackathon.entity.Table;
 import com.ciandt.hackathon.entity.User;
 
@@ -16,14 +17,14 @@ public class GamificationService {
 		Collection<User> users = table.getUsers();
 		for (User user : users) {
 			
-			Collection<Product> products = user.getProducts();
+			Collection<PurchaseProduct> products = user.getProducts();
 			BigDecimal totalAmount = new BigDecimal(0);
-			for (Product product : products) {
+			for (PurchaseProduct product : products) {
 				
 				
 				//Converte o valor total gasto em pontos
-				if(product.getPrice() != null){
-					BigDecimal price = new BigDecimal( product.getPrice() );
+				if(product.getProduct().getPrice() != null){
+					BigDecimal price = new BigDecimal( product.getProduct().getPrice() );
 					totalAmount = totalAmount.add( price );
 				}
 				

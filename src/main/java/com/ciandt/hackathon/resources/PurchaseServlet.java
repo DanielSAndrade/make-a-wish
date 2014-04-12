@@ -30,6 +30,18 @@ public class PurchaseServlet extends HttpServlet {
 
 		req.getRequestDispatcher("/page/purchase.jsp").forward(req, resp);
 	}
+	
+	public void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException, ServletException {
+		
+
+		String listaProdutos = req.getParameter("listaProdutos");
+		
+		listaProdutos.split(";");
+		listaProdutos = "cod,qtd;cod,qtd";
+
+		req.getRequestDispatcher("/page/purchase.jsp").forward(req, resp);
+	}
 
 
 }
