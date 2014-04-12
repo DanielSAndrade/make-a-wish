@@ -63,8 +63,8 @@
 
    <script>
    $(function() {
-      $.get("/whishlist", {}, function(data) {
-         $("#sonhos").html(data);
+      $.get("/wishList", function(json) {
+         $("#sonhos").html(json);
       });
    });
    </script>
