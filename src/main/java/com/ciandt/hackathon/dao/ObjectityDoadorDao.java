@@ -62,4 +62,10 @@ public class ObjectityDoadorDao implements DoadorDao {
 				.list();
 	}
 
+	@Override
+	public Doador findByEmail(String email) {
+		return ofy().load().type(Doador.class).filter("email", email).first()
+				.now();
+	}
+
 }
