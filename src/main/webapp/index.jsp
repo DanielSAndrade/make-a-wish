@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -10,7 +10,6 @@
 
  
 <body>
-    
 <div id="main">
 	<div id="topo">
 		<h1 id="titulo">Adote um Sonho</h1>
@@ -95,7 +94,12 @@
 <div id="menu">
 	<img id=logo src="static/assets/logo.png">
 	<div style="background: #FFF" >
-		<p class="text" style="font-size: 30px;">Mesa: <br>Pontuação: </p>
+		<c:if test="${mesa == Null}">
+			<p class="text" style="font-size: 30px;">Informe uma mesa</p>
+		</c:if>
+		<c:if test="${mesa != Null}">
+			<p class="text" style="font-size: 30px;">Mesa1: ${mesa.nome}<br>Pontuação: ${mesa.pontos}</p>
+		</c:if>
 	</div>
 	
 	<div class="button_big">

@@ -1,24 +1,100 @@
-#basetext,
-#titulo,
-#message
+
+p
 {
   font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
   line-height: 1.38;
   text-decoration: none;
-  text-shadow: 2px 2px 5px #000;
+  text-align:center;
+}
+  
+.text 
+{
   text-align:left;
 }
 
-#titulo {
+h1, h2 {
   font-weight: bold;
-  font-size: 36px;
-  color: #999;
+  text-align: center;
+  font-size: 40px;
+  color: #3b5998;
+  line-height:90%;
+  line-height: 1.38;
+  text-shadow: 2px 2px 5px #000;
+}
+
+h2{ font-size: 35px; }
+
+img{
+	display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+img.produto
+{
+    widht: 120px;
+    height: 120px;
 }
 
 
+div.button_big
+{
+  position:relative;
+  left: 5%;
+  width: 90%;
+  height: 35%;
+  -webkit-box-shadow:1px 1px 5px #000;
+  -moz-box-shadow:1px 1px 5px #000;
+  -o-box-shadow:1px 1px 5px #000;
+  box-shadow:1px 1px 5px #000;
+}
+
+div.produto {
+	position:absolut;
+  	height: 200px;
+  	-webkit-box-shadow:1px 1px 5px #000;
+  	-moz-box-shadow:1px 1px 5px #000;
+  	-o-box-shadow:1px 1px 5px #000;
+ 	box-shadow:1px 1px 5px #000;
+}
+
+#catalogo {
+	table-layout: fixed;
+    position: fixed;
+    left: 1%; 
+    width: 70%;
+    margin-top:0px;
+    padding-top:0px;
+    border-top:0px;
+}
+
+#main,
+#menu
+{
+  position:fixed;
+  -webkit-box-shadow:1px 1px 5px #000;
+  -moz-box-shadow:1px 1px 5px #000;
+  -o-box-shadow:1px 1px 5px #000;
+  box-shadow:1px 1px 5px #000;
+}
+
+#main {
+  left:1%; top:1%;
+  width:70%;
+  height:98%;
+  background: #b2a686;
+}
+
+#menu {
+  background: #86B2A6;
+  left:72%; top:1%;
+  width: 26%;
+  height:98%;
+}
+
     #makeMeScrollable 
-    {    width:1008px; 
-        height: 444px;         position: relative;    } 
+    { 
+        height: 300px;         position: relative;    } 
     #makeMeScrollable div.scrollableArea img 
     {    position: relative; 
         float: left; 
