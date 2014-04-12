@@ -3,8 +3,11 @@ package com.ciandt.hackathon.config;
 import java.util.logging.Logger;
 
 import com.ciandt.hackathon.api.CommonResource;
+import com.ciandt.hackathon.dao.CompraDAO;
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.ObjectifyCompraDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
+import com.ciandt.hackathon.resources.EfetuarCompraServlet;
 import com.ciandt.hackathon.resources.GuestbookServlet;
 import com.ciandt.hackathon.resources.SignGuestbookServlet;
 import com.google.inject.Guice;
@@ -24,8 +27,10 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 		    protected void configureServlets() {
 				serve("/guestbook").with(GuestbookServlet.class);
 				serve("/sign").with(SignGuestbookServlet.class);
+				serve("/efetuarCompra").with(EfetuarCompraServlet.class);
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
+				bind(CompraDAO.class).to(ObjectifyCompraDAO.class);
 		    }
 			
 		});
