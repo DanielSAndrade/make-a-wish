@@ -74,7 +74,6 @@ public class CommonResource {
 	@GET
 	@Path("/comprarItem")
 	public void efetuaCompra(@Context HttpServletRequest request) {
-
 		Long idPessoa = 0l;
 		Long idItem = 0l;
 		contabilPontuacao.criaCompra(idItem, idPessoa);
