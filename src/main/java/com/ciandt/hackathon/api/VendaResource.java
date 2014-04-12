@@ -2,6 +2,7 @@ package com.ciandt.hackathon.api;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
@@ -39,19 +40,33 @@ public class VendaResource {
 
 	@POST
 	@Path("/insertVenda")
-	public Venda insertVenda(@Context HttpServletRequest request,
+	public String insertVenda(@Context HttpServletRequest request,
 			@FormParam("idProd") Long idProd,
 			@FormParam("precoProd") Double precoProd,
 			@FormParam("tipoProd") String tipoProd,
 			@FormParam("numMesa") Long numMesa,
 			@FormParam("codComp") Long codComp) {
 
+		int posicaoAnterior = this.getPosicao(numMesa);
+
 		// Produto produto = produtoDAO.findById(idProd);
 		Produto produto = createProdutoMock("Balao", 2.90);
 
 		Venda venda = new Venda(produto, numMesa, new Date(), codComp);
 		vendaDAO.insert(venda);
-		return venda;
+		
+		
+		int posicaoDepois = this.getPosicao(numMesa);
+		posicaoDepois = new Random().nextInt(5);
+
+		if (posicaoAnterior == posicaoDepois)
+			return "Posicoes iguais !! Voce continua na posicao "+posicaoAnterior;
+		if (posicaoAnterior < posicaoDepois)
+			return "Voce caiu de "+posicaoAnterior+" para "+posicaoDepois;
+		if (posicaoAnterior > posicaoDepois)
+			return "Uhu voce esta bombando, subiu da posicao "+posicaoAnterior+" para a posição "+posicaoDepois;
+		
+		return "-1";
 	}
 
 	@GET
@@ -84,4 +99,17 @@ public class VendaResource {
 	public List<Mesa> ranking() {
 		return vendaDAO.getTop5VendasByMesa();
 	}
+
+	public int getPosicao(Long idMesa) {
+		List<Mesa> mesas = vendaDAO.getTop5VendasByMesa();
+		int p = 1;
+		for (Mesa m : mesas) {
+			if (idMesa.equals(m.getId())) {
+				return p;
+			}
+			p++;
+		}
+		return p;
+	}
+
 }
