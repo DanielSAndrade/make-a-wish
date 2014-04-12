@@ -1,5 +1,8 @@
 package com.ciandt.hackathon.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
@@ -8,6 +11,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import com.ciandt.hackathon.dao.ProductDAO;
+import com.ciandt.hackathon.entity.Product;
 import com.ciandt.hackathon.services.ProductService;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -18,19 +23,41 @@ import com.google.inject.Singleton;
 @Singleton
 public class ProductsApi {
 
-	private final ProductService productService;
+	private final ProductDAO productDAO;
 
 	@Inject
-	public ProductsApi(ProductService productService) {
+	public ProductsApi(ProductDAO productDAO) {
 		super();
-		this.productService = productService;
+		this.productDAO = productDAO;
 	}
 
 	@GET
 	@Path("/products")
-	public String listProducts(@Context HttpServletRequest request) {
+	public List<Product> listProducts(@Context HttpServletRequest request) {
+		List<Product> listProducts = productDAO.findProduct();
+
+		if (listProducts == null || listProducts.size() == 0) {
+			listProducts = this.loadProduct();
+		}
+
+		return listProducts;
+	}
+	
+	/**
+	 * 
+	 */
+	private List<Product> loadProduct() {
+		List<Product> listProduct = new ArrayList<Product>();
+		for (int i = 0; i <= 100; i++) {
+			Product product = new Product();
+			product.setDescription("product product product product product productproduct product productproduct product product" + i);
+			product.setId((long) i);
+			product.setName("product");
+			product.setValue((long) (Math.random() * 1000));
+			product.setValue((long) (Math.random() * 10));
+			listProduct.add(product);
+		}
 		
-		
-		return "SUCCESS";
+		return listProduct;
 	}
 }
