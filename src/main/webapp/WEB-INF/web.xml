@@ -17,6 +17,10 @@
 		<listener-class>com.ciandt.hackathon.config.GuiceServletConfig</listener-class>
 	</listener>
 	
+        <welcome-file-list>            
+            <welcome-file>index.jsp</welcome-file>
+        </welcome-file-list>
+        
 	<session-config>
 	    <session-timeout>-1</session-timeout>
 	</session-config>
