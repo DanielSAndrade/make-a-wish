@@ -7,6 +7,8 @@ import com.ciandt.hackathon.dao.CompraDAO;
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyCompraDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
+import com.ciandt.hackathon.dao.ObjectifyParticipanteDAO;
+import com.ciandt.hackathon.dao.ParticipanteDAO;
 import com.ciandt.hackathon.resources.EfetuarCompraServlet;
 import com.ciandt.hackathon.resources.GuestbookServlet;
 import com.ciandt.hackathon.resources.SignGuestbookServlet;
@@ -31,6 +33,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 				bind(CompraDAO.class).to(ObjectifyCompraDAO.class);
+				bind(ParticipanteDAO.class).to(ObjectifyParticipanteDAO.class);
 		    }
 			
 		});
