@@ -12,7 +12,7 @@ public class Product {
 	private String description;
 	private Double price;
 	private String type;
-	private Double prize;
+	private Integer points;
 	
 	public String getImageURL() {
 		return imageURL;
@@ -38,11 +38,11 @@ public class Product {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Double getPrize() {
-		return prize;
+	public Integer getPoints() {
+		return points;
 	}
-	public void setPrize(Double prize) {
-		this.prize = prize;
+	public void setPoints(Integer prize) {
+		this.points = prize;
 	}
 	
 	
