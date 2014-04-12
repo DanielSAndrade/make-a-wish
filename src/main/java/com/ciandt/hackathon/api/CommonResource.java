@@ -66,6 +66,11 @@ public class CommonResource {
 	@Path("/rankingParticipante")
 	public List<Participante> rankingParticipante(@Context HttpServletRequest request) {
 		List<Participante> listParticipantes = participanteDAO.findParticipantes();
+		for (Participante participante : listParticipantes) {
+			//compraDAO.
+			
+			
+		}
 		return listParticipantes;
 	}
 	
