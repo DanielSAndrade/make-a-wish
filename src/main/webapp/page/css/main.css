@@ -10,6 +10,7 @@
 
 .product-item .qtd-control {
     font-size: 17px;
+    cursor: pointer;
 }
 
 .product-item .product-info {
