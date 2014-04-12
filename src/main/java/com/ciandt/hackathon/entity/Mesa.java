@@ -62,6 +62,7 @@ public class Mesa {
 			return pontosMock;
 		}
 		
+		@SuppressWarnings("unused")
 		long pontos = 0;
 		
 		List<Compra> comprasEfetuadas = this.getComprasEfetuadas();
