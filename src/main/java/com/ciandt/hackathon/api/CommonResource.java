@@ -27,6 +27,7 @@ public class CommonResource {
 	public CommonResource(GreetingDAO greetingDAO) {
 		super();
 		this.greetingDAO = greetingDAO;
+		//teste
 	}
 
 	@GET
