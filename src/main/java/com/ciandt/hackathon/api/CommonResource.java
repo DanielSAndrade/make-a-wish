@@ -32,13 +32,11 @@ public class CommonResource {
 	
 	//parameters
 	private final static String TABLE = "table";
-	private final static String CATEGORY = "category";
 	private final static String WISH_ID = "wish_id";
 	private final static String WISH_STATUS = "wish_status";
 	
 
 	private final GreetingDAO greetingDAO;
-	private final WishDAO wishDAO; 
 
 	@Inject
 	public CommonResource(GreetingDAO greetingDAO, WishDAO wishDAO) {
@@ -65,17 +63,10 @@ public class CommonResource {
 		String category = request.getParameter(CATEGORY);
 		
 		if (tableName != null) {
-			if (category != null) {
-				//busca por mesa e categoria
-			}
-			else {
 				//busca por mesa
-			}
 		}
 		else {
-			if (category != null) {
-				//busca somente por categoria
-			}
+			//busca tudo
 		}
 		
 		List<Wish> wishList = null;
@@ -158,16 +149,16 @@ public class CommonResource {
 		Table t = null; 
 		return t; 
 	}
-
-//	@GET
+//
+//	@GET 
 //	@Path("/tableBadges")
 //	public List<Badge> tableBadges(@Context HttpServletRequest request) {
 //		// retornar a lista de badges de uma mesa especifica
 //		// recebe como parametro a mesa para retornar o badge
 //		List<Badge> badgeList = null; 
-//		return badgeList; 
+//		return tbadgeList; 
 //	}
-	
+//	
 //	@GET 
 //	@Path("/realizedWish")
 //	public Wish getRealizedWish((@Context HttpServletRequest request) {
@@ -175,5 +166,7 @@ public class CommonResource {
 //		Wish w = null; 
 //		return w; 
 //	}
+	
+	
 	
 }
