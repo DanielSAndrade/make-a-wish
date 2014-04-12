@@ -56,11 +56,11 @@ public class Mesa {
 	 */
 	public Long getPontos() {
 
-		if (true) {
+		/*if (true) {
 			// Mock para pontuacao dinamica
 			long pontosMock = (long) (Math.random() * 10);
 			return pontosMock;
-		}
+		}*/
 		
 		@SuppressWarnings("unused")
 		long pontos = 0;
@@ -78,6 +78,12 @@ public class Mesa {
 		}
 		
 		return pontos;
+	}
+
+	@Override
+	public String toString() {
+		return "Mesa [nome=" + nome + ", comprasEfetuadas=" + comprasEfetuadas
+				+ ", medalhas=" + medalhas + ", pessoas=" + pessoas + "]";
 	}
 
 }

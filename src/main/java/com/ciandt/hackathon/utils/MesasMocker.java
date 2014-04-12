@@ -106,7 +106,7 @@ public class MesasMocker {
 		carlos.setNome("Josefina Esqueleto");
 		
 		compra1.setPessoa(daniel);
-		compra1.setBonus(2000);
+		compra1.setBonus(5000);
 		compra1.setProdutos(produtos);
 		compra1.setPessoa(daniel);
 		
@@ -119,6 +119,7 @@ public class MesasMocker {
 		
 		mesa.adicionarPessoa(carlos);
 		mesa.adicionarPessoa(daniel);
+		
 		return mesa;
 	}	
 
@@ -137,7 +138,7 @@ public class MesasMocker {
 		carlos.setNome("Juliana Fontes");
 		
 		compra1.setPessoa(daniel);
-		compra1.setBonus(2000);
+		compra1.setBonus(500);
 		compra1.setProdutos(produtos);
 		compra1.setPessoa(daniel);
 		
@@ -168,10 +169,10 @@ public class MesasMocker {
 		carlos.setNome("Joao Esteves");
 		
 		compra1.setPessoa(daniel);
-		compra1.setBonus(2000);
+		compra1.setBonus(0);
 		compra1.setProdutos(produtos);
 		compra1.setPessoa(daniel);
-		
+
 		mesa.adicionarCompraEfetuada(compra1);
 		
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();

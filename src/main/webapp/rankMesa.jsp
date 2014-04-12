@@ -4,6 +4,13 @@
 <html>
 
   <head>
+  
+  	<script language="JavaScript">
+				setTimeout(function() {
+					window.location.reload(1);
+				}, 10000);
+	</script>
+  
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
   </head>
 

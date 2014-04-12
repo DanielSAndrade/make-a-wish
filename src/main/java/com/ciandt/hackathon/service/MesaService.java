@@ -3,19 +3,28 @@ package com.ciandt.hackathon.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.ciandt.hackathon.comparator.PontosMesaComparator;
 import com.ciandt.hackathon.dao.MesaDAO;
 import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Pessoa;
 import com.ciandt.hackathon.vo.Ranking;
+import com.google.inject.Inject;
 
 public class MesaService {
 
+    @Inject
+    private Logger logger;
+    
 	private MesaDAO mesaDAO = new MesaDAO();
 	
 	// Mesa do tablet
 	private Mesa mesa = new Mesa();	
+	
+	public Mesa getMesa() {
+		return mesa;
+	}
 	
 	public void adicionaPessoa(Pessoa pessoa) {
 		mesa.adicionarPessoa(pessoa);
@@ -41,7 +50,7 @@ public class MesaService {
 			ranking.setPosicao(i);
 			ranking.setMesa(mesa);
 			rankingList.add(ranking);
-			System.out.println(mesa.getPontos());
+			logger.info("Pontos da mesa: " + mesa + ": " + mesa.getPontos());
 		}
 		
 		return rankingList;

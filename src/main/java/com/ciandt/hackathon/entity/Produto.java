@@ -8,13 +8,15 @@ public class Produto {
 
 	private String descricao;
 
-	private byte[] foto;
+	private String foto;
 
 	private CategoriaEnum categoria;
 
 	private double preco;
 
 	private long pontos;
+	
+	private Boolean disponivel;
 
 	public String getNome() {
 		return nome;
@@ -32,11 +34,11 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public byte[] getFoto() {
+	public String getFoto() {
 		return foto;
 	}
 
-	public void setFoto(byte[] foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 
@@ -63,5 +65,13 @@ public class Produto {
 	public void setPontos(long pontos) {
 		this.pontos = pontos;
 	}
+
+    public Boolean getDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
+    }
 
 }
