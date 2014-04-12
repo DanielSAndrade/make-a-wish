@@ -15,6 +15,7 @@ import com.google.appengine.api.memcache.MemcacheServiceFactory;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.googlecode.objectify.Key;
+import com.googlecode.objectify.Objectify;
 
 @Singleton
 public class ObjectfyBuyDAO implements BuyDAO {
@@ -47,19 +48,22 @@ public class ObjectfyBuyDAO implements BuyDAO {
 	public Table findTable(String tableName) {
 		log.info("Finding all greetings");
 
-		// checks if the greetings are in the cache
-		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
-		syncCache.setErrorHandler(ErrorHandlers
-				.getConsistentLogAndContinue(Level.INFO));
-		@SuppressWarnings("unchecked")
-		Table table = (Table) syncCache.get("TABLES");
+		// checks if the gretings are in the cache
+//		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+//		syncCache.setErrorHandler(ErrorHandlers
+//				.getConsistentLogAndContinue(Level.INFO));
+//		@SuppressWarnings("unchecked")
+//		Table table = (Table) syncCache.get("TABLES");
+		Table table = null;
 
 		if (table == null) {
 			log.info("Not found in cache");
-			table = (Table) ofy().load().type(Table.class);
-		} else {
-			log.info("Using cache!");
-		}
+			
+			List<Table>  tables = ofy().load().type(Table.class).filter("name", tableName).list();
+			if(tables != null  && tables.size() >0 ){
+				table = tables.get(0);
+			}
+		} 
 
 		if (table != null) {
 			log.info("table not exists");
