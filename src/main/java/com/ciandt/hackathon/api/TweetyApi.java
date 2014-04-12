@@ -10,33 +10,31 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import com.ciandt.hackathon.dao.GreetingDAO;
-import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.Tweety;
+import com.ciandt.hackathon.services.TweetyService;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-@Path("/api")
+@Path("/tweetyApi")
 @ThreadSafe
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 @Singleton
-public class CommonResource {
+public class TweetyApi {
 
-	private final GreetingDAO greetingDAO;
+	private final TweetyService tweetyService;
 
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO) {
+	public TweetyApi(TweetyService tweetyService) {
 		super();
-		this.greetingDAO = greetingDAO;
-		//teste
+		this.tweetyService = tweetyService;
 	}
 
 	@GET
-	@Path("/listGreetings")
-	public List<Greeting> listGreetings(@Context HttpServletRequest request) {
-		List<Greeting> listGreetings = greetingDAO.findGreetings();
-		return listGreetings;
+	@Path("/listTweety")
+	public List<Tweety> listTweety(@Context HttpServletRequest request) {
+		
+		return tweetyService.listTweety();
+		
 	}
-	
-	
 
 }

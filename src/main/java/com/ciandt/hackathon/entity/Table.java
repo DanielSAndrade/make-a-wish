@@ -50,10 +50,7 @@ public class Table {
 	}
 
 	public void setScore(Long score) {
-		this.score = score;
+		this.score += score;
 	}
-	
-	
-	
 	
 }
