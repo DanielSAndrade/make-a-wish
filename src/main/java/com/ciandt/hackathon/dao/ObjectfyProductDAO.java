@@ -42,7 +42,6 @@ public class ObjectfyProductDAO implements ProductDAO {
 			log.info("Returning " + products.size() + " greetings");
 		}
 		return products;
-
 	}
 
 	@Override
@@ -68,26 +67,30 @@ public class ObjectfyProductDAO implements ProductDAO {
 
 	@Override
 	public List<Product> findByTable(String tableName) {
-		log.info("Finding all products by table");
+	
+		log.info("Finding all greetings");
 
-		// checks if the greetings are in the cache
-		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
-		syncCache.setErrorHandler(ErrorHandlers
-				.getConsistentLogAndContinue(Level.INFO));
-		@SuppressWarnings("unchecked")
-		Table table = (Table) syncCache.get("TABLES");
+		// checks if the gretings are in the cache
+//		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+//		syncCache.setErrorHandler(ErrorHandlers
+//				.getConsistentLogAndContinue(Level.INFO));
+//		@SuppressWarnings("unchecked")
+//		Table table = (Table) syncCache.get("TABLES");
+		Table table = null;
 
 		if (table == null) {
 			log.info("Not found in cache");
-			table = (Table) ofy().load().type(Table.class);
-		} else {
-			log.info("Using cache!");
-		}
+			
+			List<Table>  tables = ofy().load().type(Table.class).filter("name", tableName).list();
+			if(tables != null  && tables.size() >0 ){
+				table = tables.get(0);
+			}
+		} 
 
 		if (table != null) {
 			log.info("table not exists");
 		}
-		return table.getSalesList();
+		return table.getSalesList();	
 	}
 
 }
