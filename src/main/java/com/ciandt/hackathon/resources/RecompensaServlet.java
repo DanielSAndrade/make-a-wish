@@ -17,6 +17,6 @@ public class RecompensaServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		
 		
-		req.getRequestDispatcher("/recompensa/index.jsp").forward(req, resp);
+		req.getRequestDispatcher("/recompensa/index3.jsp").forward(req, resp);
 	}
 }

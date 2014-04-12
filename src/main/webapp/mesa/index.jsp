@@ -42,8 +42,8 @@ body {
 				
 				<div class="topbar-right">
 					<ul class="topbar-nav-main">
-						<li id="home-nav"><a href="/">Mesas</a></li>
-						<li id="stream-nav"><a href="/activity_stream">Ranking</a></li>
+						<li id="home-nav"><a href="/mesa">Mesas</a></li>
+						<li id="stream-nav"><a href="/recompensa">Ranking</a></li>
 					</ul>
 				</div>
 			</div>
