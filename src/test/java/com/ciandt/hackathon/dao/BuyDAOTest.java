@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.ciandt.hackathon.entity.Greeting;
 import com.ciandt.hackathon.entity.Product;
+import com.ciandt.hackathon.entity.Table;
 import com.ciandt.hackathon.test.AbstractTestClass;
 import com.google.appengine.api.users.User;
 
@@ -21,10 +22,10 @@ public class BuyDAOTest extends AbstractTestClass {
 	private BuyDAO dao;
 
 	@Test
-	public void shouldBeAbleToInsertAGreeting() {
-		final Product product = new Product();
-//		Long id = dao.insert(greeting);
-//		Assert.assertNotNull(id);
+	public void shouldBeAbleToInsertTable() {
+		final Table table = new Table("teste", "Teste", 100L, null);
+		Long id = dao.inserTable(table);
+		Assert.assertNotNull(id);
 	}
 
 }

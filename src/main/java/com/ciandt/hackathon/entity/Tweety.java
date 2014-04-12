@@ -1,7 +1,12 @@
 package com.ciandt.hackathon.entity;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Tweety {
 
+	@Id
 	private Long id;
 	private String message;
 	private String table;

@@ -13,8 +13,10 @@ import com.google.appengine.api.memcache.ErrorHandlers;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import com.googlecode.objectify.Key;
 
+@Singleton
 public class ObjectfyBuyDAO implements BuyDAO {
 
 	@Inject

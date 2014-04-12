@@ -1,7 +1,12 @@
 package com.ciandt.hackathon.entity;
 
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+@Entity
 public class Badget {
 
+	@Id
 	private String name;
 	private long value;
 
