@@ -36,5 +36,7 @@ public class CommonResource {
 		List<Greeting> listGreetings = greetingDAO.findGreetings();
 		return listGreetings;
 	}
+	
+	
 
 }
