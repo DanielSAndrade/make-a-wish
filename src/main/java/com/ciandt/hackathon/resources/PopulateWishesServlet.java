@@ -19,7 +19,7 @@ public class PopulateWishesServlet extends HttpServlet {
 	@Inject
 	private WishDAO dao;
 	
-	@Inject
+
     public void doGet(HttpServletRequest req, HttpServletResponse resp) {
     	insertWish(new Long(1), "Maria",    10, "Doença 1", "Televisão", Status.AVAILABLE, "Mesa " + 1, 0);
     	insertWish(new Long(2), "João",     9,  "Doença 2", "Guitarra",  Status.AVAILABLE, "Mesa " + 2, 0);

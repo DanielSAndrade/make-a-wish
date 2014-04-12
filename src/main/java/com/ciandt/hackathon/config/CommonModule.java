@@ -32,6 +32,7 @@ public class CommonModule extends ServletModule {
 		bind(WishDAO.class).to(ObjectifyWishDAO.class);
 
 		filter("/api/*").through(GuiceContainer.class, initParams);
+		filter("/ranking/*").through(GuiceContainer.class, initParams);
 	}
 
 }

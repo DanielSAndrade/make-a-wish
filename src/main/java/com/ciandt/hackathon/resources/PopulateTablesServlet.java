@@ -24,7 +24,6 @@ public class PopulateTablesServlet extends HttpServlet {
 	private DonatorDAO donatorDao;
 
 
-	@Inject
     public void doGet(HttpServletRequest req, HttpServletResponse resp) {
 		insertTable(new Long(1), "Mesa 1", 12, 1);
 		insertTable(new Long(2), "Mesa 2", 20, 5);
