@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ciandt.hackathon.dao.MesaDAO;
 import com.ciandt.hackathon.entity.Mesa;
+import com.ciandt.hackathon.service.MesaService;
+import com.ciandt.hackathon.vo.Ranking;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -19,7 +21,7 @@ import com.google.inject.Singleton;
 public class RankMesaServlet extends HttpServlet {
 
     @Inject
-    private MesaDAO mesaDao;
+    private MesaService mesaService;
 
     @Inject
     private Logger logger;
@@ -28,7 +30,7 @@ public class RankMesaServlet extends HttpServlet {
 
         logger.info("Executing Rank da Mesa");
 
-        List<Mesa> listaRank = mesaDao.listarRanking();
+        List<Ranking> listaRank = mesaService.listaRanking();
 
         req.setAttribute("rankMesa", listaRank);
 

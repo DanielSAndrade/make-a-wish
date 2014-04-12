@@ -11,10 +11,21 @@ import com.ciandt.hackathon.entity.Produto;
 
 public class MesaDAO {
 
-	private Mesa mesa;
-	
-	public List<Mesa> listarRanking() {
+	public List<Mesa> getMesas() {
 		
+		Mesa mesa1 = mockMesa1();
+		Mesa mesa2 = mockMesa2();
+		
+		List<Mesa> mesas = new ArrayList<Mesa>();
+		mesas.add(mesa1);
+		mesas.add(mesa2);
+		
+		return mesas;
+		
+	}
+
+	private Mesa mockMesa1() {
+
 		List<Produto> produtos = new ProdutoDAO().listarProdutos();
 		
 		Mesa mesa = new Mesa();
@@ -36,12 +47,7 @@ public class MesaDAO {
 		
 		mesa.adicionarPessoa(carlos);
 		mesa.adicionarPessoa(daniel);
-		
-		List<Mesa> mesas = new ArrayList<Mesa>();
-		mesas.add(mesa);
-		
-		return mesas;
-		
+		return mesa;
 	}
 
     private void addMedalhas(Mesa mesa) {
@@ -69,8 +75,41 @@ public class MesaDAO {
 		mesa.setComprasEfetuadas(comprasEfetuadas);
     }
 	
-	public void adicionaPessoa(Pessoa pessoa) {
-		mesa.adicionarPessoa(pessoa);
+	private Mesa mockMesa2() {
+
+		List<Produto> produtos = new ProdutoDAO().listarProdutos();
+		
+		Mesa mesa = new Mesa();
+		
+		List<Compra> comprasEfetuadas = new ArrayList<Compra>();
+
+		Compra compra1 = new Compra();
+		Pessoa daniel = new Pessoa();
+		daniel.setNome("Daniel da Silva");
+
+		Pessoa carlos = new Pessoa();
+		carlos.setNome("Carlos Pereira");
+		
+		compra1.setPessoa(daniel);
+		
+		compra1.setProdutos(produtos);
+		compra1.setPessoa(daniel);
+		comprasEfetuadas.add(compra1);
+		
+		mesa.setComprasEfetuadas(comprasEfetuadas);
+		
+		List<Medalha> medalhas = new ArrayList<Medalha>();
+		
+		mesa.setMedalhas(medalhas);
+
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		
+		pessoas.add(carlos);
+		pessoas.add(daniel);
+		
+		mesa.adicionarPessoa(carlos);
+		mesa.adicionarPessoa(daniel);
+		return mesa;
 	}
 	
 }
