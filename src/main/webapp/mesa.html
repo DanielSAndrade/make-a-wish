@@ -1,82 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt">
- <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Make a wish</title>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make a wish</title>
 
-    <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css"> 
-	
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400' rel='stylesheet' type='text/css'>
-	
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400'
+	rel='stylesheet' type='text/css'>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" href="/stylesheets/main.css">
-  </head>
+<link rel="stylesheet" href="/stylesheets/main.css">
+</head>
 
 <body>
-    
-    <!-- Produto balao -->
-   
-    <div class="navbar navbar-inverse navbar-fixed-top" data-role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Make a wish</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" data-role="form">
-            
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
-    
-	<!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-      	<div class="row">
-	        <div class="col-md-6">
-		        <h2>Balões</h2>
-		        <h3>Ranking</h3>
-		        <div class="container ribbon">
-		        	<p></p>
-		        	<br/>
-		        	<h3>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mesa 10</h3>
-		        </div>
-			   	<h4>2 mesa 15</h4>
-				<h4>3 mesa 5</h4>
-				<h4>5 você está aqui</h4>
+
+	<!-- Produto balao -->
+
+	<div class="navbar navbar-inverse navbar-fixed-top"
+		data-role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Make a wish</a>
 			</div>
-			<div class="col-md-6" >
-			  <h2>
-			  <img class="product-img img-rounded" alt="baloes" src="/static/img/baloes-personalizados.jpg">
-			  </h2>
+			<div class="navbar-collapse collapse">
+				<form class="navbar-form navbar-right" data-role="form"></form>
+			</div>
+			<!--/.navbar-collapse -->
+		</div>
+	</div>
+
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron" data-bind="foreach: produtos">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h2 data-bind="text: nome"></h2>
+					<h3>Ranking</h3>
+					<div class="container ribbon" data-bind="foreach ranking">
+						<p></p>
+						<br />
+						<h3>2 mesa <span data-bind="text mesa"></span></h3>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h2>
+						<img class="product-img img-rounded" alt="baloes"
+							src="/static/img/baloes-personalizados.jpg"
+							data-bind="attr: {src: urlImagem}">
+					</h2>
+				</div>
 			</div>
 		</div>
-      </div>
-    </div>
-			   
-	
-	
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	</div>
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js"></script>
+	<script src="static/js/MasterController.js"></script>
+	<script src="static/js/MesaController.js"></script>
 </body>
 </html>
