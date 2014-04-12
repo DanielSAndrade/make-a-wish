@@ -1,0 +1,13 @@
+.product-item img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.product-item .product-qtd {
+    width: 50px;
+    display: inline-block;
+}
+
+.product-item .qtd-control {
+    font-size: 17px;
+}
