@@ -1,0 +1,27 @@
+body { 
+	background:url(../img/bg_site.jpg);
+}
+
+.fundo_cabecalho {
+	background: #FFF url(../img/bg_topo.jpg) bottom repeat-x;	
+	min-height:160px;
+	margin-bottom:10px;
+}
+
+.div_logomarca {
+	padding-top:35px;	
+}
+
+.div_menu {
+	padding-top:50px;
+}
+
+.fundo_branco {
+	background:#FFF;
+	padding-top:10px;
+	margin-bottom:10px;
+}
+
+.conteudo_caixas_inicial {
+	margin:8px;	
+}
