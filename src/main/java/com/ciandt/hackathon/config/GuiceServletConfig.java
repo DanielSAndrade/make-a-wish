@@ -5,7 +5,11 @@ import java.util.logging.Logger;
 import com.ciandt.hackathon.api.CommonResource;
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
+<<<<<<< HEAD
 import com.ciandt.hackathon.resources.DetalhesProdutoServlet;
+=======
+import com.ciandt.hackathon.resources.FinalizaCompraServlet;
+>>>>>>> origin/smartphone
 import com.ciandt.hackathon.resources.GuestbookServlet;
 import com.ciandt.hackathon.resources.ListaProdutosServlet;
 import com.ciandt.hackathon.resources.RankMesaServlet;
@@ -30,6 +34,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				serve("/rank").with(RankMesaServlet.class);
 				serve("/produtos").with(ListaProdutosServlet.class);
 				serve("/produto/detalhe").with(DetalhesProdutoServlet.class);
+				serve("/produto/finalizar").with(FinalizaCompraServlet.class);
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 		    }
