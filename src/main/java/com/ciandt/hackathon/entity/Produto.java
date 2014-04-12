@@ -15,6 +15,21 @@ public class Produto {
 	private Double preco;
 	private String tipo;
 
+	
+	
+	
+	
+	public Produto() {
+		super();
+	}
+
+	public Produto(String descricao, Double preco, String tipo) {
+		super();
+		this.descricao = descricao;
+		this.preco = preco;
+		this.tipo = tipo;
+	}
+
 	public Long getId() {
 		return id;
 	}
