@@ -1,17 +1,14 @@
 package com.ciandt.hackathon.resources;
 
 import java.io.IOException;
+import java.io.Writer;
+import java.util.Collections;
+import java.util.List;
 
-import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.MesaRankDAO;
 import com.ciandt.hackathon.dao.RequisicaoDeCompraDAO;
@@ -19,6 +16,8 @@ import com.ciandt.hackathon.entity.MesaRank;
 import com.ciandt.hackathon.entity.Produto;
 import com.ciandt.hackathon.entity.Produtos;
 import com.ciandt.hackathon.entity.RequisicaoDeCompra;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -38,6 +37,29 @@ public class ComprarResource extends HttpServlet {
 	}
 
 	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+
+
+		/*RequisicaoDeCompra requisicaoDeCompra = new RequisicaoDeCompra();
+		requisicaoDeCompra.setCodProduto(1);
+		requisicaoDeCompra.setNumeroDaMesa(1);
+
+		requisicaoDecompraDAO.insert(requisicaoDeCompra);*/
+
+		List<RequisicaoDeCompra> aprovacoes = requisicaoDecompraDAO.list();
+		Collections.sort(aprovacoes);
+		for (RequisicaoDeCompra aprovacao : aprovacoes) {
+			aprovacao.setNomeProduto(Produtos.get(aprovacao.getCodProduto()).getNome());
+		}
+		String dados = new GsonBuilder().create().toJson(aprovacoes);
+
+		resp.setContentType("application/json");
+		Writer writer = resp.getWriter();
+		writer.write(dados);
+	}
+
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse resp)
 			throws ServletException, IOException {
 
@@ -54,9 +76,9 @@ public class ComprarResource extends HttpServlet {
 			
 		} else if (request.getRequestURI().contains("aprovar")) {
 		
-			int codRequisicao = Integer.parseInt(request.getParameter("codRequisicao"));
+			long codRequisicao = Long.parseLong(request.getParameter("codRequisicao"));
 			
-			RequisicaoDeCompra reqCompra = requisicaoDecompraDAO.get((long)codRequisicao);
+			RequisicaoDeCompra reqCompra = requisicaoDecompraDAO.get(codRequisicao);
 			
 			if (reqCompra != null) {
 				
@@ -73,7 +95,7 @@ public class ComprarResource extends HttpServlet {
 				}
 				
 				mesaRankDAO.insert(mesaRank);
-				requisicaoDecompraDAO.delete((long) reqCompra.getNumeroDaMesa());
+				requisicaoDecompraDAO.delete((long) reqCompra.getCodigo());
 			}
 		}
 	}

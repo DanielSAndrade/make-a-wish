@@ -1,5 +1,7 @@
 package com.ciandt.hackathon.dao;
 
+import java.util.List;
+
 import com.ciandt.hackathon.entity.RequisicaoDeCompra;
 
 public interface RequisicaoDeCompraDAO {
@@ -9,4 +11,6 @@ public interface RequisicaoDeCompraDAO {
 	public RequisicaoDeCompra get(Long id);
 
 	public void delete(Long id);
+
+	public List<RequisicaoDeCompra> list();
 }

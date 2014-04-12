@@ -2,6 +2,8 @@ package com.ciandt.hackathon.dao;
 
 import static com.ciandt.hackathon.dao.OfyService.ofy;
 
+import java.util.List;
+
 import com.ciandt.hackathon.entity.RequisicaoDeCompra;
 import com.googlecode.objectify.Key;
 
@@ -21,5 +23,10 @@ public class ObjectifyRequisicaoDeCompraDAO implements RequisicaoDeCompraDAO {
 	@Override
 	public void delete(Long id) {
 		ofy().delete().type(RequisicaoDeCompra.class).id(id).now();
+	}
+
+	@Override
+	public List<RequisicaoDeCompra> list() {
+		return ofy().load().type(RequisicaoDeCompra.class).order("dataDoPedido").list();
 	}
 }

@@ -4,14 +4,17 @@ import java.util.Date;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Ignore;
 import com.googlecode.objectify.annotation.Index;
 
 @Entity
-public class RequisicaoDeCompra {
+public class RequisicaoDeCompra implements Comparable<RequisicaoDeCompra> {
 
 	@Id
 	private Long codigo;
 	private int codProduto;
+	@Ignore
+	private String nomeProduto;
 	private int numeroDaMesa;
 	@Index
 	private Date dataDoPedido;
@@ -52,4 +55,16 @@ public class RequisicaoDeCompra {
 		this.dataDoPedido = dataDoPedido;
 	}
 
+	@Override
+	public int compareTo(RequisicaoDeCompra o) {
+		return -this.getDataDoPedido().compareTo(o.getDataDoPedido());
+	}
+
+	public String getNomeProduto() {
+		return nomeProduto;
+	}
+
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
+	}
 }

@@ -8,16 +8,16 @@ import com.googlecode.objectify.annotation.Index;
 public class MesaRank {
 
 	@Id
-	public long numeroDaMesa;
+	public Long numeroDaMesa;
 	
 	@Index
 	public double valor = 0D;
 
-	public long getNumeroDaMesa() {
+	public Long getNumeroDaMesa() {
 		return numeroDaMesa;
 	}
 
-	public void setNumeroDaMesa(long numeroDaMesa) {
+	public void setNumeroDaMesa(Long numeroDaMesa) {
 		this.numeroDaMesa = numeroDaMesa;
 	}
 
