@@ -42,4 +42,14 @@ public class ObjectifyProdutoDao implements ProdutoDao {
 		ofy().delete().entity(produto).now();
 	}
 
+	@Override
+	public Produto findByNome(String nome) {
+		return ofy().load().type(Produto.class).first().now();
+	}
+
+	@Override
+	public Produto findById(Long id) {
+		return ofy().load().type(Produto.class).id(id).now();
+	}
+
 }
