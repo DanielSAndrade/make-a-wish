@@ -49,7 +49,13 @@ public class GuestbookServlet extends HttpServlet {
 		List<TopTop> topMesas = getTopMesas(compras);
 		
 		req.setAttribute("topMesas", topMesas);
-		req.setAttribute("topCompradores", getTopCompradores(compras));
+		req.setAttribute("topMesasSize", topMesas.size());
+		
+		List<TopTop> topCompradores = getTopCompradores(compras);
+		 
+		req.setAttribute("topCompradores", topCompradores);
+		req.setAttribute("topCompradoresSize", topCompradores.size());
+		
 		req.setAttribute("comprasSize", compras.size());
 		logger.info("Putting " + compras.size() + " compras in memory");
 
