@@ -31,7 +31,21 @@ public class Doador {
 	private List<Badge> bagdes;
 
 	private String email;
-	
+
+	public Doador() {
+		super();
+	}
+
+	public Doador(String nome, Mesa mesa, List<Sonho> sonhos,
+			List<Badge> badges, String email) {
+
+		this.nome = nome;
+		this.mesa = mesa;
+		this.sonhos = sonhos;
+		this.bagdes = badges;
+		this.email = email;
+	}
+
 	/**
 	 * @return the id
 	 */
