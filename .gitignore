@@ -1,3 +1,4 @@
 /target
 .project
 datastore-indexes-auto.xml
+local_db.bin
