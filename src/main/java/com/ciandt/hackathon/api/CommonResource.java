@@ -1,6 +1,7 @@
 package com.ciandt.hackathon.api;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -79,7 +80,7 @@ public class CommonResource {
 	public List<Participante> rankingParticipante(@Context HttpServletRequest request) {
 		List<Participante> listParticipantes = participanteDAO.findParticipantes();
 		
-//		Collections listParticipantes
+		//Collections.unmodifiableCollection(c)
 		
 		return listParticipantes;
 	}
