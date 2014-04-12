@@ -6,6 +6,7 @@ import com.ciandt.hackathon.api.CommonResource;
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
 import com.ciandt.hackathon.resources.GuestbookServlet;
+import com.ciandt.hackathon.resources.ListaProdutosServlet;
 import com.ciandt.hackathon.resources.RankMesaServlet;
 import com.ciandt.hackathon.resources.SignGuestbookServlet;
 import com.google.inject.Guice;
@@ -26,6 +27,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				serve("/guestbook").with(GuestbookServlet.class);
 				serve("/sign").with(SignGuestbookServlet.class);
 				serve("/rank").with(RankMesaServlet.class);
+				serve("/produtos").with(ListaProdutosServlet.class);
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 		    }

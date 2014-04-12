@@ -7,7 +7,6 @@ import com.google.inject.Inject;
 
 public class CompraService {
 
-    
     @Inject
     ProdutoDAO produtoDAO;
     
@@ -40,8 +39,6 @@ public class CompraService {
         
         mesaDAO.addCompra(mesa, comprado);
         
-        
-
     }
 
 }

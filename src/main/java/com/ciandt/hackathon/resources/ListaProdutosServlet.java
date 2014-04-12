@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +17,7 @@ import com.google.inject.Singleton;
 
 @SuppressWarnings("serial")
 @Singleton
-public class ListaComprasServlet {
+public class ListaProdutosServlet extends HttpServlet {
 
     @Inject
     private ProdutoDAO produtoDAO;	
@@ -39,7 +40,7 @@ public class ListaComprasServlet {
         
         req.setAttribute("produtosSize", produtos == null ? 0 : produtos.size());
 
-        req.getRequestDispatcher("/rankMesa.jsp").forward(req, resp);
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }    
     
 }
