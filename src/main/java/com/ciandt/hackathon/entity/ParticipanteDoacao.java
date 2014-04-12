@@ -13,9 +13,6 @@ public class ParticipanteDoacao {
 	
 	private Long idDoacao;
 	
-	public ParticipanteDoacao() {
-	}
-	
 	public ParticipanteDoacao(Long id, Long idParticipante, Long idDoacao) {
 		super();
 		this.id = id;
