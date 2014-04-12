@@ -26,7 +26,24 @@ public class Wish {
 	public Wish() {
 
 	}
+
+
 	
+	public Wish(Long id, String childName, int childAge, String disease,
+			String wish, Status status, String intendedTable, int donator) {
+		super();
+		this.id = id;
+		this.childName = childName;
+		this.childAge = childAge;
+		this.disease = disease;
+		this.wish = wish;
+		this.status = status;
+		this.intendedTable = intendedTable;
+		this.donator = donator;
+	}
+
+
+
 	public Wish(String childName, int childAge, String disease, String wish) {
 		setChildName(childName);
 		setChildAge(childAge); 
