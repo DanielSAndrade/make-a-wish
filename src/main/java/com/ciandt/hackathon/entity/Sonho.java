@@ -22,9 +22,10 @@ public class Sonho {
 	
 	public Sonho(){}
 	
-	public Sonho(Crianca crianca, String descricao) {
+	public Sonho(Crianca crianca, String descricao, String foto) {
 		this.crianca = crianca;
 		this.descricao = descricao;
+		this.foto = foto;
 	}
 
 	public Long getId() {

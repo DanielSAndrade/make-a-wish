@@ -93,10 +93,10 @@ public class CommonResource {
 	}
 
 	private void loadSonhos() {
-		sonhoDAO.insert(new Sonho(new Crianca("Caio Oliveira"), "Viagem para fernando de noronha"));
-		sonhoDAO.insert(new Sonho(new Crianca("Rodrigo Dantas"), "Comprar uma BMW"));
-		sonhoDAO.insert(new Sonho(new Crianca("Claudio Japa"), "Carrinho de controle remoto"));
-		sonhoDAO.insert(new Sonho(new Crianca("Bruno Soares"), "Viagem para miami"));
+		sonhoDAO.insert(new Sonho(new Crianca("Caio Oliveira"), "Viagem para fernando de noronha", "fernando1.jpg"));
+		sonhoDAO.insert(new Sonho(new Crianca("Rodrigo Dantas"), "Comprar uma BMW", "bmw1.jpg"));
+		sonhoDAO.insert(new Sonho(new Crianca("Claudio Japa"), "Carrinho de controle remoto", "bmw2.jpg"));
+		sonhoDAO.insert(new Sonho(new Crianca("Bruno Soares"), "Viagem para miami", "fernando2.jpg"));
 	}
 	
 	private void loadMesas() {
