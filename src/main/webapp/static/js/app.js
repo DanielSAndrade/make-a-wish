@@ -13,9 +13,11 @@ function GlobalTablesController($http, $scope) {
 
 function GlobalUsersController($http, $scope) {
     $http.get("../api/rankingParticipante").then(
-        function(response) { $scope.participants = response.data },
+        function(response) { $scope.participants = response.data; $scope.compras = $http.get("../api/comprasPorParticipante?id=" + $scope.participants[0].id); },
         function(response) { console.log(response.status); }
     );
+    
+    
 }
 
 function CompraController( $http, $scope ) {

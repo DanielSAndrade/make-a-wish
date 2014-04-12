@@ -12,18 +12,24 @@ Rankings
 <div class="tab-content">
   <div class="tab-pane" id="tables-global" ng-controller="GlobalTablesController">
     <div class="list-group">
-			<a href="#" class="list-group-item active" ng-repeat="table in tables">
-        <h4 class="list-group-item-heading">{{table.nome}}</h4>
-        <p class="list-group-item-text">
-					<span ng-repeat="badge in table.badge">{{badge.nome}}</span>
-				</p>
+			<a href="#" class="list-group-item" ng-repeat="table in tables">
+				<div class="row">
+					<img class="col-sm-3" ng-src="{{table.urlImagem}}">
+					<div class="col-sm-9">
+						<h4 class="list-group-item-heading">
+							{{table.nome}}
+							<span class="pull-right delta-up" ng-show="table.delta == 1"><i class="glyphicon glyphicon-arrow-up"></i></span>
+							<span class="pull-right delta-down" ng-show="table.delta == 2"><i class="glyphicon glyphicon-arrow-down"></i></span>
+						</h4>
+					</div>
+				</div>
       </a>
     </div>
   </div>
 
   <div class="tab-pane active" id="users-global" ng-controller="GlobalUsersController" style="max-height: 700px; overflow-x: scroll">
     <div class="list-group">
-      <a href="#" class="list-group-item" ng-repeat="person in participants">
+      <a data-toggle="modal" href="#historicoPerson" class="list-group-item" ng-repeat="person in participants">
 				<div class="row">
 					<img class="col-sm-3" ng-src="{{person.urlImagem}}">
 					<div class="col-sm-9">
