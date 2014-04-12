@@ -73,31 +73,6 @@ body {
 			}
 		</style>
 		
-		<%
-		MesaDAO mesaDAO = new ObjectifyMesaDAO();
-		List<Mesa> mesas = mesaDAO.findMesas();
-		
-	
-			
-		for(Mesa mesa: mesas){
-	
-			Hashtable<TipoDoacao, Integer> pontuacao = mesaDAO.getDoacoes(mesa);
-			%>
-			<div class="row well rank">
-				<div class="col-lg-4 col-md-4 col-sm-4"><%= mesa.getNome() %></div>
-				<div class="col-lg-4 col-md-4 col-sm-4">100 pontos</div>
-				<div class="col-lg-4 col-md-4 col-sm-4"  style="text-align: center">
-					<span style="text-align: center">
-					<img src="../static/images/balao.png" style="width: 26px; height: 26px;"> 20
-					<img src="../static/images/coracao.png" style="width: 26px; height: 26px"> 5
-					<img src="../static/images/martelo.png" style="width: 26px; height: 26px"> 9
-					</span>
-				</div>
-			</div>
-			<%
-		}
-		
-		%>
 		
 		<div class="row well rank">
 			<div class="col-lg-4 col-md-4 col-sm-4">Mesa Amor</div>

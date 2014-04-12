@@ -13,12 +13,16 @@ import javax.ws.rs.core.MediaType;
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.MesaDAO;
 import com.ciandt.hackathon.dao.ParticipanteDAO;
+import com.ciandt.hackathon.dao.ParticipanteDoacaoDAO;
 import com.ciandt.hackathon.dao.SonhoDAO;
+import com.ciandt.hackathon.dao.TipoDoacaoDAO;
 import com.ciandt.hackathon.entity.Crianca;
 import com.ciandt.hackathon.entity.Greeting;
 import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Participante;
+import com.ciandt.hackathon.entity.ParticipanteDoacao;
 import com.ciandt.hackathon.entity.Sonho;
+import com.ciandt.hackathon.entity.TipoDoacao;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -35,15 +39,21 @@ public class CommonResource {
 	private final MesaDAO mesaDAO;
 	
 	private final ParticipanteDAO participanteDAO;
+	
+	private final TipoDoacaoDAO tipoDoacaoDAO;
+	
+	private final ParticipanteDoacaoDAO participanteDoacaoDAO;
 
 	
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO, SonhoDAO sonhoDAO,MesaDAO mesaDAO,ParticipanteDAO participanteDAO) {
+	public CommonResource(GreetingDAO greetingDAO, SonhoDAO sonhoDAO,MesaDAO mesaDAO,ParticipanteDAO participanteDAO, TipoDoacaoDAO tipoDoacaoDAO, ParticipanteDoacaoDAO participanteDoacaoDAO) {
 		super();
 		this.greetingDAO = greetingDAO;
 		this.sonhoDAO = sonhoDAO;
 		this.mesaDAO = mesaDAO;
 		this.participanteDAO = participanteDAO;
+		this.tipoDoacaoDAO = tipoDoacaoDAO;
+		this.participanteDoacaoDAO = participanteDoacaoDAO;
 	}
 
 	@GET
@@ -59,8 +69,29 @@ public class CommonResource {
 	public void loadDefaultData(@Context HttpServletRequest request) {
 		loadSonhos();
 		loadMesas();
+		loadTipoDoacao();
+		loadParticipanteDoacao();
 	}
 
+	private void loadParticipanteDoacao() {
+		participanteDoacaoDAO.insert(new ParticipanteDoacao(1L, 1L, 1L));
+		participanteDoacaoDAO.insert(new ParticipanteDoacao(2L, 2L, 2L));
+		participanteDoacaoDAO.insert(new ParticipanteDoacao(3L, 3L, 1L));
+		participanteDoacaoDAO.insert(new ParticipanteDoacao(4L, 4L, 1L));
+		participanteDoacaoDAO.insert(new ParticipanteDoacao(5L, 5L, 3L));
+		participanteDoacaoDAO.insert(new ParticipanteDoacao(6L, 6L, 1L));
+		participanteDoacaoDAO.insert(new ParticipanteDoacao(7L, 7L, 3L));
+		participanteDoacaoDAO.insert(new ParticipanteDoacao(8L, 6L, 1L));
+		participanteDoacaoDAO.insert(new ParticipanteDoacao(9L, 7L, 3L));
+		
+	}
+	
+	private void loadTipoDoacao() {
+		tipoDoacaoDAO.insert(new TipoDoacao(1L, "Balão"));
+		tipoDoacaoDAO.insert(new TipoDoacao(2L, "Sonho"));
+		tipoDoacaoDAO.insert(new TipoDoacao(3L, "Leilão"));
+	}
+	
 	private void loadSonhos() {
 		sonhoDAO.insert(new Sonho(new Crianca("Caio Oliveira"), "Viagem para fernando de noronha"));
 		sonhoDAO.insert(new Sonho(new Crianca("Rodrigo Dantas"), "Comprar uma BMW"));
@@ -81,13 +112,13 @@ public class CommonResource {
 		
 		mesaDAO.insert(new Mesa(1l,"Esperanca"));
 		
-		p = new Participante(1l, "Jose", 2l);
+		p = new Participante(4l, "Jose", 2l);
 		participanteDAO.insert(p);
 		
-		p = new Participante(2l, "Maria", 2l);
+		p = new Participante(5l, "Maria", 2l);
 		participanteDAO.insert(p);
 		
-		p = new Participante(3l, "Joao", 2l);
+		p = new Participante(6l, "Joao", 2l);
 		participanteDAO.insert(p);
 		
 		mesaDAO.insert(new Mesa(2l,"Fe"));
