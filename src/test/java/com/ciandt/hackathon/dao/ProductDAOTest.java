@@ -7,6 +7,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.ciandt.hackathon.entity.Product;
+import com.ciandt.hackathon.entity.ProductType;
 import com.ciandt.hackathon.test.AbstractTestClass;
 
 public class ProductDAOTest extends AbstractTestClass {
@@ -21,7 +22,7 @@ public class ProductDAOTest extends AbstractTestClass {
 		product.setImageURL("http://uol.com.br/image/gif");
 		product.setPrice(10.0);
 		product.setPoints(0);
-		product.setType("A");
+		product.setProductType(ProductType.BALLONS);
 		
 		dao.insert(product);
 	}
