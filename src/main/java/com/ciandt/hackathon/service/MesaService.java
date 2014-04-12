@@ -17,6 +17,10 @@ public class MesaService {
 	// Mesa do tablet
 	private Mesa mesa = new Mesa();	
 	
+	public Mesa getMesa() {
+		return mesa;
+	}
+	
 	public void adicionaPessoa(Pessoa pessoa) {
 		mesa.adicionarPessoa(pessoa);
 	}	

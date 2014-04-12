@@ -16,27 +16,61 @@ public class ProdutoDAO {
 		produto1.setDescricao("Balao comemorativo do evento mais esperado do ano!");
 		produto1.setCategoria(CategoriaEnum.BALOES);
 		produto1.setNome("Balao Comemorativo");
-		produto1.setFoto("static/assets/balao.jpeg");
 		produto1.setPontos(1000);
 		produto1.setPreco(2000);
 		
 		produtos.add(produto1);
 
 		Produto produto2 = new Produto();
-		produto2.setDescricao("Livro sobre a historia do Google");
+		produto1.setDescricao("Livro sobre a historia do Google");
 		produto2.setCategoria(CategoriaEnum.LIVRO);
 		produto2.setNome("Livro do Google");
-		produto2.setFoto("static/assets/livro.jpg");
 		produto2.setPontos(5);
 		produto2.setPreco(20);
 		
 		produtos.add(produto2);
 		
+		Produto produto3 = new Produto();
+		produto1.setDescricao("Livro Um sonho para recomeçar");
+		produto3.setCategoria(CategoriaEnum.LIVRO);
+		produto3.setNome("Livro dos sonhos");
+		produto3.setPontos(5);
+		produto3.setPreco(20);
+		
+		produtos.add(produto3);
+		
+		Produto produto4 = new Produto();
+		produto1.setDescricao("Livro A vida por Daniel Andrade");
+		produto4.setCategoria(CategoriaEnum.LIVRO);
+		produto4.setNome("Livro Pensamentos");
+		produto4.setPontos(5);
+		produto4.setPreco(20);
+		
+		produtos.add(produto4);
+		
+		Produto produto5 = new Produto();
+		produto1.setDescricao("Livro Uma cilada por Roger Rabbit");
+		produto5.setCategoria(CategoriaEnum.LIVRO);
+		produto5.setNome("Livro Desenhos");
+		produto5.setPontos(5);
+		produto5.setPreco(20);
+		
+		produtos.add(produto5);
+		
+		Produto produto6 = new Produto();
+		produto1.setDescricao("Livro Parceria com limites");
+		produto6.setCategoria(CategoriaEnum.LIVRO);
+		produto6.setNome("Livro Suspense");
+		produto6.setPontos(5);
+		produto6.setPreco(20);
+		
+		produtos.add(produto6);
+		
 		Produto sonho = new Produto();
-		sonho.setDescricao("Joao gostaria de conhecer a Valesca Popozuda");
+		sonho.setDescricao("Sonho conhecer minha amigas virtuais");
 		sonho.setCategoria(CategoriaEnum.ADOTE_UM_SONHO);
-		sonho.setNome("Conhecer Valesca Popozuda");
-		sonho.setFoto("static/assets/sonho1.jpg");
+		sonho.setFoto("/static/assets/sonho2.jpg");
+		sonho.setNome("Um mundo distante");
 		sonho.setPontos(1000);
 		sonho.setPreco(2000);
 		

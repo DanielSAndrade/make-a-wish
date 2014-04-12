@@ -4,13 +4,24 @@
 
 <html>
 
-  <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-  </head>
+	<head>
+	   <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	</head>
 
-  <body>
-	<p><b>${produto.nome}</b></p>
-	<p><img alt="${produto.nome}" src="${produto.imagem}"></p>
-	Mesa: ${produto.descricao} - Pontos ${produto.pontos} - Pre&ccedil;o <fmt:formatNumber value="${produto.preco}" type="currency"/></b></p>
-  </body>
+	<body>
+		<form action="produto/comprar" name="form" id="form">
+			<input type="hidden" value="${produto.nome}" id="idProduto"
+				name="idProduto" />
+			<p>
+				<b>${produto.nome}</b>
+			</p>
+			<p>
+				<img alt="${produto.nome}" src="${produto.imagem}">
+			</p>
+			Mesa: ${produto.descricao} - Pontos ${produto.pontos} - Pre&ccedil;o <fmt:formatNumber value="${produto.preco}" type="currency" />
+			</b>
+			</p>
+			<a href="javascript:form.submit()">Comprar</a>
+		</form>
+	</body>
 </html>
