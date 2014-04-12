@@ -39,6 +39,8 @@
     Produto: <input type="text" name="idProduto" /> <br>
     valor: <input type="text" name="valor" /> <br>
     idParticipante: <input type="text" name="idParticipante" /> <br>
+    Valor: <input type="text" name="idParticipante" /> <br>
+    idMesa: <input type="text" name="idMesa" /> <br>
     
     <div><input type="submit" value="POSTTTT" /></div>
     
