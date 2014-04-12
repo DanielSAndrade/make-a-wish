@@ -1,5 +1,6 @@
 package com.ciandt.hackathon.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,35 +9,67 @@ import java.util.List;
  *
  */
 public class Mesa {
+    
+    private String nome;
+    
+	private List<Compra> comprasEfetuadas = new ArrayList<Compra>();
 
-	private List<Compra> comprasEfetuadas;
+    public String getNome() {
+        return nome;
+    }
 
-	private List<Medalha> medalhas;
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	private List<Pessoa> pessoas;
+	private List<Medalha> medalhas = new ArrayList<Medalha>();
+
+	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 
 	public List<Compra> getComprasEfetuadas() {
 		return comprasEfetuadas;
 	}
 
-	public void setComprasEfetuadas(List<Compra> comprasEfetuadas) {
-		this.comprasEfetuadas = comprasEfetuadas;
+	public void adicionarCompraEfetuada(Compra compraEfetuada) {
+		this.comprasEfetuadas.add(compraEfetuada);
 	}
-
+	
 	public List<Pessoa> getPessoas() {
 		return pessoas;
 	}
 
-	public void setPessoas(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
+	public void adicionarPessoa(Pessoa pessoa) {
+		pessoas.add(pessoa);
 	}
-
+	
 	public List<Medalha> getMedalhas() {
 		return medalhas;
 	}
 
-	public void setMedalhas(List<Medalha> medalhas) {
-		this.medalhas = medalhas;
+	public void adicionarMedalhas(Medalha medalha) {
+		medalhas.add(medalha);
 	}
+	
+	/**
+	 * Retorna os pontos que uma mesa fez
+	 * @return
+	 */
+	public Long getPontos() {
+		long pontos = 0;
+		
+		List<Compra> comprasEfetuadas = this.getComprasEfetuadas();
+		
+		for (Compra compra : comprasEfetuadas) {
+			List<Produto> produtosComprados = compra.getProdutos();
 
+			pontos += compra.getBonus();
+			
+			for (Produto produto : produtosComprados) {
+				pontos += produto.getPontos();
+			}
+		}
+		
+		return pontos;
+	}
+	
 }
