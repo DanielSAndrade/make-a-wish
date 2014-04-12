@@ -64,7 +64,8 @@ var Compras = (function($){
                         'data-toggle' : 'modal',
                         'data-target' : '#myModal',
                         'href' : '#',
-                        'role' : 'button'
+                        'role' : 'button',
+                        'text' : 'Comprar'
                     });
 
                 $containerBotao.append($botaoComprar)
@@ -107,12 +108,13 @@ var Compras = (function($){
 
         },
         comprar: function($form, $btn) {
-            var produto = {'codProduto': $form., 'numeroDaMesa': 0};
+            var produto = {'codProduto': $btn.data('produto'), 
+                            'numeroDaMesa': $btn.data('mesa')};
             $filmeVotado.val($($btn).data('mesa'));
             $.ajax({
                 type: 'POST',
-                url: '/comprar',
-                data: {'id': 0, mesa: 0},
+                url: '/services/comprar',
+                data: produto,
                 success: function(json) {
                     _private.mostrarMensagemDePedidoEnviado();
                 },
