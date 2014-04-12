@@ -21,11 +21,11 @@ public class ObjectfyBuyDAO implements BuyDAO {
 	private Logger log;
 
 	@Override
-	public Long insertBuy(Product product, Table table) {
+	public Long insertBuy(Product product, String tableName) {
 		log.info("Inserting a new greeting");
 
 		// find table
-		table = this.findTable(table.getName());
+		Table table = this.findTable(tableName);
 
 		// invalidates the cache
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
