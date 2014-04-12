@@ -82,13 +82,8 @@ public class CommonResource {
 	@GET
 	@Path("/compras")
 	public List<Compra> compras(@Context HttpServletRequest request) {
-		String idCompra = request.getParameter("idCompra");
-		System.out.println("##idCompra "+ idCompra);
-		
 		List<Compra> findCompras = compraDAO.findCompras();
-		
 		return findCompras;
-		
 	}
 	
 	@GET
