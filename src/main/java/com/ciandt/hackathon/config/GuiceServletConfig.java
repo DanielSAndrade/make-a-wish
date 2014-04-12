@@ -3,13 +3,14 @@ package com.ciandt.hackathon.config;
 import java.util.logging.Logger;
 
 import com.ciandt.hackathon.api.CommonResource;
-import com.ciandt.hackathon.dao.GreetingDAO;
-import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
-import com.ciandt.hackathon.dao.WishDAO;
-import com.ciandt.hackathon.dao.ObjectifyWishDAO;
 import com.ciandt.hackathon.dao.DonatorDAO;
+import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyDonatorDAO;
+import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
+import com.ciandt.hackathon.dao.ObjectifyWishDAO;
+import com.ciandt.hackathon.dao.WishDAO;
 import com.ciandt.hackathon.resources.GuestbookServlet;
+import com.ciandt.hackathon.resources.PopulateWishesServlet;
 import com.ciandt.hackathon.resources.SignGuestbookServlet;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -28,6 +29,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 		    protected void configureServlets() {
 				serve("/guestbook").with(GuestbookServlet.class);
 				serve("/sign").with(SignGuestbookServlet.class);
+				serve("/populateWishes").with(PopulateWishesServlet.class);
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 				bind(WishDAO.class).to(ObjectifyWishDAO.class);
