@@ -35,12 +35,12 @@
 </c:if>
 
 
-  <form action="/sign" method="post">
+  <form action="/api/compra" method="post">
     Produto: <input type="text" name="idProduto" /> <br>
-    Produto: <input type="text" name="idProduto" /> <br>
-    Produto: <input type="text" name="idProduto" /> <br>
+    valor: <input type="text" name="valor" /> <br>
+    idParticipante: <input type="text" name="idParticipante" /> <br>
     
-    <div><input type="submit" value="Post Greeting" /></div>
+    <div><input type="submit" value="POSTTTT" /></div>
     
     
     

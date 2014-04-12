@@ -6,6 +6,7 @@ import java.util.Random;
 
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -14,6 +15,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.commons.lang.StringUtils;
+
+import com.ciandt.hackathon.dao.CompraDAO;
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.MesaDAO;
 import com.ciandt.hackathon.dao.ParticipanteDAO;
@@ -22,7 +26,6 @@ import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Greeting;
 import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Participante;
-import com.ciandt.hackathon.entity.Produto;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -38,13 +41,17 @@ public class CommonResource {
 	
 	private final MesaDAO mesaDAO;
 	
+	private final CompraDAO compraDAO;
+	
 
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO, ParticipanteDAO participanteDAO, MesaDAO mesaDAO) {
+	public CommonResource(GreetingDAO greetingDAO, ParticipanteDAO participanteDAO, MesaDAO mesaDAO,CompraDAO compraDAO) {
+	
 		super();
 		this.greetingDAO = greetingDAO;
 		this.participanteDAO = participanteDAO;
 		this.mesaDAO = mesaDAO;
+		this.compraDAO = compraDAO;
 	}
 
 	@GET
@@ -84,24 +91,38 @@ public class CommonResource {
 
 	@POST
 	@Path("/compra")
-	public Response compra(@Context HttpServletRequest request) {
-		
-		String idProduto = (String)request.getAttribute("idProduto");
-		String valorCompra = (String)request.getAttribute("valor");
-		String idParticipante = (String)request.getAttribute("idParticipante");
-		
-		
-		if (idProduto != null && valorCompra != null && idParticipante != null){
+	public Response compra(
+			@FormParam(value = "idParticipante") String idParticipante,
+			@FormParam(value = "idProduto") String idProduto,
+			@FormParam(value = "valor") String valor,
+			@FormParam(value = "idParticipante") String idMesa) {
+
+		if (StringUtils.isNotEmpty(idProduto) && StringUtils.isNotEmpty(valor)
+				&& StringUtils.isNotEmpty(idParticipante)) {
 			System.out.println("Criando nova compra");
-			
 			Compra compra = new Compra();
-			
-			
-		}else{
+			compra.setIdParticipante(Long.valueOf(idParticipante));
+			compra.setUrlImagem("");
+			compra.setIdProduto(Long.valueOf(idProduto));
+			compra.setIdMesa(Long.valueOf(idMesa));
+
+			compraDAO.insert(compra);
+
+			System.out.println("COMPRA inserida !!");
+
+		} else {
 			System.err.println("##############Parametros nulos");
 		}
-		
+
 		return Response.ok("OK").build();
+	}
+
+	
+	@GET
+	@Path("/compras")
+	public List<Compra> compras(@Context HttpServletRequest request) {
+		List<Compra> findCompras = compraDAO.findCompras();
+		return findCompras;
 	}
 	
 	@GET
@@ -174,11 +195,7 @@ public class CommonResource {
 		}else{
 			return Response.ok("Carga já realizada").build();
 		}
-		
-		
-		
 	}
 	
-
 
 }

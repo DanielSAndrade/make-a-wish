@@ -1,5 +1,6 @@
 package com.ciandt.hackathon.dao;
 
+import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Greeting;
 import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Participante;
@@ -15,6 +16,7 @@ public class OfyService {
 		factory().register(Participante.class);
 		factory().register(Mesa.class);
 		factory().register(Produto.class);
+		factory().register(Compra.class);
 	}
 
 	/**
