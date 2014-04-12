@@ -54,7 +54,7 @@ public class VendaResource {
 	}
 	
 	@GET
-	@Path("/listVenda")
+	@Path("/listVendas")
 	public List<Venda> listVendas(@Context HttpServletRequest request) {
 		List<Venda> listVendas= vendaDAO.findVendas();
 		return listVendas;
