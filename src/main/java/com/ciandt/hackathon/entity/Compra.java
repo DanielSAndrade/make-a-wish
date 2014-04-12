@@ -1,10 +1,11 @@
 package com.ciandt.hackathon.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Compra {
 
-	private List<Produto> produtos;
+	private List<Produto> produtos = new ArrayList<Produto>();
 
 	private Pessoa pessoa;
 	

@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class Mesa {
 
-	private List<Compra> comprasEfetuadas;
+	private List<Compra> comprasEfetuadas = new ArrayList<Compra>();
 
-	private List<Medalha> medalhas;
+	private List<Medalha> medalhas = new ArrayList<Medalha>();
 
-	private List<Pessoa> pessoas;
+	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
 
 	public List<Compra> getComprasEfetuadas() {
 		return comprasEfetuadas;
@@ -43,4 +43,24 @@ public class Mesa {
 		this.medalhas = medalhas;
 	}
 
+	/**
+	 * Retorna os pontos que uma mesa fez
+	 * @return
+	 */
+	public Long getPontos() {
+		long pontos = 0;
+		
+		List<Compra> comprasEfetuadas = this.getComprasEfetuadas();
+		
+		for (Compra compra : comprasEfetuadas) {
+			List<Produto> produtosComprados = compra.getProdutos();
+
+			for (Produto produto : produtosComprados) {
+				pontos += produto.getPontos();
+			}
+		}
+		
+		return pontos;
+	}
+	
 }
