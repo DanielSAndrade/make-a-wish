@@ -21,26 +21,13 @@ public class MesaDAO {
 		
 		mesa.setNome("SmartPhone");
 		
-		List<Compra> comprasEfetuadas = new ArrayList<Compra>();
-
-		Compra compra1 = new Compra();
-		Pessoa daniel = new Pessoa();
-		daniel.setNome("Daniel da Silva");
-
-		Pessoa carlos = new Pessoa();
-		carlos.setNome("Carlos Pereira");
+		Pessoa daniel = criaPessoa("Daniel da Silva");
 		
-		compra1.setPessoa(daniel);
+		Pessoa carlos = criaPessoa("Carlos Pereira");
 		
-		compra1.setProdutos(produtos);
-		compra1.setPessoa(daniel);
-		comprasEfetuadas.add(compra1);
+		addCompra(produtos, mesa, daniel);
 		
-		mesa.setComprasEfetuadas(comprasEfetuadas);
-		
-		List<Medalha> medalhas = new ArrayList<Medalha>();
-		
-		mesa.setMedalhas(medalhas);
+		addMedalhas(mesa);
 
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		
@@ -56,6 +43,31 @@ public class MesaDAO {
 		return mesas;
 		
 	}
+
+    private void addMedalhas(Mesa mesa) {
+        List<Medalha> medalhas = new ArrayList<Medalha>();
+		
+		mesa.setMedalhas(medalhas);
+    }
+
+    private Pessoa criaPessoa(String nome) {
+        Pessoa pessoa = new Pessoa();
+        pessoa.setNome(nome);
+        return pessoa;
+    }
+
+    private void addCompra(List<Produto> produtos, Mesa mesa, Pessoa pessoa) {
+        List<Compra> comprasEfetuadas = new ArrayList<Compra>();
+
+		Compra compra1 = new Compra();
+		compra1.setPessoa(pessoa);
+		
+		compra1.setProdutos(produtos);
+		compra1.setPessoa(pessoa);
+		comprasEfetuadas.add(compra1);
+		
+		mesa.setComprasEfetuadas(comprasEfetuadas);
+    }
 	
 	public void adicionaPessoa(Pessoa pessoa) {
 		mesa.adicionarPessoa(pessoa);
