@@ -24,6 +24,10 @@ public class Product {
 		this.productType = productType;
 	}
 	
+	public Long getId() {
+        return id;
+    }
+	
 	public String getImageURL() {
 		return imageURL;
 	}
