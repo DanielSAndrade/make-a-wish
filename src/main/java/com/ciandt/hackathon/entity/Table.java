@@ -8,49 +8,12 @@ import com.googlecode.objectify.annotation.Id;
 @Entity
 public class Table {
 
+
 	@Id
 	private String name;
 	private String description;
 	private Long score;
-	private List<Product> salesList;
+	private List<User> users;
 	
-	public Table(){
-		super();
-	}
-	
-	public Table(String name, String description, Long score, List<Product> salesList) {
-		super();
-		this.name = name;
-		this.description = description;
-		this.salesList = salesList;
-		this.score = score;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public List<Product> getSalesList() {
-		return salesList;
-	}
-	public void setSalesList(List<Product> salesList) {
-		this.salesList = salesList;
-	}
-
-	public Long getScore() {
-		return score;
-	}
-
-	public void setScore(Long score) {
-		this.score += score;
-	}
 	
 }
