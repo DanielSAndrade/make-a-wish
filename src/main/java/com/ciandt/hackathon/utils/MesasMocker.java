@@ -9,7 +9,7 @@ import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Pessoa;
 import com.ciandt.hackathon.entity.Produto;
 
-public class Mocker {
+public class MesasMocker {
 
 	public Mesa mockMesa1() {
 
@@ -68,10 +68,10 @@ public class Mocker {
 		
 		Compra compra1 = new Compra();
 		Pessoa daniel = new Pessoa();
-		daniel.setNome("Daniel da Silva");
+		daniel.setNome("Jose Pereira");
 
 		Pessoa carlos = new Pessoa();
-		carlos.setNome("Carlos Pereira");
+		carlos.setNome("Mariana Pe");
 		
 		compra1.setPessoa(daniel);
 		compra1.setBonus(2000);
@@ -100,10 +100,10 @@ public class Mocker {
 		
 		Compra compra1 = new Compra();
 		Pessoa daniel = new Pessoa();
-		daniel.setNome("Daniel da Silva");
+		daniel.setNome("Joelho Andrade");
 
 		Pessoa carlos = new Pessoa();
-		carlos.setNome("Carlos Pereira");
+		carlos.setNome("Josefina Esqueleto");
 		
 		compra1.setPessoa(daniel);
 		compra1.setBonus(2000);
@@ -123,13 +123,65 @@ public class Mocker {
 	}	
 
 	public Mesa mockMesa4() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Produto> produtos = new ProdutoDAO().listarProdutos();
+		
+		Mesa mesa = new Mesa();
+		
+		mesa.setNome("XBox");
+		
+		Compra compra1 = new Compra();
+		Pessoa daniel = new Pessoa();
+		daniel.setNome("Marina Joelita");
+
+		Pessoa carlos = new Pessoa();
+		carlos.setNome("Juliana Fontes");
+		
+		compra1.setPessoa(daniel);
+		compra1.setBonus(2000);
+		compra1.setProdutos(produtos);
+		compra1.setPessoa(daniel);
+		
+		mesa.adicionarCompraEfetuada(compra1);
+		
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		
+		pessoas.add(carlos);
+		pessoas.add(daniel);
+		
+		mesa.adicionarPessoa(carlos);
+		mesa.adicionarPessoa(daniel);
+		return mesa;
 	}
 	
 	public Mesa mockMesa5() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Produto> produtos = new ProdutoDAO().listarProdutos();
+		
+		Mesa mesa = new Mesa();
+		
+		mesa.setNome("Playstation");
+		
+		Compra compra1 = new Compra();
+		Pessoa daniel = new Pessoa();
+		daniel.setNome("Fernando Neves");
+
+		Pessoa carlos = new Pessoa();
+		carlos.setNome("Joao Esteves");
+		
+		compra1.setPessoa(daniel);
+		compra1.setBonus(2000);
+		compra1.setProdutos(produtos);
+		compra1.setPessoa(daniel);
+		
+		mesa.adicionarCompraEfetuada(compra1);
+		
+		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		
+		pessoas.add(carlos);
+		pessoas.add(daniel);
+		
+		mesa.adicionarPessoa(carlos);
+		mesa.adicionarPessoa(daniel);
+		return mesa;
 	}
 
 	public Mesa mockMesa6() {
