@@ -13,6 +13,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -175,6 +176,23 @@ public class CommonResource {
 		List<Compra> findCompras = compraDAO.findCompras();
 		return findCompras;
 	}
+	
+	@GET
+	@Path("/comprasPorParticipante")
+	public List<Compra> comprasPorParticipante(@QueryParam(value="idParticipante") String id) {
+		List<Compra> findCompras = compraDAO.findCompras();
+		
+		List<Compra> comprasPorParticipante = new ArrayList<>();
+		
+		for (Compra compra : findCompras) {
+			if (compra.getIdParticipante() != null && compra.getIdParticipante().equals(Long.valueOf(id))){
+				comprasPorParticipante.add(compra);
+			}
+		}
+		
+		return comprasPorParticipante;
+	}
+
 	
 	@GET
 	@Path("/carga-inicial-participante")
