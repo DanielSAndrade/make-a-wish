@@ -30,7 +30,6 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				serve("/excluirProduto").with(ExcluirProdutosServlet.class);
 				serve("/cadastrarProduto").with(CadastroProdutosServlet.class);
 				serve("/usuario").with(UsuarioServlet.class);
-				serve("/test").with(SignGuestbookServlet.class); 
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 		    }
