@@ -11,7 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import com.ciandt.hackathon.dao.ProductDAO;
 import com.ciandt.hackathon.entity.Product;
 import com.ciandt.hackathon.services.ProductService;
 import com.google.inject.Inject;
@@ -23,22 +22,20 @@ import com.google.inject.Singleton;
 @Singleton
 public class ProductsApi {
 
-	private final ProductDAO productDAO;
+	private ProductService productService;
 
 	@Inject
-	public ProductsApi(ProductDAO productDAO) {
+	public ProductsApi(ProductService productService) {
 		super();
-		this.productDAO = productDAO;
+		this.productService = productService;
 	}
 
 	@GET
 	@Path("/products")
 	public List<Product> listProducts(@Context HttpServletRequest request) {
-		List<Product> listProducts = productDAO.findProduct();
+		List<Product> listProducts = productService.listProducts();
 
-		if (listProducts == null || listProducts.size() == 0) {
-			listProducts = this.loadProduct();
-		}
+		
 
 		return listProducts;
 	}
