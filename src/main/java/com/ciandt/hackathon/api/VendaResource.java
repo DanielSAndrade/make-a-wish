@@ -1,10 +1,12 @@
 package com.ciandt.hackathon.api;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.FormParam;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -16,7 +18,7 @@ import com.ciandt.hackathon.dao.VendaDAO;
 import com.ciandt.hackathon.entity.Produto;
 import com.ciandt.hackathon.entity.Venda;
 import com.google.inject.Inject;
-import com.google.inject.Singreetingsgleton;
+import com.google.inject.Singleton;
 
 @Path("/api")
 @ThreadSafe
@@ -49,5 +51,12 @@ public class VendaResource {
 		Venda venda = new Venda(produto, numMesa, new Date(), codComp);
 		vendaDAO.insert(venda);
 		return venda;
+	}
+	
+	@GET
+	@Path("/listVenda")
+	public List<Venda> listVendas(@Context HttpServletRequest request) {
+		List<Venda> listVendas= vendaDAO.findVendas();
+		return listVendas;
 	}
 }
