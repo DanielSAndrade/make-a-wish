@@ -1,3 +1,8 @@
+<%@page import="com.ciandt.hackathon.entity.Produto"%>
+<%@page import="java.util.List"%>
+<%@page import="com.ciandt.hackathon.dao.ProdutoDAO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,6 +13,13 @@
 <link href="static/css/bootstrap.min.css" rel="stylesheet">
 <link href="static/css/estilo.css" rel="stylesheet">
 </head>
+
+<%
+
+	ProdutoDAO produtoDao = new ProdutoDAO();
+	List<Produto> produtos = produtoDao.findAll();
+	request.setAttribute("produtos", produtos);
+%>
 <body>
 
 	<div class="container-fluid fundo_cabecalho">
@@ -22,6 +34,8 @@
 					<div class="btn-group pull-right">
 						<a href="index.html" class="btn btn-large">Página Inicial</a> <a
 							href="catalogo.jsp" class="btn btn-large btn-primary">Catálogo</a>
+						<a href="cadastroProdutos.jsp" class="btn btn-large btn-primary">Cadastro
+							Produtos</a>
 					</div>
 				</div>
 			</div>
@@ -29,49 +43,40 @@
 	</div>
 
 	<div class="container-fluid">
-		<div class="span12">
-			<h1>Novo Voluntário:</h1>
-			<div class="row-fluid">
-				<form class="form-horizontal" action="/usuario" method="post">
+		<div class="row-fluid">
+			<div class="span12">
+				<h1>Cadastro de Produtos:</h1> 
 
-					<input type="hidden" name="action" value="salvar"> <input
-						type="hidden" name="id" value="${usuario.id}">
+			<a class="btn btn-default" href="cadastroProdutos.jsp">Novo</a>
+				<table width="100%" class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Descrição</th>
+							<th>Preço</th>
+							<th>Pontos</th>
+							<th>Excluir</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${produtos}" var="produto">
 
-					<div class="control-group">
-						<label class="control-label" for="userId">ID:</label>
-						<div class="controls">
-							<input type="text" name="userId" id="userId"
-								placeholder="Identificador" value="${usuario.userId}">
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="nome">Nome:</label>
-						<div class="controls">
-							<input type="text" name="nome" id="nome"
-								placeholder="Identificador" value="${usuario.nome}">
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label" for="password">Password</label>
-						<div class="controls">
-							<input type="password" name="password" id="password"
-								placeholder="Password" value="${usuario.password}">
-						</div>
-					</div>
-					<div class="control-group">
-						<div class="controls">
-							<button type="submit" class="btn">Salvar</button>
-							<a href="/usuario" class="btn btn-default">Cancelar</a> <a
-								href="/usuario?action=remover&id=${usuario.id}"
-								class="btn btn-default">Remover</a>
-						</div>
-					</div>
-				</form>
+							<tr>
+								<td>${produto.nome}</td>
+								<td>${produto.descricao}</td>
+								<td>${produto.preco}</td>
+								<td>${produto.pontos}</td>
+								<td><a class="btn btn-default" href="excluirProduto?id=${produto.id}">Excluir</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+
 			</div>
 		</div>
 	</div>
 
-	<div class="container-fluid">
+	<div class="" class="container-fluid">
 		<div class="container">
 			<div class="row">
 				<div class="span12 fundo_branco">
