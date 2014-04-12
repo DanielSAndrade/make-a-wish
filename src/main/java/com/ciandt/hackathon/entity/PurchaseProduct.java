@@ -10,8 +10,17 @@ public class PurchaseProduct {
 	private Long id;
 	
 	private Product product;
-	private Long quantity;
+	private int quantity;
 	
+	public PurchaseProduct(){
+		//No-op
+	}
+	
+	public PurchaseProduct(Long id, Product product, int quantity){
+		this.id = id;
+		this.product = product;
+		this.quantity = quantity;
+	}
 	
 	public Long getId() {
 		return id;
@@ -25,10 +34,10 @@ public class PurchaseProduct {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	public Long getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(Long quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 	

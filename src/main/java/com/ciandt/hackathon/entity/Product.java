@@ -12,7 +12,17 @@ public class Product {
 	private String description;
 	private Double price;
 	private ProductType productType;
-	private Integer points;
+	
+	public Product(){
+		//No-op
+	}
+	
+	public Product(Long id, String description, Double price, ProductType productType){
+		this.id = id;
+		this.description = description;
+		this.price = price;
+		this.productType = productType;
+	}
 	
 	public String getImageURL() {
 		return imageURL;
@@ -37,12 +47,6 @@ public class Product {
 	}
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
-	}
-	public Integer getPoints() {
-		return points;
-	}
-	public void setPoints(Integer points) {
-		this.points = points;
 	}
 
 }
