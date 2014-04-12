@@ -2,6 +2,11 @@ package com.ciandt.hackathon.entity;
 
 import java.util.List;
 
+/**
+ * Entidade referente a uma mesa no evento
+ * @author roger
+ *
+ */
 public class Mesa {
 
 	private List<Compra> comprasEfetuadas;
