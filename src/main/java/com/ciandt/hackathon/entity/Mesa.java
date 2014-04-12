@@ -55,6 +55,13 @@ public class Mesa {
 	 * @return
 	 */
 	public Long getPontos() {
+
+		if (true) {
+			// Mock para pontuacao dinamica
+			long pontosMock = (long) (Math.random() * 10);
+			return pontosMock;
+		}
+		
 		long pontos = 0;
 		
 		List<Compra> comprasEfetuadas = this.getComprasEfetuadas();
@@ -71,5 +78,5 @@ public class Mesa {
 		
 		return pontos;
 	}
-	
+
 }
