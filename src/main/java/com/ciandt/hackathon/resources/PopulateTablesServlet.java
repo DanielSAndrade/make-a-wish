@@ -10,7 +10,6 @@ import com.ciandt.hackathon.entity.Donator;
 import com.ciandt.hackathon.entity.Table;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.googlecode.objectify.ObjectifyService;
 
 @SuppressWarnings("serial")
 @Singleton
@@ -25,11 +24,15 @@ public class PopulateTablesServlet extends HttpServlet {
 	private DonatorDAO donatorDao;
 
 
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) {    	
-		insertTable(new Long(1), "Mesa 1", 12, 1);
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) {
+    	dao.deleteAll();
+
+    	insertTable(new Long(1), "Mesa 1", 12, 1);
 		insertTable(new Long(2), "Mesa 2", 20, 5);
 		insertTable(new Long(3), "Mesa 3", 17, 2);
 		insertTable(new Long(4), "Mesa 4", 11, 0);
+
+   		donatorDao.deleteAll();
 
 		insertDonator("donator1@gmail.com", "Doador 1", 12, 15, new Long(1));
 		insertDonator("donator2@gmail.com", "Doador 2", 12, 15, new Long(1));

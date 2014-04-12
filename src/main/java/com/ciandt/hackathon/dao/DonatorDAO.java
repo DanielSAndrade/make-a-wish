@@ -10,7 +10,8 @@ public interface DonatorDAO {
 	public Long insert( Donator donator );
 	public void delete(Donator donator); 
 	public void update(Donator donator); 
-	
+	public void deleteAll();
+
 //	public void markAsIntended( Wish wish); 
 //	public void realize(Wish wish);
 //	public void dontRealize(Wish wish); 

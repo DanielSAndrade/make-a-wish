@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.ciandt.hackathon.entity.Donator;
+import com.ciandt.hackathon.entity.Table;
 import com.google.appengine.api.memcache.ErrorHandlers;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
@@ -62,6 +63,12 @@ public class ObjectifyDonatorDAO implements DonatorDAO {
 		log.info("Deleting a wish");
 		ofy().delete().entity(donator).now();
 	}
+	
+	public void deleteAll() {
+		List<Key<Donator>> keys = ofy().load().type(Donator.class).keys().list();
+		ofy().delete().keys(keys).now();
+	}
+
 	
 	public void update(Donator donator) {
 		log.info("Update wish");

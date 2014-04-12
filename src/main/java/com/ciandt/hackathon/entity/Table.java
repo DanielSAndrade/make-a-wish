@@ -2,6 +2,7 @@ package com.ciandt.hackathon.entity;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Table {
@@ -9,6 +10,8 @@ public class Table {
 	@Id
 	private Long id;
 	private String name;
+    
+	@Index
 	private int points;
 	private int badges;
 

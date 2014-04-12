@@ -23,11 +23,11 @@ public class ObjectifyTableDAO implements TableDAO {
 	@Override
 	public List<Table> findTables() {
 		log.info("Finding all tables");
-		
-		List<Table> tables = (List<Table>) ofy().load().type(Table.class).list();
+
+		List<Table> tables = (List<Table>) ofy().load().type(Table.class).order("-points").list();
 	    return tables;
 	}
-	
+
 	@Override
 	public Long insert( Table table ) {
 		log.info("Inserting a new table");
@@ -47,6 +47,12 @@ public class ObjectifyTableDAO implements TableDAO {
 		log.info("Deleting a table");
 		ofy().delete().entity(table).now();
 	}
+	
+	public void deleteAll() {
+		List<Key<Table>> keys = ofy().load().type(Table.class).keys().list();
+		ofy().delete().keys(keys).now();
+	}
+
 	
 	public void update(Table table) {
 		log.info("Update Table");
