@@ -11,7 +11,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.SonhoDAO;
+import com.ciandt.hackathon.entity.Crianca;
 import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.entity.Sonho;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -23,10 +26,14 @@ public class CommonResource {
 
 	private final GreetingDAO greetingDAO;
 
+	private  SonhoDAO sonhoDAO;
+
+	
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO) {
+	public CommonResource(GreetingDAO greetingDAO, SonhoDAO sonhoDAO) {
 		super();
 		this.greetingDAO = greetingDAO;
+		this.sonhoDAO = sonhoDAO;
 	}
 
 	@GET
@@ -36,4 +43,17 @@ public class CommonResource {
 		return listGreetings;
 	}
 
+	
+	@GET
+	@Path("/loadDefaultData")
+	public void loadDefaultData(@Context HttpServletRequest request) {
+		loadSonhos();
+	}
+
+	private void loadSonhos() {
+		sonhoDAO.insert(new Sonho(new Crianca("Caio Oliveira"), "Viagem para fernando de noronha"));
+		sonhoDAO.insert(new Sonho(new Crianca("Rodrigo Dantas"), "Comprar uma BMW"));
+		sonhoDAO.insert(new Sonho(new Crianca("Caio Oliveira"), "Viagem para fernando de noronha"));
+		sonhoDAO.insert(new Sonho(new Crianca("Rodrigo Dantas"), "Comprar uma BMW"));
+	}
 }
