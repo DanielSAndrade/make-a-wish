@@ -10,7 +10,7 @@ import com.ciandt.hackathon.services.ProductService;
 public class ProductServiceImpl implements ProductService {
 	
 	
-	ProductDAO productDAO;
+	private ProductDAO productDAO;
 
 	@Override
 	public List<Product> listProducts() {
