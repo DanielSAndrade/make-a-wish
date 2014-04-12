@@ -62,19 +62,20 @@ public class CommonResource {
 		Wish.Status status = Wish.Status.AVAILABLE;
 		String tableName = request.getParameter(TABLE);
 		
-		if (tableName != null) {
-				//busca por mesa
-		}
-		else {
-			//busca tudo
-		}
-		
 		List<Wish> wishList = null;
 		
+		if (tableName != null) {
+			wishList = wishDAO.findWishes(tableName, status);
+		}
+		else {
+			wishList = wishDAO.findWishes();
+		}
+			
+		wishDAO.unmarkAsIntended(tableName);
+		
 		for (Wish wish : wishList) {
-			wish.setStatus(Wish.Status.INTENDED);
 			wish.setIntendedTable(tableName);
-			//persistir objeto wish
+			wishDAO.markAsIntended(wish);
 		}
 		
 		return wishList; 
