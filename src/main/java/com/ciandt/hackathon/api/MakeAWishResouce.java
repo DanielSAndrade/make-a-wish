@@ -10,8 +10,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
-import com.ciandt.hackathon.dao.GreetingDAO;
-import com.ciandt.hackathon.entity.Greeting;
+import com.ciandt.hackathon.dao.MesaDAO;
+import com.ciandt.hackathon.entity.Mesa;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -19,22 +19,20 @@ import com.google.inject.Singleton;
 @ThreadSafe
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 @Singleton
-public class CommonResource {
-
-	private final GreetingDAO greetingDAO;
+public class MakeAWishResouce {
 	
+	private final MesaDAO mesaDAO;
 
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO) {
+	public MakeAWishResouce(MesaDAO mesaDAO) {
 		super();
-		this.greetingDAO = greetingDAO;
-		
+		this.mesaDAO = mesaDAO;
 	}
-
+	
 	@GET
-	@Path("/listGreetings")
-	public List<Greeting> listGreetings(@Context HttpServletRequest request) {
-		List<Greeting> listGreetings = greetingDAO.findGreetings();
-		return listGreetings;
+	@Path("/listMesas")
+	public List<Mesa> listMesas(@Context HttpServletRequest request){
+		List<Mesa> lstMesas = mesaDAO.obterMesas();
+		return lstMesas;
 	}
 }
