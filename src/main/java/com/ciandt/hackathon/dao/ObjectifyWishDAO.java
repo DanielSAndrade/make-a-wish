@@ -79,7 +79,8 @@ public class ObjectifyWishDAO implements WishDAO {
 		
 		if (wishes == null) {
 			log.info("Not found in cache");
-			wishes = ofy().load().type(Wish.class).filter("status = ", status).list();
+			//wishes = ofy().load().type(Wish.class).filter("status = ", status).list();
+			wishes = ofy().load().type(Wish.class).list();
 		} else {
 			log.info("Using cache!");
 		}

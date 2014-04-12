@@ -102,6 +102,7 @@ public class CommonResource {
 		else {
 			wishList = wishDAO.findWishes(status);
 		}
+		log.info("wishList:" + wishList);
 			
 		wishDAO.unmarkAsIntended(tableName);
 		
