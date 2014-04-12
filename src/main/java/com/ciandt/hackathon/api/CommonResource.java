@@ -1,9 +1,8 @@
 package com.ciandt.hackathon.api;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -72,8 +71,14 @@ public class CommonResource {
 		Mesa mesa = mesaDAO.find(idMesa);
 		for(Long idParticipante:mesa.getListaIdParticipantes()){
 			Participante participante = participanteDAO.find(idParticipante);
+			atualizaRank(participante);
 			listaParticipantes.add(participante);
 		}
+		
+		
+			
+			
+		
 		return listaParticipantes;
 	}
 	
@@ -81,8 +86,20 @@ public class CommonResource {
 	@Path("/rankingParticipante")
 	public List<Participante> rankingParticipante(@Context HttpServletRequest request) {
 		List<Participante> listParticipantes = participanteDAO.findParticipantes();
+		
+		Comparator<Participante> comparator = new Comparator<Participante>() {
+		    public int compare(Participante c1, Participante c2) {
+		    	if (c2.getRank() != null && c1.getRank() != null){
+		    		return c2.getRank().compareTo(c1.getRank()); // use your logic
+		    	}
+		    	return 0;
+		    }
+		};
+		
+		Collections.sort(listParticipantes, comparator);
+		
 		for (Participante participante : listParticipantes) {
-			//compraDAO.
+			atualizaRank(participante);
 			
 			
 		}
@@ -112,10 +129,11 @@ public class CommonResource {
 			@FormParam(value = "idMesa") String idMesa) {
 
 		if (StringUtils.isNotEmpty(idProduto) && StringUtils.isNotEmpty(valor)
-				&& StringUtils.isNotEmpty(idParticipante)) {
-			System.out.println("Criando nova compra");
+				&& StringUtils.isNotEmpty(idParticipante) && StringUtils.isNotEmpty(idMesa)) {
+			System.out.println("#############Criando nova compra");
 			Compra compra = new Compra();
 			compra.setIdParticipante(Long.valueOf(idParticipante));
+			compra.setValor(Double.valueOf(valor));
 			compra.setUrlImagem("");
 			compra.setIdProduto(Long.valueOf(idProduto));
 			compra.setIdMesa(Long.valueOf(idMesa));
@@ -123,11 +141,19 @@ public class CommonResource {
 			compraDAO.insert(compra);
 			System.out.println("COMPRA inserida !!");
 			
-			Participante participante = participanteDAO.find(Long.valueOf(idParticipante));
-			participante.setRank(participante.getRank() + 10);
 			
-			participanteDAO.update(participante);
-
+			System.out.println("#############AUMENTANDO PONTOS DO PARTICIPANTE");
+			Participante participante = participanteDAO.find(Long.valueOf(idParticipante));
+			
+			if (participante != null){
+				
+				participante.setDelta(1);
+				participante.setRank(participante.getRank() + 10);
+				participante.setDataUltimaCompra(System.currentTimeMillis());
+				
+				participanteDAO.update(participante);
+				
+			}
 		} else {
 			System.err.println("##############Parametros nulos");
 		}
@@ -214,13 +240,21 @@ public class CommonResource {
 			return Response.ok("Carga já realizada").build();
 		}
 	}
-	
-	private void atualizaRank(Participante participante){
-		Date agora = new Date(System.currentTimeMillis());
-		Calendar calendarAgora = Calendar.getInstance();
-		calendarAgora.setTime(agora);
-		
-		participanteDAO.update(participante);
+	private void atualizaRank(Participante participante) {
+
+		try {
+			Long novaData = System.currentTimeMillis()
+					- participante.getDataUltimaCompra();
+			Long diff = ((novaData / 1000) / 60);
+
+			Long disconto = diff / 15;
+			participante.setRank(participante.getRank().intValue()
+					- disconto.intValue());
+			participante.setDelta(2);
+			participanteDAO.update(participante);
+		} catch (Exception e) {
+
+		}
 	}
 	
 
