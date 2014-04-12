@@ -15,5 +15,7 @@ public interface ProductDAO {
 	public void insert(Product product);
 	
 	public Product findById(Long id);
+	
+	public void deleteAll();
 
 }

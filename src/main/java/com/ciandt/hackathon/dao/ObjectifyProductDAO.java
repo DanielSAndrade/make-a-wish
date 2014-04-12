@@ -24,4 +24,11 @@ public class ObjectifyProductDAO implements ProductDAO {
 	public Product findById(Long id) {
 		return (Product) ofy().load().filterKey(id);
 	}
+
+	@Override
+	public void deleteAll() {
+		ofy().delete().entities(findAllProducts());
+	}
+	
+	
 }

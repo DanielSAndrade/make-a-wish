@@ -1,6 +1,7 @@
 package com.ciandt.hackathon.resources;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -44,22 +45,26 @@ public class PurchaseServlet extends HttpServlet {
 		String productList = req.getParameter("productList");
 		
 		//fixme remover
-		productList = "1,1;10,2";
-		userId = 1l;
+		//productList = "1,1;10,2";
+		//userId = 1l;
 		
 		User foundUser = userDao.findById(userId);
 			
 		for (String product: productList.split(";")) {
 			
 			String id = product.split(",")[0];
-			Product productVO = productDao.findById(Long.valueOf(id));
 			String qty = product.split(",")[1];
 			PurchaseProduct pp = new PurchaseProduct();
 			
-			pp.setProduct(productVO);
+			pp.setProductId(Long.valueOf(id));
 			pp.setQuantity(Long.valueOf(qty));
 			
-			foundUser.getProducts().add(pp);
+			userDao.savePurchaseProduct(pp);
+			
+			if (foundUser.getPurchaseProductIds()==null)
+				foundUser.setPurchaseProductIds(new ArrayList<Long>());
+			
+			foundUser.getPurchaseProductIds().add(pp.getId());
 		}
 		
 		userDao.saveOrUpdate(foundUser);
