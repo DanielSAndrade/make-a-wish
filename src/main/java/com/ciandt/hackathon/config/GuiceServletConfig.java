@@ -10,6 +10,7 @@ import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyWishDAO;
 import com.ciandt.hackathon.dao.WishDAO;
 import com.ciandt.hackathon.resources.GuestbookServlet;
+import com.ciandt.hackathon.resources.PopulateTablesServlet;
 import com.ciandt.hackathon.resources.PopulateWishesServlet;
 import com.ciandt.hackathon.resources.SignGuestbookServlet;
 import com.google.inject.Guice;
@@ -30,6 +31,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				serve("/guestbook").with(GuestbookServlet.class);
 				serve("/sign").with(SignGuestbookServlet.class);
 				serve("/populateWishes").with(PopulateWishesServlet.class);
+				serve("/populateTables").with(PopulateTablesServlet.class);
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 				bind(WishDAO.class).to(ObjectifyWishDAO.class);

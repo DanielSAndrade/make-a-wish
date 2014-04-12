@@ -187,12 +187,6 @@ public class ObjectifyWishDAO implements WishDAO {
 	
 	public void update(Wish wish) {
 		log.info("Update wish");
-		
-		//invalidates the cache
-		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
-		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-		syncCache.delete( "WISHES" );
-
 		ofy().save().entity(wish).now();
 	}
 

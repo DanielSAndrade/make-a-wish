@@ -17,6 +17,17 @@ public class Donator {
 		
 	}
 
+	public Donator(String login, String name, int points, int badges, int table) {
+		super();
+		this.login = login;
+		this.name = name;
+		this.points = points;
+		this.badges = badges;
+		this.table = table;
+	}
+
+
+
 	public String getLogin() {
 		return login;
 	}
