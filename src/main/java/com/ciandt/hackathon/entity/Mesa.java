@@ -8,8 +8,28 @@ import java.util.List;
  *
  */
 public class Mesa {
+    
+    private String nome;
+    
+    private int pontos;
 
-	private List<Compra> comprasEfetuadas;
+	public int getPontos() {
+        return pontos;
+    }
+
+    public void setPontos(int pontos) {
+        this.pontos = pontos;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    private List<Compra> comprasEfetuadas;
 
 	private List<Medalha> medalhas;
 
