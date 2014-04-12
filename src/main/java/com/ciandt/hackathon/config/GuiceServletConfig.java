@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import com.ciandt.hackathon.api.CommonResource;
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
+import com.ciandt.hackathon.resources.FinalizaCompraServlet;
 import com.ciandt.hackathon.resources.GuestbookServlet;
 import com.ciandt.hackathon.resources.ListaProdutosServlet;
 import com.ciandt.hackathon.resources.RankMesaServlet;
@@ -28,6 +29,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				serve("/sign").with(SignGuestbookServlet.class);
 				serve("/rank").with(RankMesaServlet.class);
 				serve("/produtos").with(ListaProdutosServlet.class);
+				serve("/produto/comprar").with(FinalizaCompraServlet.class);
 				bind(CommonResource.class);
 				bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 		    }

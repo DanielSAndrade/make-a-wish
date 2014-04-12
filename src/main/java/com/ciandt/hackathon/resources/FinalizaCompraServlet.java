@@ -36,7 +36,7 @@ public class FinalizaCompraServlet extends HttpServlet{
         
         compraService.comprarProduto(mesa, nomeProduto); 
         
-        resp.sendRedirect("/index");
+        resp.sendRedirect("/produtos");
                 
     }
 
