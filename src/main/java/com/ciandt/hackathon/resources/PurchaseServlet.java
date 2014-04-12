@@ -28,7 +28,7 @@ public class PurchaseServlet extends HttpServlet {
 		req.setAttribute("products", products);
 		System.out.println("Products Size:" + products.size());
 
-		req.getRequestDispatcher("/purchase.jsp").forward(req, resp);
+		req.getRequestDispatcher("/page/purchase.jsp").forward(req, resp);
 	}
 
 
