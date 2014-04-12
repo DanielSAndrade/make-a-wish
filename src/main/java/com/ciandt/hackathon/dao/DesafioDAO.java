@@ -10,4 +10,6 @@ public interface DesafioDAO {
 
 	public Desafio find(Long id);
 
+	public Long insert(Desafio desafio);
+
 }
