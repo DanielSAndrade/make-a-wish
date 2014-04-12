@@ -5,3 +5,5 @@
 .project
 local_db.bin
 datastore-indexes-auto.xml
+
+src/main/webapp/index-tablet.html

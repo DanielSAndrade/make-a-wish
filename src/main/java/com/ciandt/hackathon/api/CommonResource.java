@@ -30,9 +30,7 @@ public class CommonResource {
 	
 	//parameters
 	private final static String TABLE = "table";
-	private final static String WISH_ID = "wish_id";
-	private final static String WISH_STATUS = "wish_status";
-	
+	private final static String WISH_ID = "wish_id";	
 
 	private final GreetingDAO greetingDAO;
 	private final WishDAO wishDAO;
@@ -154,6 +152,20 @@ public class CommonResource {
 		// mudar o estado do wish para realizado (a compra foi efetivada pelo voluntario)
 		// recebe como parametros, o WISH e o ID do VOLUNTARIO
 		
+		Wish.Status status = Wish.Status.REALIZED;
+		Long wishId = Long.valueOf(request.getParameter(WISH_ID));
+		String tableName = request.getParameter(TABLE);
+		
+		Wish wish = wishDAO.getWishAvailableById(wishId);
+		
+		if (wish != null) {
+			wish.setTableName(tableName);
+			wish.setStatus(status);
+			wishDAO.update(wish);
+		}
+		else {
+			log.info("Failed to update wish.");
+		}
 	}
 
 	@POST
@@ -161,6 +173,18 @@ public class CommonResource {
 	public void rejectWish(@Context HttpServletRequest request) {
 		// mudar o estado do wish para disponivel porque a compra nao foi aprovada por algum motivo
 		// recebe como parametros, o WISH e o ID do VOLUNTARIO
+		
+		Wish.Status status = Wish.Status.AVAILABLE;
+		Long wishId = Long.valueOf(request.getParameter(WISH_ID));
+		String tableName = request.getParameter(TABLE);
+		
+		Wish wish = wishDAO.getWishAvailableById(wishId);
+		
+		if (wish != null) {
+			wish.setTableName(tableName);
+			wish.setStatus(status);
+			wishDAO.update(wish);
+		}
 		
 	}
 

@@ -7,7 +7,7 @@ import com.googlecode.objectify.annotation.Id;
 public class Table {
 
 	@Id
-	private int id;
+	private Long id;
 	private String name;
 	private int points;
 	private int badges;
@@ -16,7 +16,7 @@ public class Table {
 		
 	}
 
-	public Table(int id, String name, int points, int badges) {
+	public Table(Long id, String name, int points, int badges) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -24,11 +24,11 @@ public class Table {
 		this.badges = badges;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

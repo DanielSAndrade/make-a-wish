@@ -40,9 +40,8 @@
                <div class="panel-heading">
                   <h3 class="panel-title">Sonhos</h3>
                </div>
-               <div id="sonhos" class="panel-body">
-                  Panel content
-               </div>
+               <blockquote id="sonhos">
+					</blockquote>
             </div>
          </div>
          <div class="col-md-3 nopadding">
@@ -63,8 +62,17 @@
 
    <script>
    $(function() {
-      $.get("/wishList", function(json) {
-         $("#sonhos").html(json);
+	   $.get("/api/wishListIntended", function(sonhos) {
+    	   html = "";
+    	   
+    	   for (var i = 0; i < sonhos.length; i++) {
+    		   var sonho = sonhos[i];
+    		   
+            html += '<p>' + sonho.wish +'</p>';
+            html += '<footer>' + sonho.childName + '</footer>';
+    	   }
+
+         $("#sonhos").html(html);
       });
    });
    </script>
