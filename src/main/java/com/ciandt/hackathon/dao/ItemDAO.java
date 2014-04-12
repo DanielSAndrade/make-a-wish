@@ -7,5 +7,7 @@ import com.ciandt.hackathon.entity.Item;
 public interface ItemDAO {
 
 	List<Item> findItens();
+	
+	Item findItem(Long id);
 
 }
