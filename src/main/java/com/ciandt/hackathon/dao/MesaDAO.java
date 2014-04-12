@@ -7,97 +7,39 @@ import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Pessoa;
 import com.ciandt.hackathon.entity.Produto;
+import com.ciandt.hackathon.utils.Mocker;
 
 public class MesaDAO {
 
 	public List<Mesa> getMesas() {
+
+		Mocker mocker = new Mocker();
 		
-		Mesa mesa1 = mockMesa1();
-		Mesa mesa2 = mockMesa2();
+		Mesa mesa1 = mocker.mockMesa1();
+		Mesa mesa2 = mocker.mockMesa2();
+		Mesa mesa3 = mocker.mockMesa3();
+		Mesa mesa4 = mocker.mockMesa4();
+		Mesa mesa5 = mocker.mockMesa5();
+		Mesa mesa6 = mocker.mockMesa6();
+		Mesa mesa7 = mocker.mockMesa7();
+		Mesa mesa8 = mocker.mockMesa8();
+		Mesa mesa9 = mocker.mockMesa9();
+		Mesa mesa10 = mocker.mockMesa10();
 		
 		List<Mesa> mesas = new ArrayList<Mesa>();
 		mesas.add(mesa1);
 		mesas.add(mesa2);
+		mesas.add(mesa3);
+		mesas.add(mesa4);
+		mesas.add(mesa5);
+		mesas.add(mesa6);
+		mesas.add(mesa7);
+		mesas.add(mesa8);
+		mesas.add(mesa9);
+		mesas.add(mesa10);
 		
 		return mesas;
 		
-	}
-
-	private Mesa mockMesa1() {
-
-		List<Produto> produtos = new ProdutoDAO().listarProdutos();
-		
-		Mesa mesa = new Mesa();
-		
-		mesa.setNome("SmartPhone");
-		
-		Pessoa daniel = criaPessoa("Daniel da Silva");
-		
-		Pessoa carlos = criaPessoa("Carlos Pereira");
-		
-		addCompra(produtos, mesa, daniel);
-		
-		addMedalhas(mesa);
-
-		List<Pessoa> pessoas = new ArrayList<Pessoa>();
-		
-		pessoas.add(carlos);
-		pessoas.add(daniel);
-		
-		mesa.adicionarPessoa(carlos);
-		mesa.adicionarPessoa(daniel);
-		return mesa;
-	}
-
-    private void addMedalhas(Mesa mesa) {
-		//mesa.adicionarMedalhas(medalha);
-    }
-
-    private Pessoa criaPessoa(String nome) {
-        Pessoa pessoa = new Pessoa();
-        pessoa.setNome(nome);
-        return pessoa;
-    }
-
-    private void addCompra(List<Produto> produtos, Mesa mesa, Pessoa pessoa) {
-
-		Compra compra1 = new Compra();
-		compra1.setPessoa(pessoa);
-		
-		compra1.setProdutos(produtos);
-		compra1.setPessoa(pessoa);
-		
-		mesa.adicionarCompraEfetuada(compra1);
-    }
-	
-	private Mesa mockMesa2() {
-
-		List<Produto> produtos = new ProdutoDAO().listarProdutos();
-		
-		Mesa mesa = new Mesa();
-		
-		Compra compra1 = new Compra();
-		Pessoa daniel = new Pessoa();
-		daniel.setNome("Daniel da Silva");
-
-		Pessoa carlos = new Pessoa();
-		carlos.setNome("Carlos Pereira");
-		
-		compra1.setPessoa(daniel);
-		compra1.setBonus(2000);
-		compra1.setProdutos(produtos);
-		compra1.setPessoa(daniel);
-		
-		mesa.adicionarCompraEfetuada(compra1);
-		
-		List<Pessoa> pessoas = new ArrayList<Pessoa>();
-		
-		pessoas.add(carlos);
-		pessoas.add(daniel);
-		
-		mesa.adicionarPessoa(carlos);
-		mesa.adicionarPessoa(daniel);
-		return mesa;
 	}
 	
 }
