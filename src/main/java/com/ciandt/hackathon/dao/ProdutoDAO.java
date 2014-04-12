@@ -69,6 +69,7 @@ public class ProdutoDAO {
 		Produto sonho = new Produto();
 		sonho.setDescricao("Sonho conhecer minha amigas virtuais");
 		sonho.setCategoria(CategoriaEnum.ADOTE_UM_SONHO);
+		sonho.setFoto("/static/assets/sonho2.jpg");
 		sonho.setNome("Um mundo distante");
 		sonho.setPontos(1000);
 		sonho.setPreco(2000);
