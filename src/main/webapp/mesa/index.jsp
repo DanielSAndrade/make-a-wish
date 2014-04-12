@@ -82,13 +82,18 @@ body {
 					</h2>
 					<div class="sidebar-progress" style="">
 
+
 						<ul class="sidebar-stats">
-							<li><span class="icon icon-xp-small"></span> <strong>Baloes</strong></li>
+							<li><span class="icon icon-lingot-small"></span> <strong>Doações</strong></li>
+							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">10</span></strong> Pontos</li>
+						</ul>
+						<ul class="sidebar-stats">
+							<li><span class="icon icon-heart-medium"></span> <strong>Baloes</strong></li>
 							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">93</span></strong> Pontos</li>
 						</ul>
 						<ul class="sidebar-stats">
-							<li><span class="icon icon-xp-small"></span> <strong>Livros</strong></li>
-							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">93</span></strong> Pontos</li>
+							<li><span class="icon icon-streak-small"></span> <strong>Livros</strong></li>
+							<li><span class="icon icon-words-small">p</span><strong><span id="word-count">1</span></strong> Pontos</li>
 						</ul>
 					</div>
 					
@@ -108,8 +113,12 @@ body {
 				<div class="box-gray">
 					<div id="ranking" class="stream-leaderboard">
 						<h2>Parcipantes</h2>
+						
+						
 						<div id="points-ranking" class="board" style="position: relative;">
 							<ul class="list-leaderboard list-leaderboard-empty">
+							
+							<c:forEach var="participante" items="${participantes}">
 								<li class="list-leaderboard-item">
 										<a href="/caio.olive6" class="avatar avatar-small " title="caio.olive6">
 										<img
@@ -117,17 +126,10 @@ body {
 										src="https://s3.amazonaws.com/duolingo-images/avatar/default_2/large"
 										data-original="https://duolingo-images.s3.amazonaws.com/avatars/21476613/eH5bTgNub8/large"
 										width="50" height="50"><span class="ring"></span></a>
-									<h5 style="margin-bottom: 5px;">caio.olive6, você está só!</h5>
-								</li>
-							<li class="list-leaderboard-item">
-										<a href="/caio.olive6" class="avatar avatar-small " title="caio.olive6">
-										<img
-										class="lazy"
-										src="https://s3.amazonaws.com/duolingo-images/avatar/default_2/large"
-										data-original="https://duolingo-images.s3.amazonaws.com/avatars/21476613/eH5bTgNub8/large"
-										width="50" height="50"><span class="ring"></span></a>
-									<h5 style="margin-bottom: 5px;">caio.olive6, você está só!</h5>
-								</li>
+									<h5 style="margin-bottom: 5px;">${participante.nome}</h5>
+								</li>					
+							</c:forEach>
+		
 							</ul>
 						</div>
 						

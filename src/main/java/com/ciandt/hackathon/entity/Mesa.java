@@ -19,6 +19,10 @@ public class Mesa {
 		this.nome = nome;
 	}
 
+	public Mesa(Long id) {
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}

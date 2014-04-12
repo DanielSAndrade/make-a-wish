@@ -91,12 +91,12 @@ public class CommonResource {
 		tipoDoacaoDAO.insert(new TipoDoacao(2L, "Sonho"));
 		tipoDoacaoDAO.insert(new TipoDoacao(3L, "Leilão"));
 	}
-	
+
 	private void loadSonhos() {
 		sonhoDAO.insert(new Sonho(new Crianca("Caio Oliveira"), "Viagem para fernando de noronha"));
 		sonhoDAO.insert(new Sonho(new Crianca("Rodrigo Dantas"), "Comprar uma BMW"));
-		sonhoDAO.insert(new Sonho(new Crianca("Caio Oliveira"), "Viagem para fernando de noronha"));
-		sonhoDAO.insert(new Sonho(new Crianca("Rodrigo Dantas"), "Comprar uma BMW"));
+		sonhoDAO.insert(new Sonho(new Crianca("Claudio Japa"), "Carrinho de controle remoto"));
+		sonhoDAO.insert(new Sonho(new Crianca("Bruno Soares"), "Viagem para miami"));
 	}
 	
 	private void loadMesas() {
@@ -123,4 +123,7 @@ public class CommonResource {
 		
 		mesaDAO.insert(new Mesa(2l,"Fe"));
 	}
+	
+	
+	
 }

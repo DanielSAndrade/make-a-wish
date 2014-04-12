@@ -80,12 +80,12 @@ public class ObjectifyParticipanteDAO implements ParticipanteDAO {
 	    	Long idMesa = mesa.getId();
 	    	
 	    	for (Participante participante:participantes) {
-	    		if (idMesa == participante.getIdMesa()) {
+	    		if (idMesa.longValue() == participante.getIdMesa().longValue()) {
 	    			participantesMesa.add(participante);
 	    		}
 	    	}
 	    	
-	    	log.info("Returning " + participantes.size() + " participante");
+	    	log.info("Returning " + participantesMesa.size() + " participante");
 	    }
 	    
 	    return participantesMesa;
