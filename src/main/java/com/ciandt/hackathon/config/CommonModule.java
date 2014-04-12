@@ -10,7 +10,9 @@ import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyBadgeDAO;
 import com.ciandt.hackathon.dao.ObjectifyDonatorDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
+import com.ciandt.hackathon.dao.ObjectifyTableDAO;
 import com.ciandt.hackathon.dao.ObjectifyWishDAO;
+import com.ciandt.hackathon.dao.TableDAO;
 import com.ciandt.hackathon.dao.WishDAO;
 import com.google.inject.servlet.ServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
@@ -26,8 +28,10 @@ public class CommonModule extends ServletModule {
 		bind(BadgeDAO.class).to(ObjectifyBadgeDAO.class);
 		bind(DonatorDAO.class).to(ObjectifyDonatorDAO.class);
 		bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
+		bind(TableDAO.class).to(ObjectifyTableDAO.class);
 		bind(WishDAO.class).to(ObjectifyWishDAO.class);
-		
+
 		filter("/api/*").through(GuiceContainer.class, initParams);
 	}
+
 }

@@ -165,6 +165,7 @@ public class ObjectifyWishDAO implements WishDAO {
 	
 	public void update(Wish wish) {
 		log.info("Update wish");
+		ofy().save().entity(wish).now();
 	}
 
 }

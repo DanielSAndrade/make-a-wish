@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.ciandt.hackathon.entity.Donator;
+import com.ciandt.hackathon.entity.Table;
 import com.google.appengine.api.memcache.ErrorHandlers;
 import com.google.appengine.api.memcache.MemcacheService;
 import com.google.appengine.api.memcache.MemcacheServiceFactory;
@@ -15,57 +15,55 @@ import com.google.inject.Singleton;
 import com.googlecode.objectify.Key;
 
 @Singleton
-public class ObjectifyDonatorDAO implements DonatorDAO {
+public class ObjectifyTableDAO implements TableDAO {
 	
 	@Inject
 	private Logger log;
 	
 	@Override
-	public List<Donator> findDonators() {
-		log.info("Finding all donators");
+	public List<Table> findTables() {
+		log.info("Finding all tables");
 		
-		//checks if the greetings are in the cache
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
 		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 		@SuppressWarnings("unchecked")
-		List<Donator> donators = (List<Donator>) syncCache.get( "DONATOR" );
+		List<Table> tables = (List<Table>) syncCache.get( "table" );
 		
-		if (donators == null) {
+		if (tables == null) {
 			log.info("Not found in cache");
-			donators = ofy().load().type(Donator.class).list();
+			tables = ofy().load().type(Table.class).list();
 		} else {
 			log.info("Using cache!");
 		}
 		
-	    if (donators != null) {
-	    	log.info("Returning " + donators.size() + " donators");
+	    if (tables != null) {
+	    	log.info("Returning " + tables.size() + " tables");
 	    }
-	    return donators;
+	    return tables;
 	}
 	
 	@Override
-	public Long insert( Donator donator ) {
-		log.info("Inserting a new donator");
+	public Long insert( Table table ) {
+		log.info("Inserting a new table");
 		
 		//invalidates the cache
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
 		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
-		syncCache.delete( "DONATORS" );
+		syncCache.delete( "tableS" );
 		
-		Key<Donator> key = ofy().save().entity(donator).now();
+		Key<Table> key = ofy().save().entity(table).now();
 		return key.getId();
 		
 	}
 	
 	@Override
-	public void delete(Donator donator) {
-		log.info("Deleting a wish");
-		ofy().delete().entity(donator).now();
+	public void delete(Table table) {
+		log.info("Deleting a table");
+		ofy().delete().entity(table).now();
 	}
 	
-	public void update(Donator donator) {
-		log.info("Update wish");
-		ofy().save().entity(donator).now();
+	public void update(Table table) {
+		log.info("Update Table");
 	}
 
 }

@@ -16,6 +16,14 @@ public class Table {
 		
 	}
 
+	public Table(int id, String name, int points, int badges) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.points = points;
+		this.badges = badges;
+	}
+
 	public int getId() {
 		return id;
 	}

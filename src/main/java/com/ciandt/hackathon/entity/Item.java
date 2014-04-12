@@ -16,6 +16,14 @@ public class Item {
 		
 	}
 
+	public Item(int id, String name, int points, double value) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.points = points;
+		this.value = value;
+	}
+
 	public int getId() {
 		return id;
 	}
