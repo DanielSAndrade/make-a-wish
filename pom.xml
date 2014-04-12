@@ -134,6 +134,8 @@
 				<artifactId>appengine-maven-plugin</artifactId>
 				<version>${appengine.target.version}</version>
 				<configuration>
+				    <noCookies>true</noCookies>
+				    <email>rrocha@ciandt.com</email>
 					<port>8080</port>
 					<jvmFlags>
 						<jvmFlag>-Xdebug</jvmFlag>
