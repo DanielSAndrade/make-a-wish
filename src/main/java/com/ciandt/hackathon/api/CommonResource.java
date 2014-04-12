@@ -64,8 +64,13 @@ public class CommonResource {
 	@GET
 	@Path("/rankingMesaParticipante")
 	public List<Participante> rankingMesaParticipante(@Context HttpServletRequest request) {
-		List<Participante> listaParticipantes = participanteDAO.findParticipantes();
+		List<Participante> listaParticipantes = new ArrayList<>();
 		Long idMesa = Long.parseLong(request.getParameter("idMesa"));
+		Mesa mesa = mesaDAO.find(idMesa);
+		for(Long idParticipante:mesa.getListaIdParticipantes()){
+			Participante participante = participanteDAO.find(idParticipante);
+			listaParticipantes.add(participante);
+		}
 		return listaParticipantes;
 	}
 	
