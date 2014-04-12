@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -26,6 +27,13 @@ import com.google.inject.Singleton;
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 @Singleton
 public class CommonResource {
+	
+	//parameters
+	private final static String TABLE = "table";
+	private final static String CATEGORY = "category";
+	private final static String WISH_ID = "wish_id";
+	private final static String WISH_STATUS = "wish_status";
+	
 
 	private final GreetingDAO greetingDAO;
 
@@ -47,7 +55,33 @@ public class CommonResource {
 	public List<Wish> wishList(@Context HttpServletRequest request) {
 		// retornar a lista de wishes nao atendidos ate o momento
 		// recebe opcionalmente a mesa e o tipo do wish que se deseja realizar
-		List<Wish> wishList = null; 
+		
+		Wish.Status status = Wish.Status.AVAILABLE;
+		String tableName = request.getParameter(TABLE);
+		String category = request.getParameter(CATEGORY);
+		
+		if (tableName != null) {
+			if (category != null) {
+				//busca por mesa e categoria
+			}
+			else {
+				//busca por mesa
+			}
+		}
+		else {
+			if (category != null) {
+				//busca somente por categoria
+			}
+		}
+		
+		List<Wish> wishList = null;
+		
+		for (Wish wish : wishList) {
+			wish.setStatus(Wish.Status.INTENDED);
+			wish.setIntendedTable(tableName);
+			//persistir objeto wish
+		}
+		
 		return wishList; 
 	}
 
@@ -56,6 +90,7 @@ public class CommonResource {
 	public List<Wish> wishListRealized(@Context HttpServletRequest request) {
 		// retornar a lista de wishes realizados
 		// recebe como parametro a mesa (para poder ciclar os desejos)  
+		
 		List<Wish> wishList = null; 
 		return wishList; 
 	}
