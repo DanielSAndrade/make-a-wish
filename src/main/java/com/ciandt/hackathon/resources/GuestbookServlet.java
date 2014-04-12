@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.entity.Greeting;
-import com.ciandt.hackathon.entity.Teste;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
