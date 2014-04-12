@@ -119,6 +119,7 @@ public class MesasMocker {
 		
 		mesa.adicionarPessoa(carlos);
 		mesa.adicionarPessoa(daniel);
+		
 		return mesa;
 	}	
 
@@ -171,7 +172,7 @@ public class MesasMocker {
 		compra1.setBonus(0);
 		compra1.setProdutos(produtos);
 		compra1.setPessoa(daniel);
-		
+
 		mesa.adicionarCompraEfetuada(compra1);
 		
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();

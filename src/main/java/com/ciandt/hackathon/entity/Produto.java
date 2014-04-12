@@ -8,7 +8,7 @@ public class Produto {
 
 	private String descricao;
 
-	private byte[] foto;
+	private String foto;
 
 	private CategoriaEnum categoria;
 
@@ -32,11 +32,11 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
-	public byte[] getFoto() {
+	public String getFoto() {
 		return foto;
 	}
 
-	public void setFoto(byte[] foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 
