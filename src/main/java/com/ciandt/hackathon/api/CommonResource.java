@@ -1,6 +1,7 @@
 package com.ciandt.hackathon.api;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
@@ -13,14 +14,11 @@ import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.WishDAO;
-
 import com.ciandt.hackathon.entity.Greeting;
-
 import com.ciandt.hackathon.entity.Wish;
 import com.ciandt.hackathon.entity.Table;
 import com.ciandt.hackathon.entity.Badge;
 import com.ciandt.hackathon.entity.Donator;
-
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -38,6 +36,9 @@ public class CommonResource {
 
 	private final GreetingDAO greetingDAO;
 	private final WishDAO wishDAO;
+	
+	@Inject
+	private Logger log;
 
 	@Inject
 	public CommonResource(GreetingDAO greetingDAO, WishDAO wishDAO) {
@@ -74,7 +75,7 @@ public class CommonResource {
 		wishDAO.unmarkAsIntended(tableName);
 		
 		for (Wish wish : wishList) {
-			wish.setIntendedTable(tableName);
+			wish.setTableName(tableName);
 			wishDAO.markAsIntended(wish);
 		}
 		
@@ -128,6 +129,22 @@ public class CommonResource {
 	@Path("/makeWish")
 	public void makeWish(@Context HttpServletRequest request) {
 		// mudar o estado do wish para "intencao" recebendo como parametro do request
+		
+		Wish.Status status = Wish.Status.INTENDED;
+		Long wishId = Long.valueOf(request.getParameter(WISH_ID));
+		String tableName = request.getParameter(TABLE);
+		
+		Wish wish = wishDAO.getWishAvailableById(wishId);
+		
+		if (wish != null) {
+			wish.setTableName(tableName);
+			wish.setStatus(status);
+			wishDAO.update(wish);
+		}
+		else {
+			log.info("Failed to update wish.");
+		}
+		
 		
 	}
 	

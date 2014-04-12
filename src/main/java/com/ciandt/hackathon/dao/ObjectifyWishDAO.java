@@ -45,7 +45,7 @@ public class ObjectifyWishDAO implements WishDAO {
 	
 	@Override
 	public List<Wish> findWishes(String table, Wish.Status status) {
-		log.info("Finding all wishes");
+		log.info("Finding wishes by table and status");
 		
 		//checks if the greetings are in the cache
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
@@ -69,7 +69,7 @@ public class ObjectifyWishDAO implements WishDAO {
 	
 	@Override
 	public List<Wish> findWishes(Wish.Status status) {
-		log.info("Finding all wishes");
+		log.info("Finding wishes by status");
 		
 		//checks if the greetings are in the cache
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
@@ -92,7 +92,7 @@ public class ObjectifyWishDAO implements WishDAO {
 	
 	@Override
 	public List<Wish> findWishes(String table) {
-		log.info("Finding all wishes");
+		log.info("Finding wishes by table");
 		
 		//checks if the greetings are in the cache
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
@@ -111,6 +111,28 @@ public class ObjectifyWishDAO implements WishDAO {
 	    	log.info("Returning " + wishes.size() + " wishes");
 	    }
 	    return wishes;
+	}
+	
+	@Override
+	public Wish getWishAvailableById(Long wishId) {
+		log.info("Finding all wishes");
+		
+		//checks if the greetings are in the cache
+		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		Wish wish = (Wish) syncCache.get( "WISHES" );
+		
+		if (wish == null) {
+			log.info("Not found in cache");
+			wish = ofy().load().type(Wish.class).filter("status != ", Wish.Status.REALIZED).filter("id =", wishId).first().now();
+		} else {
+			log.info("Using cache!");
+		}
+		
+	    if (wish != null) {
+	    	log.info("Returning wish " + wish );
+	    }
+	    return wish;
 	}
 	
 	@Override
@@ -165,6 +187,13 @@ public class ObjectifyWishDAO implements WishDAO {
 	
 	public void update(Wish wish) {
 		log.info("Update wish");
+		
+		//invalidates the cache
+		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		syncCache.delete( "WISHES" );
+
+		ofy().save().entity(wish).now();
 	}
 
 }

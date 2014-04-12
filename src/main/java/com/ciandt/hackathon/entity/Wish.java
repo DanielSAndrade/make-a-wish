@@ -13,7 +13,7 @@ public class Wish {
 	private String disease;
 	private String wish;
 	private Status status;
-	private String intendedTable;
+	private String tableName;
 	private int donator; 
 	
 	public enum Status {
@@ -38,7 +38,7 @@ public class Wish {
 		this.disease = disease;
 		this.wish = wish;
 		this.status = status;
-		this.intendedTable = intendedTable;
+		this.tableName = intendedTable;
 		this.donator = donator;
 	}
 
@@ -106,12 +106,12 @@ public class Wish {
 		this.status = status;
 	}
 
-	public String getIntendedTable() {
-		return intendedTable;
+	public String getTableName() {
+		return tableName;
 	}
 	
-	public void setIntendedTable(String intendedTable) {
-		this.intendedTable = intendedTable;
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
 	}
 	
 	public int getDonator() {
