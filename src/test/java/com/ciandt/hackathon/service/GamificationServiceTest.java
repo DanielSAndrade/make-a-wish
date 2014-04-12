@@ -60,6 +60,7 @@ public class GamificationServiceTest {
 	@Test
 	public void convertMoneyToPoints(){
 		
+		
 		GamificationService gamificationService = new GamificationService();
 		gamificationService.convertMoneyToPoints(this.table);
 		
