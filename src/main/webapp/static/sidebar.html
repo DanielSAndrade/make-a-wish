@@ -4,13 +4,13 @@ Rankings
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">
-	<li class="active"><a href="#tables-global" data-toggle="tab"><i class="glyphicon glyphicon-globe"></i></a></li>
-	<li><a href="#users-global" data-toggle="tab"><i class="glyphicon glyphicon-user"></i></a></li>
+	<li><a href="#tables-global" data-toggle="tab"><i class="glyphicon glyphicon-globe"></i></a></li>
+	<li class="active"><a href="#users-global" data-toggle="tab"><i class="glyphicon glyphicon-user"></i></a></li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="tables-global" ng-controller="GlobalTablesController">
+  <div class="tab-pane" id="tables-global" ng-controller="GlobalTablesController">
     <div class="list-group">
 			<a href="#" class="list-group-item active" ng-repeat="table in tables">
         <h4 class="list-group-item-heading">{{table.nome}}</h4>
@@ -21,7 +21,7 @@ Rankings
     </div>
   </div>
 
-  <div class="tab-pane" id="users-global" ng-controller="GlobalUsersController" style="max-height: 700px; overflow-x: scroll">
+  <div class="tab-pane active" id="users-global" ng-controller="GlobalUsersController" style="max-height: 700px; overflow-x: scroll">
     <div class="list-group">
       <a href="#" class="list-group-item" ng-repeat="person in participants">
 				<div class="row">
