@@ -9,7 +9,7 @@
 	</head>
 
 	<body>
-		<form action="comprar" name="form" id="form">
+		<form action="produto/comprar" name="form" id="form">
 			<input type="hidden" value="${produto.nome}" id="idProduto"
 				name="idProduto" />
 			<p>
