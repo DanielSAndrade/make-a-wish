@@ -1,6 +1,8 @@
 package com.ciandt.hackathon.api;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -210,6 +212,14 @@ public class CommonResource {
 		}else{
 			return Response.ok("Carga já realizada").build();
 		}
+	}
+	
+	private void atualizaRank(Participante participante){
+		Date agora = new Date(System.currentTimeMillis());
+		Calendar calendarAgora = Calendar.getInstance();
+		calendarAgora.setTime(agora);
+		
+		participanteDAO.update(participante);
 	}
 	
 
