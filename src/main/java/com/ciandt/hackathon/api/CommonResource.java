@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -70,6 +71,12 @@ public class CommonResource {
 		return listGreetings;
 	}
 
+	@POST
+	@Path("/compra")
+	public List<Greeting> compra(@Context HttpServletRequest request) {
+		List<Greeting> listGreetings = greetingDAO.findGreetings();
+		return listGreetings;
+	}
 
 
 }
