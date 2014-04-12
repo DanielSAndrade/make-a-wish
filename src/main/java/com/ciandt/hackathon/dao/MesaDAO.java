@@ -14,13 +14,17 @@ public class MesaDAO {
 
     public List<Mesa> getMesas() {
 
-        if (mesas == null || mesas.isEmpty()) {
-            mesas = iniciarMesas();
-        }
+        checkExistemMesas();
 		
 		return mesas;
 		
 	}
+
+    private void checkExistemMesas() {
+        if (mesas == null || mesas.isEmpty()) {
+            mesas = iniciarMesas();
+        }
+    }
 
     private List<Mesa> iniciarMesas() {
         MesasMocker mocker = new MesasMocker();
@@ -41,6 +45,8 @@ public class MesaDAO {
     }
 
     public void addCompra(String mesa, Produto produto) {
+        
+        checkExistemMesas();
         
         for (Mesa mesaAtual : mesas) {
             if(mesaAtual.equals(mesa)) {
