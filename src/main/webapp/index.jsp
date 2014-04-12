@@ -6,6 +6,15 @@
     <title>Make a Wish - GALA</title>
     <link rel="Stylesheet" type="text/css" href="static/css/banner.css" /> 
     <link rel="Stylesheet" type="text/css" href="http://gbscripts.webs.com/SmoothDivScroll-1.2/css/smoothDivScroll.css"/> 
+    
+    <script language="JavaScript">
+    	function detalhar(idProduto) {
+        	documento.getElementById("idProduto").value=idProduto;
+        	form.action="/produto/detalhe";
+        	form.submit();
+        }
+    </script>
+    
 </head>
 
  
@@ -22,73 +31,27 @@
 		<h2>Adquira nossos produtos e colabore!</h2>
 	</div>
 	<div style="height:50px; overflow-y: scroll;">
-	<table id="catalogo" cols="3">
-		<tr>
-		<th width=33%/>
-		<th width=33%/>
-		<th />
-		</tr>
-		<tr>
-		<td>
-			<div class="produto">
-				<p>Produto 1 </p>
-				<img class="produto" src="static/assets/livro.jpg">
-			</div>
-		</td>
-		<td>
-			<div class="produto">
-				<p>Produto 1 </p>
-				<img class="produto" src="static/assets/livro.jpg">
-			</div>
-		</td>
-		<td>
-			<div class="produto">
-				<p>Produto 1 </p>
-				<img class="produto" src="static/assets/livro.jpg">
-			</div>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<div class="produto">
-				<p>Produto 1 </p>
-				<img class="produto" src="static/assets/livro.jpg">
-			</div>
-		</td>
-		<td>
-			<div class="produto">
-				<p>Produto 1 </p>
-				<img class="produto" src="static/assets/livro.jpg">
-			</div>
-		</td>
-		<td>
-			<div class="produto">
-				<p>Produto 1 </p>
-				<img class="produto" src="static/assets/livro.jpg">
-			</div>
-		</td>
-		</tr>
-		<tr>
-		<td>
-			<div class="produto">
-				<p>Produto 1 </p>
-				<img class="produto" src="static/assets/livro.jpg">
-			</div>
-		</td>
-		<td>
-			<div class="produto">
-				<p>Produto 1 </p>
-				<img class="produto" src="static/assets/livro.jpg">
-			</div>
-		</td>
-		<td>
-			<div class="produto">
-				<p>Produto 1 </p>
-				<img class="produto" src="static/assets/livro.jpg">
-			</div>
-		</td>
-		</tr>
-	</table>
+	<form name="produtos" id="produtos">
+		<input name="idProduto" id="idProduto" />
+		<table id="catalogo" cols="3">
+			<input type="text"  />
+			<tr>
+			<th width=33%/>
+			<th width=33%/>
+			<th />
+			</tr>
+			<tr>
+				<c:forEach var="produto" items="${produtos}">
+					<td>
+						<div class="produto">
+							<p><a href="javascript:detalhar('${produto.nome}');">${produto.nome}</a></p>
+							<img class="produto" src="static/assets/livro.jpg">
+						</div>
+					</td>
+				</c:forEach>
+			</tr>
+		</table>
+	</form>
 	</div>
 </div>
 <div id="menu">
