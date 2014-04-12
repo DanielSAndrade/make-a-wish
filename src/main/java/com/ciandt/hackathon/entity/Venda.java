@@ -16,6 +16,10 @@ public class Venda {
 	private Date dataRegistro;
 	private Long idComprador;
 
+	public Venda() {
+		super();
+	}
+
 	public Venda(Produto produto, Long numeroMesa, Date dataRegistro,
 			Long idComprador) {
 		super();
