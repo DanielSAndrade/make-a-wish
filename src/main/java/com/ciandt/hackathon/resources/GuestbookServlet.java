@@ -32,7 +32,6 @@ public class GuestbookServlet extends HttpServlet {
 			throws IOException, ServletException {
 		
 		logger.info( "Executing GuestbookServlet" );
-		Teste.configure();
 		
 		//read greetings
 	    List<Greeting> greetings = greetingDao.findGreetings();

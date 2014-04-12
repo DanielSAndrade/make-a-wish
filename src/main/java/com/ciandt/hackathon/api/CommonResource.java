@@ -16,6 +16,7 @@ import com.ciandt.hackathon.business.Visualizador;
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Item;
+import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Pontuacao;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -77,6 +78,12 @@ public class CommonResource {
 		Long idPessoa = 0l;
 		Long idItem = 0l;
 		contabilPontuacao.criaCompra(idItem, idPessoa);
+	}
+	
+	@GET
+	@Path("/init")
+	public Mesa init(@Context HttpServletRequest request) {
+		return visualizador.initialize();
 	}
 
 	private Item createMockItem(Long id, String nome, Double preco,
