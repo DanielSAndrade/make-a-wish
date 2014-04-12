@@ -44,9 +44,5 @@ public class Product {
 	public void setPoints(Integer points) {
 		this.points = points;
 	}
-	
-	
-	
-	
 
 }
