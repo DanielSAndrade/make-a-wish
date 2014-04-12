@@ -19,6 +19,6 @@ var HomeController = {
 			alert('Informe o número da mesa');
 			return false;
 		}
-		window.document.location = "/Mesa/" + numeroMesa;
+		window.document.location = "/Mesa.html?numero=" + numeroMesa;
 	}
 }
