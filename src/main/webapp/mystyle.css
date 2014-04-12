@@ -1,1 +1,6 @@
-div.info1 {font-size: 100px; font-weight: bold;}
+div.info1 {font-size: 70px; font-weight: bold; color:gray; position:fixed; top: 570; left: 50; z-index:100; border:0;}
+div.info2 {font-size: 70px; font-weight: bold; color:darkgray; position:fixed; top: 220; left: 690; z-index:150; border:0; }
+div.sonhoa{font-size: 30px; color: black; position:fixed; top: 280; left: 344; z-index:100; border:0; font-family: "times"; font-weight:bold;}
+div.sonhob{font-size: 20px; color: gray; position:fixed; top: 320; left: 550; z-index:100; border:0;}
+div.sonhoc{font-size: 20px; color: gray; position:fixed; top: 350; left: 570; z-index:100; border:0;}
+div.sonhod{font-size: 18px; color: red; position:fixed; top: 340; left: 380; z-index:100; border:0;}
