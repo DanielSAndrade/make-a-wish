@@ -38,6 +38,8 @@
   <form action="/sign" method="post">
     <div><textarea name="produto" rows="3" cols="60"></textarea></div>
     <div><textarea name="valor" rows="3" cols="60"></textarea></div>
+    <div><textarea name="comprador" rows="3" cols="60"></textarea></div>
+    
     <div><input type="submit" value="Post Greeting" /></div>
   </form>
 
