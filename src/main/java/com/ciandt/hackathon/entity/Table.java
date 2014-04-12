@@ -1,5 +1,7 @@
 package com.ciandt.hackathon.entity;
 
+import java.util.List;
+
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
@@ -9,6 +11,7 @@ public class Table {
 	@Id
 	private String name;
 	private String description;
+	private List<Product> salesList;
 	
 	public String getName() {
 		return name;
@@ -23,5 +26,13 @@ public class Table {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	public List<Product> getSalesList() {
+		return salesList;
+	}
+	public void setSalesList(List<Product> salesList) {
+		this.salesList = salesList;
+	}
+	
+	
 	
 }

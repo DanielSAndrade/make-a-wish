@@ -2,6 +2,8 @@ package com.ciandt.hackathon.dao;
 
 import java.util.List;
 
+import com.ciandt.hackathon.entity.Product;
+
 public interface ProductDAO {
 	
 	/**
@@ -11,12 +13,12 @@ public interface ProductDAO {
 	public List<Object> findProduct();
 	
 	
-	public Long insert( Object product );
+	public Long insert( Product product );
 	
 	
-	public void delete( Object product);
+	public void delete( Product product);
 	
-	public List<Object> findByTable(String tableName);
+	public List<Product> findByTable(String tableName);
 	
 	
 
