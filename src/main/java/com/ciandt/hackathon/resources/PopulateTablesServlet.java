@@ -10,6 +10,7 @@ import com.ciandt.hackathon.entity.Donator;
 import com.ciandt.hackathon.entity.Table;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.googlecode.objectify.ObjectifyService;
 
 @SuppressWarnings("serial")
 @Singleton
@@ -25,6 +26,9 @@ public class PopulateTablesServlet extends HttpServlet {
 
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) {
+    	ObjectifyService.register(Table.class); 
+    	ObjectifyService.register(Donator.class); 
+    	
 		insertTable(new Long(1), "Mesa 1", 12, 1);
 		insertTable(new Long(2), "Mesa 2", 20, 5);
 		insertTable(new Long(3), "Mesa 3", 17, 2);
