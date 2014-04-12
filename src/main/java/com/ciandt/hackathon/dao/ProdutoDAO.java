@@ -31,7 +31,7 @@ public class ProdutoDAO {
 		produto1.setDescricao("Balao comemorativo do evento mais esperado do ano!");
 		produto1.setCategoria(CategoriaEnum.BALOES);
 		produto1.setFoto("/static/assets/balao.jpeg");
-		produto1.setNome("Historia");
+		produto1.setNome("historia");
 		produto1.setPontos(10);
 		produto1.setPreco(45);
 		
@@ -41,7 +41,7 @@ public class ProdutoDAO {
 		produto2.setDescricao("Livro sobre a historia do Google");
 		produto2.setCategoria(CategoriaEnum.LIVRO);
 		produto2.setFoto("/static/assets/googlebook.jpg");
-		produto2.setNome("Livro do Google");
+		produto2.setNome("livro");
 		produto2.setPontos(5);
 		produto2.setPreco(20);
 		
@@ -51,7 +51,7 @@ public class ProdutoDAO {
 		produto3.setDescricao("Livro Poder dos sonhos");
 		produto3.setCategoria(CategoriaEnum.LIVRO);
 		produto3.setFoto("/static/assets/podersonhos.jpg");
-		produto3.setNome("Livro sonhos");
+		produto3.setNome("livro-sonhos");
 		produto3.setPontos(5);
 		produto3.setPreco(20);
 		
@@ -61,7 +61,7 @@ public class ProdutoDAO {
 		produto4.setDescricao("Livro A vida por Daniel Andrade");
 		produto4.setCategoria(CategoriaEnum.LIVRO);
 		produto4.setFoto("/static/assets/daniel.jpg");
-		produto4.setNome("Livro Pensamentos");
+		produto4.setNome("livro-pensamentos");
 		produto4.setPontos(5);
 		produto4.setPreco(20);
 		
@@ -71,7 +71,7 @@ public class ProdutoDAO {
 		produto5.setDescricao("Livro Uma cilada por Roger Rabbit");
 		produto5.setCategoria(CategoriaEnum.LIVRO);
 		produto5.setFoto("/static/assets/rogerrabbit.jpg");
-		produto5.setNome("Livro Desenhos");
+		produto5.setNome("livro-desenhos");
 		produto5.setPontos(5);
 		produto5.setPreco(20);
 		
@@ -81,7 +81,7 @@ public class ProdutoDAO {
 		produto6.setDescricao("Livro Back to the Future");
 		produto6.setCategoria(CategoriaEnum.LIVRO);
 		produto6.setFoto("/static/assets/backthefuture.jpg");
-		produto6.setNome("Livro Ficção");
+		produto6.setNome("livro-ficcao");
 		produto6.setPontos(5);
 		produto6.setPreco(20);
 		
@@ -91,7 +91,7 @@ public class ProdutoDAO {
 		sonho.setDescricao("Sonho conhecer minha amigas virtuais");
 		sonho.setCategoria(CategoriaEnum.ADOTE_UM_SONHO);
 		sonho.setFoto("/static/assets/dreambook.jpg");
-		sonho.setNome("Um mundo distante");
+		sonho.setNome("Um-mundo-distante");
 		sonho.setPontos(10);
 		sonho.setPreco(25);
 		
