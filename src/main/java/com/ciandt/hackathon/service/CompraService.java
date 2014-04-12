@@ -7,7 +7,6 @@ import com.google.inject.Inject;
 
 public class CompraService {
 
-    
     @Inject
     ProdutoDAO produtoDAO;
     

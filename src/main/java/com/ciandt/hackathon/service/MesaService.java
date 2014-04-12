@@ -23,6 +23,10 @@ public class MesaService {
 	private Mesa mesa = new Mesa();	
 	
 	public Mesa getMesa() {
+		if (mesa == null) {
+			mesa = new Mesa();
+			mesa.setNome("Aquario");
+		}
 		return mesa;
 	}
 	
