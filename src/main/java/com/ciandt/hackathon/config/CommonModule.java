@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.ciandt.hackathon.api.CommonResource;
+import com.ciandt.hackathon.dao.BadgeDAO;
+import com.ciandt.hackathon.dao.DonatorDAO;
 import com.ciandt.hackathon.dao.GreetingDAO;
+import com.ciandt.hackathon.dao.ObjectifyBadgeDAO;
+import com.ciandt.hackathon.dao.ObjectifyDonatorDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
 import com.ciandt.hackathon.dao.ObjectifyWishDAO;
 import com.ciandt.hackathon.dao.WishDAO;
@@ -19,6 +23,8 @@ public class CommonModule extends ServletModule {
 		Map<String, String> initParams = new HashMap<String, String>();
 		
 		bind(CommonResource.class);
+		bind(BadgeDAO.class).to(ObjectifyBadgeDAO.class);
+		bind(DonatorDAO.class).to(ObjectifyDonatorDAO.class);
 		bind(GreetingDAO.class).to(ObjectifyGreetingDAO.class);
 		bind(WishDAO.class).to(ObjectifyWishDAO.class);
 		
