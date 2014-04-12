@@ -10,7 +10,7 @@ public class OfyService {
 
 	static {
 		factory().register(Greeting.class);
-		factory().register(Produto.class);
+		factory().register(Produto.class); 
 	}
 
 	/**

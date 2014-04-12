@@ -7,7 +7,7 @@ import java.util.List;
 import com.ciandt.hackathon.entity.Produto;
 import com.googlecode.objectify.Key;
 
-public class ProdutoDAO {
+public class ProdutoDAO { 
 
 	public List<Produto> findAll() {
 		List<Produto> produtos = ofy().load().type(Produto.class).list();
