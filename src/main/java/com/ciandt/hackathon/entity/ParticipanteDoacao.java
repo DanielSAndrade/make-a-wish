@@ -4,15 +4,22 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 @Entity
-public class MesaDoacao {
+public class ParticipanteDoacao {
 
 	@Id
 	private Long id;
 	
-	private Long idMesa;
+	private Long idParticipante;
 	
 	private Long idDoacao;
 	
+	public ParticipanteDoacao(Long id, Long idParticipante, Long idDoacao) {
+		super();
+		this.id = id;
+		this.idParticipante = idParticipante;
+		this.idDoacao = idDoacao;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -21,12 +28,12 @@ public class MesaDoacao {
 		this.id = id;
 	}
 
-	public Long getIdMesa() {
-		return idMesa;
+	public Long getIdParticipante() {
+		return idParticipante;
 	}
 
-	public void setIdMesa(Long idMesa) {
-		this.idMesa = idMesa;
+	public void setIdParticipante(Long Participante) {
+		this.idParticipante = Participante;
 	}
 
 	public Long getIdDoacao() {

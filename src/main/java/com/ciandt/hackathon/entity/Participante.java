@@ -10,6 +10,8 @@ public class Participante {
 	private Long id;
 	
 	private String nome;
+	
+	private Long idMesa;
 
 	public Long getId() {
 		return id;
@@ -26,4 +28,13 @@ public class Participante {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
+	public Long getIdMesa() {
+		return idMesa;
+	}
+
+	public void setIdMesa(Long idMesa) {
+		this.idMesa = idMesa;
+	}
+	
 }

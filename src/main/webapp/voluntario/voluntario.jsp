@@ -34,7 +34,7 @@ body {
 			</button>
 			<ul class="dropdown-menu" role="menu">
 				<c:foreach var="${mesa}" items="${mesas}">
-					<li><a href="#">${mesa.nome}</a></li>
+					<li><input type="hidden" id="idMesa" value="${mesa.id}"/><a href="#">${mesa.nome}</a></li>
 				</c:foreach>
 			</ul>
 		</div>
@@ -46,7 +46,7 @@ body {
 			</button>
 			<ul class="dropdown-menu" role="menu">
 				<c:foreach var="${part}" items="${mesa.participantes}">
-					<li><a href="#">${part.nome}</a></li>
+					<li><input type="hidden" id="idParticipante" value="${part.id}"/><a href="#">${part.nome}</a></li>
 				</c:foreach>
 			</ul>
 		</div>
@@ -58,7 +58,7 @@ body {
 			</button>
 			<ul class="dropdown-menu" role="menu">
 				<c:foreach var="${sonho}" items="${sonhos}">
-					<li><a href="#">${sonho.descricao}</a></li>
+					<li><input type="hidden" id="idSonho" value="${sonho.id}"/><a href="#">${sonho.descricao}</a></li>
 				</c:foreach>
 			</ul>
 		</div>
