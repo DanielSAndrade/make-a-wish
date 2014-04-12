@@ -20,7 +20,7 @@ public class PontosMesaComparator implements Comparator<Mesa> {
 		Long pontosMesa1=mesa1.getPontos();
 		Long pontosMesa2=mesa2.getPontos();
 		
-		return pontosMesa1.compareTo(pontosMesa2);
+		return pontosMesa2.compareTo(pontosMesa1);
 	}
 
 }
