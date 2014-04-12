@@ -73,6 +73,7 @@ public class ContabilPontuacao {
 				}
 				pontuacao.setNumeroPontos(compra.getNumeroPontos());
 				contabilBadge.calcularBadge(pontuacao);
+				pontuacaoDAO.insert(pontuacao);
 			} else {
 				throw new IllegalArgumentException(
 						"Compra sem pessoa! Nao pode ser efetivada");

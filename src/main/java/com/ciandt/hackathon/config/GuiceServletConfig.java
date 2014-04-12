@@ -11,6 +11,8 @@ import com.ciandt.hackathon.dao.CompraDefaultDAO;
 import com.ciandt.hackathon.dao.GreetingDAO;
 import com.ciandt.hackathon.dao.ItemDAO;
 import com.ciandt.hackathon.dao.ItemDefaultDAO;
+import com.ciandt.hackathon.dao.MesaDAO;
+import com.ciandt.hackathon.dao.MesaDefaultDAO;
 import com.ciandt.hackathon.dao.ObjectifyGreetingDAO;
 import com.ciandt.hackathon.dao.PessoaDAO;
 import com.ciandt.hackathon.dao.PessoaDefaultDAO;
@@ -45,6 +47,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 				bind(PessoaDAO.class).to(PessoaDefaultDAO.class);
 				bind(CompraDAO.class).to(CompraDefaultDAO.class);
 				bind(PontuacaoDAO.class).to(PontuacaoDefaultDAO.class);
+				bind(MesaDAO.class).to(MesaDefaultDAO.class);
 			}
 
 		});
