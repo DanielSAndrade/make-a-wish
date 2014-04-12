@@ -10,7 +10,6 @@ function GlobalTablesController($http, $scope) {
     );
 }
 
-
 function GlobalUsersController($http, $scope) {
     $http.get("../api/rankingParticipante").then(
         function(response) { $scope.participants = response.data; $scope.compras = $http.get("../api/comprasPorParticipante?id=" + $scope.participants[0].id); },
@@ -20,12 +19,21 @@ function GlobalUsersController($http, $scope) {
     
 }
 
+function ProdutosController( $http, $rootScope ) {
+    $http.get("../api/get-idmesa").then(function(response){
+        $http.get("../api/rankingMesaParticipante?idMesa=" + response.data).then(function(response) {
+            $rootScope.participantesMesaAtual = response.data;
+        });
+    });
+}
+
 function CompraController( $http, $scope ) {
 
     $scope.page = 'comprador';
 
-    $scope.selecionaComprador = function() {
+    $scope.selecionaComprador = function(id) {
         $scope.page = 'valor';
+        $scope.personId = id;
     }
     
     $scope.selecionaOutroValor = function() {
@@ -38,7 +46,7 @@ function CompraController( $http, $scope ) {
     
     $scope.comprar = function() {
     	$http.get("../api/get-idmesa").then(function(response){
-    		$http.post("../api/compra?idParticipante=99999&idProduto=9999&valor=999.999&idMesa=" + response.data);
+    		$http.post("../api/compra?idParticipante=" + $scope.personId + "&idProduto=9999&valor=999.999&idMesa=" + response.data);
     	});    	
     }
 

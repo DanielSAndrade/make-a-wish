@@ -38,7 +38,7 @@ Rankings
 							<span class="pull-right delta-up" ng-show="person.delta == 1"><i class="glyphicon glyphicon-arrow-up"></i></span>
 							<span class="pull-right delta-down" ng-show="person.delta == 2"><i class="glyphicon glyphicon-arrow-down"></i></span>
 						</h4>
-						<img ng-repeat="badge in person.badge" class="img-circle" src="http://placehold.it/32x32" alt="{{badge.nome}}">
+						<img ng-repeat="badge in person.badge" class="img-circle" ng-src="{{badge.urlImagem}}" alt="{{badge.nome}}">
 					</div>
 				</div>
       </a>
