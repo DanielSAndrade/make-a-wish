@@ -15,7 +15,7 @@ import com.ciandt.hackathon.entity.Mesa;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-@Path("/api")
+@Path("/api_1")
 @ThreadSafe
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 @Singleton

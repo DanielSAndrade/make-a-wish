@@ -27,6 +27,7 @@ public class GuiceServletConfig extends GuiceServletContextListener {
 		    protected void configureServlets() {
 				serve("/guestbook").with(GuestbookServlet.class);
 				serve("/sign").with(SignGuestbookServlet.class);
+				
 				bind(CommonResource.class);
 				
 				bind(MakeAWishResouce.class);

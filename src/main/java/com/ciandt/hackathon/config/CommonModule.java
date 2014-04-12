@@ -27,6 +27,6 @@ public class CommonModule extends ServletModule {
 		bind(MesaDAO.class).to(ObjectifyMesaDAO.class);
 		
 		filter("/api/*").through(GuiceContainer.class, initParams);
-		
+		filter("/api_1/*").through(GuiceContainer.class, initParams);
 	}
 }
