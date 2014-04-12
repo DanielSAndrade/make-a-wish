@@ -46,7 +46,9 @@ public class VendaResource {
 			@FormParam("numMesa") Long numMesa,
 			@FormParam("codComp") Long codComp) {
 
-		Produto produto = produtoDAO.findById(idProd);
+		//Produto produto = produtoDAO.findById(idProd);
+		Produto produto = createProdutoMock("Balao", 2.90);
+		
 
 		Venda venda = new Venda(produto, numMesa, new Date(), codComp);
 		vendaDAO.insert(venda);
@@ -70,6 +72,11 @@ public class VendaResource {
 		final Long idComprador = 1l;
 		final Venda venda = new Venda(produto,numeroMesa, dataRegistro, idComprador);
 		return venda;
+	}
+	
+	private Produto createProdutoMock(String descProduto, Double preco){
+		return new Produto(descProduto,preco,"Livro");
+		
 	}
 	
 	
