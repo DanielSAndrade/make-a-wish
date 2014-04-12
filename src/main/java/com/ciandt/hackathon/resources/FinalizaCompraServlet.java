@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ciandt.hackathon.service.CompraService;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
+@Singleton
 public class FinalizaCompraServlet extends HttpServlet{
     
     /**
