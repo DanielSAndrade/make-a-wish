@@ -3,10 +3,14 @@ package com.ciandt.hackathon.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.googlecode.objectify.annotation.Embed;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
+@Embed
+@Index
 public class Mesa {
 	@Id
 	private Long id;

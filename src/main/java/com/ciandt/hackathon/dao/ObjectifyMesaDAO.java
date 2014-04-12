@@ -11,12 +11,12 @@ public class ObjectifyMesaDAO implements MesaDAO {
 
 	@Override
 	public List<Mesa> findAll() {
-		return ofy().load().type(Mesa.class).list();
+		return ofy().load().type(Mesa.class).order("-pontuacao").list();
 	}
 
 	@Override
 	public Mesa findById(Long id) {
-		 return ofy().load().type(Mesa.class).id(id).now();
+		return ofy().load().type(Mesa.class).id(id).now();
 	}
 
 	@Override
@@ -28,6 +28,12 @@ public class ObjectifyMesaDAO implements MesaDAO {
 	@Override
 	public void delete(Mesa mesa) {
 		ofy().delete().entities(mesa).now();
+	}
+
+	@Override
+	public Mesa findByNumero(Integer numero) {
+		return ofy().load().type(Mesa.class).filter("numeroMesa", numero)
+				.order("-id").first().now();
 	}
 
 }

@@ -7,6 +7,7 @@ import static com.ciandt.hackathon.dao.OfyService.ofy;
 
 import java.util.List;
 
+import com.ciandt.hackathon.entity.Doador;
 import com.ciandt.hackathon.entity.DoadorProduto;
 
 /**
@@ -48,6 +49,12 @@ public class ObjectifyDoadorProdutoDao implements DoadorProdutoDao {
 	public void delete(DoadorProduto doadorProduto) {
 		ofy().delete().entity(doadorProduto).now();
 
+	}
+
+	@Override
+	public List<DoadorProduto> findByDoador(Doador doador) {
+		return ofy().load().type(DoadorProduto.class)
+				.filter("doador.id", doador.getId()).list();
 	}
 
 }

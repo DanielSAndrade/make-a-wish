@@ -11,7 +11,7 @@ public class ObjectifySonhoDAO implements SonhoDAO {
 
 	@Override
 	public List<Sonho> findAll() {
-		return ofy().load().type(Sonho.class).list();
+		return ofy().load().type(Sonho.class).order("comprado").list();
 	}
 
 	@Override
