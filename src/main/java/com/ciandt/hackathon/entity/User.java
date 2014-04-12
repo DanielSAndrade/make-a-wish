@@ -22,7 +22,6 @@ public class User {
 			List<Product> salesList) {
 		super();
 		this.name = name;
-		this.description = description;
 		this.salesList = salesList;
 		this.score = score;
 	}
@@ -33,14 +32,6 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public List<Product> getSalesList() {
