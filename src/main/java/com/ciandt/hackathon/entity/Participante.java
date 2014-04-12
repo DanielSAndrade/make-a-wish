@@ -17,6 +17,7 @@ public class Participante {
 	private Integer rank;
 	private Integer delta;
 	private String urlImagem;
+	private Long dataUltimaCompra;
 	
 	private List<Badge> badge = new ArrayList<>();
 	
@@ -56,5 +57,12 @@ public class Participante {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	public Long getDataUltimaCompra() {
+		return dataUltimaCompra;
+	}
+	public void setDataUltimaCompra(Long dataUltimaCompra) {
+		this.dataUltimaCompra = dataUltimaCompra;
+	}
+	
 
 }

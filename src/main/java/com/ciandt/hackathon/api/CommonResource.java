@@ -73,11 +73,9 @@ public class CommonResource {
 	@Path("/rankingParticipante")
 	public List<Participante> rankingParticipante(@Context HttpServletRequest request) {
 		List<Participante> listParticipantes = participanteDAO.findParticipantes();
-		for (Participante participante : listParticipantes) {
-			//compraDAO.
-			
-			
-		}
+		
+//		Collections listParticipantes
+		
 		return listParticipantes;
 	}
 	
@@ -104,10 +102,11 @@ public class CommonResource {
 			@FormParam(value = "idMesa") String idMesa) {
 
 		if (StringUtils.isNotEmpty(idProduto) && StringUtils.isNotEmpty(valor)
-				&& StringUtils.isNotEmpty(idParticipante)) {
-			System.out.println("Criando nova compra");
+				&& StringUtils.isNotEmpty(idParticipante) && StringUtils.isNotEmpty(idMesa)) {
+			System.out.println("#############Criando nova compra");
 			Compra compra = new Compra();
 			compra.setIdParticipante(Long.valueOf(idParticipante));
+			compra.setValor(Double.valueOf(valor));
 			compra.setUrlImagem("");
 			compra.setIdProduto(Long.valueOf(idProduto));
 			compra.setIdMesa(Long.valueOf(idMesa));
@@ -115,11 +114,19 @@ public class CommonResource {
 			compraDAO.insert(compra);
 			System.out.println("COMPRA inserida !!");
 			
-			Participante participante = participanteDAO.find(Long.valueOf(idParticipante));
-			participante.setRank(participante.getRank() + 10);
 			
-			participanteDAO.update(participante);
-
+			System.out.println("#############AUMENTANDO PONTOS DO PARTICIPANTE");
+			Participante participante = participanteDAO.find(Long.valueOf(idParticipante));
+			
+			if (participante != null){
+				
+				participante.setDelta(1);
+				participante.setRank(participante.getRank() + 10);
+				participante.setDataUltimaCompra(System.currentTimeMillis());
+				
+				participanteDAO.update(participante);
+				
+			}
 		} else {
 			System.err.println("##############Parametros nulos");
 		}
