@@ -98,7 +98,7 @@
 			<p class="text" style="font-size: 30px;">Informe uma mesa</p>
 		</c:if>
 		<c:if test="${mesa != Null}">
-			<p class="text" style="font-size: 30px;">Mesa1: ${mesa.nome}<br>Pontuação: ${mesa.pontos}</p>
+			<p class="text" style="font-size: 30px;">Mesa: ${mesa.nome}<br>Pontuação: ${mesa.pontos}</p>
 		</c:if>
 	</div>
 	
@@ -116,12 +116,17 @@
 <script src="http://gbscripts.webs.com/SmoothDivScroll-1.2/js/jquery.mousewheel.min.js" type="text/javascript"></script> 
 <script src="http://gbscripts.webs.com/SmoothDivScroll-1.2/js/jquery.smoothdivscroll-1.2-min.js" type="text/javascript"></script> 
 <script type="text/javascript"> 
-    $(document).ready(function () { 
+    $(document).ready(function () {
+		console.log("test");
         $("div#makeMeScrollable").smoothDivScroll({ 
             mousewheelScrolling: true, 
             manualContinuousScrolling: true, 
             visibleHotSpotBackgrounds: "always", 
-            autoScrollingMode: "onstart"});});    
+            autoScrollingMode: "always",
+			autoScrollingDirection: "endlessLoopLeft",
+			autoScrollingStep: 10})
+		;
+	});    
 </script> 
 </body>
 </html>
