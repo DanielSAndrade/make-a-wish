@@ -1,12 +1,13 @@
 package com.ciandt.hackathon.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Created by rjfonseca on 12/04/14.
  */
-public class Table {
+public class Table implements Serializable {
 
     private Integer number;
     private Long score;
