@@ -91,5 +91,18 @@ public class ProdutoDAO {
 		produtos.add(produto2);
 		return produtos;
 	}
+
+    public Produto findById(String produto) {
+        
+        
+        // TODO Auto-generated method stub
+        Produto produto2 = new Produto();
+        produto2.setPontos(10);
+        return produto2;
+    }
+
+    public void darBaixa(String produto) {
+        
+    }
 	
 }
