@@ -23,7 +23,15 @@ function CompraController( $http, $scope ) {
     $scope.page = 'comprador';
 
     $scope.selecionaComprador = function() {
-        $scope.page = 'valores';
+        $scope.page = 'valor';
+    }
+    
+    $scope.selecionaOutroValor = function() {
+        $scope.page = 'valorVariavel';
+    }
+    
+    $scope.resetaModal = function() {
+    	$scope.page = 'comprador';
     }
 
 }
