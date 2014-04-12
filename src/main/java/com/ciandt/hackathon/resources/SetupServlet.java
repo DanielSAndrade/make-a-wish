@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ciandt.hackathon.dao.ProductDAO;
 import com.ciandt.hackathon.entity.Product;
+import com.ciandt.hackathon.entity.ProductType;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -38,7 +39,7 @@ public class SetupServlet extends HttpServlet {
 		product.setImageURL("http://uol.com.br/image/gif");
 		product.setPrice(10.0);
 		product.setPoints(0);
-		product.setType("A");
+		product.setProductType(ProductType.BALLONS);
 
 		productDao.insert(product);
 	}
