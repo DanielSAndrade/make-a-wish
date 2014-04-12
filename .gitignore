@@ -1,5 +1,14 @@
 /target
+<<<<<<< HEAD
 /_.project
 /datastore-indexes-auto.xml
 /local_db.bin
 /.gitignore
+=======
+/.classpath
+/bin
+/.project
+/.settings
+.settings/.jsdtscope
+/.settings/*
+>>>>>>> branch 'tablet' of https://github.com/fapereira1/make-a-wish.git
