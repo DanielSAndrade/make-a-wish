@@ -12,14 +12,17 @@ public class ProdutoDAO {
 
 	public List<Produto> listarProdutos() {
 		
-		if (produtos == null || produtos.isEmpty()){
-			
-			produtos = criarListaInicial();
-		}
+		checkcInicializado();
 		
 		return produtos;
 		
 	}
+
+    private void checkcInicializado() {
+        if (produtos == null || produtos.isEmpty()){
+			produtos = criarListaInicial();
+		}
+    }
 
 	private ArrayList<Produto> criarListaInicial() {
 		ArrayList<Produto> produtos = new ArrayList<Produto>();
@@ -88,21 +91,29 @@ public class ProdutoDAO {
 		sonho.setPontos(10);
 		sonho.setPreco(25);
 		
-		produtos.add(produto2);
+		produtos.add(sonho);
 		return produtos;
 	}
 
     public Produto findById(String produto) {
         
-        
-        // TODO Auto-generated method stub
-        Produto produto2 = new Produto();
-        produto2.setPontos(10);
-        return produto2;
+        checkcInicializado();
+
+        for (Produto produtoAtual : produtos) {
+            if (produtoAtual.getNome().equals(produto)) {
+                return produtoAtual;
+            }
+        }
+        return null;
     }
 
     public void darBaixa(String produto) {
         
+        for (Produto produtoAtual : produtos) {
+            if (produtoAtual.getNome().equals(produto)) {
+                 produtoAtual.setDisponivel(Boolean.FALSE);
+            }
+        }
     }
 	
 }

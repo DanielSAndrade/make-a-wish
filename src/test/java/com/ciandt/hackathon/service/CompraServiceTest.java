@@ -17,16 +17,18 @@ public class CompraServiceTest {
         CompraService service = new CompraService();
         
         service.setMesaDAO(new MesaDAO());
-        service.setProdutoDAO(new ProdutoDAO());
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        service.setProdutoDAO(produtoDAO);
 
         Produto produto = new Produto();
         Mesa mesa = new Mesa();
 
-//        produto.setDisponivel(true);
+        produto.setDisponivel(true);
 
-        service.comprarProduto("mesa", "produto");
+        String nomeProduto = "Um mundo distante";
+        service.comprarProduto("mesa", nomeProduto);
 
-//        Assert.assertTrue("Produto não deveria estar disponivel", !produto.getDisponivel());
+        Assert.assertTrue("Produto não deveria estar disponivel", !produtoDAO.findById(nomeProduto).getDisponivel());
 
         Assert.assertEquals("", mesa.getPontos(), Long.valueOf(produto.getPontos()));
 
