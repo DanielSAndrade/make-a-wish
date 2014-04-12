@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 /**
  * @author Amanda
@@ -18,9 +19,15 @@ public class Doador {
 	@Id
 	private Long id;
 
+	@Index
 	private String nome;
 
+	@Index
+	private Mesa mesa;
+
 	private List<Sonho> sonhos;
+
+	private List<Badge> bagdes;
 
 	/**
 	 * @return the id
@@ -53,6 +60,21 @@ public class Doador {
 	}
 
 	/**
+	 * @return the mesa
+	 */
+	public Mesa getMesa() {
+		return mesa;
+	}
+
+	/**
+	 * @param mesa
+	 *            the mesa to set
+	 */
+	public void setMesa(Mesa mesa) {
+		this.mesa = mesa;
+	}
+
+	/**
 	 * @return the sonhos
 	 */
 	public List<Sonho> getSonhos() {
@@ -65,6 +87,21 @@ public class Doador {
 	 */
 	public void setSonhos(List<Sonho> sonhos) {
 		this.sonhos = sonhos;
+	}
+
+	/**
+	 * @return the bagdes
+	 */
+	public List<Badge> getBagdes() {
+		return bagdes;
+	}
+
+	/**
+	 * @param bagdes
+	 *            the bagdes to set
+	 */
+	public void setBagdes(List<Badge> bagdes) {
+		this.bagdes = bagdes;
 	}
 
 }
