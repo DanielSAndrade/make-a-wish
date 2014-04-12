@@ -15,8 +15,8 @@
 </c:if>
 
 <c:if test="${rankSize > 0}">
-	<c:forEach var="mesa" items="${rankMesa}">
-			<p><b>Mesa: ${mesa.nome}  pontos  ${mesa.pontos} </b></p>
+	<c:forEach var="rank" items="${rankMesa}">
+			<p><b>  ${rank.posicao} - Mesa: ${rank.mesa.nome}  -  Pontos  ${rank.mesa.pontos} </b></p>
 		    
 	</c:forEach>
 </c:if>
