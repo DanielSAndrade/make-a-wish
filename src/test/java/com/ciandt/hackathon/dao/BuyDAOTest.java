@@ -27,12 +27,21 @@ public class BuyDAOTest extends AbstractTestClass {
 	@Test
 	public void shouldBeAbleToInsertProduct() {
 
-		final Table table = new Table("teste", "Teste", 100L, null);
+		final String nameTable = "Teste";
+		final Table table = new Table(nameTable, "Teste", 100L, null);
 		Long idInsertTable = dao.inserTable(table);
 		Assert.assertNotNull(idInsertTable);
+		
+		Table table2 = dao.findTable(nameTable);
+		Assert.assertNotNull(table2);
+		
+		
 		final Product product = new Product(1L, "teste", "teste", 10L, 10L);
-
-		Long id = dao.insertBuy(product, "teste");
+		
+		Long id = dao.insertBuy(product, nameTable);
+		Assert.assertNotNull(id);
 	}
+	
+	
 
 }
