@@ -39,17 +39,18 @@ import com.google.inject.Singleton;
 public class CommonResource {
 
 	private final GreetingDAO greetingDAO;
-	
+
 	private final ParticipanteDAO participanteDAO;
-	
+
 	private final MesaDAO mesaDAO;
-	
+
 	private final CompraDAO compraDAO;
-	
 
 	@Inject
-	public CommonResource(GreetingDAO greetingDAO, ParticipanteDAO participanteDAO, MesaDAO mesaDAO,CompraDAO compraDAO) {
-	
+	public CommonResource(GreetingDAO greetingDAO,
+			ParticipanteDAO participanteDAO, MesaDAO mesaDAO,
+			CompraDAO compraDAO) {
+
 		super();
 		this.greetingDAO = greetingDAO;
 		this.participanteDAO = participanteDAO;
@@ -63,32 +64,34 @@ public class CommonResource {
 		List<Greeting> listGreetings = greetingDAO.findGreetings();
 		return listGreetings;
 	}
-	
+
 	@GET
 	@Path("/rankingMesaParticipante")
-	public List<Participante> rankingMesaParticipante(@Context HttpServletRequest request) {
+	public List<Participante> rankingMesaParticipante(
+			@Context HttpServletRequest request) {
 		List<Participante> listaParticipantes = new ArrayList<>();
 		Long idMesa = Long.parseLong(request.getParameter("idMesa"));
 		Mesa mesa = mesaDAO.find(idMesa);
-		for(Long idParticipante:mesa.getListaIdParticipantes()){
+		for (Long idParticipante : mesa.getListaIdParticipantes()) {
 			Participante participante = participanteDAO.find(idParticipante);
 			listaParticipantes.add(participante);
 		}
 		return listaParticipantes;
 	}
-	
+
 	@GET
 	@Path("/rankingParticipante")
-	public List<Participante> rankingParticipante(@Context HttpServletRequest request) {
-		List<Participante> listParticipantes = participanteDAO.findParticipantes();
+	public List<Participante> rankingParticipante(
+			@Context HttpServletRequest request) {
+		List<Participante> listParticipantes = participanteDAO
+				.findParticipantes();
 		for (Participante participante : listParticipantes) {
-			//compraDAO.
-			
-			
+			// compraDAO.
+
 		}
 		return listParticipantes;
 	}
-	
+
 	@GET
 	@Path("/rankingMesaGeral")
 	public List<Mesa> rankingMesaGeral(@Context HttpServletRequest request) {
@@ -119,13 +122,14 @@ public class CommonResource {
 			compra.setUrlImagem("");
 			compra.setIdProduto(Long.valueOf(idProduto));
 			compra.setIdMesa(Long.valueOf(idMesa));
-			
+
 			compraDAO.insert(compra);
 			System.out.println("COMPRA inserida !!");
-			
-			Participante participante = participanteDAO.find(Long.valueOf(idParticipante));
+
+			Participante participante = participanteDAO.find(Long
+					.valueOf(idParticipante));
 			participante.setRank(participante.getRank() + 10);
-			
+
 			participanteDAO.update(participante);
 
 		} else {
@@ -135,50 +139,50 @@ public class CommonResource {
 		return Response.ok("OK").build();
 	}
 
-	
 	@GET
 	@Path("/compras")
 	public List<Compra> compras(@Context HttpServletRequest request) {
 		List<Compra> findCompras = compraDAO.findCompras();
 		return findCompras;
 	}
-	
+
 	@GET
 	@Path("/carga-inicial-participante")
 	public Response cargaInicialParticipante(@Context HttpServletRequest request) {
 		List<Participante> participantes = participanteDAO.findParticipantes();
-		if(participantes.isEmpty()){
+		if (participantes.isEmpty()) {
 			List<Participante> listaParticipante = new ArrayList<Participante>();
 			Random randomRanking = new Random();
 
 			List<Badge> listaBadge = new ArrayList<>();
-			for(int j=1;j<6;j++){
+			for (int j = 1; j < 6; j++) {
 				Badge badge = new Badge();
-				badge.setNome("badge-"+j);
-				badge.setUrlImagem("/static/img/badges/badge-"+j+".png");
+				badge.setNome("badge-" + j);
+				badge.setUrlImagem("/static/img/badges/badge-" + j + ".png");
 				listaBadge.add(badge);
 			}
-			
-			
-			for(int i=0; i<50;i++){
-							
+
+			for (int i = 0; i < 50; i++) {
+
 				Participante participante = new Participante();
-				participante.setNome("Participante-"+i);
+				participante.setNome("Participante-" + i);
 				participante.setRank(randomRanking.nextInt(50));
-				participante.setUrlImagem("/static/img/participantes/billgates.png");
-				
+				participante
+						.setUrlImagem("/static/img/participantes/billgates.png");
+
 				Random randomDelta = new Random();
 				participante.setDelta(randomDelta.nextInt(3));
-				
+
 				Random randomBadge = new Random();
-				for(int j=0 ;j<4;j++){
-					participante.getBadge().add(listaBadge.get(randomBadge.nextInt(4)));
+				for (int j = 0; j < 4; j++) {
+					participante.getBadge().add(
+							listaBadge.get(randomBadge.nextInt(4)));
 				}
-				
+
 				participanteDAO.insert(participante);
 			}
 			return Response.ok("Banco carregado!").build();
-		}else{
+		} else {
 			return Response.ok("Carga já realizada").build();
 		}
 	}
@@ -188,40 +192,48 @@ public class CommonResource {
 	public Response cargaInicialMesa(@Context HttpServletRequest request) {
 		List<Participante> participantes = participanteDAO.findParticipantes();
 		List<Mesa> mesas = mesaDAO.findMesas();
-		if(mesas.isEmpty()){
-			if(participantes.isEmpty()){
+		if (mesas.isEmpty()) {
+			if (participantes.isEmpty()) {
 				cargaInicialParticipante(null);
 			}
 			mesas = new ArrayList<>();
 			Random randomRankMesa = new Random();
-			for (int i=0; i<participantes.size();i++) {
+			for (int i = 0; i < participantes.size(); i++) {
 				Random randomMesa = new Random();
 				Mesa mesa = new Mesa();
 				mesa.setDelta(randomMesa.nextInt(3));
 				mesa.setNome("Mesa");
 				mesa.setRank(randomRankMesa.nextInt(10));
 				mesa.setUrlImagem("/static/img/mesas/mesa.jpg");
-				for(int j=0;j<5;j++){
-					mesa.getListaIdParticipantes().add(participantes.get(i).getId());
+				for (int j = 0; j < 5; j++) {
+					mesa.getListaIdParticipantes().add(
+							participantes.get(i).getId());
 					i++;
 				}
 				mesaDAO.insert(mesa);
 				mesas.add(mesa);
 			}
-			
+
 			return Response.ok("Carga realizada com sucesso").build();
-		}else{
+		} else {
 			return Response.ok("Carga já realizada").build();
 		}
 	}
-	
-	private void atualizaRank(Participante participante){
-		Date agora = new Date(System.currentTimeMillis());
-		Calendar calendarAgora = Calendar.getInstance();
-		calendarAgora.setTime(agora);
-		
-		participanteDAO.update(participante);
+
+	private void atualizaRank(Participante participante) {
+
+		try {
+			Long novaData = System.currentTimeMillis()
+					- participante.getDataUltimaCompra();
+			Long diff = ((novaData / 1000) / 60);
+
+			Long disconto = diff / 15;
+			participante.setRank(participante.getRank().intValue()
+					- disconto.intValue());
+			participanteDAO.update(participante);
+		} catch (Exception e) {
+
+		}
 	}
-	
 
 }
