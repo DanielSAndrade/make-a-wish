@@ -34,6 +34,7 @@ public class MesaDAO {
 		produto.setPontos(1);
 		produto.setPreco(10);
 		produto.setNome("Balao");
+		produtos.add(produto);
 		
 		compra1.setProdutos(produtos);
 		compra1.setPessoa(daniel);
@@ -57,6 +58,5 @@ public class MesaDAO {
 		return mesas;
 		
 	}
-	
 	
 }
