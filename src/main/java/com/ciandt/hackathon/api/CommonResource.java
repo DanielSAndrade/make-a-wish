@@ -56,8 +56,8 @@ public class CommonResource {
 	}
 
 	@GET
-	@Path("/listItens")
-	public List<Item> listItens(@Context HttpServletRequest request) {
+	@Path("/listItems")
+	public List<Item> listItems(@Context HttpServletRequest request) {
 		List<Item> listItens = new ArrayList<Item>();
 		listItens = visualizador.findItens();
 		return listItens;
