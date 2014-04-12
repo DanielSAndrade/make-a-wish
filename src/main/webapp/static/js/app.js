@@ -46,8 +46,24 @@ function CompraController( $http, $scope ) {
     
     $scope.comprar = function() {
     	$http.get("../api/get-idmesa").then(function(response){
-    		$http.post("../api/compra?idParticipante=" + $scope.personId + "&idProduto=9999&valor=999.999&idMesa=" + response.data);
+    		// $http.post("../api/compra?idParticipante=" + $scope.personId + "&idProduto=9999&valor=999.999&idMesa=" + response.data);
+            
+            var xsrf = $.param({
+                idParticipante: $scope.personId,
+                idProduto: 9999,
+                valor: 999.99,
+                idMesa: response.data
+            });
+            
+            $http({
+                method: 'POST',
+                url: '../api/compra',
+                data: xsrf,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
     	});    	
+        
+        
     }
 
 }
