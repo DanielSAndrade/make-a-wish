@@ -14,13 +14,13 @@ import javax.ws.rs.core.MediaType;
 
 import com.ciandt.hackathon.dao.ProdutoDAO;
 import com.ciandt.hackathon.dao.VendaDAO;
+import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Produto;
 import com.ciandt.hackathon.entity.Venda;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @Path("/vendas")
-// @ThreadSafe
 // @ThreadSafe
 @Produces(MediaType.APPLICATION_JSON + ";charset=utf-8")
 @Singleton
@@ -58,6 +58,7 @@ public class VendaResource {
 	@Path("/listVendas")
 	public List<Venda> listVendas(@Context HttpServletRequest request) {
 		List<Venda> listVendas = vendaDAO.findVendas();
+
 		listVendas.add(createVendaMock("Livro 1", 1.10));
 		listVendas.add(createVendaMock("Livro 2", 2.20));
 		listVendas.add(createVendaMock("Livro 3", 3.30));
@@ -76,13 +77,11 @@ public class VendaResource {
 
 	private Produto createProdutoMock(String descProduto, Double preco) {
 		return new Produto(descProduto, preco, "Livro");
-
 	}
 
 	@GET
-	@Path("/test")
-	public String test() {
-		return "ff";
+	@Path("/ranking")
+	public List<Mesa> ranking() {
+		return vendaDAO.getTop5VendasByMesa();
 	}
-
 }
