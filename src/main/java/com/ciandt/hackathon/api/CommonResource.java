@@ -248,10 +248,15 @@ public class CommonResource {
 			Long diff = ((novaData / 1000) / 60);
 
 			Long disconto = diff / 15;
-			participante.setRank(participante.getRank().intValue()
-					- disconto.intValue());
-			participante.setDelta(2);
-			participanteDAO.update(participante);
+			
+			if (disconto > 0){
+				
+				participante.setRank(participante.getRank().intValue()
+						- disconto.intValue());
+				participante.setDelta(2);
+				participanteDAO.update(participante);
+			}
+
 		} catch (Exception e) {
 
 		}
