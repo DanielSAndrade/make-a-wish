@@ -1,7 +1,9 @@
 package com.ciandt.hackathon.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pessoa {
@@ -26,6 +28,7 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY)
 	public Mesa getMesa() {
 		return mesa;
 	}

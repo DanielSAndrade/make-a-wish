@@ -23,7 +23,7 @@ public class ConfigureDatabase {
 	      properties.put("javax.persistence.jdbc.driver",
 	          "com.mysql.jdbc.GoogleDriver");
 	      properties.put("javax.persistence.jdbc.url",
-	          System.getProperty("cloudsql.url"));
+	          System.getProperty("jdbc:google:mysql://make-a-wish-bicicleta:dinner/makeawish?user=root"));
 	    } else {
 	      properties.put("javax.persistence.jdbc.driver",
 	          "com.mysql.jdbc.Driver");

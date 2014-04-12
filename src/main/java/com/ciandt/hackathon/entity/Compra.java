@@ -1,7 +1,9 @@
 package com.ciandt.hackathon.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Compra {
@@ -20,6 +22,7 @@ public class Compra {
 		this.id = id;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY)
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -28,6 +31,7 @@ public class Compra {
 		this.pessoa = pessoa;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY)
 	public Item getItem() {
 		return item;
 	}

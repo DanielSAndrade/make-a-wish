@@ -3,7 +3,10 @@ package com.ciandt.hackathon.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Badge {
@@ -38,6 +41,7 @@ public class Badge {
 		this.pontuacaoMinima = pontuacaoMinima;
 	}
 
+	@OneToMany(fetch = FetchType.LAZY)
 	public List<Mesa> getMesas() {
 		return mesas;
 	}
