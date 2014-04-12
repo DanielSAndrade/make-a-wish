@@ -1,4 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 
 <html lang="en">
   <head>
@@ -42,16 +43,40 @@
 	    </div>
 	
 	    <div class="container">
-	
-	      <div class="starter-template">
-	        <h1>Bootstrap starter template</h1>
-	        	        
-	      </div>
-	      
-	      <div>
-	      	<a hre="items" class="btn btn-default btn-lg dropdown-toggle">Itens do Leilão</a>
-		  </div>
-	
+	    
+	    	<div class="col-md-12 col-xs-12">
+	    	
+	    		<div class="col-md-6 col-xs-6">
+	    			<h2>
+	    				Sonhos
+	    			</h2>
+	    		</div>
+	    		<div class="col-md-6 col-xs-6">
+	    			<h2>
+	    				Balões
+	    			</h2>
+	    		</div>
+	    			
+				<c:if test="${itemsSize == 0}">
+				<p>Nenhum item encontrado.</p>
+				</c:if>
+				
+				<c:if test="${itemsSize > 0}">
+					<c:forEach var="item" items="${items}">
+					
+						<div class="col-sm-4 col-xs-4">
+							<h2>
+								${item.name}
+							</h2>
+							<br>
+							<h4>
+								${item.value}
+							</h4>
+						</div>
+										
+					</c:forEach>
+				</c:if>				      
+			</div>
 	    </div><!-- /.container -->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
