@@ -26,7 +26,7 @@ div.info2 {
    border: 0;
 }
 
-div.descricao-sonho {
+#descricao-sonho {
 	font-size: 30px;
 	color: black;
 	position: fixed;
@@ -38,7 +38,7 @@ div.descricao-sonho {
 	font-weight: bold;
 }
 
-div.crianca {
+#crianca {
 	font-size: 20px;
 	color: gray;
 	position: fixed;
@@ -48,7 +48,7 @@ div.crianca {
 	border: 0;
 }
 
-div.idade {
+#idade {
 	font-size: 20px;
 	color: gray;
 	position: fixed;
@@ -58,7 +58,7 @@ div.idade {
 	border: 0;
 }
 
-div.doenca {
+#doenca {
 	font-size: 18px;
 	color: red;
 	position: fixed;
