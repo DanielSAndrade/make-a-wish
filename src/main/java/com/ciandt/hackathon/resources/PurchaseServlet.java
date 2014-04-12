@@ -57,7 +57,7 @@ public class PurchaseServlet extends HttpServlet {
 			PurchaseProduct pp = new PurchaseProduct();
 			
 			pp.setProductId(Long.valueOf(id));
-			pp.setQuantity(Long.valueOf(qty));
+			pp.setQuantity(Integer.valueOf(qty));
 			
 			userDao.savePurchaseProduct(pp);
 			

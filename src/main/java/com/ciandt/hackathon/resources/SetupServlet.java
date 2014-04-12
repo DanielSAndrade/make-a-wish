@@ -77,8 +77,7 @@ public class SetupServlet extends HttpServlet {
 		product.setDescription("Balao 1");
 		product.setImageURL("http://uol.com.br/image/gif");
 		product.setPrice(10.0);
-		product.setPoints(0);
-		product.setType("A");
+		product.setProductType(ProductType.BALLONS);
 
 		productDao.insert(product);
 	}

@@ -25,16 +25,6 @@ public class User {
 		this.products = products;
 	}
 	
-	public User(){
-		//No-op
-	}
-	
-	public User(Long id, Table table, Collection<PurchaseProduct> products){
-		this.id = id;
-		this.table = table;
-		this.products = products;
-	}
-	
 	public Long getId() {
 		return id;
 	}
