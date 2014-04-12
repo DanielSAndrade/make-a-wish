@@ -2,10 +2,12 @@ package com.ciandt.hackathon.dao;
 
 import static com.ciandt.hackathon.dao.OfyService.ofy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.ciandt.hackathon.entity.Mesa;
 import com.ciandt.hackathon.entity.Participante;
 import com.google.appengine.api.memcache.ErrorHandlers;
 import com.google.appengine.api.memcache.MemcacheService;
@@ -27,19 +29,19 @@ public class ObjectifyParticipanteDAO implements ParticipanteDAO {
 		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
 		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
 		@SuppressWarnings("unchecked")
-		List<Participante> doacoes = (List<Participante>) syncCache.get( "PARTICIPANTE" );
+		List<Participante> participantes = (List<Participante>) syncCache.get( "PARTICIPANTE" );
 		
-		if (doacoes == null) {
+		if (participantes == null) {
 			log.info("Not found in cache");
-			doacoes = ofy().load().type(Participante.class).list();
+			participantes = ofy().load().type(Participante.class).list();
 		} else {
 			log.info("Using cache!");
 		}
 		
-	    if (doacoes != null) {
-	    	log.info("Returning " + doacoes.size() + " participante");
+	    if (participantes != null) {
+	    	log.info("Returning " + participantes.size() + " participante");
 	    }
-	    return doacoes;
+	    return participantes;
 	}
 	
 	@Override
@@ -54,6 +56,39 @@ public class ObjectifyParticipanteDAO implements ParticipanteDAO {
 		Key<Participante> key = ofy().save().entity(participante).now();
 		return key.getId();
 		
+	}
+
+	@Override
+	public List<Participante> findParticipantesMesa(Mesa mesa) {
+		log.info("Finding all participantes of a table");
+		
+		List<Participante> participantesMesa = new ArrayList<Participante>();
+		
+		MemcacheService syncCache = MemcacheServiceFactory.getMemcacheService();
+		syncCache.setErrorHandler(ErrorHandlers.getConsistentLogAndContinue(Level.INFO));
+		@SuppressWarnings("unchecked")
+		List<Participante> participantes = (List<Participante>) syncCache.get( "PARTICIPANTE" );
+		
+		if (participantes == null) {
+			log.info("Not found in cache");
+			participantes = ofy().load().type(Participante.class).list();
+		} else {
+			log.info("Using cache!");
+		}
+		
+	    if (participantes != null) {
+	    	Long idMesa = mesa.getId();
+	    	
+	    	for (Participante participante:participantes) {
+	    		if (idMesa == participante.getIdMesa()) {
+	    			participantesMesa.add(participante);
+	    		}
+	    	}
+	    	
+	    	log.info("Returning " + participantes.size() + " participante");
+	    }
+	    
+	    return participantesMesa;
 	}
 	
 }
