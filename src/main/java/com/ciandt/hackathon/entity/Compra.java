@@ -8,6 +8,8 @@ public class Compra {
 	@Id
 	private Long id;
 
+	private Double valor;
+	
 	private Long idParticipante;
 
 	private Long idProduto;
@@ -56,4 +58,12 @@ public class Compra {
 		this.idMesa = idMesa;
 	}
 
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+	
 }
