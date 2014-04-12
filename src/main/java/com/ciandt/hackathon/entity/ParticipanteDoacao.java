@@ -19,6 +19,8 @@ public class ParticipanteDoacao {
 		this.idParticipante = idParticipante;
 		this.idDoacao = idDoacao;
 	}
+	
+	public ParticipanteDoacao(){}
 
 	public Long getId() {
 		return id;
