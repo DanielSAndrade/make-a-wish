@@ -6,11 +6,12 @@ import com.googlecode.objectify.annotation.Id;
 @Entity
 public class MesaDoacao {
 
-
 	@Id
 	private Long id;
 	
 	private Long idMesa;
+	
+	private Long idDoacao;
 	
 	public Long getId() {
 		return id;
@@ -36,5 +37,4 @@ public class MesaDoacao {
 		this.idDoacao = idDoacao;
 	}
 
-	private Long idDoacao;
 }
