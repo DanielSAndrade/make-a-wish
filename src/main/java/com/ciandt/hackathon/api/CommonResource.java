@@ -1,6 +1,8 @@
 package com.ciandt.hackathon.api;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +19,7 @@ import com.ciandt.hackathon.dao.ParticipanteDAO;
 import com.ciandt.hackathon.entity.Compra;
 import com.ciandt.hackathon.entity.Greeting;
 import com.ciandt.hackathon.entity.Participante;
+import com.ciandt.hackathon.entity.Produto;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -93,6 +96,26 @@ public class CommonResource {
 		}
 		
 		return Response.ok("OK").build();
+	}
+	
+	@GET
+	@Path("/carga-inical-participante")
+	public Response test(@Context HttpServletRequest request) {
+		List<Participante> participantes = participanteDAO.findParticipantes();
+		if(participantes.isEmpty()){
+			List<Participante> listaParticipante = new ArrayList<Participante>();
+			for(int i=0; i<50;i++){
+				Participante participante = new Participante();
+				participante.setNome("Participante-"+i);
+				//participante.setRank(Random);
+			}
+			return Response.ok("Banco carregado!").build();
+		}else{
+			return Response.ok("Carga já realizada").build();
+		}
+		
+		
+		
 	}
 
 
