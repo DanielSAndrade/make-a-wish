@@ -33,5 +33,11 @@ function CompraController( $http, $scope ) {
     $scope.resetaModal = function() {
     	$scope.page = 'comprador';
     }
+    
+    $scope.comprar = function() {
+    	$http.get("../api/get-idmesa").then(function(response){
+    		$http.post("../api/compra?idParticipante=99999&idProduto=9999&valor=999.999&idMesa=" + response.data);
+    	});    	
+    }
 
 }
