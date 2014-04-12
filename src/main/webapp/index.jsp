@@ -45,7 +45,7 @@
 							<a href="javascript:detalhar('${produto.nome}');">
 							<div class="produto">
 								<p>${produto.nome}</p>
-								<img class="produto" src="static/assets/livro.jpg">
+								<img class="produto" src="${produto.foto}">
 							</div>
 							</a>
 						</td>

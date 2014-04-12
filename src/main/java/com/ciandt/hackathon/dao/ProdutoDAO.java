@@ -30,7 +30,7 @@ public class ProdutoDAO {
 		Produto produto1 = new Produto();
 		produto1.setDescricao("Balao comemorativo do evento mais esperado do ano!");
 		produto1.setCategoria(CategoriaEnum.BALOES);
-		produto1.setFoto("/static/assets/balaomagico");
+		produto1.setFoto("/static/assets/balao.jpeg");
 		produto1.setNome("Historia");
 		produto1.setPontos(10);
 		produto1.setPreco(45);
@@ -40,7 +40,7 @@ public class ProdutoDAO {
 		Produto produto2 = new Produto();
 		produto2.setDescricao("Livro sobre a historia do Google");
 		produto2.setCategoria(CategoriaEnum.LIVRO);
-		produto2.setFoto("/static/assets/googlebook");
+		produto2.setFoto("/static/assets/googlebook.jpg");
 		produto2.setNome("Livro do Google");
 		produto2.setPontos(5);
 		produto2.setPreco(20);
@@ -50,7 +50,7 @@ public class ProdutoDAO {
 		Produto produto3 = new Produto();
 		produto3.setDescricao("Livro Poder dos sonhos");
 		produto3.setCategoria(CategoriaEnum.LIVRO);
-		produto3.setFoto("/static/assets/podersonhos");
+		produto3.setFoto("/static/assets/podersonhos.jpg");
 		produto3.setNome("Livro sonhos");
 		produto3.setPontos(5);
 		produto3.setPreco(20);
@@ -60,7 +60,7 @@ public class ProdutoDAO {
 		Produto produto4 = new Produto();
 		produto4.setDescricao("Livro A vida por Daniel Andrade");
 		produto4.setCategoria(CategoriaEnum.LIVRO);
-		produto4.setFoto("/static/assets/daniel");
+		produto4.setFoto("/static/assets/daniel.jpg");
 		produto4.setNome("Livro Pensamentos");
 		produto4.setPontos(5);
 		produto4.setPreco(20);
@@ -70,7 +70,7 @@ public class ProdutoDAO {
 		Produto produto5 = new Produto();
 		produto5.setDescricao("Livro Uma cilada por Roger Rabbit");
 		produto5.setCategoria(CategoriaEnum.LIVRO);
-		produto5.setFoto("/static/assets/rogerrabbit");
+		produto5.setFoto("/static/assets/rogerrabbit.jpg");
 		produto5.setNome("Livro Desenhos");
 		produto5.setPontos(5);
 		produto5.setPreco(20);
