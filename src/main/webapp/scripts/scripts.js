@@ -1,6 +1,17 @@
 $(document).ready(function() {
 
-	var divExemplo = "<div class='row'><div class='columns large-1'><img src='http://placehold.it/80x80&text=[img]' /></div><div class='columns large-9 '><div class='panel'><label style='float: left; padding-top: 5px; font-size: 25px; padding-right: 25px;'>#000</label><img alt='' src='D:\\make_a_wish\\make-a-wish\\src\\main\\webapp\\images\\king-icon.png' style='height: 45px;'></div></div><div class='columns large-1' style='text-align: center;'><span>00</span></div><div class='columns large-1' style='text-align: center;'><span>00</span></div></div>";
+	var jsonMesas ="";
+	
+	$.ajax({
+        type: 'GET',
+        url: 'http://localhost:8080/api/listmesas',
+        ontentType: 'application/json; charset=utf-8',
+        data: '{}',
+        dataType: 'json',
+        success: function(data) { alert(data); }
+    });
+	
+	var divExemplo = "<div class='row'><div class='columns large-1'><img src='http://placehold.it/80x80&text=[img]' /></div><div class='columns large-9 '><div class='panel'><label style='float: left; padding-top: 5px; font-size: 25px; padding-right: 25px;'>#000</label><img alt='' src='D:\\make_a_wish\\make-a-wish\\src\\main\\webapp\\images\\king-icon.png' style='height: 45px;'></div></div><div class='columns large-1' style='text-align: center;'><span style='font-weight: bold; font-size: 50px;'>00</span></div><div class='columns large-1' style='text-align: center;'><span style='font-weight: bold; font-size: 50px;'>00</span></div></div>";
 	var divExemplo1 = "<div class='row'><div class='columns large-1'><img src='http://placehold.it/80x80&text=[img]' /></div><div class='columns large-9 '><div class='panel'><label style='float: left; margin-top: -8px;'>#000</label></div></div><div class='columns large-1' style='text-align: center;'><span>00</span></div><div class='columns large-1' style='text-align: center;'><span>00</span></div></div>";
 
 	for (var i = 0; i <= 3; i++) {
