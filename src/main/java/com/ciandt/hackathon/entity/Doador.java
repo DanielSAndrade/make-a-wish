@@ -30,6 +30,8 @@ public class Doador {
 
 	private List<Badge> bagdes;
 
+	private String email;
+	
 	/**
 	 * @return the id
 	 */
@@ -103,6 +105,14 @@ public class Doador {
 	 */
 	public void setBagdes(List<Badge> bagdes) {
 		this.bagdes = bagdes;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }
