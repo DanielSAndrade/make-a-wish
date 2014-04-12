@@ -16,7 +16,7 @@ import com.ciandt.hackathon.dao.VendaDAO;
 import com.ciandt.hackathon.entity.Produto;
 import com.ciandt.hackathon.entity.Venda;
 import com.google.inject.Inject;
-import com.google.inject.Singleton;
+import com.google.inject.Singreetingsgleton;
 
 @Path("/api")
 @ThreadSafe
