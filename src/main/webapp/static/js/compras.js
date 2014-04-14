@@ -56,9 +56,9 @@ var Compras = (function($){
                     });
                 var $container = $("<div />", {'class' : 'container'});
                 var $rotuloCarrossel = $("<div />", {'class' : 'carousel-caption'});
-                var $tituloProduto = $("<h1 />", {'class':'h1'});
-                var $containerBotao = $("<p />", {'class' : 'p'});
-                var $descricaoProduto = $("<p />", {'class' : 'p'});
+                var $tituloProduto = $("<h1 />", {'text': produtos[i].nome});
+                var $descricaoProduto = $("<p />", {});
+                var $containerBotao = $("<p />", {});
                 var $botaoComprar = $("<a />", {
                         'class' : 'btn btn-lg btn-primary',
                         'data-toggle' : 'modal',
